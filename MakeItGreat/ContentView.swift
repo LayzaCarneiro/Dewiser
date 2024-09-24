@@ -8,14 +8,26 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State private var sheetNewDecision = false
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        VStack(spacing: 25) {
+                        
+            Button {
+                sheetNewDecision.toggle()
+            } label: {
+                Text("New Decision")
+            }
+            .sheet(isPresented: $sheetNewDecision, onDismiss: didDismiss) {
+                    FormSheetView()
+            }
         }
         .padding()
+    }
+    
+    func didDismiss() {
+        // TODO: Handle the dismissing action
     }
 }
 
