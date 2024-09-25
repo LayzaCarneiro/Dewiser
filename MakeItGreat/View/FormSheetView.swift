@@ -22,7 +22,10 @@ struct FormSheetView: View {
             default:
                 FirstPage(formViewModel: formViewModel)
             }
+            
+            Spacer()
         }
+        .padding()
     }
 }
 
