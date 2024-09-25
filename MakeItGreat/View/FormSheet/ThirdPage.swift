@@ -35,7 +35,3 @@ struct ThirdPage: View {
         }
     }
 }
-
-//#Preview {
-//    ThirdPage()
-//}
