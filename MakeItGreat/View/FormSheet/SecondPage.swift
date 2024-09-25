@@ -12,23 +12,23 @@ struct SecondPage: View {
     
     var body: some View {
         VStack {
-            Text("What is about?")
-            TextField("Description", text: $formViewModel.description)
-                .textFieldStyle(.roundedBorder)
-            
             HStack {
                 Button {
                     formViewModel.previousPage()
                 } label: {
-                    Text("Anterior")
+                    Text("Back")
                 }
                 Spacer()
                 Button {
                     formViewModel.nextPage()
                 } label: {
-                    Text("Próximo")
+                    Text("Next")
                 }
             }
+            
+            Text("What is about?")
+            TextField("Description", text: $formViewModel.description)
+                .textFieldStyle(.roundedBorder)
         }
     }
 }

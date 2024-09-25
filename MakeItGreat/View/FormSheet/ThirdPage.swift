@@ -9,26 +9,29 @@ import SwiftUI
 
 struct ThirdPage: View {
     @ObservedObject var formViewModel: FormViewModel
-    
+    @Environment(\.dismiss) private var dismiss
+
     var body: some View {
         VStack {
-            Text("Something else")
-            TextField("Description", text: $formViewModel.description)
-                .textFieldStyle(.roundedBorder)
-            
             HStack {
                 Button {
                     formViewModel.previousPage()
                 } label: {
-                    Text("Anterior")
+                    Text("Back")
                 }
                 Spacer()
                 Button {
-                    formViewModel.nextPage()
+                    // MARK: it must save and not dismiss
+                    // TODO: save decision
+                    dismiss()
                 } label: {
-                    Text("Próximo")
+                    Text("Save")
                 }
             }
+            
+            Text("Something else")
+            TextField("Description", text: $formViewModel.description)
+                .textFieldStyle(.roundedBorder)
         }
     }
 }
