@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SecondPage: View {
     @ObservedObject var formViewModel: FormViewModel
-    
+
     var body: some View {
         VStack {
             HStack {
@@ -25,14 +25,10 @@ struct SecondPage: View {
                     Text("Next")
                 }
             }
-            
-            Text("What is about?")
-            TextField("Description", text: $formViewModel.description)
+
+            Text("How do you feel?")
+            TextField("Feeling", text: $formViewModel.description)
                 .textFieldStyle(.roundedBorder)
         }
     }
 }
-
-//#Preview {
-//    SecondPage()
-//}

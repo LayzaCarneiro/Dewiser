@@ -10,7 +10,7 @@ import SwiftUI
 struct FirstPage: View {
     @ObservedObject var formViewModel: FormViewModel
     @Environment(\.dismiss) private var dismiss
-    
+
     var body: some View {
         VStack {
             HStack {
@@ -26,14 +26,10 @@ struct FirstPage: View {
                     Text("Next")
                 }
             }
-            
+
             Text("What is your decision?")
             TextField("Decision", text: $formViewModel.title)
                 .textFieldStyle(.roundedBorder)
         }
     }
 }
-
-//#Preview {
-//    FirstPage()
-//}

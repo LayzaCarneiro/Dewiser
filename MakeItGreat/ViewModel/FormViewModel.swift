@@ -12,13 +12,13 @@ class FormViewModel: ObservableObject {
     @Published var description: String = ""
     @Published var notes: String = ""
     @Published var currentPage: Int = 0
-    
+
     func nextPage() {
-        if currentPage < 2 {
+        if currentPage < 3 {
             currentPage += 1
         }
     }
-    
+
     func previousPage() {
         if currentPage > 0 {
             currentPage -= 1

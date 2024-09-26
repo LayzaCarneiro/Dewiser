@@ -8,20 +8,20 @@
 import SwiftUI
 
 struct ContentView: View {
-    
+
     @State private var sheetNewDecision = false
-    
+
     var body: some View {
         NavigationStack {
             VStack(spacing: 60) {
-                
+
                 Text("Animation")
                     .font(.title2)
                     .foregroundColor(.black)
                     .frame(width: 250, height: 250)
                     .background(.yellow)
                     .cornerRadius(10)
-                
+
                 Button {
                     sheetNewDecision.toggle()
                 } label: {
@@ -32,9 +32,10 @@ struct ContentView: View {
                         .background(.blue)
                         .cornerRadius(10)
                 }
-                .sheet(isPresented: $sheetNewDecision, onDismiss: didDismiss) {
+                .sheet(isPresented: $sheetNewDecision) {
                     FormSheetView()
                         .presentationDetents([.medium])
+                        .presentationDragIndicator(.visible)
                 }
             }
             .padding()
@@ -52,10 +53,6 @@ struct ContentView: View {
                 }
             }
         }
-    }
-    
-    func didDismiss() {
-        // TODO: Handle the dismissing action
     }
 }
 

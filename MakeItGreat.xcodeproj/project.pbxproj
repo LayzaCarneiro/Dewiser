@@ -16,6 +16,7 @@
 		AE9E32B02CA38485009235AC /* FirstPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9E32AF2CA38485009235AC /* FirstPage.swift */; };
 		AE9E32B32CA3854D009235AC /* SecondPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9E32B22CA3854D009235AC /* SecondPage.swift */; };
 		AE9E32B52CA3859D009235AC /* ThirdPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9E32B42CA3859D009235AC /* ThirdPage.swift */; };
+		AE9E32BD2CA392AB009235AC /* FourthPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9E32BC2CA392AA009235AC /* FourthPage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		AE9E32AF2CA38485009235AC /* FirstPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstPage.swift; sourceTree = "<group>"; };
 		AE9E32B22CA3854D009235AC /* SecondPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondPage.swift; sourceTree = "<group>"; };
 		AE9E32B42CA3859D009235AC /* ThirdPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdPage.swift; sourceTree = "<group>"; };
+		AE9E32BC2CA392AA009235AC /* FourthPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthPage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 				AE9E32AF2CA38485009235AC /* FirstPage.swift */,
 				AE9E32B22CA3854D009235AC /* SecondPage.swift */,
 				AE9E32B42CA3859D009235AC /* ThirdPage.swift */,
+				AE9E32BC2CA392AA009235AC /* FourthPage.swift */,
 			);
 			path = FormSheet;
 			sourceTree = "<group>";
@@ -219,6 +222,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE9E32BD2CA392AB009235AC /* FourthPage.swift in Sources */,
 				AE9E32AE2CA383E5009235AC /* FormViewModel.swift in Sources */,
 				AE9E32B02CA38485009235AC /* FirstPage.swift in Sources */,
 				AE9E32B32CA3854D009235AC /* SecondPage.swift in Sources */,
