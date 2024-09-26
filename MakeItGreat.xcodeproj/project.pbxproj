@@ -11,6 +11,12 @@
 		AE28CDCF2CA2F3AE00267E39 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE28CDCE2CA2F3AE00267E39 /* ContentView.swift */; };
 		AE28CDD12CA2F3AF00267E39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE28CDD02CA2F3AF00267E39 /* Assets.xcassets */; };
 		AE28CDD42CA2F3AF00267E39 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE28CDD32CA2F3AF00267E39 /* Preview Assets.xcassets */; };
+		AE9E32AB2CA38355009235AC /* FormSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9E32AA2CA38355009235AC /* FormSheetView.swift */; };
+		AE9E32AE2CA383E5009235AC /* FormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9E32AD2CA383E5009235AC /* FormViewModel.swift */; };
+		AE9E32B02CA38485009235AC /* FirstPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9E32AF2CA38485009235AC /* FirstPage.swift */; };
+		AE9E32B32CA3854D009235AC /* SecondPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9E32B22CA3854D009235AC /* SecondPage.swift */; };
+		AE9E32B52CA3859D009235AC /* ThirdPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9E32B42CA3859D009235AC /* ThirdPage.swift */; };
+		AE9E32BD2CA392AB009235AC /* FourthPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9E32BC2CA392AA009235AC /* FourthPage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +25,12 @@
 		AE28CDCE2CA2F3AE00267E39 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		AE28CDD02CA2F3AF00267E39 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AE28CDD32CA2F3AF00267E39 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		AE9E32AA2CA38355009235AC /* FormSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormSheetView.swift; sourceTree = "<group>"; };
+		AE9E32AD2CA383E5009235AC /* FormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewModel.swift; sourceTree = "<group>"; };
+		AE9E32AF2CA38485009235AC /* FirstPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstPage.swift; sourceTree = "<group>"; };
+		AE9E32B22CA3854D009235AC /* SecondPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondPage.swift; sourceTree = "<group>"; };
+		AE9E32B42CA3859D009235AC /* ThirdPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdPage.swift; sourceTree = "<group>"; };
+		AE9E32BC2CA392AA009235AC /* FourthPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthPage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +63,9 @@
 		AE28CDCB2CA2F3AE00267E39 /* MakeItGreat */ = {
 			isa = PBXGroup;
 			children = (
+				AE9E32B62CA3866C009235AC /* Model */,
+				AE9E32AC2CA383D5009235AC /* ViewModel */,
+				AE9E32A72CA358A1009235AC /* View */,
 				AE28CDCC2CA2F3AE00267E39 /* MakeItGreatApp.swift */,
 				AE28CDCE2CA2F3AE00267E39 /* ContentView.swift */,
 				AE28CDD02CA2F3AF00267E39 /* Assets.xcassets */,
@@ -67,6 +82,49 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		AE9E32A72CA358A1009235AC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AE9E32B72CA38671009235AC /* Components */,
+				AE9E32B12CA3853B009235AC /* FormSheet */,
+				AE9E32AA2CA38355009235AC /* FormSheetView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		AE9E32AC2CA383D5009235AC /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				AE9E32AD2CA383E5009235AC /* FormViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		AE9E32B12CA3853B009235AC /* FormSheet */ = {
+			isa = PBXGroup;
+			children = (
+				AE9E32AF2CA38485009235AC /* FirstPage.swift */,
+				AE9E32B22CA3854D009235AC /* SecondPage.swift */,
+				AE9E32B42CA3859D009235AC /* ThirdPage.swift */,
+				AE9E32BC2CA392AA009235AC /* FourthPage.swift */,
+			);
+			path = FormSheet;
+			sourceTree = "<group>";
+		};
+		AE9E32B62CA3866C009235AC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		AE9E32B72CA38671009235AC /* Components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -77,12 +135,15 @@
 				AE28CDC52CA2F3AE00267E39 /* Sources */,
 				AE28CDC62CA2F3AE00267E39 /* Frameworks */,
 				AE28CDC72CA2F3AE00267E39 /* Resources */,
+				AE9E32BB2CA38FC9009235AC /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = MakeItGreat;
+			packageProductDependencies = (
+			);
 			productName = MakeItGreat;
 			productReference = AE28CDC92CA2F3AE00267E39 /* MakeItGreat.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +172,8 @@
 				Base,
 			);
 			mainGroup = AE28CDC02CA2F3AE00267E39;
+			packageReferences = (
+			);
 			productRefGroup = AE28CDCA2CA2F3AE00267E39 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -132,12 +195,40 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		AE9E32BB2CA38FC9009235AC /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		AE28CDC52CA2F3AE00267E39 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE9E32BD2CA392AB009235AC /* FourthPage.swift in Sources */,
+				AE9E32AE2CA383E5009235AC /* FormViewModel.swift in Sources */,
+				AE9E32B02CA38485009235AC /* FirstPage.swift in Sources */,
+				AE9E32B32CA3854D009235AC /* SecondPage.swift in Sources */,
+				AE9E32B52CA3859D009235AC /* ThirdPage.swift in Sources */,
 				AE28CDCF2CA2F3AE00267E39 /* ContentView.swift in Sources */,
+				AE9E32AB2CA38355009235AC /* FormSheetView.swift in Sources */,
 				AE28CDCD2CA2F3AE00267E39 /* MakeItGreatApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -182,7 +273,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -245,7 +336,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
