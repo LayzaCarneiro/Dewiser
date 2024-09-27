@@ -17,6 +17,8 @@
 		AE9E32B32CA3854D009235AC /* SecondPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9E32B22CA3854D009235AC /* SecondPage.swift */; };
 		AE9E32B52CA3859D009235AC /* ThirdPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9E32B42CA3859D009235AC /* ThirdPage.swift */; };
 		AE9E32BD2CA392AB009235AC /* FourthPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9E32BC2CA392AA009235AC /* FourthPage.swift */; };
+		E9A277552CA6D47B00C7D845 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A277542CA6D47B00C7D845 /* SettingsView.swift */; };
+		E9A277592CA6D59500C7D845 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A277582CA6D59500C7D845 /* AboutView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +33,8 @@
 		AE9E32B22CA3854D009235AC /* SecondPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondPage.swift; sourceTree = "<group>"; };
 		AE9E32B42CA3859D009235AC /* ThirdPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdPage.swift; sourceTree = "<group>"; };
 		AE9E32BC2CA392AA009235AC /* FourthPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthPage.swift; sourceTree = "<group>"; };
+		E9A277542CA6D47B00C7D845 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		E9A277582CA6D59500C7D845 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +89,7 @@
 		AE9E32A72CA358A1009235AC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E9A2774F2CA6D41A00C7D845 /* Settings */,
 				AE9E32B72CA38671009235AC /* Components */,
 				AE9E32B12CA3853B009235AC /* FormSheet */,
 				AE9E32AA2CA38355009235AC /* FormSheetView.swift */,
@@ -123,6 +128,15 @@
 			children = (
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		E9A2774F2CA6D41A00C7D845 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				E9A277542CA6D47B00C7D845 /* SettingsView.swift */,
+				E9A277582CA6D59500C7D845 /* AboutView.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -225,6 +239,8 @@
 				AE9E32BD2CA392AB009235AC /* FourthPage.swift in Sources */,
 				AE9E32AE2CA383E5009235AC /* FormViewModel.swift in Sources */,
 				AE9E32B02CA38485009235AC /* FirstPage.swift in Sources */,
+				E9A277552CA6D47B00C7D845 /* SettingsView.swift in Sources */,
+				E9A277592CA6D59500C7D845 /* AboutView.swift in Sources */,
 				AE9E32B32CA3854D009235AC /* SecondPage.swift in Sources */,
 				AE9E32B52CA3859D009235AC /* ThirdPage.swift in Sources */,
 				AE28CDCF2CA2F3AE00267E39 /* ContentView.swift in Sources */,
@@ -363,9 +379,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MakeItGreat/Preview Content\"";
-				DEVELOPMENT_TEAM = ZFH4AF7HSL;
+				DEVELOPMENT_TEAM = RDBBF5GZZ8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "Unlock the app";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -392,9 +409,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MakeItGreat/Preview Content\"";
-				DEVELOPMENT_TEAM = ZFH4AF7HSL;
+				DEVELOPMENT_TEAM = RDBBF5GZZ8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "Unlock the app";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
