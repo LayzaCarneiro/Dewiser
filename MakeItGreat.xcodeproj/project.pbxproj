@@ -11,6 +11,10 @@
 		AE28CDCF2CA2F3AE00267E39 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE28CDCE2CA2F3AE00267E39 /* ContentView.swift */; };
 		AE28CDD12CA2F3AF00267E39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE28CDD02CA2F3AF00267E39 /* Assets.xcassets */; };
 		AE28CDD42CA2F3AF00267E39 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE28CDD32CA2F3AF00267E39 /* Preview Assets.xcassets */; };
+		AE7F8BB72CA6D54100CD3835 /* ProModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7F8BB62CA6D54100CD3835 /* ProModel.swift */; };
+		AE7F8BBA2CA6D58100CD3835 /* ProViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7F8BB92CA6D58100CD3835 /* ProViewModel.swift */; };
+		AE7F8BBD2CA6D5FF00CD3835 /* ProConsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7F8BBC2CA6D5FF00CD3835 /* ProConsView.swift */; };
+		AE7F8BBF2CA6D68F00CD3835 /* ProCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7F8BBE2CA6D68F00CD3835 /* ProCard.swift */; };
 		AE9E32AB2CA38355009235AC /* FormSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9E32AA2CA38355009235AC /* FormSheetView.swift */; };
 		AE9E32AE2CA383E5009235AC /* FormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9E32AD2CA383E5009235AC /* FormViewModel.swift */; };
 		AE9E32B02CA38485009235AC /* FirstPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9E32AF2CA38485009235AC /* FirstPage.swift */; };
@@ -25,6 +29,10 @@
 		AE28CDCE2CA2F3AE00267E39 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		AE28CDD02CA2F3AF00267E39 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AE28CDD32CA2F3AF00267E39 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		AE7F8BB62CA6D54100CD3835 /* ProModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProModel.swift; sourceTree = "<group>"; };
+		AE7F8BB92CA6D58100CD3835 /* ProViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProViewModel.swift; sourceTree = "<group>"; };
+		AE7F8BBC2CA6D5FF00CD3835 /* ProConsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProConsView.swift; sourceTree = "<group>"; };
+		AE7F8BBE2CA6D68F00CD3835 /* ProCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProCard.swift; sourceTree = "<group>"; };
 		AE9E32AA2CA38355009235AC /* FormSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormSheetView.swift; sourceTree = "<group>"; };
 		AE9E32AD2CA383E5009235AC /* FormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewModel.swift; sourceTree = "<group>"; };
 		AE9E32AF2CA38485009235AC /* FirstPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstPage.swift; sourceTree = "<group>"; };
@@ -63,7 +71,7 @@
 		AE28CDCB2CA2F3AE00267E39 /* MakeItGreat */ = {
 			isa = PBXGroup;
 			children = (
-				AE9E32B62CA3866C009235AC /* Model */,
+				AE7F8BB52CA6D53800CD3835 /* Model */,
 				AE9E32AC2CA383D5009235AC /* ViewModel */,
 				AE9E32A72CA358A1009235AC /* View */,
 				AE28CDCC2CA2F3AE00267E39 /* MakeItGreatApp.swift */,
@@ -82,12 +90,29 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		AE7F8BB52CA6D53800CD3835 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AE7F8BB62CA6D54100CD3835 /* ProModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		AE7F8BBB2CA6D5E500CD3835 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				AE7F8BBE2CA6D68F00CD3835 /* ProCard.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		AE9E32A72CA358A1009235AC /* View */ = {
 			isa = PBXGroup;
 			children = (
-				AE9E32B72CA38671009235AC /* Components */,
+				AE7F8BBB2CA6D5E500CD3835 /* Components */,
 				AE9E32B12CA3853B009235AC /* FormSheet */,
 				AE9E32AA2CA38355009235AC /* FormSheetView.swift */,
+				AE7F8BBC2CA6D5FF00CD3835 /* ProConsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -96,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				AE9E32AD2CA383E5009235AC /* FormViewModel.swift */,
+				AE7F8BB92CA6D58100CD3835 /* ProViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -109,20 +135,6 @@
 				AE9E32BC2CA392AA009235AC /* FourthPage.swift */,
 			);
 			path = FormSheet;
-			sourceTree = "<group>";
-		};
-		AE9E32B62CA3866C009235AC /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		AE9E32B72CA38671009235AC /* Components */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -222,10 +234,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE7F8BBA2CA6D58100CD3835 /* ProViewModel.swift in Sources */,
+				AE7F8BBD2CA6D5FF00CD3835 /* ProConsView.swift in Sources */,
+				AE7F8BB72CA6D54100CD3835 /* ProModel.swift in Sources */,
 				AE9E32BD2CA392AB009235AC /* FourthPage.swift in Sources */,
 				AE9E32AE2CA383E5009235AC /* FormViewModel.swift in Sources */,
 				AE9E32B02CA38485009235AC /* FirstPage.swift in Sources */,
 				AE9E32B32CA3854D009235AC /* SecondPage.swift in Sources */,
+				AE7F8BBF2CA6D68F00CD3835 /* ProCard.swift in Sources */,
 				AE9E32B52CA3859D009235AC /* ThirdPage.swift in Sources */,
 				AE28CDCF2CA2F3AE00267E39 /* ContentView.swift in Sources */,
 				AE9E32AB2CA38355009235AC /* FormSheetView.swift in Sources */,

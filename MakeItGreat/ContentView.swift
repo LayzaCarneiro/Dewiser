@@ -34,7 +34,7 @@ struct ContentView: View {
                 }
                 .sheet(isPresented: $sheetNewDecision) {
                     FormSheetView()
-                        .presentationDetents([.medium])
+                        .presentationDetents([.large])
                         .presentationDragIndicator(.visible)
                 }
             }

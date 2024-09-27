@@ -9,6 +9,7 @@ import SwiftUI
 
 struct FormSheetView: View {
     @StateObject var formViewModel = FormViewModel()
+    @StateObject var proViewModel = ProViewModel()
 
     var body: some View {
         VStack {
@@ -20,7 +21,7 @@ struct FormSheetView: View {
             case 2:
                 ThirdPage(formViewModel: formViewModel)
             case 3:
-                FourthPage(formViewModel: formViewModel)
+                FourthPage(formViewModel: formViewModel, proViewModel: proViewModel)
             default:
                 FirstPage(formViewModel: formViewModel)
             }
