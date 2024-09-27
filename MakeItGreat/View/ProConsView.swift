@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ProConsView: View {
-    @ObservedObject var proViewModel: ProViewModel
+    @ObservedObject var cardViewModel: CardViewModel
 
     var body: some View {
         ZStack {
@@ -17,12 +17,12 @@ struct ProConsView: View {
                     VStack {
                         Text("Pros")
 
-                        ForEach(proViewModel.pros) { pro in
-                            ProCard()
+                        ForEach(cardViewModel.cardModel.pros) { pro in
+                            ProCard(content: pro.content)
                         }
 
                         Button {
-                            proViewModel.addPro(content: "")
+                            cardViewModel.addPro(content: "")
                         } label: {
                             Image(systemName: "plus")
                         }
@@ -34,12 +34,12 @@ struct ProConsView: View {
                     VStack {
                         Text("Cons")
 
-                        ForEach(proViewModel.cons) { con in
-                            ProCard()
+                        ForEach(cardViewModel.cardModel.cons) { con in
+                            ProCard(content: con.content)
                         }
 
                         Button {
-                            proViewModel.addCon(content: "")
+                            cardViewModel.addCon(content: "")
                         } label: {
                             Image(systemName: "plus")
                         }
