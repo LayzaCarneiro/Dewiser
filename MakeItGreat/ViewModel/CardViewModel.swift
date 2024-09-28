@@ -18,5 +18,29 @@ class CardViewModel: ObservableObject {
     func addCon(content: String) {
         cardModel.cons.append(ConModel(content: content))
     }
-    
+
+    func consPercentage() -> Double {
+        var percentage: Double
+
+        if(cardModel.pros.count > 0 || cardModel.cons.count > 0) {
+            percentage = Double(cardModel.cons.count * 100 / (cardModel.pros.count + cardModel.cons.count))
+        } else {
+            percentage = 50
+        }
+
+        return percentage
+    }
+
+    func prosPercentage() -> Double {
+        var percentage: Double
+
+        if(cardModel.pros.count > 0 || cardModel.cons.count > 0) {
+            percentage = Double(cardModel.pros.count * 100 / (cardModel.pros.count + cardModel.cons.count))
+        } else {
+            percentage = 50
+        }
+
+        return percentage
+    }
+
 }

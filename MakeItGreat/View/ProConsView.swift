@@ -17,6 +17,8 @@ struct ProConsView: View {
                     VStack {
                         Text("Pros")
 
+                        ProgressBar(progress: cardViewModel.prosPercentage())
+
                         ForEach(cardViewModel.cardModel.pros) { pro in
                             ProCard(content: pro.content)
                         }
@@ -33,6 +35,8 @@ struct ProConsView: View {
 
                     VStack {
                         Text("Cons")
+
+                        ProgressBar(progress: cardViewModel.consPercentage())
 
                         ForEach(cardViewModel.cardModel.cons) { con in
                             ProCard(content: con.content)

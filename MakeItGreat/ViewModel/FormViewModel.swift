@@ -8,9 +8,7 @@
 import Foundation
 
 class FormViewModel: ObservableObject {
-    @Published var title: String = ""
-    @Published var description: String = ""
-    @Published var notes: String = ""
+    @Published var cardViewModel = CardViewModel()
     @Published var currentPage: Int = 0
 
     func nextPage() {

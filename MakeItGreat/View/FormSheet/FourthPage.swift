@@ -10,6 +10,8 @@ import SwiftUI
 struct FourthPage: View {
     @ObservedObject var formViewModel: FormViewModel
     @ObservedObject var cardViewModel: CardViewModel
+    @ObservedObject var userViewModel: UserViewModel
+
     @Environment(\.dismiss) private var dismiss
 
     var body: some View {
@@ -22,8 +24,7 @@ struct FourthPage: View {
                 }
                 Spacer()
                 Button {
-                    // MARK: it must save and not dismiss
-                    // TODO: save decision
+                    userViewModel.addDecision()
                     dismiss()
                 } label: {
                     Text("Save")

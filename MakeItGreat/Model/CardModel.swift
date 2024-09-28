@@ -12,7 +12,7 @@ struct CardModel: Identifiable {
     var title: String = ""
     var feeling: String = ""
     var priority: String = ""
-    var deadline: String = ""
+    var deadline: Date = Date.now
 
     var pros: [ProModel] = []
     var cons: [ConModel] = []
