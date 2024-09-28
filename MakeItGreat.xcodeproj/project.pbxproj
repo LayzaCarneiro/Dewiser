@@ -19,6 +19,7 @@
 		AE9E32BD2CA392AB009235AC /* FourthPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9E32BC2CA392AA009235AC /* FourthPage.swift */; };
 		E9A277552CA6D47B00C7D845 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A277542CA6D47B00C7D845 /* SettingsView.swift */; };
 		E9A277592CA6D59500C7D845 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A277582CA6D59500C7D845 /* AboutView.swift */; };
+		E9A2775D2CA7210200C7D845 /* LinkAbout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A2775C2CA7210200C7D845 /* LinkAbout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		AE9E32BC2CA392AA009235AC /* FourthPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthPage.swift; sourceTree = "<group>"; };
 		E9A277542CA6D47B00C7D845 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		E9A277582CA6D59500C7D845 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		E9A2775C2CA7210200C7D845 /* LinkAbout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkAbout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				AE9E32AD2CA383E5009235AC /* FormViewModel.swift */,
+				E9A2775C2CA7210200C7D845 /* LinkAbout.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -239,6 +242,7 @@
 				AE9E32BD2CA392AB009235AC /* FourthPage.swift in Sources */,
 				AE9E32AE2CA383E5009235AC /* FormViewModel.swift in Sources */,
 				AE9E32B02CA38485009235AC /* FirstPage.swift in Sources */,
+				E9A2775D2CA7210200C7D845 /* LinkAbout.swift in Sources */,
 				E9A277552CA6D47B00C7D845 /* SettingsView.swift in Sources */,
 				E9A277592CA6D59500C7D845 /* AboutView.swift in Sources */,
 				AE9E32B32CA3854D009235AC /* SecondPage.swift in Sources */,

@@ -12,18 +12,18 @@ struct AboutView: View {
         NavigationStack {
             List {
                 Section(header: Text("Developers")) {
-                    NavigationLink(destination: SettingsView()) {
-                        Text("Hadassa Miranda")
-                    }
-                    NavigationLink(destination: SettingsView()) {
-                        Text("João Roberto")
-                    }
-                    NavigationLink(destination: SettingsView()) {
-                        Text("Layza Carneiro")
-                    }
-                    NavigationLink(destination: SettingsView()) {
-                        Text("Melissa Guedes")
-                    }
+                    Button(action: openLinkedInHM) {
+                                           Text("Hadassa Miranda")
+                                       }
+                    Button(action: openLinkedInJR) {
+                                           Text("João Roberto")
+                                       }
+                    Button(action: openLinkedInLC) {
+                                           Text("Layza Carneiro")
+                                       }
+                    Button(action: openLinkedInMG) {
+                                           Text("Melissa Guedes")
+                                       }
                 }
                 Section(header: Text("App")) {
                     NavigationLink(destination: SettingsView()) {
