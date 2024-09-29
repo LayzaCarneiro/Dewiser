@@ -18,15 +18,45 @@ struct SettingsView: View {
             List {
                 Section(header: Text("Notification")) {
                     Toggle(isOn: $isNotificationOn) {
-                        Text("Daily Reminder")
+                        HStack {
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 6)
+                                    .fill(Color.accentColor)
+                                    .frame(width: 30, height: 30)
+                                Image(systemName: "bell.fill")
+                                    .foregroundColor(.white)
+                                    .font(.system(size: 15))
+                            }
+                            Text("Daily Reminder")
+                        }
                     }
                     Toggle(isOn: $isAbleHaptics) {
-                        Text("Disable Haptics")
+                        HStack {
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 6)
+                                    .fill(Color.accentColor)
+                                    .frame(width: 30, height: 30)
+                                Image(systemName: "speaker.wave.2")
+                                    .foregroundColor(.white)
+                                    .font(.system(size: 15))
+                            }
+                            Text("Disable haptics")
+                        }
                     }
                 }
                 Section(header: Text("Privacy")) {
                     Toggle(isOn: $isLockAppOn) {
-                        Text("Face ID")
+                        HStack {
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 6)
+                                    .fill(Color.accentColor)
+                                    .frame(width: 30, height: 30)
+                                Image(systemName: "lock")
+                                    .foregroundColor(.white)
+                                    .font(.system(size: 15))
+                            }
+                            Text("Face ID")
+                        }
                     }
                     .onChange(of: isLockAppOn) { newValue in
                         if newValue {
@@ -38,7 +68,17 @@ struct SettingsView: View {
                 }
                 Section(header: Text("Development")) {
                     NavigationLink(destination: AboutView()) {
-                        Text("About")
+                        HStack {
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 6)
+                                    .fill(Color.accentColor)
+                                    .frame(width: 30, height: 30)
+                                Image(systemName: "info.circle.fill")
+                                    .foregroundColor(.white)
+                                    .font(.system(size: 15))
+                            }
+                            Text("More info")
+                        }
                     }
                 }
             }.navigationBarTitle("Settings")
@@ -48,7 +88,7 @@ struct SettingsView: View {
         let context = LAContext()
         var error: NSError?
         if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
-            let reason = "O Face Id será utilizado para suas decisões se manterem em segredo"
+            let reason = "O Face ID será utilizado para suas decisões se manterem em segredo"
             context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics,
                                    localizedReason: reason) { success, authenticationError in
                 DispatchQueue.main.async {

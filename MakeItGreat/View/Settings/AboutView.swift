@@ -13,26 +13,86 @@ struct AboutView: View {
             List {
                 Section(header: Text("Developers")) {
                     Button(action: openLinkedInHM) {
-                                           Text("Hadassa Miranda")
-                                       }
+                        HStack{
+                            ZStack{
+                                RoundedRectangle(cornerRadius: 6)
+                                    .fill(Color.accentColor)
+                                    .frame(width: 30, height: 30)
+                                Image(systemName: "person.fill")
+                                    .foregroundColor(.white)
+                                    .font(.system(size: 15))
+                            }
+                            Text("Hadassa Miranda")
+                        }
+                    }
                     Button(action: openLinkedInJR) {
-                                           Text("João Roberto")
-                                       }
+                        HStack{
+                            ZStack{
+                                RoundedRectangle(cornerRadius: 6)
+                                    .fill(Color.accentColor)
+                                    .frame(width: 30, height: 30)
+                                Image(systemName: "person.fill")
+                                    .foregroundColor(.white)
+                                    .font(.system(size: 15))
+                            }
+                            Text("João Roberto")
+                        }
+                    }
                     Button(action: openLinkedInLC) {
-                                           Text("Layza Carneiro")
-                                       }
+                        HStack{
+                            ZStack{
+                                RoundedRectangle(cornerRadius: 6)
+                                    .fill(Color.accentColor)
+                                    .frame(width: 30, height: 30)
+                                Image(systemName: "person.fill")
+                                    .foregroundColor(.white)
+                                    .font(.system(size: 15))
+                            }
+                            Text("Layza Carneiro")
+                        }
+                    }
                     Button(action: openLinkedInMG) {
-                                           Text("Melissa Guedes")
-                                       }
+                        HStack{
+                            ZStack{
+                                RoundedRectangle(cornerRadius: 6)
+                                    .fill(Color.accentColor)
+                                    .frame(width: 30, height: 30)
+                                Image(systemName: "person.fill")
+                                    .foregroundColor(.white)
+                                    .font(.system(size: 15))
+                            }
+                            Text("Melissa Guedes")
+                        }
+                    }
                 }
                 Section(header: Text("App")) {
                     NavigationLink(destination: SettingsView()) {
-                        Text("Rate the App")
+                        HStack{
+                            ZStack{
+                                RoundedRectangle(cornerRadius: 6)
+                                    .fill(Color.accentColor)
+                                    .frame(width: 30, height: 30)
+                                Image(systemName: "star.fill")
+                                    .foregroundColor(.white)
+                                    .font(.system(size: 15))
+                            }
+                            Text("Rate the app")
+                        }
                     }
                 }
                 Section(header: Text("More Info")) {
                     NavigationLink(destination: SettingsView()) {
-                        Text("Website")
+                        HStack{
+                            ZStack{
+                                RoundedRectangle(cornerRadius: 6)
+                                    .fill(Color.accentColor)
+                                    .frame(width: 30, height: 30)
+                                Image(systemName: "globe")
+                                    .foregroundColor(.white)
+                                    .font(.system(size: 15))
+                            }
+                            Text("Website")
+                        }
                     }
                 }
             }.navigationBarTitle("About")
