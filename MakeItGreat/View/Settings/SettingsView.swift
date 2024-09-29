@@ -122,14 +122,12 @@ struct SettingsView: View {
             }
         }
     }
-    // Agendar notificação diária em horários aleatórios entre 8h e 22h
     func scheduleRandomTimeReminder() {
         let content = UNMutableNotificationContent()
         content.title = "Daily Reminder"
-        content.body = "Don't forget to check the app today!"
+        content.body = "Make a decision now!"
         content.sound = UNNotificationSound.default
-        // Gerar uma hora aleatória entre 8:00 e 22:00
-        let randomHour = Int.random(in: 13..<14)  // Hora entre 08:00 e 22:00
+        let randomHour = Int.random(in: 13..<14)
         let randomMinute = Int.random(in: 22..<30)
         var dateComponents = DateComponents()
         dateComponents.hour = randomHour
