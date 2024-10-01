@@ -10,9 +10,9 @@ import SwiftUI
 struct FourthPage: View {
     @ObservedObject var formViewModel: FormViewModel
     @ObservedObject var cardViewModel: CardViewModel
-    @ObservedObject var userViewModel: UserViewModel
 
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.modelContext) var context
 
     var body: some View {
         VStack {
@@ -24,20 +24,23 @@ struct FourthPage: View {
                 }
                 Spacer()
                 Button {
-                    userViewModel.addDecision()
+                // swiftlint:disable line_length
+                    let newCard = CardModel(title: formViewModel.cardViewModel.cardModel.title, feeling: formViewModel.cardViewModel.cardModel.feeling, priority: formViewModel.cardViewModel.cardModel.priority, deadline: formViewModel.cardViewModel.cardModel.deadline)
+                    context.insert(newCard)
+
+                    do {
+                        try context.save()
+                    } catch {
+                        print("Erro ao salvar o contexto: \(error.localizedDescription)")
+                    }
+
                     dismiss()
                 } label: {
                     Text("Save")
                 }
             }
 
-//            Text("Pros")
-//            TextField("Pro", text: $formViewModel.notes)
-//                .textFieldStyle(.roundedBorder)
-//            Text("Cons")
-//            TextField("Con", text: $formViewModel.notes)
-//                .textFieldStyle(.roundedBorder)
-            ProConsView(cardViewModel: cardViewModel)
+            ProConsView(formViewModel: formViewModel, cardViewModel: cardViewModel)
         }
     }
 }

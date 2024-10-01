@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftData
 
 class FormViewModel: ObservableObject {
     @Published var cardViewModel = CardViewModel()

@@ -6,41 +6,44 @@
 //
 
 import Foundation
+import SwiftUI
+import SwiftData
 
 class CardViewModel: ObservableObject {
+    @Published var cardModel: CardModel
+    @Environment(\.modelContext) var context
 
-    @Published var cardModel = CardModel()
-
-    func addPro(content: String) {
-        cardModel.pros.append(ProModel(content: content))
+    init(cardModel: CardModel = CardModel()) {
+        self.cardModel = cardModel
     }
 
-    func addCon(content: String) {
-        cardModel.cons.append(ConModel(content: content))
-    }
+//    func addPro(content: String, context: ModelContext) {
+//        cardModel.pros.append(content)
+//
+//        do {
+//            try context.save() // Salva as mudanças no contexto
+//        } catch {
+//            print("Erro ao adicionar o ProModel: \(error.localizedDescription)")
+//        }
+//    }
+//
+//    func addCon(content: String, context: ModelContext) {
+//        cardModel.cons.append(content)
+//
+//        do {
+//            try context.save() // Salva as mudanças no contexto
+//        } catch {
+//            print("Erro ao adicionar o ProModel: \(error.localizedDescription)")
+//        }
+//    }
 
-    func consPercentage() -> Double {
-        var percentage: Double
-
-        if(cardModel.pros.count > 0 || cardModel.cons.count > 0) {
-            percentage = Double(cardModel.cons.count * 100 / (cardModel.pros.count + cardModel.cons.count))
-        } else {
-            percentage = 50
-        }
-
-        return percentage
-    }
-
-    func prosPercentage() -> Double {
-        var percentage: Double
-
-        if(cardModel.pros.count > 0 || cardModel.cons.count > 0) {
-            percentage = Double(cardModel.pros.count * 100 / (cardModel.pros.count + cardModel.cons.count))
-        } else {
-            percentage = 50
-        }
-
-        return percentage
-    }
-
+//    func consPercentage() -> Double {
+//        let total = cardModel.pros.count + cardModel.cons.count
+//        return total > 0 ? Double(cardModel.cons.count * 100 / total) : 50
+//    }
+//
+//    func prosPercentage() -> Double {
+//        let total = cardModel.pros.count + cardModel.cons.count
+//        return total > 0 ? Double(cardModel.pros.count * 100 / total) : 50
+//    }
 }

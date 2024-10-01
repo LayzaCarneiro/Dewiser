@@ -6,25 +6,28 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct HomeScreenView: View {
-    @StateObject var userViewModel = UserViewModel()
-
     @State private var sheetNewDecision = false
+
+    @Query var decisions: [CardModel]
 
     var body: some View {
         NavigationStack {
             VStack(spacing: 60) {
 
-                if userViewModel.userModel.decisions.isEmpty {
+                if decisions.isEmpty {
                     ContentUnavailableView {
                         Label("No decisions", systemImage: "tray.fill")
                     } description: {
                         Text("You don't have any decisions.")
                     }
                 } else {
-                    ForEach(userViewModel.userModel.decisions) { decision in
-                        DecisionCard()
+                    ScrollView(.vertical) {
+                        ForEach(decisions) { decision in
+                            DecisionCard(card: decision)
+                        }
                     }
                 }
 

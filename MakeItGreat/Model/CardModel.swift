@@ -6,14 +6,27 @@
 //
 
 import Foundation
+import SwiftData
 
-struct CardModel: Identifiable {
-    let id = UUID()
-    var title: String = ""
-    var feeling: String = ""
-    var priority: String = ""
-    var deadline: Date = Date.now
+@Model
+class CardModel: Identifiable {
+    @Attribute(.unique) var id: UUID = UUID()
 
-    var pros: [ProModel] = []
-    var cons: [ConModel] = []
+    var title: String
+    var feeling: String
+    var priority: String
+    var deadline: Date
+
+    @Relationship(deleteRule: .cascade) var pros: [ProModel]
+    @Relationship(deleteRule: .cascade) var cons: [ConModel] 
+
+    init(id: UUID = UUID(), title: String = "", feeling: String = "", priority: String = "", deadline: Date = Date.now, pros: [ProModel] = [], cons: [ConModel] = []) {
+        self.id = id
+        self.title = title
+        self.feeling = feeling
+        self.priority = priority
+        self.deadline = deadline
+        self.pros = pros
+        self.cons = cons
+    }
 }
