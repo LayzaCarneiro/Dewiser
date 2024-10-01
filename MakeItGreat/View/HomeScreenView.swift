@@ -25,6 +25,9 @@ struct HomeScreenView: View {
                     }
                 } else {
                     ScrollView(.vertical) {
+                        NavigationLink(destination: SearchView()){
+                            Text("Search")
+                        }
                         ForEach(decisions) { decision in
                             DecisionCard(card: decision)
                         }
