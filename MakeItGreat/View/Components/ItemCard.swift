@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ItemCard: View {
-    @State var content: String = ""
+    @Binding var content: String
 
     var body: some View {
         TextField("", text: $content)
@@ -16,8 +16,4 @@ struct ItemCard: View {
             .background(.gray)
             .cornerRadius(10)
     }
-}
-
-#Preview {
-    ItemCard()
 }

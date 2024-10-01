@@ -10,7 +10,7 @@ import SwiftData
 
 struct ProConsView: View {
     var card: CardModel
-    
+
     @Query var allPros: [ProModel]
     @Query var allCons: [ConModel]
 
@@ -26,7 +26,7 @@ struct ProConsView: View {
                         Text("Pros")
                         ProgressBar(progress: Double(filteredPros.count), total: Double(filteredPros.count + filteredCons.count))
 
-                        ForEach(filteredPros, id: \.self) { pro in
+                        ForEach($filteredPros, id: \.self) { pro in
                             ItemCard(content: pro.content)
                         }
 
@@ -44,7 +44,7 @@ struct ProConsView: View {
                         Text("Cons")
                         ProgressBar(progress: Double(filteredCons.count), total: Double(filteredPros.count + filteredCons.count))
 
-                        ForEach(filteredCons, id: \.self) { con in
+                        ForEach($filteredCons, id: \.self) { con in
                             ItemCard(content: con.content)
                         }
 
