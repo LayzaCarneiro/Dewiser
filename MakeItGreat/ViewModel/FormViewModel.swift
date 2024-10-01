@@ -9,7 +9,7 @@ import Foundation
 import SwiftData
 
 class FormViewModel: ObservableObject {
-    @Published var cardViewModel = CardViewModel()
+    @Published var cardModel: CardModel = CardModel()
     @Published var currentPage: Int = 0
 
     func nextPage() {

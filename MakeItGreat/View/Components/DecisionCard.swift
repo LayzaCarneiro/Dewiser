@@ -13,21 +13,26 @@ struct DecisionCard: View {
 
     @Query var allPros: [ProModel]
     @State private var filteredPros: [ProModel] = []
+    
+    @Query var allCons: [ConModel]
+    @State private var filteredCons: [ConModel] = []
 
     var body: some View {
         HStack {
             Image(systemName: "person.fill")
 
             Text("\(card.title)")
+                .font(.title)
             Text("\(card.feeling)")
             Text("\(card.priority)")
             Text("Prós: \(filteredPros.count)")
-            Text("Contras: \(card.cons.count)")
+            Text("Contras: \(filteredCons.count)")
         }
-        .frame(width: 200, height: 200)
+        .frame(width: 336, height: 117)
         .background(.cyan)
         .onAppear {
-            filteredPros = allPros.filter { $0.card?.id == card.id }
+            filteredPros = allPros.filter { $0.cardID == card.id }
+            filteredCons = allCons.filter { $0.cardID == card.id }
         }
     }
 }

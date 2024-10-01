@@ -9,7 +9,6 @@ import SwiftUI
 
 struct FourthPage: View {
     @ObservedObject var formViewModel: FormViewModel
-    @ObservedObject var cardViewModel: CardViewModel
 
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) var context
@@ -25,7 +24,7 @@ struct FourthPage: View {
                 Spacer()
                 Button {
                 // swiftlint:disable line_length
-                    let newCard = CardModel(title: formViewModel.cardViewModel.cardModel.title, feeling: formViewModel.cardViewModel.cardModel.feeling, priority: formViewModel.cardViewModel.cardModel.priority, deadline: formViewModel.cardViewModel.cardModel.deadline)
+                    let newCard = formViewModel.cardModel
                     context.insert(newCard)
 
                     do {
@@ -40,7 +39,7 @@ struct FourthPage: View {
                 }
             }
 
-            ProConsView(formViewModel: formViewModel, cardViewModel: cardViewModel)
+            ProConsView(formViewModel: formViewModel)
         }
     }
 }

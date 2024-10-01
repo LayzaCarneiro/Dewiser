@@ -12,11 +12,11 @@ import SwiftData
 class ConModel {
     @Attribute(.unique) var id: UUID = UUID()
     var content: String
-    var card: CardModel?
+    var cardID: UUID = UUID()
 
-    init(id: UUID, content: String) {
+    init(id: UUID, content: String, cardID: UUID) {
         self.id = id
         self.content = content
-//        self.card = card
+        self.cardID = cardID
     }
 }

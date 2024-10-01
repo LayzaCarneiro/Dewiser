@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ThirdPage: View {
     @ObservedObject var formViewModel: FormViewModel
-    @ObservedObject var cardViewModel: CardViewModel
 
     var body: some View {
         VStack {
@@ -28,11 +27,11 @@ struct ThirdPage: View {
             }
 
             Text("What is the priority level")
-            TextField("Priority", text: $formViewModel.cardViewModel.cardModel.priority)
+            TextField("Priority", text: $formViewModel.cardModel.priority)
                 .textFieldStyle(.roundedBorder)
 
             Text("What is the deadline")
-            DatePicker(selection: $formViewModel.cardViewModel.cardModel.deadline, displayedComponents: .date) {
+            DatePicker(selection: $formViewModel.cardModel.deadline, displayedComponents: .date) {
                 Text("Deadline")
             }
         }

@@ -9,7 +9,6 @@ import SwiftUI
 
 struct FirstPage: View {
     @ObservedObject var formViewModel: FormViewModel
-    @ObservedObject var cardViewModel: CardViewModel
     @Environment(\.dismiss) private var dismiss
 
     var body: some View {
@@ -29,7 +28,7 @@ struct FirstPage: View {
             }
 
             Text("What is your decision?")
-            TextField("Decision", text: $formViewModel.cardViewModel.cardModel.title)
+            TextField("Decision", text: $formViewModel.cardModel.title)
                 .textFieldStyle(.roundedBorder)
         }
     }
