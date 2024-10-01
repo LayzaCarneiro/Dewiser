@@ -15,6 +15,6 @@ struct MakeItGreatApp: App {
         WindowGroup {
             ContentView()
         }
-        .modelContainer(for: [CardModel.self])
+        .modelContainer(for: [CardModel.self, ProModel.self, ConModel.self])
     }
 }

@@ -9,10 +9,9 @@ import SwiftUI
 import SwiftData
 
 struct ProConsView: View {
-    @ObservedObject var formViewModel: FormViewModel
-    @ObservedObject var cardViewModel: CardViewModel
+    var card: CardModel
 
-    @Query var allPros: [ProModel]   
+    @Query var allPros: [ProModel]
     @Query var allCons: [ConModel]
 
     @Environment(\.modelContext) var context
@@ -25,20 +24,15 @@ struct ProConsView: View {
                 HStack(spacing: 60) {
                     VStack {
                         Text("Pros")
+                        ProgressBar(progress: Double(filteredPros.count), total: Double(filteredPros.count + filteredCons.count))
 
-                        ForEach(filteredPros, id: \.self) { pro in
-                            ProCard(content: pro.content)
+                        ForEach($filteredPros, id: \.self) { pro in
+                            ItemCard(content: pro.content)
                         }
 
                         Button {
-                            let newPro = ProModel(id: UUID(), content: "Pro")
+                            let newPro = ProModel(id: UUID(), content: "Pro", cardID: card.id)
                             context.insert(newPro)
-
-                            do {
-                                try context.save()
-                            } catch {
-                                print("Erro ao salvar o contexto: \(error.localizedDescription)")
-                            }
                         } label: {
                             Image(systemName: "plus")
                         }
@@ -48,20 +42,16 @@ struct ProConsView: View {
 
                     VStack {
                         Text("Cons")
+                        ProgressBar(progress: Double(filteredCons.count), total: Double(filteredPros.count + filteredCons.count))
 
-                        ForEach(filteredCons, id: \.self) { con in
-                            ProCard(content: con.content)
+                        ForEach($filteredCons, id: \.self) { con in
+                            ItemCard(content: con.content)
                         }
 
                         Button {
-                            let newCon = ConModel(id: UUID(), content: "")
+                            let newCon = ConModel(id: UUID(), content: "Con", cardID: card.id)
                             context.insert(newCon)
-
-                            do {
-                                try context.save()
-                            } catch {
-                                print("Erro ao salvar o contexto: \(error.localizedDescription)")
-                            }                        } label: {
+                        } label: {
                             Image(systemName: "plus")
                         }
 
@@ -71,17 +61,14 @@ struct ProConsView: View {
             }
         }
         .onAppear {
-            // Filtra os pros do card atual quando a view aparecer
-            filteredPros = allPros.filter { $0.card?.id == cardViewModel.cardModel.id }
-            filteredCons = allCons.filter { $0.card?.id == cardViewModel.cardModel.id }
+            filteredPros = allPros.filter { $0.cardID == card.id }
+            filteredCons = allCons.filter { $0.cardID == card.id }
         }
-        .onChange(of: allPros) { _ in
-            // Atualiza o filtro sempre que a lista de pros mudar
-            filteredPros = allPros.filter { $0.card?.id == cardViewModel.cardModel.id }
+        .onChange(of: allPros) {
+            filteredPros = allPros.filter { $0.cardID == card.id }
         }
-        .onChange(of: allCons) { _ in
-            // Atualiza o filtro sempre que a lista de cons mudar
-            filteredCons = allCons.filter { $0.card?.id == cardViewModel.cardModel.id }
+        .onChange(of: allCons) {
+            filteredCons = allCons.filter { $0.cardID == card.id }
         }
     }
 }

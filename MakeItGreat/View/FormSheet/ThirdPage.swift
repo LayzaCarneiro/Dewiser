@@ -9,31 +9,37 @@ import SwiftUI
 
 struct ThirdPage: View {
     @ObservedObject var formViewModel: FormViewModel
-    @ObservedObject var cardViewModel: CardViewModel
+
+    @Environment(\.dismiss) private var dismiss
+    @Environment(\.modelContext) var context
 
     var body: some View {
         VStack {
-            HStack {
+            ProConsView(card: formViewModel.cardModel)
+        }
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
                 Button {
                     formViewModel.previousPage()
                 } label: {
                     Text("Back")
                 }
-                Spacer()
-                Button {
-                    formViewModel.nextPage()
-                } label: {
-                    Text("Next")
-                }
             }
+            ToolbarItem(placement: .topBarTrailing) {
+                Button {
+                    let newCard = formViewModel.cardModel
+                    context.insert(newCard)
 
-            Text("What is the priority level")
-            TextField("Priority", text: $formViewModel.cardViewModel.cardModel.priority)
-                .textFieldStyle(.roundedBorder)
+                    do {
+                        try context.save()
+                    } catch {
+                        print("Erro ao salvar o contexto: \(error.localizedDescription)")
+                    }
 
-            Text("What is the deadline")
-            DatePicker(selection: $formViewModel.cardViewModel.cardModel.deadline, displayedComponents: .date) {
-                Text("Deadline")
+                    dismiss()
+                } label: {
+                    Text("Save")
+                }
             }
         }
     }

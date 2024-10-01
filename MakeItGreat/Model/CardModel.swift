@@ -13,20 +13,19 @@ class CardModel: Identifiable {
     @Attribute(.unique) var id: UUID = UUID()
 
     var title: String
+    var cardDescription: String
     var feeling: String
     var priority: String
     var deadline: Date
+    var time: Date
 
-    @Relationship(deleteRule: .cascade) var pros: [ProModel]
-    @Relationship(deleteRule: .cascade) var cons: [ConModel] 
-
-    init(id: UUID = UUID(), title: String = "", feeling: String = "", priority: String = "", deadline: Date = Date.now, pros: [ProModel] = [], cons: [ConModel] = []) {
+    init(id: UUID = UUID(), title: String = "", cardDescription: String = "", feeling: String = "", priority: String = "", deadline: Date = Date.now, time: Date = Date.now) {
         self.id = id
         self.title = title
+        self.cardDescription = cardDescription
         self.feeling = feeling
         self.priority = priority
         self.deadline = deadline
-        self.pros = pros
-        self.cons = cons
+        self.time = time
     }
 }

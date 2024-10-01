@@ -21,12 +21,14 @@ struct HomeScreenView: View {
                     ContentUnavailableView {
                         Label("No decisions", systemImage: "tray.fill")
                     } description: {
-                        Text("You don't have any decisions.")
+                        Text("You don't have any decisions yet")
                     }
                 } else {
-                    ScrollView(.vertical) {
+                    ScrollView(.vertical, showsIndicators: false) {
                         ForEach(decisions) { decision in
-                            DecisionCard(card: decision)
+                            NavigationLink(destination: DecisionView(decision: decision)) {
+                                DecisionCard(card: decision)
+                            }                            
                         }
                     }
                 }
@@ -34,12 +36,14 @@ struct HomeScreenView: View {
                 Button {
                     sheetNewDecision.toggle()
                 } label: {
-                    Text("New Decision")
+                    Text("Create Decision")
                         .font(.title2)
-                        .foregroundColor(.white)
-                        .frame(width: 150, height: 50)
+                        .fontWeight(.semibold)
+                        .fontDesign(.rounded)
+                        .foregroundColor(.black)
+                        .frame(width: 272, height: 70)
                         .background(.blue)
-                        .cornerRadius(10)
+                        .cornerRadius(30)
                 }
                 .sheet(isPresented: $sheetNewDecision) {
                     FormSheetView()
