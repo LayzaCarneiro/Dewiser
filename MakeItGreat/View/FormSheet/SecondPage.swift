@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SecondPage: View {
     @ObservedObject var formViewModel: FormViewModel
+    @ObservedObject var cardViewModel: CardViewModel
 
     var body: some View {
         VStack {
@@ -27,7 +28,7 @@ struct SecondPage: View {
             }
 
             Text("How do you feel?")
-            TextField("Feeling", text: $formViewModel.description)
+            TextField("Feeling", text: $formViewModel.cardViewModel.cardModel.feeling)
                 .textFieldStyle(.roundedBorder)
         }
     }
