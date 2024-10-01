@@ -6,15 +6,14 @@
 //
 
 import Foundation
+import SwiftData
 
 class FormViewModel: ObservableObject {
-    @Published var title: String = ""
-    @Published var description: String = ""
-    @Published var notes: String = ""
+    @Published var cardModel: CardModel = CardModel()
     @Published var currentPage: Int = 0
 
     func nextPage() {
-        if currentPage < 3 {
+        if currentPage < 2 {
             currentPage += 1
         }
     }

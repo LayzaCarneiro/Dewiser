@@ -6,12 +6,15 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct MakeItGreatApp: App {
+
     var body: some Scene {
         WindowGroup {
             ContentView()
         }
+        .modelContainer(for: [CardModel.self, ProModel.self, ConModel.self])
     }
 }
