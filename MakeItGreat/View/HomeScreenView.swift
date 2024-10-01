@@ -25,9 +25,6 @@ struct HomeScreenView: View {
                     }
                 } else {
                     ScrollView(.vertical) {
-                        NavigationLink(destination: SearchView()){
-                            Text("Search")
-                        }
                         ForEach(decisions) { decision in
                             DecisionCard(card: decision)
                         }
@@ -39,7 +36,7 @@ struct HomeScreenView: View {
                 } label: {
                     Text("New Decision")
                         .font(.title2)
-                        .foregroundColor(.black)
+                        .foregroundColor(.white)
                         .frame(width: 150, height: 50)
                         .background(.blue)
                         .cornerRadius(10)
@@ -53,11 +50,9 @@ struct HomeScreenView: View {
             .padding()
             .navigationTitle("My Decisions")
             .toolbar {
-                Button {
-                    // TODO: new page to search
-                } label: {
-                    Image(systemName: "magnifyingglass")
-                }
+                NavigationLink(destination: SearchView()) {
+                        Image(systemName: "magnifyingglass")
+                    }
                 Button {
                     // TODO: new page to settings
                 } label: {
