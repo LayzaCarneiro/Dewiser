@@ -10,6 +10,9 @@ import SwiftUI
 struct ThirdPage: View {
     @ObservedObject var formViewModel: FormViewModel
 
+    @Environment(\.dismiss) private var dismiss
+    @Environment(\.modelContext) var context
+
     var body: some View {
         VStack {
             HStack {
@@ -20,20 +23,23 @@ struct ThirdPage: View {
                 }
                 Spacer()
                 Button {
-                    formViewModel.nextPage()
+                // swiftlint:disable line_length
+                    let newCard = formViewModel.cardModel
+                    context.insert(newCard)
+
+                    do {
+                        try context.save()
+                    } catch {
+                        print("Erro ao salvar o contexto: \(error.localizedDescription)")
+                    }
+
+                    dismiss()
                 } label: {
-                    Text("Next")
+                    Text("Save")
                 }
             }
 
-            Text("What is the priority level")
-            TextField("Priority", text: $formViewModel.cardModel.priority)
-                .textFieldStyle(.roundedBorder)
-
-            Text("What is the deadline")
-            DatePicker(selection: $formViewModel.cardModel.deadline, displayedComponents: .date) {
-                Text("Deadline")
-            }
+            ProConsView(card: formViewModel.cardModel)
         }
     }
 }

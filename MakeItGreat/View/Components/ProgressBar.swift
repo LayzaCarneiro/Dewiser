@@ -11,7 +11,6 @@ struct ProgressBar: View {
     @State var progress: Double = 0
     @State var total: Double = 100
 
-
     var body: some View {
         ProgressView(value: progress, total: total)
             .progressViewStyle(BarProgressStyle(color: .green))

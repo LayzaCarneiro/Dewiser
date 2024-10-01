@@ -30,6 +30,19 @@ struct FirstPage: View {
             Text("What is your decision?")
             TextField("Decision", text: $formViewModel.cardModel.title)
                 .textFieldStyle(.roundedBorder)
+            
+            Text("Description")
+            TextField("Description", text: $formViewModel.cardModel.cardDescription)
+                .textFieldStyle(.roundedBorder)
+            
+            Text("Deadline")
+            DatePicker(selection: $formViewModel.cardModel.deadline, displayedComponents: .date) {
+                Text("Deadline")
+            }
+            
+            Text("What is the priority level")
+            TextField("Priority", text: $formViewModel.cardModel.priority)
+                .textFieldStyle(.roundedBorder)
         }
     }
 }

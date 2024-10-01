@@ -21,12 +21,14 @@ struct HomeScreenView: View {
                     ContentUnavailableView {
                         Label("No decisions", systemImage: "tray.fill")
                     } description: {
-                        Text("You don't have any decisions.")
+                        Text("You don't have any decisions yet")
                     }
                 } else {
                     ScrollView(.vertical) {
                         ForEach(decisions) { decision in
-                            DecisionCard(card: decision)
+                            NavigationLink(destination: DecisionView(decision: decision)) {
+                                DecisionCard(card: decision)
+                            }                            
                         }
                     }
                 }
@@ -34,7 +36,7 @@ struct HomeScreenView: View {
                 Button {
                     sheetNewDecision.toggle()
                 } label: {
-                    Text("New Decision")
+                    Text("Create Decision")
                         .font(.title2)
                         .foregroundColor(.black)
                         .frame(width: 150, height: 50)

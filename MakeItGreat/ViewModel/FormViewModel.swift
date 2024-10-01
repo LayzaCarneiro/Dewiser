@@ -13,7 +13,7 @@ class FormViewModel: ObservableObject {
     @Published var currentPage: Int = 0
 
     func nextPage() {
-        if currentPage < 3 {
+        if currentPage < 2 {
             currentPage += 1
         }
     }
@@ -22,5 +22,9 @@ class FormViewModel: ObservableObject {
         if currentPage > 0 {
             currentPage -= 1
         }
+    }
+    
+    func percentage(total: Double, progress: Double) -> Double {
+        return total > 0 ? Double(progress * 100 / total) : 50
     }
 }

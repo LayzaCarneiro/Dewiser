@@ -19,8 +19,6 @@ struct FormSheetView: View {
                 SecondPage(formViewModel: formViewModel)
             case 2:
                 ThirdPage(formViewModel: formViewModel)
-            case 3:
-                FourthPage(formViewModel: formViewModel)
             default:
                 FirstPage(formViewModel: formViewModel)
             }
