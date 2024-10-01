@@ -9,7 +9,6 @@ import SwiftUI
 import SwiftData
 
 struct ProConsView: View {
-//    @ObservedObject var formViewModel = FormViewModel()
     var card: CardModel
     
     @Query var allPros: [ProModel]
@@ -28,7 +27,7 @@ struct ProConsView: View {
                         ProgressBar(progress: Double(filteredPros.count), total: Double(filteredPros.count + filteredCons.count))
 
                         ForEach(filteredPros, id: \.self) { pro in
-                            ProCard(content: pro.content)
+                            ItemCard(content: pro.content)
                         }
 
                         Button {
@@ -46,7 +45,7 @@ struct ProConsView: View {
                         ProgressBar(progress: Double(filteredCons.count), total: Double(filteredPros.count + filteredCons.count))
 
                         ForEach(filteredCons, id: \.self) { con in
-                            ProCard(content: con.content)
+                            ItemCard(content: con.content)
                         }
 
                         Button {
@@ -65,10 +64,10 @@ struct ProConsView: View {
             filteredPros = allPros.filter { $0.cardID == card.id }
             filteredCons = allCons.filter { $0.cardID == card.id }
         }
-        .onChange(of: allPros) { _ in
+        .onChange(of: allPros) {
             filteredPros = allPros.filter { $0.cardID == card.id }
         }
-        .onChange(of: allCons) { _ in
+        .onChange(of: allCons) {
             filteredCons = allCons.filter { $0.cardID == card.id }
         }
     }

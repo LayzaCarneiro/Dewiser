@@ -12,9 +12,8 @@ struct DecisionCard: View {
     var card: CardModel
 
     @Query var allPros: [ProModel]
-    @State private var filteredPros: [ProModel] = []
-
     @Query var allCons: [ConModel]
+    @State private var filteredPros: [ProModel] = []
     @State private var filteredCons: [ConModel] = []
 
     var body: some View {

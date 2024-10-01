@@ -1,5 +1,5 @@
 //
-//  ProCard.swift
+//  ItemCard.swift
 //  MakeItGreat
 //
 //  Created by Layza Maria Rodrigues Carneiro on 27/09/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ProCard: View {
+struct ItemCard: View {
     @State var content: String = ""
 
     var body: some View {
@@ -19,5 +19,5 @@ struct ProCard: View {
 }
 
 #Preview {
-    ProCard()
+    ItemCard()
 }
