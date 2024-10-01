@@ -13,7 +13,7 @@ struct DecisionCard: View {
 
     @Query var allPros: [ProModel]
     @State private var filteredPros: [ProModel] = []
-    
+
     @Query var allCons: [ConModel]
     @State private var filteredCons: [ConModel] = []
 
@@ -30,6 +30,7 @@ struct DecisionCard: View {
         }
         .frame(width: 336, height: 117)
         .background(.cyan)
+        .cornerRadius(10)
         .onAppear {
             filteredPros = allPros.filter { $0.cardID == card.id }
             filteredCons = allCons.filter { $0.cardID == card.id }

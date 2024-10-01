@@ -15,15 +15,18 @@ struct ThirdPage: View {
 
     var body: some View {
         VStack {
-            HStack {
+            ProConsView(card: formViewModel.cardModel)
+        }
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
                 Button {
                     formViewModel.previousPage()
                 } label: {
                     Text("Back")
                 }
-                Spacer()
+            }
+            ToolbarItem(placement: .topBarTrailing) {
                 Button {
-                // swiftlint:disable line_length
                     let newCard = formViewModel.cardModel
                     context.insert(newCard)
 
@@ -38,8 +41,6 @@ struct ThirdPage: View {
                     Text("Save")
                 }
             }
-
-            ProConsView(card: formViewModel.cardModel)
         }
     }
 }

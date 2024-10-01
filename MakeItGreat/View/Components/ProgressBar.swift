@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct ProgressBar: View {
-    @State var progress: Double = 0
-    @State var total: Double = 100
+    var progress: Double = 0
+    var total: Double = 100
 
     var body: some View {
         ProgressView(value: progress, total: total)
-            .progressViewStyle(BarProgressStyle(color: .green))
+            .progressViewStyle(BarProgressStyle(color: .blue))
             .padding()
-            .animation(.spring)
+            .animation(.easeInOut(duration: 0.5), value: progress)
     }
 }
 

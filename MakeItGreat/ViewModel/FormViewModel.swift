@@ -23,8 +23,4 @@ class FormViewModel: ObservableObject {
             currentPage -= 1
         }
     }
-    
-    func percentage(total: Double, progress: Double) -> Double {
-        return total > 0 ? Double(progress * 100 / total) : 50
-    }
 }

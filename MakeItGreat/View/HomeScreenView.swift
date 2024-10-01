@@ -24,7 +24,7 @@ struct HomeScreenView: View {
                         Text("You don't have any decisions yet")
                     }
                 } else {
-                    ScrollView(.vertical) {
+                    ScrollView(.vertical, showsIndicators: false) {
                         ForEach(decisions) { decision in
                             NavigationLink(destination: DecisionView(decision: decision)) {
                                 DecisionCard(card: decision)
@@ -38,10 +38,12 @@ struct HomeScreenView: View {
                 } label: {
                     Text("Create Decision")
                         .font(.title2)
+                        .fontWeight(.semibold)
+                        .fontDesign(.rounded)
                         .foregroundColor(.black)
-                        .frame(width: 150, height: 50)
+                        .frame(width: 272, height: 70)
                         .background(.blue)
-                        .cornerRadius(10)
+                        .cornerRadius(30)
                 }
                 .sheet(isPresented: $sheetNewDecision) {
                     FormSheetView()

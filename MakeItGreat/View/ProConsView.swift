@@ -25,12 +25,12 @@ struct ProConsView: View {
                 HStack(spacing: 60) {
                     VStack {
                         Text("Pros")
-                        ProgressBar()
+                        ProgressBar(progress: Double(filteredPros.count), total: Double(filteredPros.count + filteredCons.count))
 
                         ForEach(filteredPros, id: \.self) { pro in
                             ProCard(content: pro.content)
                         }
-                        
+
                         Button {
                             let newPro = ProModel(id: UUID(), content: "Pro", cardID: card.id)
                             context.insert(newPro)
@@ -43,12 +43,12 @@ struct ProConsView: View {
 
                     VStack {
                         Text("Cons")
-                        ProgressBar(progress: Double(filteredPros.count), total: Double(filteredPros.count + filteredCons.count))
-                        
+                        ProgressBar(progress: Double(filteredCons.count), total: Double(filteredPros.count + filteredCons.count))
+
                         ForEach(filteredCons, id: \.self) { con in
                             ProCard(content: con.content)
                         }
-                        
+
                         Button {
                             let newCon = ConModel(id: UUID(), content: "Con", cardID: card.id)
                             context.insert(newCon)

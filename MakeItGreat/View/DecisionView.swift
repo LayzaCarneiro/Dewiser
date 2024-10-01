@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DecisionView: View {
     var decision: CardModel
-    
+
     var body: some View {
         ProConsView(card: decision)
     }
