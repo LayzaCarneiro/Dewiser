@@ -55,11 +55,9 @@ struct HomeScreenView: View {
             .navigationTitle("My Decisions")
             .toolbar {
                 NavigationLink(destination: SearchView()) {
-                        Image(systemName: "magnifyingglass")
-                    }
-                Button {
-                    // TODO: new page to settings
-                } label: {
+                    Image(systemName: "magnifyingglass")
+                }
+                NavigationLink(destination: SettingsView()) {
                     Image(systemName: "gear")
                 }
             }

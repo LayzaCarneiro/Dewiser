@@ -25,6 +25,10 @@
 		AE9E32B02CA38485009235AC /* FirstPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9E32AF2CA38485009235AC /* FirstPage.swift */; };
 		AE9E32B32CA3854D009235AC /* SecondPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9E32B22CA3854D009235AC /* SecondPage.swift */; };
 		AE9E32B52CA3859D009235AC /* ThirdPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9E32B42CA3859D009235AC /* ThirdPage.swift */; };
+		AEFC12CA2CACC8C900E00B9D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFC12C82CACC8C900E00B9D /* SettingsView.swift */; };
+		AEFC12CB2CACC8C900E00B9D /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFC12C72CACC8C900E00B9D /* AboutView.swift */; };
+		AEFC12CE2CACC8EE00E00B9D /* LinkAbout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFC12CC2CACC8EE00E00B9D /* LinkAbout.swift */; };
+		AEFC12CF2CACC8EE00E00B9D /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFC12CD2CACC8EE00E00B9D /* SettingsViewModel.swift */; };
 		E92604D32CAC1B8A002F0C77 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92604D22CAC1B8A002F0C77 /* SearchView.swift */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +52,10 @@
 		AE9E32AF2CA38485009235AC /* FirstPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstPage.swift; sourceTree = "<group>"; };
 		AE9E32B22CA3854D009235AC /* SecondPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondPage.swift; sourceTree = "<group>"; };
 		AE9E32B42CA3859D009235AC /* ThirdPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdPage.swift; sourceTree = "<group>"; };
+		AEFC12C72CACC8C900E00B9D /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		AEFC12C82CACC8C900E00B9D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		AEFC12CC2CACC8EE00E00B9D /* LinkAbout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkAbout.swift; sourceTree = "<group>"; };
+		AEFC12CD2CACC8EE00E00B9D /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		E92604D22CAC1B8A002F0C77 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -123,6 +131,7 @@
 		AE9E32A72CA358A1009235AC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				AEFC12C92CACC8C900E00B9D /* Settings */,
 				AE3BFAB82CAC389D00DC1C67 /* DecisionView.swift */,
 				AE7F8BBB2CA6D5E500CD3835 /* Components */,
 				AE9E32B12CA3853B009235AC /* FormSheet */,
@@ -138,7 +147,8 @@
 			isa = PBXGroup;
 			children = (
 				AE9E32AD2CA383E5009235AC /* FormViewModel.swift */,
-				E9A2775C2CA7210200C7D845 /* LinkAbout.swift */,
+				AEFC12CC2CACC8EE00E00B9D /* LinkAbout.swift */,
+				AEFC12CD2CACC8EE00E00B9D /* SettingsViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -151,6 +161,15 @@
 				AE9E32B42CA3859D009235AC /* ThirdPage.swift */,
 			);
 			path = FormSheet;
+			sourceTree = "<group>";
+		};
+		AEFC12C92CACC8C900E00B9D /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				AEFC12C72CACC8C900E00B9D /* AboutView.swift */,
+				AEFC12C82CACC8C900E00B9D /* SettingsView.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -254,9 +273,6 @@
 				AE3847A92CABF4C400D4ABB5 /* ConModel.swift in Sources */,
 				AE9E32AE2CA383E5009235AC /* FormViewModel.swift in Sources */,
 				AE9E32B02CA38485009235AC /* FirstPage.swift in Sources */,
-				E9A2775D2CA7210200C7D845 /* LinkAbout.swift in Sources */,
-				E9A277552CA6D47B00C7D845 /* SettingsView.swift in Sources */,
-				E9A277592CA6D59500C7D845 /* AboutView.swift in Sources */,
 				AE9E32B32CA3854D009235AC /* SecondPage.swift in Sources */,
 				AE7F8BC12CA6DA8B00CD3835 /* CardModel.swift in Sources */,
 				AE7F8BC72CA6EABB00CD3835 /* ProgressBar.swift in Sources */,
@@ -264,8 +280,12 @@
 				AE5B33E52CA88BCD0055D650 /* DecisionCard.swift in Sources */,
 				E92604D32CAC1B8A002F0C77 /* SearchView.swift in Sources */,
 				AE7F8BBF2CA6D68F00CD3835 /* ItemCard.swift in Sources */,
+				AEFC12CE2CACC8EE00E00B9D /* LinkAbout.swift in Sources */,
+				AEFC12CF2CACC8EE00E00B9D /* SettingsViewModel.swift in Sources */,
 				AE7F8BBF2CA6D68F00CD3835 /* ItemCard.swift in Sources */,
 				AE9E32B52CA3859D009235AC /* ThirdPage.swift in Sources */,
+				AEFC12CA2CACC8C900E00B9D /* SettingsView.swift in Sources */,
+				AEFC12CB2CACC8C900E00B9D /* AboutView.swift in Sources */,
 				AE3BFAB92CAC38A100DC1C67 /* DecisionView.swift in Sources */,
 				AE3847A72CABF46200D4ABB5 /* ProModel.swift in Sources */,
 				AE28CDCF2CA2F3AE00267E39 /* ContentView.swift in Sources */,
