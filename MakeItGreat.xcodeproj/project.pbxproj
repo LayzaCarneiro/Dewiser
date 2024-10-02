@@ -138,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				AE9E32AD2CA383E5009235AC /* FormViewModel.swift */,
+				E9A2775C2CA7210200C7D845 /* LinkAbout.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -253,6 +254,9 @@
 				AE3847A92CABF4C400D4ABB5 /* ConModel.swift in Sources */,
 				AE9E32AE2CA383E5009235AC /* FormViewModel.swift in Sources */,
 				AE9E32B02CA38485009235AC /* FirstPage.swift in Sources */,
+				E9A2775D2CA7210200C7D845 /* LinkAbout.swift in Sources */,
+				E9A277552CA6D47B00C7D845 /* SettingsView.swift in Sources */,
+				E9A277592CA6D59500C7D845 /* AboutView.swift in Sources */,
 				AE9E32B32CA3854D009235AC /* SecondPage.swift in Sources */,
 				AE7F8BC12CA6DA8B00CD3835 /* CardModel.swift in Sources */,
 				AE7F8BC72CA6EABB00CD3835 /* ProgressBar.swift in Sources */,
@@ -403,6 +407,7 @@
 				DEVELOPMENT_TEAM = ZFH4AF7HSL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "Unlock the app";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -432,6 +437,7 @@
 				DEVELOPMENT_TEAM = ZFH4AF7HSL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "Unlock the app";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
