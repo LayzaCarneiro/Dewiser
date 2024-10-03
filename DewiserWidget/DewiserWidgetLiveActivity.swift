@@ -24,7 +24,7 @@ struct DewiserWidgetLiveActivity: Widget {
         ActivityConfiguration(for: DewiserWidgetAttributes.self) { context in
             // Lock screen/banner UI goes here
             VStack {
-                Text("Hello \(context.state.emoji)")
+                Text("Hey \(context.state.emoji)")
             }
             .activityBackgroundTint(Color.cyan)
             .activitySystemActionForegroundColor(Color.black)

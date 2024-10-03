@@ -40,12 +40,16 @@ struct SimpleEntry: TimelineEntry {
     let configuration: ConfigurationAppIntent
 }
 
-struct DewiserWidgetEntryView : View {
+struct DewiserWidgetEntryView: View {
     var entry: Provider.Entry
 
     var body: some View {
         VStack {
-            Text("Hello world")
+            Text("Make a fast decision")
+                .font(.headline)
+                .bold()
+                .padding()
+                .fontDesign(.rounded)
         }
     }
 }
