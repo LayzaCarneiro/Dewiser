@@ -13,8 +13,8 @@ struct AboutView: View {
             List {
                 Section(header: Text("Developers")) {
                     Button(action: openLinkedInHM) {
-                        HStack{
-                            ZStack{
+                        HStack {
+                            ZStack {
                                 RoundedRectangle(cornerRadius: 6)
                                     .fill(Color.accentColor)
                                     .frame(width: 30, height: 30)
@@ -26,8 +26,8 @@ struct AboutView: View {
                         }
                     }
                     Button(action: openLinkedInJR) {
-                        HStack{
-                            ZStack{
+                        HStack {
+                            ZStack {
                                 RoundedRectangle(cornerRadius: 6)
                                     .fill(Color.accentColor)
                                     .frame(width: 30, height: 30)
@@ -39,8 +39,8 @@ struct AboutView: View {
                         }
                     }
                     Button(action: openLinkedInLC) {
-                        HStack{
-                            ZStack{
+                        HStack {
+                            ZStack {
                                 RoundedRectangle(cornerRadius: 6)
                                     .fill(Color.accentColor)
                                     .frame(width: 30, height: 30)

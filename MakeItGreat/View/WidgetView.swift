@@ -6,13 +6,27 @@
 //
 
 import SwiftUI
+import WidgetKit
 
-struct WidgetView: View {
+struct Provider: TimelineProvider {
+    func placeholder(in context: Context) -> SimpleEntry {
+        SimpleEntry(date: Date())
+    }
+    
+struct WidgetEntryView: View {
+    var entry: Provider.Entry
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Text("Current Date:")
+                .font(.headline)
+            Text(entry.date, style: .date)
+                .font(.title)
+                .bold()
+        }
+        .padding()
     }
 }
-
 #Preview {
-    WidgetView()
+    WidgetEntryView()
 }

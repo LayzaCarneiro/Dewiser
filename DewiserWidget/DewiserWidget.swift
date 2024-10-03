@@ -16,7 +16,6 @@ struct Provider: AppIntentTimelineProvider {
     func snapshot(for configuration: ConfigurationAppIntent, in context: Context) async -> SimpleEntry {
         SimpleEntry(date: Date(), configuration: configuration)
     }
-    
     func timeline(for configuration: ConfigurationAppIntent, in context: Context) async -> Timeline<SimpleEntry> {
         var entries: [SimpleEntry] = []
 
@@ -46,11 +45,7 @@ struct DewiserWidgetEntryView : View {
 
     var body: some View {
         VStack {
-            Text("Time:")
-            Text(entry.date, style: .time)
-
-            Text("Favorite Emoji:")
-            Text(entry.configuration.favoriteEmoji)
+            Text("Hello world")
         }
     }
 }
@@ -69,14 +64,13 @@ struct DewiserWidget: Widget {
 extension ConfigurationAppIntent {
     fileprivate static var smiley: ConfigurationAppIntent {
         let intent = ConfigurationAppIntent()
-        intent.favoriteEmoji = "😀"
+        intent.favoriteEmoji = "🏀"
         return intent
     }
-    
     fileprivate static var starEyes: ConfigurationAppIntent {
         let intent = ConfigurationAppIntent()
-        intent.favoriteEmoji = "🤩"
-        return intent
+       intent.favoriteEmoji = "🤩"
+       return intent
     }
 }
 
