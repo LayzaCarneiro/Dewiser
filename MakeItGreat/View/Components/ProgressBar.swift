@@ -21,7 +21,6 @@ struct ProgressBar: View {
 
 struct BarProgressStyle: ProgressViewStyle {
     var color: Color = .green
-    var height: Double = 16.0
 
     func makeBody(configuration: Configuration) -> some View {
 
@@ -33,12 +32,12 @@ struct BarProgressStyle: ProgressViewStyle {
 
                 RoundedRectangle(cornerRadius: 10.0)
                     .fill(.gray)
-                    .frame(height: height)
-                    .frame(width: 100)
+                    .frame(height: 17)
+                    .frame(width: 127)
                     .overlay(alignment: .leading) {
                         RoundedRectangle(cornerRadius: 10.0)
                             .fill(color)
-                            .frame(width: 100 * progress)
+                            .frame(width: 127 * progress)
                             .overlay {
                                 if let currentValueLabel = configuration.currentValueLabel {
                                     currentValueLabel

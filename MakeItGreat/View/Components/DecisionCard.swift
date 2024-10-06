@@ -19,16 +19,27 @@ struct DecisionCard: View {
     var body: some View {
         HStack {
             Image(systemName: "person.fill")
+                .foregroundStyle(.white)
 
             Text("\(card.title)")
                 .font(.title)
+                .foregroundStyle(.white)
+
             Text("\(card.feeling)")
+                .foregroundStyle(.white)
+
             Text("\(card.priority)")
-            Text("Prós: \(filteredPros.count)")
-            Text("Contras: \(filteredCons.count)")
+                .foregroundStyle(.white)
+
+            Text("Pros: \(filteredPros.count)")
+                .foregroundStyle(.white)
+
+            Text("Cons: \(filteredCons.count)")
+                .foregroundStyle(.white)
+
         }
         .frame(width: 336, height: 117)
-        .background(.cyan)
+        .background(.primary)
         .cornerRadius(10)
         .onAppear {
             filteredPros = allPros.filter { $0.cardID == card.id }
