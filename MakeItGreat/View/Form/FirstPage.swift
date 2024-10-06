@@ -18,9 +18,6 @@ struct FirstPage: View {
         var id: Self { self }
     }
     
-    @State  var selectedDate = Date()
-    let dateFormatter = DateFormatter()
-    
     var body: some View {
         NavigationStack {
             VStack(spacing: 42) {
@@ -58,39 +55,13 @@ struct FirstPage: View {
                 }
                 
                 
-                
-                
                 HStack(spacing: 55) {
                     VStack(alignment: .leading) {
                         Text("Deadline")
                             .font(.body)
                             .fontWeight(.bold)
                         
-                        HStack(spacing: 43) {
-                            Text(selectedDate.toString("MMM dd"))
-                            
-                            Image(systemName: "calendar")
-                                .resizable()
-                                .frame(width: 25, height: 21, alignment: .center)
-                        }
-                        .padding(.horizontal, 15)
-                        .padding(.vertical, 10)
-                        .background(.white)
-                        .cornerRadius(8)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 10)
-                                .stroke(.primary, lineWidth: 2)
-                        )
-                        .overlay {
-                            DatePicker(
-                                "",
-                                selection: $selectedDate,
-                                displayedComponents: .date
-                            )
-                            .blendMode(.destinationOver)
-                        }
-
-                        
+                        CustomDatePicker(selectedDate: $formViewModel.cardModel.deadline)
                     }
                     
                     VStack(alignment: .leading) {
