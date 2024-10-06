@@ -17,7 +17,7 @@ struct ProConsView: View {
     @Environment(\.modelContext) var context
     @State private var filteredPros: [ProModel] = []
     @State private var filteredCons: [ConModel] = []
-    
+
     @State var deleteOn: Bool = false
 
     var body: some View {
@@ -29,7 +29,7 @@ struct ProConsView: View {
                             .font(.title2)
                             .fontDesign(.rounded)
                             .fontWeight(.bold)
-                        
+
                         ProgressBar(progress: Double(filteredPros.count), total: Double(filteredPros.count + filteredCons.count))
 
                         Button {

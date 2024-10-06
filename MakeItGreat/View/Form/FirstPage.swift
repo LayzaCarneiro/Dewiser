@@ -9,19 +9,22 @@ import SwiftUI
 
 struct FirstPage: View {
     @ObservedObject var formViewModel: FormViewModel
-
+    
     @State private var selectedPriority: Priority = .medium
     @Binding var isPresented: Bool
-
+    
     enum Priority: String, CaseIterable, Identifiable {
         case low, medium, high
         var id: Self { self }
     }
-
+    
+    @State  var selectedDate = Date()
+    let dateFormatter = DateFormatter()
+    
     var body: some View {
         NavigationStack {
             VStack(spacing: 42) {
-
+                
                 VStack(alignment: .leading) {
                     HStack(spacing: 3) {
                         Text("Title")
@@ -40,7 +43,7 @@ struct FirstPage: View {
                                 .stroke(.primary, lineWidth: 2)
                         )
                 }
-
+                
                 VStack(alignment: .leading) {
                     Text("Description")
                         .font(.body)
@@ -53,32 +56,58 @@ struct FirstPage: View {
                                 .stroke(.primary, lineWidth: 2)
                         )
                 }
-
+                
+                
+                
+                
                 HStack(spacing: 55) {
                     VStack(alignment: .leading) {
                         Text("Deadline")
                             .font(.body)
                             .fontWeight(.bold)
-
-                        DatePicker("", selection: $formViewModel.cardModel.deadline, displayedComponents: .date)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 10)
-                                    .stroke(.primary, lineWidth: 2)
+                        
+                        HStack(spacing: 43) {
+                            Text(selectedDate.toString("MMM dd"))
+                            
+                            Image(systemName: "calendar")
+                                .resizable()
+                                .frame(width: 25, height: 21, alignment: .center)
+                        }
+                        .padding(.horizontal, 15)
+                        .padding(.vertical, 10)
+                        .background(.white)
+                        .cornerRadius(8)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke(.primary, lineWidth: 2)
+                        )
+                        .overlay {
+                            DatePicker(
+                                "",
+                                selection: $selectedDate,
+                                displayedComponents: .date
                             )
-                    }
+                            .blendMode(.destinationOver)
+                        }
 
+                        
+                    }
+                    
                     VStack(alignment: .leading) {
                         Text("Time")
                             .font(.body)
                             .fontWeight(.bold)
-  
+                        
                         DatePicker("", selection: $formViewModel.cardModel.time, displayedComponents: .hourAndMinute)
+                            .labelsHidden()
                             .overlay(
                                 RoundedRectangle(cornerRadius: 10)
                                     .stroke(.primary, lineWidth: 2)
                             )
                     }
+                    //                    .padding(.trailing, 120)
                 }
+                
                 VStack(alignment: .leading) {
                     HStack(spacing: 3) {
                         Text("Priority")
@@ -112,7 +141,7 @@ struct FirstPage: View {
                 Button {
                     isPresented.toggle()
                 } label: {
-//                    Image(systemName: "chevron.left")
+                    //                    Image(systemName: "chevron.left")
                     Text("Cancel")
                 }
             }
