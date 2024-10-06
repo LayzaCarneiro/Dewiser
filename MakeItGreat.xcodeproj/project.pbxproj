@@ -25,6 +25,7 @@
 		AE9E32B32CA3854D009235AC /* SecondPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9E32B22CA3854D009235AC /* SecondPage.swift */; };
 		AE9E32B52CA3859D009235AC /* ThirdPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9E32B42CA3859D009235AC /* ThirdPage.swift */; };
 		AED2E7342CB24F82005A89CD /* CustomDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED2E7332CB24F7B005A89CD /* CustomDatePicker.swift */; };
+		AED2E7362CB25272005A89CD /* CustomHourPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED2E7352CB2526D005A89CD /* CustomHourPicker.swift */; };
 		AEE99BEA2CB0145500CC299A /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE99BE92CB0145300CC299A /* EditView.swift */; };
 		AEFC12CA2CACC8C900E00B9D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFC12C82CACC8C900E00B9D /* SettingsView.swift */; };
 		AEFC12CB2CACC8C900E00B9D /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFC12C72CACC8C900E00B9D /* AboutView.swift */; };
@@ -53,6 +54,7 @@
 		AE9E32B22CA3854D009235AC /* SecondPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondPage.swift; sourceTree = "<group>"; };
 		AE9E32B42CA3859D009235AC /* ThirdPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdPage.swift; sourceTree = "<group>"; };
 		AED2E7332CB24F7B005A89CD /* CustomDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDatePicker.swift; sourceTree = "<group>"; };
+		AED2E7352CB2526D005A89CD /* CustomHourPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHourPicker.swift; sourceTree = "<group>"; };
 		AEE99BE92CB0145300CC299A /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
 		AEFC12C72CACC8C900E00B9D /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		AEFC12C82CACC8C900E00B9D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 		AE7F8BBB2CA6D5E500CD3835 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				AED2E7352CB2526D005A89CD /* CustomHourPicker.swift */,
 				AED2E7332CB24F7B005A89CD /* CustomDatePicker.swift */,
 				AE7F8BBE2CA6D68F00CD3835 /* ItemCard.swift */,
 				AE7F8BC62CA6EABB00CD3835 /* ProgressBar.swift */,
@@ -280,6 +283,7 @@
 				AE9E32B32CA3854D009235AC /* SecondPage.swift in Sources */,
 				AE7F8BC12CA6DA8B00CD3835 /* CardModel.swift in Sources */,
 				AE7F8BC72CA6EABB00CD3835 /* ProgressBar.swift in Sources */,
+				AED2E7362CB25272005A89CD /* CustomHourPicker.swift in Sources */,
 				AE5B33E72CA88CBF0055D650 /* HomeScreenView.swift in Sources */,
 				AE5B33E52CA88BCD0055D650 /* DecisionCard.swift in Sources */,
 				E92604D32CAC1B8A002F0C77 /* SearchView.swift in Sources */,

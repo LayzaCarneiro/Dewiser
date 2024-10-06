@@ -8,25 +8,25 @@
 import SwiftUI
 
 struct CustomDatePicker: View {
-
+    
     @Binding var selectedDate: Date
-    let dateFormatter = DateFormatter()
-
+    //    let dateFormatter = DateFormatter()
+    
     var body: some View {
         HStack(spacing: 43) {
             Text(selectedDate.toString("MMM dd"))
             
             Image(systemName: "calendar")
                 .resizable()
-                .frame(width: 25, height: 21, alignment: .center)
+                .frame(width: 21, height: 21, alignment: .center)
         }
         .padding(.horizontal, 15)
         .padding(.vertical, 10)
-        .background(.white)
-        .cornerRadius(8)
+        //        .background(.white)
         .overlay(
             RoundedRectangle(cornerRadius: 10)
                 .stroke(.primary, lineWidth: 2)
+                .frame(width: 152, height: 45)
         )
         .overlay {
             DatePicker(
@@ -34,6 +34,7 @@ struct CustomDatePicker: View {
                 selection: $selectedDate,
                 displayedComponents: .date
             )
+            .labelsHidden()
             .blendMode(.destinationOver)
         }
     }
