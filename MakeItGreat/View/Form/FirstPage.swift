@@ -9,15 +9,8 @@ import SwiftUI
 
 struct FirstPage: View {
     @ObservedObject var formViewModel: FormViewModel
-    
-    @State private var selectedPriority: Priority = .medium
     @Binding var isPresented: Bool
-    
-    enum Priority: String, CaseIterable, Identifiable {
-        case low, medium, high
-        var id: Self { self }
-    }
-    
+
     var body: some View {
         NavigationStack {
             ScrollView(.vertical) {
@@ -41,12 +34,16 @@ struct FirstPage: View {
                                     .stroke(.primary, lineWidth: 2)
                             )
                     }
-                    
+
                     VStack(alignment: .leading) {
                         Text("Description")
                             .font(.body)
                             .fontWeight(.bold)
-                        TextField("What's your decision description?", text: $formViewModel.cardModel.cardDescription, axis: .vertical)
+                        TextField("What's your decision description?",
+                                  text: Binding(
+                                    get: {formViewModel.cardModel.cardDescription ?? ""},
+                                    set: {formViewModel.cardModel.cardDescription = $0.isEmpty ? nil : $0}),
+                                  axis: .vertical)
                             .padding()
                             .lineLimit(8, reservesSpace: true)
                             .overlay(
@@ -54,14 +51,17 @@ struct FirstPage: View {
                                     .stroke(.primary, lineWidth: 2)
                             )
                     }
-                    
+
                     HStack(spacing: 55) {
                         VStack(alignment: .leading) {
                             Text("Deadline")
                                 .font(.body)
                                 .fontWeight(.bold)
                             
-                            CustomDatePicker(selectedDate: $formViewModel.cardModel.deadline)
+                            CustomDatePicker(selectedDate: Binding(
+                                get: {formViewModel.cardModel.deadline ?? Date()},
+                                set: { newValue in formViewModel.cardModel.deadline = newValue}
+                            ))
                         }
                         
                         VStack(alignment: .leading) {
@@ -69,11 +69,14 @@ struct FirstPage: View {
                                 .font(.body)
                                 .fontWeight(.bold)
                             
-                            CustomHourPicker(selectedHour: $formViewModel.cardModel.time)
+                            CustomHourPicker(selectedHour: Binding(
+                                get: {formViewModel.cardModel.time ?? Date()},
+                                set: { newValue in formViewModel.cardModel.time = newValue}
+                            ))
                         }
                     }
                     .padding(.trailing, 12)
-                    
+
                     VStack(alignment: .leading) {
                         HStack(spacing: 3) {
                             Text("Priority")
@@ -84,16 +87,9 @@ struct FirstPage: View {
                                 .fontWeight(.bold)
                                 .foregroundStyle(.red)
                         }
-                        Picker("Priority", selection: $selectedPriority) {
-                            ForEach(Priority.allCases) { priority in
-                                Text(priority.rawValue.capitalized)
-                            }
-                        }
-                        .pickerStyle(.segmented)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 10)
-                                .stroke(.primary, lineWidth: 2)
-                        )
+
+                        CustomPriorityPicker(selectedPriority: $formViewModel.cardModel.priorityEnum)
+
                     }
                 }
                 .padding()

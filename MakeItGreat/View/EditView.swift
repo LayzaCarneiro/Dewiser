@@ -41,44 +41,44 @@ struct EditView: View {
                         )
                 }
                 
-                VStack(alignment: .leading) {
-                    Text("Description")
-                        .font(.body)
-                        .fontWeight(.bold)
-                    TextField("What's your decision description?", text: $card.cardDescription, axis: .vertical)
-                        .padding()
-                        .lineLimit(8, reservesSpace: true)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 10)
-                                .stroke(.primary, lineWidth: 2)
-                        )
-                }
-                
-                HStack(spacing: 55) {
-                    VStack(alignment: .leading) {
-                        Text("Deadline")
-                            .font(.body)
-                            .fontWeight(.bold)
-                        
-                        DatePicker("", selection: $card.deadline, displayedComponents: .date)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 10)
-                                    .stroke(.primary, lineWidth: 2)
-                            )
-                    }
-                    
-                    VStack(alignment: .leading) {
-                        Text("Time")
-                            .font(.body)
-                            .fontWeight(.bold)
-                        
-                        DatePicker("", selection: $card.time, displayedComponents: .hourAndMinute)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 10)
-                                    .stroke(.primary, lineWidth: 2)
-                            )
-                    }
-                }
+//                VStack(alignment: .leading) {
+//                    Text("Description")
+//                        .font(.body)
+//                        .fontWeight(.bold)
+//                    TextField("What's your decision description?", text: $card.cardDescription, axis: .vertical)
+//                        .padding()
+//                        .lineLimit(8, reservesSpace: true)
+//                        .overlay(
+//                            RoundedRectangle(cornerRadius: 10)
+//                                .stroke(.primary, lineWidth: 2)
+//                        )
+//                }
+//                
+//                HStack(spacing: 55) {
+//                    VStack(alignment: .leading) {
+//                        Text("Deadline")
+//                            .font(.body)
+//                            .fontWeight(.bold)
+//                        
+//                        DatePicker("", selection: $card.deadline, displayedComponents: .date)
+//                            .overlay(
+//                                RoundedRectangle(cornerRadius: 10)
+//                                    .stroke(.primary, lineWidth: 2)
+//                            )
+//                    }
+//                    
+//                    VStack(alignment: .leading) {
+//                        Text("Time")
+//                            .font(.body)
+//                            .fontWeight(.bold)
+//                        
+//                        DatePicker("", selection: $card.time, displayedComponents: .hourAndMinute)
+//                            .overlay(
+//                                RoundedRectangle(cornerRadius: 10)
+//                                    .stroke(.primary, lineWidth: 2)
+//                            )
+//                    }
+//                }
                 VStack(alignment: .leading) {
                     HStack(spacing: 3) {
                         Text("Priority")

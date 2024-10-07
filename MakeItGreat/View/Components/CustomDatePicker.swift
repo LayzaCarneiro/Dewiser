@@ -8,14 +8,19 @@
 import SwiftUI
 
 struct CustomDatePicker: View {
-    
-    @Binding var selectedDate: Date
-    //    let dateFormatter = DateFormatter()
-    
+    @Binding var selectedDate: Date?
+    @State private var isDateSelected = false
+
     var body: some View {
         HStack(spacing: 43) {
-            Text(selectedDate.toString("MMM dd"))
-            
+            if let date = selectedDate, isDateSelected {
+                Text(date.toString("MMM dd"))
+            } else {
+                Text("Pick a date")
+                    .font(.footnote)
+                    .foregroundColor(.gray)
+            }
+
             Image(systemName: "calendar")
                 .resizable()
                 .frame(width: 21, height: 21, alignment: .center)
@@ -31,12 +36,20 @@ struct CustomDatePicker: View {
         .overlay {
             DatePicker(
                 "",
-                selection: $selectedDate,
-                displayedComponents: .date
-            )
+                selection: Binding(get: { selectedDate ?? Date() },
+                                    set: { newValue in
+                                        selectedDate = newValue
+                                        isDateSelected = true }),
+                                    displayedComponents: .date)
+//            DatePicker(
+//                "",
+//                selection: $selectedDate,
+//                displayedComponents: .date
+
             .labelsHidden()
             .blendMode(.destinationOver)
         }
+
     }
 }
 

@@ -8,13 +8,19 @@
 import SwiftUI
 
 struct CustomHourPicker: View {
-    @Binding var selectedHour: Date
-    
+    @Binding var selectedHour: Date?
+    @State private var isHourSelected = false
+
     var body: some View {
-        
+
         HStack(spacing: 45) {
-            Text(selectedHour.toString("HH:mm"))
-            
+            if let hour = selectedHour, isHourSelected {
+                Text(hour.toString("HH:mm"))
+            } else {
+                Text("--:--")
+                    .foregroundColor(.gray)
+            }
+
             Image(systemName: "clock")
                 .resizable()
                 .frame(width: 21, height: 21)
@@ -28,9 +34,17 @@ struct CustomHourPicker: View {
                 .frame(width: 152, height: 45)
         )
         .overlay {
-            DatePicker("", selection: $selectedHour, displayedComponents: .hourAndMinute)
-                .labelsHidden()
-                .blendMode(.destinationOver)
+            DatePicker("", selection: Binding(get: {
+                            selectedHour ?? Date() 
+                        }, set: { newValue in
+                            selectedHour = newValue
+                            isHourSelected = true
+                        }), displayedComponents: .hourAndMinute)
+                            .labelsHidden()
+                            .blendMode(.destinationOver)
+//            DatePicker("", selection: $selectedHour, displayedComponents: .hourAndMinute)
+//                .labelsHidden()
+//                .blendMode(.destinationOver)
         }
     }
 }
