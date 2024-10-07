@@ -9,33 +9,32 @@ import SwiftUI
 
 struct ThirdPage: View {
     @ObservedObject var formViewModel: FormViewModel
-
-    @Environment(\.dismiss) private var dismiss
+    @Binding var isPresented: Bool
+    
     @Environment(\.modelContext) var context
+    @Environment(\.dismiss) var dismiss
 
     var body: some View {
-        VStack {
-            ProConsView(card: formViewModel.cardModel)
-        }
-        .toolbar {
-            ToolbarItem(placement: .topBarLeading) {
-                Button {
-                    formViewModel.previousPage()
-                } label: {
-                    Text("Back")
-                }
+        NavigationStack {
+            VStack {
+                ProConsView(card: formViewModel.cardModel)
             }
+            
+        }
+        .navigationTitle("New Decision")
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
                     let newCard = formViewModel.cardModel
                     context.insert(newCard)
-
+                    
                     do {
                         try context.save()
                     } catch {
                         print("Erro ao salvar o contexto: \(error.localizedDescription)")
                     }
-
+                    isPresented.toggle()
                     dismiss()
                 } label: {
                     Text("Save")

@@ -10,10 +10,11 @@ import LocalAuthentication
 import UserNotifications
 
 struct SettingsView: View {
-    @State private var isNotificationOn = false
-    @State private var isLockAppOn = false
-    @State private var isAbleHaptics = false
-    @State private var isAuthenticated = false
+    @State private var isNotificationOn: Bool = UserDefaults.standard.bool(forKey: "isNotificationOn")
+    @State private var isLockAppOn: Bool = UserDefaults.standard.bool(forKey: "isLockAppOn")
+    @State private var isAbleHaptics: Bool = UserDefaults.standard.bool(forKey: "isAbleHaptics")
+    @State private var isAuthenticated: Bool = UserDefaults.standard.bool(forKey: "isAuthenticated")
+
     var body: some View {
         NavigationStack {
             List {
@@ -32,12 +33,14 @@ struct SettingsView: View {
                         }
                     }
                     .onChange(of: isNotificationOn) { newValue in
+                        UserDefaults.standard.set(newValue, forKey: "isNotificationOn")
                         if newValue {
                             requestNotificationPermission()
                         } else {
                             cancelNotifications()
                         }
                     }
+
                     Toggle(isOn: $isAbleHaptics) {
                         HStack {
                             ZStack {
@@ -50,6 +53,9 @@ struct SettingsView: View {
                             }
                             Text("Disable haptics")
                         }
+                    }
+                    .onChange(of: isAbleHaptics) { newValue in
+                        UserDefaults.standard.set(newValue, forKey: "isAbleHaptics")
                     }
                 }
                 Section(header: Text("Privacy")) {
@@ -67,6 +73,7 @@ struct SettingsView: View {
                         }
                     }
                     .onChange(of: isLockAppOn) { newValue in
+                        UserDefaults.standard.set(newValue, forKey: "isLockAppOn")
                         if newValue {
                             authenticate()
                         } else {
@@ -89,9 +96,16 @@ struct SettingsView: View {
                         }
                     }
                 }
-            }.navigationBarTitle("Settings")
+            }
+            .navigationBarTitle("Settings")
+            .onAppear {
+                isNotificationOn = UserDefaults.standard.bool(forKey: "isNotificationOn")
+                isAbleHaptics = UserDefaults.standard.bool(forKey: "isAbleHaptics")
+                isLockAppOn = UserDefaults.standard.bool(forKey: "isLockAppOn")
+            }
         }
     }
+
     func authenticate() {
         let context = LAContext()
         var error: NSError?
@@ -111,6 +125,7 @@ struct SettingsView: View {
             isLockAppOn = false
         }
     }
+
     func requestNotificationPermission() {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
             if granted {
@@ -122,6 +137,7 @@ struct SettingsView: View {
             }
         }
     }
+
     func scheduleRandomTimeReminder() {
         let content = UNMutableNotificationContent()
         content.title = "Daily Reminder"
@@ -142,6 +158,7 @@ struct SettingsView: View {
             }
         }
     }
+
     func cancelNotifications() {
         UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["dailyRandomReminder"])
     }

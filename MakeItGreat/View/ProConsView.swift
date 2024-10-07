@@ -18,44 +18,105 @@ struct ProConsView: View {
     @State private var filteredPros: [ProModel] = []
     @State private var filteredCons: [ConModel] = []
 
+    @State var deleteOn: Bool = false
+    
+    @State private var deleteOnForDecision: Bool = false
+
     var body: some View {
         ZStack {
             ScrollView(.vertical) {
-                HStack(spacing: 60) {
-                    VStack {
-                        Text("Pros")
-                        ProgressBar(progress: Double(filteredPros.count), total: Double(filteredPros.count + filteredCons.count))
-
-                        ForEach($filteredPros, id: \.self) { pro in
-                            ItemCard(content: pro.content)
-                        }
-
-                        Button {
-                            let newPro = ProModel(id: UUID(), content: "Pro", cardID: card.id)
-                            context.insert(newPro)
-                        } label: {
-                            Image(systemName: "plus")
-                        }
-
-                        Spacer()
+                VStack {
+                    Button {
+                        deleteOnForDecision.toggle()
+                    } label: {
+                        Text("Delete item")
+                            .font(.title3)
+                            .fontWeight(.semibold)
                     }
-
-                    VStack {
-                        Text("Cons")
-                        ProgressBar(progress: Double(filteredCons.count), total: Double(filteredPros.count + filteredCons.count))
-
-                        ForEach($filteredCons, id: \.self) { con in
-                            ItemCard(content: con.content)
+                    
+                    HStack(spacing: 20) {
+                        VStack {
+                            Text("Pros")
+                                .font(.title2)
+                                .fontDesign(.rounded)
+                                .fontWeight(.bold)
+                            
+                            ProgressBar(progress: Double(filteredPros.count), total: Double(filteredPros.count + filteredCons.count))
+                            
+                            Button {
+                                let newPro = ProModel(id: UUID(), content: "Pro", cardID: card.id)
+                                context.insert(newPro)
+                            } label: {
+                                HStack {
+                                    Image(systemName: "plus")
+                                    Text("Pro")
+                                }
+                                .frame(width: 149, height: 84, alignment: .center)
+                                .background(.blue)
+                                .cornerRadius(10)
+                                .foregroundStyle(.white)
+                                .fontWeight(.bold)
+                                
+                            }
+                            
+                            ForEach($filteredPros, id: \.self) { $pro in
+                                HStack {
+                                    ItemCard(content: $pro.content)
+                                    
+                                    if deleteOnForDecision {
+                                        Button {
+                                            context.delete(pro)
+                                        } label: {
+                                            Image(systemName: "trash")
+                                                .padding()
+                                        }
+                                        .buttonStyle(BorderlessButtonStyle())
+                                    }
+                                }
+                            }
+                            Spacer()
                         }
-
-                        Button {
-                            let newCon = ConModel(id: UUID(), content: "Con", cardID: card.id)
-                            context.insert(newCon)
-                        } label: {
-                            Image(systemName: "plus")
+                        
+                        VStack {
+                            Text("Cons")
+                                .font(.title2)
+                                .fontDesign(.rounded)
+                                .fontWeight(.bold)
+                            
+                            ProgressBar(progress: Double(filteredCons.count), total: Double(filteredPros.count + filteredCons.count))
+                            
+                            Button {
+                                let newCon = ConModel(id: UUID(), content: "Con", cardID: card.id)
+                                context.insert(newCon)
+                            } label: {
+                                HStack {
+                                    Image(systemName: "plus")
+                                    Text("Con")
+                                }
+                                .frame(width: 149, height: 84, alignment: .center)
+                                .background(.blue)
+                                .cornerRadius(10)
+                                .foregroundStyle(.white)
+                                .fontWeight(.bold)
+                            }
+                            
+                            ForEach($filteredCons, id: \.self) { $con in
+                                HStack {
+                                    ItemCard(content: $con.content)
+                                    
+                                    if deleteOnForDecision {
+                                        Button {
+                                            context.delete(con)
+                                        } label: {
+                                            Image(systemName: "trash")
+                                                .padding()
+                                        }
+                                        .buttonStyle(BorderlessButtonStyle())
+                                    }
+                                }
+                            }
+                            Spacer()
                         }
-
-                        Spacer()
                     }
                 }
             }
