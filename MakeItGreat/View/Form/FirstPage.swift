@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct FirstPage: View {
-    @ObservedObject var formViewModel: FormViewModel
+    @StateObject var formViewModel: FormViewModel
     @Binding var isPresented: Bool
 
     var body: some View {
         NavigationStack {
-            ScrollView(.vertical) {
+            ScrollView(.vertical, showsIndicators: false) {
                 VStack(spacing: 42) {
                     
                     VStack(alignment: .leading) {
@@ -61,9 +61,9 @@ struct FirstPage: View {
                             CustomDatePicker(selectedDate: Binding(
                                 get: {formViewModel.cardModel.deadline ?? Date()},
                                 set: { newValue in formViewModel.cardModel.deadline = newValue}
-                            ))
+                            ), isDateSelected: false)
                         }
-                        
+
                         VStack(alignment: .leading) {
                             Text("Time")
                                 .font(.body)
@@ -72,7 +72,7 @@ struct FirstPage: View {
                             CustomHourPicker(selectedHour: Binding(
                                 get: {formViewModel.cardModel.time ?? Date()},
                                 set: { newValue in formViewModel.cardModel.time = newValue}
-                            ))
+                            ), isHourSelected: false)
                         }
                     }
                     .padding(.trailing, 12)

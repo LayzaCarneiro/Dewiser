@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CustomDatePicker: View {
     @Binding var selectedDate: Date?
-    @State private var isDateSelected = false
+    @State var isDateSelected: Bool
 
     var body: some View {
         HStack(spacing: 43) {

@@ -39,7 +39,7 @@ struct DecisionCard: View {
 
         }
         .frame(width: 336, height: 117)
-        .background(.primary)
+        .background(.blue)
         .cornerRadius(10)
         .onAppear {
             filteredPros = allPros.filter { $0.cardID == card.id }

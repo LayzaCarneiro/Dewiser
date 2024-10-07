@@ -439,6 +439,7 @@
 				DEVELOPMENT_TEAM = ZFH4AF7HSL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Dewiser;
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "Unlock the app";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -469,6 +470,7 @@
 				DEVELOPMENT_TEAM = ZFH4AF7HSL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Dewiser;
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "Unlock the app";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

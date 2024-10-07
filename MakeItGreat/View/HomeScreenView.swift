@@ -9,7 +9,6 @@ import SwiftUI
 import SwiftData
 
 struct HomeScreenView: View {
-    @StateObject var formViewModel = FormViewModel()
     @State private var isPresented: Bool = false
 
     @Query var decisions: [CardModel]
@@ -71,7 +70,7 @@ struct HomeScreenView: View {
                 }
                 .fullScreenCover(isPresented: $isPresented) {
                     NavigationView {
-                        FirstPage(formViewModel: formViewModel, isPresented: $isPresented)
+                        FirstPage(formViewModel: FormViewModel(), isPresented: $isPresented)
                     }
                 }
             }
@@ -90,6 +89,6 @@ struct HomeScreenView: View {
     }
 }
 
-#Preview {
-    HomeScreenView()
-}
+//#Preview {
+//    HomeScreenView()
+//}

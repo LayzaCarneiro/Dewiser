@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CustomHourPicker: View {
     @Binding var selectedHour: Date?
-    @State private var isHourSelected = false
+    @State var isHourSelected: Bool
 
     var body: some View {
 
