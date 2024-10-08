@@ -33,7 +33,7 @@ struct EditView: View {
                                 .fontWeight(.bold)
                                 .foregroundStyle(.red)
                         }
-                        TextField("What is your decision title?", text: $card.title)
+                        TextField("What's your decision title?", text: $card.title)
                             .padding()
                             .frame(width: 361, height: 44)
                             .overlay(
@@ -64,7 +64,7 @@ struct EditView: View {
                             Text("Deadline")
                                 .font(.body)
                                 .fontWeight(.bold)
-                            
+
                             CustomDatePicker(selectedDate: $card.deadline, isDateSelected: true)
                         }
 
@@ -93,11 +93,25 @@ struct EditView: View {
                         CustomPriorityPicker(selectedPriority: $card.priorityEnum)
 
                     }
+
+                    VStack(alignment: .leading) {
+                        HStack(spacing: 3) {
+                            Text("Feel")
+                                .font(.body)
+                                .fontWeight(.bold)
+                            Text("*")
+                                .font(.body)
+                                .fontWeight(.bold)
+                                .foregroundStyle(.red)
+
+                        }
+                        CustomFeelingPicker(selectedFeeling: $card.feeling)
+                    }
                 }
-                .padding()
-                .padding(.top, 15)
                 Spacer()
             }
+            .padding()
+            .padding(.top, 16)
         }
         .navigationTitle("Edit Decision")
         .navigationBarTitleDisplayMode(.inline)
