@@ -27,11 +27,12 @@ struct CustomHourPicker: View {
         }
         .padding(.horizontal, 15)
         .padding(.vertical, 10)
-        //        .background(.white)
+        .frame(width: 152, height: 45)
+        .background(.backgroundField)
+        .cornerRadius(10)
         .overlay(
             RoundedRectangle(cornerRadius: 10)
-                .stroke(.primary, lineWidth: 2)
-                .frame(width: 152, height: 45)
+                .stroke(.stroke, lineWidth: 2)
         )
         .overlay {
             DatePicker("", selection: Binding(get: {
@@ -42,9 +43,6 @@ struct CustomHourPicker: View {
                         }), displayedComponents: .hourAndMinute)
                             .labelsHidden()
                             .blendMode(.destinationOver)
-//            DatePicker("", selection: $selectedHour, displayedComponents: .hourAndMinute)
-//                .labelsHidden()
-//                .blendMode(.destinationOver)
         }
     }
 }

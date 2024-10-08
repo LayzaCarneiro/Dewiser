@@ -25,13 +25,14 @@ struct CustomDatePicker: View {
                 .resizable()
                 .frame(width: 21, height: 21, alignment: .center)
         }
-        .padding(.horizontal, 15)
+//        .padding(.horizontal, 15)
         .padding(.vertical, 10)
-        //        .background(.white)
+        .frame(width: 152, height: 45)
+        .background(.backgroundField)
+        .cornerRadius(10)
         .overlay(
             RoundedRectangle(cornerRadius: 10)
-                .stroke(.primary, lineWidth: 2)
-                .frame(width: 152, height: 45)
+                .stroke(.stroke, lineWidth: 2)
         )
         .overlay {
             DatePicker(
@@ -41,11 +42,6 @@ struct CustomDatePicker: View {
                                         selectedDate = newValue
                                         isDateSelected = true }),
                                     displayedComponents: .date)
-//            DatePicker(
-//                "",
-//                selection: $selectedDate,
-//                displayedComponents: .date
-
             .labelsHidden()
             .blendMode(.destinationOver)
         }

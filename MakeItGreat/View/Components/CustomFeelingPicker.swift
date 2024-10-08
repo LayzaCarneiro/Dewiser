@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CustomFeelingPicker: View {
     @Binding var selectedFeeling: String
-    
+
     var body: some View {
         HStack(spacing: 23) {
             Button {
@@ -20,22 +20,22 @@ struct CustomFeelingPicker: View {
             Button {
                 selectedFeeling = "Angry"
             } label: {
-                FeelingItem(feelTitle: "Angry", feelImage: "sadFace", selected: "Angry" == selectedFeeling)
+                FeelingItem(feelTitle: "Angry", feelImage: "angryFace", selected: "Angry" == selectedFeeling)
             }
             Button {
                 selectedFeeling = "Ok"
             } label: {
-                FeelingItem(feelTitle: "Ok", feelImage: "sadFace", selected: "Ok" == selectedFeeling)
+                FeelingItem(feelTitle: "Ok", feelImage: "okFace", selected: "Ok" == selectedFeeling)
             }
             Button {
                 selectedFeeling = "Good"
             } label: {
-                FeelingItem(feelTitle: "Good", feelImage: "sadFace", selected: "Good" == selectedFeeling)
+                FeelingItem(feelTitle: "Good", feelImage: "goodFace", selected: "Good" == selectedFeeling)
             }
             Button {
                 selectedFeeling = "Confident"
             } label: {
-                FeelingItem(feelTitle: "Confident", feelImage: "sadFace", selected: "Confident" == selectedFeeling)
+                FeelingItem(feelTitle: "Confident", feelImage: "confidentFace", selected: "Confident" == selectedFeeling)
             }
         }
     }

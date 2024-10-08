@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct FeelingItem: View {
-    @State var feelTitle: String = "Sad"
-    @State var feelImage: String = "sadFace"
+    @State var feelTitle: String = "Ok"
+    @State var feelImage: String = "okFace"
     var selected: Bool
 
     var body: some View {
@@ -17,7 +17,7 @@ struct FeelingItem: View {
             Image(feelImage)
                 .resizable()
                 .scaledToFit()
-                .frame(width: 50, height: 47)
+                .frame(width: 51, height: 47)
                 .opacity(selected ? 1 : 0.3)
 
             Text(feelTitle)
@@ -25,7 +25,7 @@ struct FeelingItem: View {
                 .fontWeight(.medium)
                 .fontDesign(.rounded)
                 .padding(.top, -15)
-                .foregroundStyle(.black)
+                .foregroundStyle(.text)
         }
     }
 }
