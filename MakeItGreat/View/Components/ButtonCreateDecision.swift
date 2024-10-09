@@ -25,7 +25,7 @@ struct ButtonCreateDecision: View {
                                 .font(.title2)
                                 .fontWeight(.black)
                                 .fontDesign(.rounded)
-                                .foregroundColor(.primary)
+                                .foregroundColor(.black)
                                 .frame(width: 254, height: 76)
                                 .background(.buttoncolor)
                                 .cornerRadius(30)

@@ -29,7 +29,7 @@ decisions yet
                 }
                 ButtonCreateDecision()
                 .padding(.bottom, 30)
-                
+        
             }
         }
     }

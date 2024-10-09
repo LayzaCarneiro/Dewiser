@@ -6,10 +6,42 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct HaveDecisionsView: View {
+    @State private var isPresented: Bool = false
+
+    @Query var decisions: [CardModel]
+
+    @State private var deleteOnForDecision: Bool = false
+
+    @Environment(\.modelContext) var context
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Button {
+            deleteOnForDecision.toggle()
+        } label: {
+            Text("Delete cards")
+                .font(.title3)
+                .fontWeight(.semibold)
+        }
+        ScrollView(.vertical, showsIndicators: false) {  
+            ForEach(decisions.reversed()) { decision in
+                HStack {
+                    NavigationLink(destination: DecisionView(decision: decision)) {
+                        DecisionCard(card: decision)
+                    }
+                    if deleteOnForDecision {
+                        Button {
+                            context.delete(decision)
+                        } label: {
+                            Image(systemName: "trash")
+                                .padding()
+                        }
+                        .buttonStyle(BorderlessButtonStyle())
+                    }
+                }
+            }
+        }
     }
 }
 
