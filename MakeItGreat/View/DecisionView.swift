@@ -28,6 +28,7 @@ struct DecisionView: View {
                     NavigationView {
                         EditView(card: decision)
                     }
+                    .presentationDragIndicator(.visible)
                 }
             }
         }
