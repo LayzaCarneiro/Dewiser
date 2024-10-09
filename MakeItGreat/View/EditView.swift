@@ -42,7 +42,7 @@ struct EditView: View {
                                 .cornerRadius(10)
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 10)
-                                        .stroke(.stroke, lineWidth: 2)
+                                        .stroke(Color.fieldStroke, lineWidth: 2)
                                 )
                         }
                         
@@ -61,7 +61,7 @@ struct EditView: View {
                             .cornerRadius(10)
                             .overlay(
                                 RoundedRectangle(cornerRadius: 10)
-                                    .stroke(.stroke, lineWidth: 2)
+                                    .stroke(Color.fieldStroke, lineWidth: 2)
                             )
                         }
                         

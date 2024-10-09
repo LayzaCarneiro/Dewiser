@@ -24,15 +24,15 @@ struct CustomDatePicker: View {
             Image(systemName: "calendar")
                 .resizable()
                 .frame(width: 21, height: 21, alignment: .center)
+                .foregroundColor(Color.grayText)
         }
-//        .padding(.horizontal, 15)
         .padding(.vertical, 10)
         .frame(width: 152, height: 45)
         .background(.backgroundField)
         .cornerRadius(10)
         .overlay(
             RoundedRectangle(cornerRadius: 10)
-                .stroke(.stroke, lineWidth: 2)
+                .stroke(Color.fieldStroke, lineWidth: 2)
         )
         .overlay {
             DatePicker(
@@ -45,7 +45,6 @@ struct CustomDatePicker: View {
             .labelsHidden()
             .blendMode(.destinationOver)
         }
-
     }
 }
 

@@ -24,7 +24,6 @@ struct FeelingItem: View {
                 .font(.caption)
                 .fontWeight(.medium)
                 .fontDesign(.rounded)
-                .padding(.top, -15)
                 .foregroundStyle(.text)
         }
     }

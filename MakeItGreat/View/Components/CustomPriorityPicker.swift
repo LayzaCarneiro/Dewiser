@@ -16,21 +16,20 @@ struct CustomPriorityPicker: View {
                 Text(priority.rawValue.capitalized)
             }
         }
+        .colorMultiply(colorForPriority(selectedPriority))
         .pickerStyle(.segmented)
-        .colorMultiply(colorForPriority(selectedPriority).opacity(0.8))
-        .background(.backgroundField)
         .cornerRadius(10)
         .overlay(
             RoundedRectangle(cornerRadius: 8.91)
-                .stroke(.stroke, lineWidth: 2)
+                .stroke(Color.fieldStroke, lineWidth: 2)
         )
     }
 
     func colorForPriority(_ priority: Priority) -> Color {
         switch priority {
-        case .low: return .blue
-        case .medium: return .yellow
-        case .high: return .red
+        case .low: return Color.bluePicker
+        case .medium: return Color.yellowPicker
+        case .high: return Color.redPicker
         }
     }
 }
