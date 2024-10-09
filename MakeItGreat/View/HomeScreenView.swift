@@ -19,76 +19,40 @@ struct HomeScreenView: View {
 
     var body: some View {
         NavigationStack {
-            VStack {
-                if decisions.isEmpty {
-                    ContentUnavailableView {
-                        Label("No decisions", systemImage: "tray.fill")
-                            .fontDesign(.rounded)
-                    } description: {
-                        Text("You don't have any decisions yet")
-                            .fontDesign(.rounded)
+            ZStack {
+                Color.colorbackground.ignoresSafeArea()
+                VStack {
+                    if decisions.isEmpty {
+                        NoDecisionsView()
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                            .background(Color.clear)
+                    } else {
+                        HaveDecisionsView()
                     }
-                } else {
-                    Button {
-                        deleteOnForDecision.toggle()
-                    } label: {
-                        Text("Delete cards")
-                            .font(.title3)
-                            .fontWeight(.semibold)
-                    }
-                    ScrollView(.vertical, showsIndicators: false) {
-                        
-                        ForEach(decisions.reversed()) { decision in
-                            HStack {
-                                NavigationLink(destination: DecisionView(decision: decision)) {
-                                    DecisionCard(card: decision)
-                                }
-                                if deleteOnForDecision {
-                                    Button {
-                                        context.delete(decision)
-                                    } label: {
-                                        Image(systemName: "trash")
-                                            .padding()
-                                    }
-                                    .buttonStyle(BorderlessButtonStyle())
-                                }
-                            }
+                }
+                .navigationTitle("My Decisions")
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        NavigationLink(destination: SearchView()) {
+                            Image(systemName: "magnifyingglass")
+                                .foregroundStyle(Color(UIColor.label))
+                                .bold()
                         }
                     }
-                }
-                Button {
-                    isPresented.toggle()
-                } label: {
-                    Text("Create a decision")
-                        .font(.title2)
-                        .fontWeight(.semibold)
-                        .fontDesign(.rounded)
-                        .foregroundColor(.primary)
-                        .frame(width: 254, height: 76)
-                        .background(.secondary)
-                        .cornerRadius(30)
-                }
-                .fullScreenCover(isPresented: $isPresented) {
-                    NavigationView {
-                        FirstPage(formViewModel: FormViewModel(), isPresented: $isPresented)
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        NavigationLink(destination: SettingsView()) {
+                            Image(systemName: "gear")
+                                .foregroundStyle(Color(UIColor.label))
+                                .bold()
+                        }
                     }
-                }
-            }
-            .padding()
-            .navigationTitle("My Decisions")
-            .fontDesign(.rounded)
-            .toolbar {
-                NavigationLink(destination: SearchView()) {
-                    Image(systemName: "magnifyingglass")
-                }
-                NavigationLink(destination: SettingsView()) {
-                    Image(systemName: "gear")
                 }
             }
         }
     }
 }
-
-//#Preview {
-//    HomeScreenView()
-//}
+struct HomeScreenView_Previews: PreviewProvider {
+    static var previews: some View {
+        HomeScreenView()
+    }
+}
