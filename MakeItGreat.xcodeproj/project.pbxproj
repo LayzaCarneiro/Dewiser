@@ -21,6 +21,7 @@
 		AE7F8BC12CA6DA8B00CD3835 /* CardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7F8BC02CA6DA8B00CD3835 /* CardModel.swift */; };
 		AE7F8BC72CA6EABB00CD3835 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7F8BC62CA6EABB00CD3835 /* ProgressBar.swift */; };
 		AE8D856D2CB357A50032AD17 /* CustomPriorityPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8D856C2CB3579A0032AD17 /* CustomPriorityPicker.swift */; };
+		AE9E27A82CB6A4E4006FB9E4 /* PriorityTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9E27A72CB6A4DA006FB9E4 /* PriorityTag.swift */; };
 		AE9E32AE2CA383E5009235AC /* FormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9E32AD2CA383E5009235AC /* FormViewModel.swift */; };
 		AE9E32B02CA38485009235AC /* FirstPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9E32AF2CA38485009235AC /* FirstPage.swift */; };
 		AE9E32B32CA3854D009235AC /* SecondPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9E32B22CA3854D009235AC /* SecondPage.swift */; };
@@ -51,6 +52,7 @@
 		AE7F8BC02CA6DA8B00CD3835 /* CardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardModel.swift; sourceTree = "<group>"; };
 		AE7F8BC62CA6EABB00CD3835 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		AE8D856C2CB3579A0032AD17 /* CustomPriorityPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPriorityPicker.swift; sourceTree = "<group>"; };
+		AE9E27A72CB6A4DA006FB9E4 /* PriorityTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriorityTag.swift; sourceTree = "<group>"; };
 		AE9E32AD2CA383E5009235AC /* FormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewModel.swift; sourceTree = "<group>"; };
 		AE9E32AF2CA38485009235AC /* FirstPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstPage.swift; sourceTree = "<group>"; };
 		AE9E32B22CA3854D009235AC /* SecondPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondPage.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 		AE7F8BBB2CA6D5E500CD3835 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				AE9E27A72CB6A4DA006FB9E4 /* PriorityTag.swift */,
 				AE8D856C2CB3579A0032AD17 /* CustomPriorityPicker.swift */,
 				AED2E7352CB2526D005A89CD /* CustomHourPicker.swift */,
 				AED2E7332CB24F7B005A89CD /* CustomDatePicker.swift */,
@@ -302,6 +305,7 @@
 				AE3BFAB92CAC38A100DC1C67 /* DecisionView.swift in Sources */,
 				AE3847A72CABF46200D4ABB5 /* ProModel.swift in Sources */,
 				AE28CDCF2CA2F3AE00267E39 /* ContentView.swift in Sources */,
+				AE9E27A82CB6A4E4006FB9E4 /* PriorityTag.swift in Sources */,
 				AE28CDCD2CA2F3AE00267E39 /* MakeItGreatApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
