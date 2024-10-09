@@ -38,7 +38,7 @@ struct EditView: View {
                             TextField("What's your decision title?", text: $card.title)
                                 .padding()
                                 .frame(width: 361, height: 44)
-                                .background(.backgroundField)
+                                .background(.cardBackground)
                                 .cornerRadius(10)
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 10)
@@ -57,7 +57,7 @@ struct EditView: View {
                                       axis: .vertical)
                             .padding()
                             .lineLimit(8, reservesSpace: true)
-                            .background(.backgroundField)
+                            .background(.cardBackground)
                             .cornerRadius(10)
                             .overlay(
                                 RoundedRectangle(cornerRadius: 10)

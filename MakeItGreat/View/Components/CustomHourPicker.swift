@@ -29,7 +29,7 @@ struct CustomHourPicker: View {
         .padding(.horizontal, 15)
         .padding(.vertical, 10)
         .frame(width: 152, height: 45)
-        .background(.backgroundField)
+        .background(.cardBackground)
         .cornerRadius(10)
         .overlay(
             RoundedRectangle(cornerRadius: 10)

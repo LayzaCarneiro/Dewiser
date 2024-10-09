@@ -16,7 +16,7 @@ struct DecisionCard: View {
     @State private var filteredPros: [ProModel] = []
     @State private var filteredCons: [ConModel] = []
     
-    var images = ["Insecure": "insecureFace", "Angry": "angryFace", "Ok": "okFace", "Good": "goodFace", "Confident": "confidentFace"]
+    var images = ["Sad": "sadFace", "Angry": "angryFace", "Ok": "okFace", "Good": "goodFace", "Confident": "confidentFace"]
 
     var body: some View {
         ZStack(alignment: .leading) {
