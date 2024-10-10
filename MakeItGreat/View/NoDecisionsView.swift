@@ -10,12 +10,11 @@ import SwiftUI
 struct NoDecisionsView: View {
     var body: some View {
         ZStack(alignment: .bottom) {
-            Color.clear // Preenche o fundo para garantir que a área ocupe toda a tela
-
+            Color.clear
             Image("nodecisions")
                 .resizable()
                 .scaledToFit()
-                .frame(maxHeight: .infinity, alignment: .bottom) // Alinha a imagem no fundo
+                .frame(maxHeight: .infinity, alignment: .bottom) 
                 .ignoresSafeArea()
 
             VStack {
@@ -26,6 +25,8 @@ You don't have any
 decisions yet
 """, systemImage: "")
                         .fontDesign(.rounded)
+                        .fontWeight(.bold)
+                        .foregroundColor(.white)
                 }
                 ButtonCreateDecision()
                 .padding(.bottom, 30)

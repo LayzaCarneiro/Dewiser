@@ -23,34 +23,60 @@ struct HomeScreenView: View {
                 Color.colorbackground.ignoresSafeArea()
                 VStack {
                     if decisions.isEmpty {
+                        Text("My Decisions")
+                            .font(.largeTitle)
+                            .fontDesign(.rounded)
+                            .fontWidth(.compressed)
+                            .fontWeight(.black)
+                            .foregroundColor(.textcolormd)
+                            .padding(.trailing, 100)
+                            .padding(.top, 30)
                         NoDecisionsView()
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
                             .background(Color.clear)
+                            .toolbar {
+                                ToolbarItem(placement: .navigationBarTrailing) {
+                                    HStack {
+                                        NavigationLink(destination: SearchView()) {
+                                            Image(systemName: "magnifyingglass")
+                                                .foregroundStyle(Color(UIColor.label))
+                                                .fontWeight(.bold)
+                                        }
+                                        NavigationLink(destination: SettingsView()) {
+                                            Image(systemName: "gear")
+                                                .foregroundStyle(Color(UIColor.label))
+                                                .fontWeight(.bold)
+                                        }
+                                    }
+                                }
+                            }
                     } else {
                         HaveDecisionsView()
-                    }
-                }
-                .navigationTitle("My Decisions")
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        NavigationLink(destination: SearchView()) {
-                            Image(systemName: "magnifyingglass")
-                                .foregroundStyle(Color(UIColor.label))
-                                .bold()
-                        }
-                    }
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        NavigationLink(destination: SettingsView()) {
-                            Image(systemName: "gear")
-                                .foregroundStyle(Color(UIColor.label))
-                                .bold()
-                        }
+                            .background(Color.procard)
+                            .toolbar {
+                                ToolbarItem(placement: .navigationBarTrailing) {
+                                    HStack {
+                                        NavigationLink(destination: SearchView()) {
+                                            Image(systemName: "magnifyingglass")
+                                                .foregroundStyle(.itemcardcolor)
+                                                .fontWeight(.bold)
+                                        }
+                                        NavigationLink(destination: SettingsView()) {
+                                            Image(systemName: "gear")
+                                                .foregroundStyle(.itemcardcolor)
+                                                .fontWeight(.bold)
+                                        }
+                                    }
+                                }
+                            }
                     }
                 }
             }
+            
         }
     }
 }
+
 struct HomeScreenView_Previews: PreviewProvider {
     static var previews: some View {
         HomeScreenView()
