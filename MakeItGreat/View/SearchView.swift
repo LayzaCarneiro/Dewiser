@@ -19,18 +19,35 @@ struct SearchView: View {
 }
     var body: some View {
         NavigationStack {
-            ZStack {
-                ScrollView(.vertical) {
-                    ForEach(filteredDecisions) { decision in
-                        DecisionCard(card: decision)
+            if decisions.isEmpty {
+                NoSearchView()
+            } else {
+                ZStack {
+                    Color.background.ignoresSafeArea()
+                    ScrollView(.vertical) {
+                        ForEach(filteredDecisions) { decision in
+                            DecisionCard(card: decision)
+                        }
+                    }
+                }
+                
+                .searchable(text: $searchTerm, placement: .navigationBarDrawer(
+                    displayMode: .always),
+                            prompt: "Search your decision cards"
+                )
+                var filterDecisions: [CardModel] {
+                    if searchTerm.isEmpty {
+                        return decisions
+                    }
+                    return decisions.filter {
+                        $0.title.localizedCaseInsensitiveContains(searchTerm) ||
+                        (($0.cardDescription?.localizedCaseInsensitiveContains(searchTerm)) != nil)
                     }
                 }
             }
-            .searchable(text: $searchTerm, placement: .navigationBarDrawer(
-                displayMode: .always),
-                        prompt: "Search your decision cards"
-            )
         }
+        .navigationTitle("Search")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 #Preview {

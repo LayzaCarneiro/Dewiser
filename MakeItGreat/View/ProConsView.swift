@@ -24,7 +24,7 @@ struct ProConsView: View {
 
     var body: some View {
         ZStack {
-            Color.colorbackground.ignoresSafeArea()
+            Color.background.ignoresSafeArea()
             ScrollView(.vertical) {
                 VStack {
                     HStack(spacing: 20) {

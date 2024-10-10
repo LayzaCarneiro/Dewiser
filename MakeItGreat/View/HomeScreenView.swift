@@ -20,7 +20,7 @@ struct HomeScreenView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                Color.colorbackground.ignoresSafeArea()
+               
                 VStack {
                     if decisions.isEmpty {
                         NoDecisionsView()

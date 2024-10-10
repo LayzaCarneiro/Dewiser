@@ -29,7 +29,6 @@ decisions yet
                 }
                 ButtonCreateDecision()
                 .padding(.bottom, 30)
-        
             }
         }
     }
@@ -38,4 +37,3 @@ decisions yet
 #Preview {
     NoDecisionsView()
 }
-
