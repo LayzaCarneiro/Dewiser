@@ -10,27 +10,29 @@ import SwiftData
 
 struct ItemCard: View {
     @Binding var content: String
-    
-//    @State var deleteOn: Bool = false
+    var onDelete: () -> Void
 
     var body: some View {
-        HStack(spacing: 5) {
+        ZStack(alignment: .topTrailing) {  // ZStack para sobrepor o botão "X"
+            // Conteúdo do cartão
             TextField("", text: $content)
                 .frame(width: 149, height: 84)
-                .background(.gray)
+                .background(Color.itemcardcolor)
                 .cornerRadius(10)
-            
-//            if deleteOn {
-//                Button {
-//                    content.removeAll()
-//                    deleteOn = false
-//                } label: {
-//                    Image(systemName: "trash")
-//                }
-//            }
+                .background(
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(Color.strokecard, lineWidth: 4)
+                        .frame(width: 149, height: 84)
+                )
+            Button(action: {
+                onDelete()
+            }) {
+                Image(systemName: "xmark")
+                    .foregroundColor(.strokecard)
+                    .padding(6)
+            }
         }
-//        .onLongPressGesture {
-//            deleteOn = true
-//        }
+        .frame(width: 149, height: 84)
     }
 }
+
