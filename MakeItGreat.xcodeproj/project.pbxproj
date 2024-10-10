@@ -36,6 +36,9 @@
 		AEFC12CE2CACC8EE00E00B9D /* LinkAbout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFC12CC2CACC8EE00E00B9D /* LinkAbout.swift */; };
 		AEFC12CF2CACC8EE00E00B9D /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFC12CD2CACC8EE00E00B9D /* SettingsViewModel.swift */; };
 		E92604D32CAC1B8A002F0C77 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92604D22CAC1B8A002F0C77 /* SearchView.swift */; };
+		E9869F4E2CB70470005DC0E4 /* NoDecisionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9869F4D2CB70470005DC0E4 /* NoDecisionsView.swift */; };
+		E9869F502CB7048D005DC0E4 /* HaveDecisionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9869F4F2CB7048D005DC0E4 /* HaveDecisionsView.swift */; };
+		E9869F522CB70619005DC0E4 /* ButtonCreateDecision.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9869F512CB70619005DC0E4 /* ButtonCreateDecision.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,6 +74,9 @@
 		AEFC12CC2CACC8EE00E00B9D /* LinkAbout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkAbout.swift; sourceTree = "<group>"; };
 		AEFC12CD2CACC8EE00E00B9D /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		E92604D22CAC1B8A002F0C77 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		E9869F4D2CB70470005DC0E4 /* NoDecisionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoDecisionsView.swift; sourceTree = "<group>"; };
+		E9869F4F2CB7048D005DC0E4 /* HaveDecisionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HaveDecisionsView.swift; sourceTree = "<group>"; };
+		E9869F512CB70619005DC0E4 /* ButtonCreateDecision.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCreateDecision.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +151,7 @@
 				AE7F8BBE2CA6D68F00CD3835 /* ItemCard.swift */,
 				AE7F8BC62CA6EABB00CD3835 /* ProgressBar.swift */,
 				AE5B33E42CA88BCD0055D650 /* DecisionCard.swift */,
+				E9869F512CB70619005DC0E4 /* ButtonCreateDecision.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -168,6 +175,8 @@
 				AE3BFAB82CAC389D00DC1C67 /* DecisionView.swift */,
 				AE7F8BBC2CA6D5FF00CD3835 /* ProConsView.swift */,
 				AE5B33E62CA88CBF0055D650 /* HomeScreenView.swift */,
+				E9869F4D2CB70470005DC0E4 /* NoDecisionsView.swift */,
+				E9869F4F2CB7048D005DC0E4 /* HaveDecisionsView.swift */,
 				E92604D22CAC1B8A002F0C77 /* SearchView.swift */,
 			);
 			path = View;
@@ -300,18 +309,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE7F8BBD2CA6D5FF00CD3835 /* ProConsView.swift in Sources */,
+				E9869F502CB7048D005DC0E4 /* HaveDecisionsView.swift in Sources */,
 				AE3847A92CABF4C400D4ABB5 /* ConModel.swift in Sources */,
 				AEE99BEA2CB0145500CC299A /* EditView.swift in Sources */,
 				AE9E32AE2CA383E5009235AC /* FormViewModel.swift in Sources */,
 				AE9E32B02CA38485009235AC /* FirstPage.swift in Sources */,
 				AE9E32B32CA3854D009235AC /* SecondPage.swift in Sources */,
 				AE7F8BC12CA6DA8B00CD3835 /* CardModel.swift in Sources */,
+				E9869F4E2CB70470005DC0E4 /* NoDecisionsView.swift in Sources */,
 				AE7F8BC72CA6EABB00CD3835 /* ProgressBar.swift in Sources */,
 				AED2E7362CB25272005A89CD /* CustomHourPicker.swift in Sources */,
 				AE5B33E72CA88CBF0055D650 /* HomeScreenView.swift in Sources */,
 				AE5B33E52CA88BCD0055D650 /* DecisionCard.swift in Sources */,
 				E92604D32CAC1B8A002F0C77 /* SearchView.swift in Sources */,
 				AE7F8BBF2CA6D68F00CD3835 /* ItemCard.swift in Sources */,
+				E9869F522CB70619005DC0E4 /* ButtonCreateDecision.swift in Sources */,
 				AEFC12CE2CACC8EE00E00B9D /* LinkAbout.swift in Sources */,
 				AEFC12CF2CACC8EE00E00B9D /* SettingsViewModel.swift in Sources */,
 				AE7F8BBF2CA6D68F00CD3835 /* ItemCard.swift in Sources */,
@@ -460,7 +472,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MakeItGreat/Preview Content\"";
-				DEVELOPMENT_TEAM = ZFH4AF7HSL;
+				DEVELOPMENT_TEAM = RDBBF5GZZ8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = Dewiser;
@@ -491,7 +503,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MakeItGreat/Preview Content\"";
-				DEVELOPMENT_TEAM = ZFH4AF7HSL;
+				DEVELOPMENT_TEAM = RDBBF5GZZ8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = Dewiser;
