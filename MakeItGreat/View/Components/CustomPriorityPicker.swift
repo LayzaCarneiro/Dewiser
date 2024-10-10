@@ -18,6 +18,7 @@ struct CustomPriorityPicker: View {
         }
         .pickerStyle(.segmented)
         .colorMultiply(colorForPriority(selectedPriority).opacity(0.8))
+        .background(.itemcardcolor)
         .overlay(
             RoundedRectangle(cornerRadius: 8.91)
                 .stroke(.primary, lineWidth: 2)

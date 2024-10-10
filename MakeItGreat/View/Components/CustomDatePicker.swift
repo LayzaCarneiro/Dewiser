@@ -27,7 +27,7 @@ struct CustomDatePicker: View {
         }
         .padding(.horizontal, 15)
         .padding(.vertical, 10)
-        //        .background(.white)
+        .background(.itemcardcolor)
         .overlay(
             RoundedRectangle(cornerRadius: 10)
                 .stroke(.primary, lineWidth: 2)
