@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import UIKit
 
 struct ProConsView: View {
     var card: CardModel
@@ -17,102 +18,87 @@ struct ProConsView: View {
     @Environment(\.modelContext) var context
     @State private var filteredPros: [ProModel] = []
     @State private var filteredCons: [ConModel] = []
-
     @State var deleteOn: Bool = false
-    
     @State private var deleteOnForDecision: Bool = false
+    let generator = UIImpactFeedbackGenerator(style: .rigid)
 
     var body: some View {
         ZStack {
-            ScrollView(.vertical) {
+            ScrollView(.vertical, showsIndicators: false) {
                 VStack {
-                    Button {
-                        deleteOnForDecision.toggle()
-                    } label: {
-                        Text("Delete item")
-                            .font(.title3)
-                            .fontWeight(.semibold)
-                    }
-                    
                     HStack(spacing: 20) {
                         VStack {
                             Text("Pros")
-                                .font(.title2)
+                                .font(.system(size: 32))
                                 .fontDesign(.rounded)
-                                .fontWeight(.bold)
-                            
-                            ProgressBar(progress: Double(filteredPros.count), total: Double(filteredPros.count + filteredCons.count))
-                            
+                                .fontWidth(.compressed)
+                                .fontWeight(.black)
+
+                            ProgressBar(progress: Double(filteredPros.count), total: Double(filteredPros.count + filteredCons.count), color: Color.purpleBackground)
+
                             Button {
+                                generator.impactOccurred()
                                 let newPro = ProModel(id: UUID(), content: "Pro", cardID: card.id)
                                 context.insert(newPro)
                             } label: {
                                 HStack {
                                     Image(systemName: "plus")
                                     Text("Pro")
+                                        .fontDesign(.rounded)
                                 }
                                 .frame(width: 149, height: 84, alignment: .center)
-                                .background(.blue)
+                                .background(Color.purpleBackground)
                                 .cornerRadius(10)
                                 .foregroundStyle(.white)
                                 .fontWeight(.bold)
-                                
                             }
-                            
+                            .padding(.vertical, 10)
+
                             ForEach($filteredPros, id: \.self) { $pro in
                                 HStack {
-                                    ItemCard(content: $pro.content)
-                                    
-                                    if deleteOnForDecision {
-                                        Button {
-                                            context.delete(pro)
-                                        } label: {
-                                            Image(systemName: "trash")
-                                                .padding()
-                                        }
-                                        .buttonStyle(BorderlessButtonStyle())
-                                    }
+                                    ItemCard(content: $pro.content, onDelete: {
+                                           context.delete(pro)
+                                       })
+                                    .padding(.bottom, 10)
                                 }
                             }
                             Spacer()
                         }
-                        
+
                         VStack {
                             Text("Cons")
-                                .font(.title2)
+                                .font(.system(size: 32))
                                 .fontDesign(.rounded)
-                                .fontWeight(.bold)
-                            
-                            ProgressBar(progress: Double(filteredCons.count), total: Double(filteredPros.count + filteredCons.count))
-                            
+                                .fontWidth(.compressed)
+                                .fontWeight(.black)
+
+                            ProgressBar(progress: Double(filteredCons.count), total: Double(filteredPros.count + filteredCons.count), color: Color.yellowCustom)
+
                             Button {
+                                generator.impactOccurred()
                                 let newCon = ConModel(id: UUID(), content: "Con", cardID: card.id)
                                 context.insert(newCon)
                             } label: {
                                 HStack {
                                     Image(systemName: "plus")
                                     Text("Con")
+                                        .foregroundStyle(.black)
+                                        .fontDesign(.rounded)
                                 }
                                 .frame(width: 149, height: 84, alignment: .center)
-                                .background(.blue)
+                                .background(Color.yellowCustom)
                                 .cornerRadius(10)
-                                .foregroundStyle(.white)
+                                .foregroundStyle(.black)
                                 .fontWeight(.bold)
                             }
-                            
+                            .padding(.vertical, 10)
+
                             ForEach($filteredCons, id: \.self) { $con in
                                 HStack {
-                                    ItemCard(content: $con.content)
-                                    
-                                    if deleteOnForDecision {
-                                        Button {
-                                            context.delete(con)
-                                        } label: {
-                                            Image(systemName: "trash")
-                                                .padding()
-                                        }
-                                        .buttonStyle(BorderlessButtonStyle())
-                                    }
+                                    ItemCard(content: $con.content, onDelete: {
+                                           context.delete(con)
+                                       })
+                                    .padding(.bottom, 10)
                                 }
                             }
                             Spacer()
@@ -134,3 +120,10 @@ struct ProConsView: View {
     }
 }
 
+struct ProConsView_Previews: PreviewProvider {
+    static var previews: some View {
+        let exampleCard = CardModel(id: UUID(), title: "Example Card")
+        ProConsView(card: exampleCard)
+            .modelContainer(for: [CardModel.self, ProModel.self, ConModel.self])
+    }
+}

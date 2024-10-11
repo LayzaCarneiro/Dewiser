@@ -15,7 +15,6 @@ struct FirstPage: View {
         NavigationStack {
             ScrollView(.vertical, showsIndicators: false) {
                 VStack(spacing: 42) {
-                    
                     VStack(alignment: .leading) {
                         HStack(spacing: 3) {
                             Text("Title")
@@ -68,7 +67,7 @@ struct FirstPage: View {
                             Text("Time")
                                 .font(.body)
                                 .fontWeight(.bold)
-                            
+
                             CustomHourPicker(selectedHour: Binding(
                                 get: {formViewModel.cardModel.time ?? Date()},
                                 set: { newValue in formViewModel.cardModel.time = newValue}
