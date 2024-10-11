@@ -21,7 +21,8 @@ struct NoSearchView: View {
     var body: some View {
         NavigationStack {
             ZStack(alignment: .bottom) {
-                Color.clear // Preenche o fundo para garantir que a área ocupe toda a tela
+                Color.background // Preenche o fundo para garantir que a área ocupe toda a tela
+                    .ignoresSafeArea()
                 Image("nodecisions")
                     .resizable()
                     .scaledToFit()
