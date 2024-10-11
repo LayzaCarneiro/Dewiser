@@ -10,105 +10,113 @@ import SwiftUI
 struct FirstPage: View {
     @StateObject var formViewModel: FormViewModel
     @Binding var isPresented: Bool
-
+    
     var body: some View {
         NavigationStack {
-            ScrollView(.vertical, showsIndicators: false) {
-                VStack(spacing: 42) {
-                    VStack(alignment: .leading) {
-                        HStack(spacing: 3) {
-                            Text("Title")
-                                .font(.body)
-                                .fontWeight(.bold)
-                            Text("*")
-                                .font(.body)
-                                .fontWeight(.bold)
-                                .foregroundStyle(.red)
+            ZStack{
+                Color.colorbackground.ignoresSafeArea()
+                ScrollView(.vertical, showsIndicators: false) {
+                    VStack(spacing: 42) {
+                        
+                        VStack(alignment: .leading) {
+                            HStack(spacing: 3) {
+                                Text("Title")
+                                    .font(.body)
+                                    .fontWeight(.bold)
+                                Text("*")
+                                    .font(.body)
+                                    .fontWeight(.bold)
+                                    .foregroundStyle(.red)
+                            }
+                            TextField("What is your decision title?", text: $formViewModel.cardModel.title)
+                                .padding()
+                                .frame(width: 361, height: 44)
+                                .background(Color.itemcardcolor)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .stroke(.primary, lineWidth: 2)
+                                )
                         }
-                        TextField("What is your decision title?", text: $formViewModel.cardModel.title)
+                        
+                        VStack(alignment: .leading) {
+                            Text("Description")
+                                .font(.body)
+                                .fontWeight(.bold)
+                            TextField("What's your decision description?",
+                                      text: Binding(
+                                        get: {formViewModel.cardModel.cardDescription ?? ""},
+                                        set: {formViewModel.cardModel.cardDescription = $0.isEmpty ? nil : $0}),
+                                      axis: .vertical)
                             .padding()
-                            .frame(width: 361, height: 44)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 10)
-                                    .stroke(.primary, lineWidth: 2)
-                            )
-                    }
-
-                    VStack(alignment: .leading) {
-                        Text("Description")
-                            .font(.body)
-                            .fontWeight(.bold)
-                        TextField("What's your decision description?",
-                                  text: Binding(
-                                    get: {formViewModel.cardModel.cardDescription ?? ""},
-                                    set: {formViewModel.cardModel.cardDescription = $0.isEmpty ? nil : $0}),
-                                  axis: .vertical)
-                            .padding()
+                            .background(Color.itemcardcolor)
                             .lineLimit(8, reservesSpace: true)
                             .overlay(
                                 RoundedRectangle(cornerRadius: 10)
                                     .stroke(.primary, lineWidth: 2)
                             )
-                    }
-
-                    HStack(spacing: 55) {
-                        VStack(alignment: .leading) {
-                            Text("Deadline")
-                                .font(.body)
-                                .fontWeight(.bold)
+                        }
+                        
+                        HStack(spacing: 55) {
+                            VStack(alignment: .leading) {
+                                Text("Deadline")
+                                    .font(.body)
+                                    .fontWeight(.bold)
+                                
+                                CustomDatePicker(selectedDate: Binding(
+                                    get: {formViewModel.cardModel.deadline ?? Date()},
+                                    set: { newValue in formViewModel.cardModel.deadline = newValue}
+                                ), isDateSelected: false)
+                            }
                             
-                            CustomDatePicker(selectedDate: Binding(
-                                get: {formViewModel.cardModel.deadline ?? Date()},
-                                set: { newValue in formViewModel.cardModel.deadline = newValue}
-                            ), isDateSelected: false)
+                            VStack(alignment: .leading) {
+                                Text("Time")
+                                    .font(.body)
+                                    .fontWeight(.bold)
+                                
+                                CustomHourPicker(selectedHour: Binding(
+                                    get: {formViewModel.cardModel.time ?? Date()},
+                                    set: { newValue in formViewModel.cardModel.time = newValue}
+                                ), isHourSelected: false)
+                            }
                         }
-
+                        .padding(.trailing, 12)
+                        
                         VStack(alignment: .leading) {
-                            Text("Time")
-                                .font(.body)
-                                .fontWeight(.bold)
-
-                            CustomHourPicker(selectedHour: Binding(
-                                get: {formViewModel.cardModel.time ?? Date()},
-                                set: { newValue in formViewModel.cardModel.time = newValue}
-                            ), isHourSelected: false)
+                            HStack(spacing: 3) {
+                                Text("Priority")
+                                    .font(.body)
+                                    .fontWeight(.bold)
+                                Text("*")
+                                    .font(.body)
+                                    .fontWeight(.bold)
+                                    .foregroundStyle(.red)
+                            }
+                            
+                            CustomPriorityPicker(selectedPriority: $formViewModel.cardModel.priorityEnum)
+                            
                         }
                     }
-                    .padding(.trailing, 12)
-
-                    VStack(alignment: .leading) {
-                        HStack(spacing: 3) {
-                            Text("Priority")
-                                .font(.body)
-                                .fontWeight(.bold)
-                            Text("*")
-                                .font(.body)
-                                .fontWeight(.bold)
-                                .foregroundStyle(.red)
-                        }
-
-                        CustomPriorityPicker(selectedPriority: $formViewModel.cardModel.priorityEnum)
-
+                    .padding()
+                    .padding(.top, 15)
+                    Spacer()
+                }
+            }
+            .navigationTitle("New Decision")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button {
+                        isPresented.toggle()
+                    } label: {
+                        Text("Cancel")
+                            .foregroundStyle(.cancelcolor)
                     }
                 }
-                .padding()
-                .padding(.top, 15)
-                Spacer()
-            }
-        }
-        .navigationTitle("New Decision")
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            ToolbarItem(placement: .topBarLeading) {
-                Button {
-                    isPresented.toggle()
-                } label: {
-                    Text("Cancel")
-                }
-            }
-            ToolbarItem(placement: .topBarTrailing) {
-                NavigationLink(destination: SecondPage(formViewModel: formViewModel, isPresented: $isPresented)) {
-                    Text("Next")
+                ToolbarItem(placement: .topBarTrailing) {
+                    NavigationLink(destination: SecondPage(formViewModel: formViewModel, isPresented: $isPresented)) {
+                        Text("Next")
+                            .foregroundStyle(.cancelcolor)
+                    }
                 }
             }
         }

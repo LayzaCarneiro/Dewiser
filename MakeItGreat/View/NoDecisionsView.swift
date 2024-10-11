@@ -11,11 +11,10 @@ struct NoDecisionsView: View {
     var body: some View {
         ZStack(alignment: .bottom) {
             Color.clear
-
             Image("nodecisions")
                 .resizable()
                 .scaledToFit()
-                .frame(maxHeight: .infinity, alignment: .bottom)
+                .frame(maxHeight: .infinity, alignment: .bottom) 
                 .ignoresSafeArea()
 
             VStack {
@@ -26,6 +25,8 @@ struct NoDecisionsView: View {
                         decisions yet
                         """, systemImage: "")
                         .fontDesign(.rounded)
+                        .fontWeight(.bold)
+                        .foregroundColor(.white)
                 }
                 ButtonCreateDecision()
                 .padding(.bottom, 30)
