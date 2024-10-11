@@ -36,10 +36,10 @@
 		AEFC12CE2CACC8EE00E00B9D /* LinkAbout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFC12CC2CACC8EE00E00B9D /* LinkAbout.swift */; };
 		AEFC12CF2CACC8EE00E00B9D /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFC12CD2CACC8EE00E00B9D /* SettingsViewModel.swift */; };
 		E92604D32CAC1B8A002F0C77 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92604D22CAC1B8A002F0C77 /* SearchView.swift */; };
-		FC646F732CB7121200EEAA15 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC646F722CB7121200EEAA15 /* OnboardingView.swift */; };
 		E92604DF2CAEDCFA002F0C77 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E92604DE2CAEDCFA002F0C77 /* WidgetKit.framework */; };
 		E92604E12CAEDCFA002F0C77 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E92604E02CAEDCFA002F0C77 /* SwiftUI.framework */; };
 		E92604F22CAEDCFB002F0C77 /* DewiserWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = E92604DC2CAEDCFA002F0C77 /* DewiserWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		FC646F732CB7121200EEAA15 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC646F722CB7121200EEAA15 /* OnboardingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,10 +99,10 @@
 		AEFC12CC2CACC8EE00E00B9D /* LinkAbout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkAbout.swift; sourceTree = "<group>"; };
 		AEFC12CD2CACC8EE00E00B9D /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		E92604D22CAC1B8A002F0C77 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
-		FC646F722CB7121200EEAA15 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		E92604DC2CAEDCFA002F0C77 /* DewiserWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = DewiserWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		E92604DE2CAEDCFA002F0C77 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		E92604E02CAEDCFA002F0C77 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		FC646F722CB7121200EEAA15 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -219,7 +219,6 @@
 		AE9E32A72CA358A1009235AC /* View */ = {
 			isa = PBXGroup;
 			children = (
-				E92604FA2CAEDE35002F0C77 /* Widget */,
 				AEFC12C92CACC8C900E00B9D /* Settings */,
 				AE7F8BBB2CA6D5E500CD3835 /* Components */,
 				AE9E32B12CA3853B009235AC /* Form */,
@@ -269,13 +268,6 @@
 				E92604E02CAEDCFA002F0C77 /* SwiftUI.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		E92604FA2CAEDE35002F0C77 /* Widget */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Widget;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
