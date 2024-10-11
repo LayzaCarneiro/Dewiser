@@ -112,7 +112,7 @@ struct SettingsView: View {
         if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
             let reason = "O Face ID será utilizado para suas decisões se manterem em segredo"
             context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics,
-                                   localizedReason: reason) { success, authenticationError in
+                                   localizedReason: reason) { success, _ in
                 DispatchQueue.main.async {
                     if success {
                         isAuthenticated = true
@@ -127,7 +127,7 @@ struct SettingsView: View {
     }
 
     func requestNotificationPermission() {
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, _ in
             if granted {
                 scheduleRandomTimeReminder()
             } else {

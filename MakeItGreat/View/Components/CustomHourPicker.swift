@@ -24,27 +24,24 @@ struct CustomHourPicker: View {
             Image(systemName: "clock")
                 .resizable()
                 .frame(width: 21, height: 21)
+                .foregroundColor(Color.textGray)
         }
         .padding(.horizontal, 15)
         .padding(.vertical, 10)
-        .background(.itemcardcolor)
+        .frame(width: 152, height: 45)
+        .background(.cardBackground)
+        .cornerRadius(10)
         .overlay(
             RoundedRectangle(cornerRadius: 10)
-                .stroke(.primary, lineWidth: 2)
-                .frame(width: 152, height: 45)
+                .stroke(Color.fieldStroke, lineWidth: 2)
         )
         .overlay {
-            DatePicker("", selection: Binding(get: {
-                            selectedHour ?? Date() 
-                        }, set: { newValue in
+            DatePicker("", selection: Binding(get: {selectedHour ?? Date()}, set: { newValue in
                             selectedHour = newValue
                             isHourSelected = true
                         }), displayedComponents: .hourAndMinute)
                             .labelsHidden()
                             .blendMode(.destinationOver)
-//            DatePicker("", selection: $selectedHour, displayedComponents: .hourAndMinute)
-//                .labelsHidden()
-//                .blendMode(.destinationOver)
         }
     }
 }

@@ -21,16 +21,15 @@ struct NoDecisionsView: View {
                 ContentUnavailableView {
                     Spacer()
                     Label("""
-You don't have any 
-decisions yet
-""", systemImage: "")
+                        You don't have any 
+                        decisions yet
+                        """, systemImage: "")
                         .fontDesign(.rounded)
                         .fontWeight(.bold)
                         .foregroundColor(.white)
                 }
                 ButtonCreateDecision()
                 .padding(.bottom, 30)
-        
             }
         }
     }
@@ -39,4 +38,3 @@ decisions yet
 #Preview {
     NoDecisionsView()
 }
-

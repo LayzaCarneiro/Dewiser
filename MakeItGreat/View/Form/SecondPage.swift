@@ -11,9 +11,7 @@ struct SecondPage: View {
     @ObservedObject var formViewModel: FormViewModel
     @Binding var isPresented: Bool
     @Environment(\.dismiss) var dismiss
-    
     var feelings = ["Insecure", "Angry", "Ok", "Good", "Confident"]
-    @State private var selectedFeeling = "Ok"
 
     var body: some View {
         NavigationStack {
@@ -25,13 +23,13 @@ struct SecondPage: View {
                     .padding(.top, 50)
 //                TextField("Feeling", text: $formViewModel.cardModel.feeling)
 //                    .textFieldStyle(.roundedBorder)
-                
-                Picker("", selection: $selectedFeeling) {
+
+                Picker("Ok", selection: $formViewModel.cardModel.feeling) {
                     ForEach(feelings, id: \.self) {
                         Text($0)
                     }
                 }
-                
+
                 Spacer()
             }
             .padding()

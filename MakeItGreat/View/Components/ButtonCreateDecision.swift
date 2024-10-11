@@ -27,7 +27,7 @@ struct ButtonCreateDecision: View {
                                 .fontDesign(.rounded)
                                 .foregroundColor(.black)
                                 .frame(width: 254, height: 76)
-                                .background(.buttoncolor)
+                                .background(.yellowCustom)
                                 .cornerRadius(30)
                         }
                         .fullScreenCover(isPresented: $isPresented) {
