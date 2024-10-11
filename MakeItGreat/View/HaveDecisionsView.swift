@@ -51,7 +51,7 @@ struct HaveDecisionsView: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(
                 RoundedRectangle(cornerRadius: 40)
-                    .foregroundColor(.colorbackground)
+                    .foregroundColor(Color.background)
                     .ignoresSafeArea(edges: .bottom)
                     .padding(.top, 60)
             )

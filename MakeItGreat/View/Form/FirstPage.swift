@@ -14,7 +14,7 @@ struct FirstPage: View {
     var body: some View {
         NavigationStack {
             ZStack{
-                Color.colorbackground.ignoresSafeArea()
+                Color.background.ignoresSafeArea()
                 ScrollView(.vertical, showsIndicators: false) {
                     VStack(spacing: 42) {
                         
@@ -31,7 +31,7 @@ struct FirstPage: View {
                             TextField("What is your decision title?", text: $formViewModel.cardModel.title)
                                 .padding()
                                 .frame(width: 361, height: 44)
-                                .background(Color.itemcardcolor)
+                                .background(Color.textInverse)
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 10)
                                         .stroke(.primary, lineWidth: 2)
@@ -48,7 +48,7 @@ struct FirstPage: View {
                                         set: {formViewModel.cardModel.cardDescription = $0.isEmpty ? nil : $0}),
                                       axis: .vertical)
                             .padding()
-                            .background(Color.itemcardcolor)
+                            .background(Color.textInverse)
                             .lineLimit(8, reservesSpace: true)
                             .overlay(
                                 RoundedRectangle(cornerRadius: 10)

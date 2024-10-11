@@ -28,7 +28,7 @@ struct HomeScreenView: View {
                             .fontDesign(.rounded)
                             .fontWidth(.compressed)
                             .fontWeight(.black)
-                            .foregroundColor(.textcolormd)
+                            .foregroundColor(.textTitle)
                             .padding(.trailing, 100)
                             .padding(.top, 30)
                         NoDecisionsView()
@@ -52,18 +52,18 @@ struct HomeScreenView: View {
                             }
                     } else {
                         HaveDecisionsView()
-                            .background(Color.procard)
+                            .background(Color.purpleBackground)
                             .toolbar {
                                 ToolbarItem(placement: .navigationBarTrailing) {
                                     HStack {
                                         NavigationLink(destination: SearchView()) {
                                             Image(systemName: "magnifyingglass")
-                                                .foregroundStyle(.itemcardcolor)
+                                                .foregroundStyle(.textInverse)
                                                 .fontWeight(.bold)
                                         }
                                         NavigationLink(destination: SettingsView()) {
                                             Image(systemName: "gear")
-                                                .foregroundStyle(.itemcardcolor)
+                                                .foregroundStyle(.textInverse)
                                                 .fontWeight(.bold)
                                         }
                                     }
