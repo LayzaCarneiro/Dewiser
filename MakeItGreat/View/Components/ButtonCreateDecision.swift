@@ -18,25 +18,34 @@ struct ButtonCreateDecision: View {
     @Environment(\.modelContext) var context
 
     var body: some View {
-        Button {
-                            isPresented.toggle()
-                        } label: {
-                            Text("Create a decision")
-                                .font(.title2)
-                                .fontWeight(.black)
-                                .fontDesign(.rounded)
-                                .foregroundColor(.black)
-                                .frame(width: 254, height: 76)
-                                .background(.yellowCustom)
-                                .cornerRadius(30)
-                        }
-                        .fullScreenCover(isPresented: $isPresented) {
-                            NavigationView {
-                                FirstPage(formViewModel: FormViewModel(), isPresented: $isPresented)
-                            }
-                        }
-                    }
+        ZStack {
+            
+            Rectangle()
+                .frame(width: 254, height: 76)
+                .cornerRadius(30)
+                .foregroundStyle(.textCreateButton)
+                .padding(.top, 6)
+            
+            Button {
+                isPresented.toggle()
+            } label: {
+                Text("Create a decision")
+                    .font(.title2)
+                    .fontWeight(.black)
+                    .fontDesign(.rounded)
+                    .foregroundColor(.black)
+                    .frame(width: 254, height: 70)
+                    .background(.yellowCustom)
+                    .cornerRadius(30)
+            }
+            .fullScreenCover(isPresented: $isPresented) {
+                NavigationView {
+                    FirstPage(formViewModel: FormViewModel(), isPresented: $isPresented)
+                }
+            }
+        }
     }
+}
 
 #Preview {
     ButtonCreateDecision()
