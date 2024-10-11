@@ -10,92 +10,97 @@ import SwiftUI
 struct AboutView: View {
     var body: some View {
         NavigationStack {
-            List {
-                Section(header: Text("Developers")) {
-                    Button(action: openLinkedInHM) {
-                        HStack {
-                            ZStack {
-                                RoundedRectangle(cornerRadius: 6)
-                                    .fill(Color.accentColor)
-                                    .frame(width: 30, height: 30)
-                                Image(systemName: "person.fill")
-                                    .foregroundColor(.white)
-                                    .font(.system(size: 15))
+            ZStack {
+                Color.background.ignoresSafeArea()
+                List {
+                    Section(header: Text("Developers")) {
+                        Button(action: openLinkedInHM) {
+                            HStack {
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 6)
+                                        .fill(Color.icon)
+                                        .frame(width: 30, height: 30)
+                                    Image(systemName: "person.fill")
+                                        .foregroundColor(.white)
+                                        .font(.system(size: 15))
+                                }
+                                Text("Hadassa Miranda")
                             }
-                            Text("Hadassa Miranda")
+                        }
+                        Button(action: openLinkedInJR) {
+                            HStack {
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 6)
+                                        .fill(Color.icon)
+                                        .frame(width: 30, height: 30)
+                                    Image(systemName: "person.fill")
+                                        .foregroundColor(.white)
+                                        .font(.system(size: 15))
+                                }
+                                Text("João Roberto")
+                            }
+                        }
+                        Button(action: openLinkedInLC) {
+                            HStack {
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 6)
+                                        .fill(Color.icon)
+                                        .frame(width: 30, height: 30)
+                                    Image(systemName: "person.fill")
+                                        .foregroundColor(.white)
+                                        .font(.system(size: 15))
+                                }
+                                Text("Layza Carneiro")
+                            }
+                        }
+                        Button(action: openLinkedInMG) {
+                            HStack {
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 6)
+                                        .fill(Color.icon)
+                                        .frame(width: 30, height: 30)
+                                    Image(systemName: "person.fill")
+                                        .foregroundColor(.white)
+                                        .font(.system(size: 15))
+                                }
+                                Text("Melissa Guedes")
+                            }
                         }
                     }
-                    Button(action: openLinkedInJR) {
-                        HStack {
-                            ZStack {
-                                RoundedRectangle(cornerRadius: 6)
-                                    .fill(Color.accentColor)
-                                    .frame(width: 30, height: 30)
-                                Image(systemName: "person.fill")
-                                    .foregroundColor(.white)
-                                    .font(.system(size: 15))
+                    Section(header: Text("App")) {
+                        NavigationLink(destination: SettingsView()) {
+                            HStack {
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 6)
+                                        .fill(Color.icon)
+                                        .frame(width: 30, height: 30)
+                                    Image(systemName: "star.fill")
+                                        .foregroundColor(.white)
+                                        .font(.system(size: 15))
+                                }
+                                Text("Rate the app")
                             }
-                            Text("João Roberto")
                         }
                     }
-                    Button(action: openLinkedInLC) {
-                        HStack {
-                            ZStack {
-                                RoundedRectangle(cornerRadius: 6)
-                                    .fill(Color.accentColor)
-                                    .frame(width: 30, height: 30)
-                                Image(systemName: "person.fill")
-                                    .foregroundColor(.white)
-                                    .font(.system(size: 15))
+                    Section(header: Text("More Info")) {
+                        NavigationLink(destination: SettingsView()) {
+                            HStack {
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 6)
+                                        .fill(Color.icon)
+                                        .frame(width: 30, height: 30)
+                                    Image(systemName: "globe")
+                                        .foregroundColor(.white)
+                                        .font(.system(size: 15))
+                                }
+                                Text("Website")
                             }
-                            Text("Layza Carneiro")
-                        }
-                    }
-                    Button(action: openLinkedInMG) {
-                        HStack {
-                            ZStack {
-                                RoundedRectangle(cornerRadius: 6)
-                                    .fill(Color.accentColor)
-                                    .frame(width: 30, height: 30)
-                                Image(systemName: "person.fill")
-                                    .foregroundColor(.white)
-                                    .font(.system(size: 15))
-                            }
-                            Text("Melissa Guedes")
                         }
                     }
                 }
-                Section(header: Text("App")) {
-                    NavigationLink(destination: SettingsView()) {
-                        HStack {
-                            ZStack {
-                                RoundedRectangle(cornerRadius: 6)
-                                    .fill(Color.accentColor)
-                                    .frame(width: 30, height: 30)
-                                Image(systemName: "star.fill")
-                                    .foregroundColor(.white)
-                                    .font(.system(size: 15))
-                            }
-                            Text("Rate the app")
-                        }
-                    }
-                }
-                Section(header: Text("More Info")) {
-                    NavigationLink(destination: SettingsView()) {
-                        HStack {
-                            ZStack {
-                                RoundedRectangle(cornerRadius: 6)
-                                    .fill(Color.accentColor)
-                                    .frame(width: 30, height: 30)
-                                Image(systemName: "globe")
-                                    .foregroundColor(.white)
-                                    .font(.system(size: 15))
-                            }
-                            Text("Website")
-                        }
-                    }
-                }
-            }.navigationBarTitle("About")
+                .scrollContentBackground(.hidden)
+                .navigationBarTitle("About")
+            }
         }
     }
 }

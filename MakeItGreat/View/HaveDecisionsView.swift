@@ -13,6 +13,7 @@ struct HaveDecisionsView: View {
     @Query var decisions: [CardModel]
     @State private var deleteOnForDecision: Bool = false
     @Environment(\.modelContext) var context
+    
     var body: some View {
         ZStack(alignment: .bottom) {
             Color.clear.ignoresSafeArea()
@@ -25,26 +26,31 @@ struct HaveDecisionsView: View {
                     .padding(.top, 100)
                     .padding(.trailing, 100)
                     .foregroundStyle(.textcolormd)
-                ScrollView(.vertical, showsIndicators: false) {
+                
+                List {
                     ForEach(decisions.reversed()) { decision in
                         HStack {
                             NavigationLink(destination: DecisionView(decision: decision)) {
                                 DecisionCard(card: decision)
-                            }
-                            if deleteOnForDecision {
-                                Button {
-                                    context.delete(decision)
-                                } label: {
-                                    Image(systemName: "trash")
-                                        .padding()
-                                }
-                                .buttonStyle(BorderlessButtonStyle())
+                                    
                             }
                         }
+                        .swipeActions(allowsFullSwipe: true) {
+                            Button(role: .destructive) {
+                                deleteDecision(decision: decision)
+                            } label: {
+                                Label("Delete", systemImage: "trash")
+                            }
+                        }
+                        .listRowBackground(Color.clear)
+                        .listRowSeparator(.hidden)
                     }
                 }
-                .padding(.horizontal)
-                .padding(.bottom, 60)
+                .listStyle(PlainListStyle())
+                .scrollContentBackground(.hidden)
+                .background(Color.clear)
+//                .padding(.horizontal)
+//                .padding(.bottom, 60)
                 ButtonCreateDecision()
                     .padding(.bottom)
             }
@@ -56,6 +62,10 @@ struct HaveDecisionsView: View {
                     .padding(.top, 60)
             )
         }
+    }
+    
+    private func deleteDecision(decision: CardModel) {
+        context.delete(decision)
     }
 }
 
