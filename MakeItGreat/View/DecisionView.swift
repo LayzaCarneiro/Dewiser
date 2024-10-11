@@ -90,6 +90,7 @@ struct DecisionView: View {
                     sheet.toggle()
                 } label: {
                     Text("Edit")
+                        .foregroundStyle(Color.background)
                 }
                 .sheet(isPresented: $sheet) {
                     NavigationView {

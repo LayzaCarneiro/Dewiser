@@ -16,7 +16,9 @@ struct HaveDecisionsView: View {
     
     var body: some View {
         ZStack(alignment: .bottom) {
+            
             Color.clear.ignoresSafeArea()
+            
             VStack {
                 Text("My Decisions")
                     .font(.largeTitle)
@@ -32,7 +34,6 @@ struct HaveDecisionsView: View {
                         HStack {
                             NavigationLink(destination: DecisionView(decision: decision)) {
                                 DecisionCard(card: decision)
-                                    
                             }
                         }
                         .swipeActions(allowsFullSwipe: true) {
