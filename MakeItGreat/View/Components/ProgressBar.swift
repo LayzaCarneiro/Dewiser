@@ -56,5 +56,3 @@ struct BarProgressStyle: ProgressViewStyle {
         }
     }
 }
-
-

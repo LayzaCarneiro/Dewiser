@@ -17,7 +17,7 @@ struct ItemCard: View {
             // Conteúdo do cartão
             TextField("", text: $content)
                 .frame(width: 149, height: 84)
-                .background(Color.itemcardcolor)
+                .background(Color.cardBackground)
                 .cornerRadius(10)
                 .background(
                     RoundedRectangle(cornerRadius: 10)
@@ -35,4 +35,3 @@ struct ItemCard: View {
         .frame(width: 149, height: 84)
     }
 }
-

@@ -24,7 +24,7 @@ struct CustomDatePicker: View {
             Image(systemName: "calendar")
                 .resizable()
                 .frame(width: 21, height: 21, alignment: .center)
-                .foregroundColor(Color.grayText)
+                .foregroundColor(Color.textGray)
         }
         .padding(.vertical, 10)
         .frame(width: 152, height: 45)

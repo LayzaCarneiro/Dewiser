@@ -24,7 +24,8 @@ struct HaveDecisionsView: View {
                 .font(.title3)
                 .fontWeight(.semibold)
         }
-        ScrollView(.vertical, showsIndicators: false) {  
+
+        ScrollView(.vertical, showsIndicators: false) {
             ForEach(decisions.reversed()) { decision in
                 HStack {
                     NavigationLink(destination: DecisionView(decision: decision)) {

@@ -24,7 +24,7 @@ struct CustomHourPicker: View {
             Image(systemName: "clock")
                 .resizable()
                 .frame(width: 21, height: 21)
-                .foregroundColor(Color.grayText)
+                .foregroundColor(Color.textGray)
         }
         .padding(.horizontal, 15)
         .padding(.vertical, 10)
@@ -36,9 +36,7 @@ struct CustomHourPicker: View {
                 .stroke(Color.fieldStroke, lineWidth: 2)
         )
         .overlay {
-            DatePicker("", selection: Binding(get: {
-                            selectedHour ?? Date() 
-                        }, set: { newValue in
+            DatePicker("", selection: Binding(get: {selectedHour ?? Date()}, set: { newValue in
                             selectedHour = newValue
                             isHourSelected = true
                         }), displayedComponents: .hourAndMinute)
