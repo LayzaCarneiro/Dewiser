@@ -15,19 +15,17 @@ struct HaveDecisionsView: View {
     @Environment(\.modelContext) var context
     
     var body: some View {
-        ZStack(alignment: .bottom) {
-            
-            Color.clear.ignoresSafeArea()
-            
+        ZStack {
             VStack {
                 Text("My Decisions")
                     .font(.largeTitle)
                     .fontWeight(.black)
                     .fontWidth(.compressed)
                     .fontDesign(.rounded)
-                    .padding(.top, 100)
-                    .padding(.trailing, 100)
                     .foregroundStyle(.textcolormd)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.top, 65)
+                    .padding(.leading, 26)
                 
                 List {
                     ForEach(decisions.reversed()) { decision in
@@ -50,18 +48,18 @@ struct HaveDecisionsView: View {
                 .listStyle(PlainListStyle())
                 .scrollContentBackground(.hidden)
                 .background(Color.clear)
-//                .padding(.horizontal)
-//                .padding(.bottom, 60)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.leading, 29)
+                .padding(.bottom, 35)
                 
                 ButtonCreateDecision()
                     .padding(.bottom, 6)
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(
                 RoundedRectangle(cornerRadius: 40)
                     .foregroundColor(Color.background)
                     .ignoresSafeArea(edges: .bottom)
-                    .padding(.top, 60)
+                    .padding(.top, 33)
             )
         }
     }
