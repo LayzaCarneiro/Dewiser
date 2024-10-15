@@ -86,12 +86,9 @@ struct OnboardingScreen: View {
                                 .font(.title2)
                                 .fontDesign(.rounded)
                                 .fontWeight(.bold)
-                                .foregroundColor(.text)
-                                .frame(width: 254, height: 76)
-                                .background(Color("background"))
-                                .cornerRadius(30)
                             
                         })
+                        .buttonStyle(ButtonOnb())
                     }
                 }
             }
@@ -151,12 +148,9 @@ struct OnboardingScreen2: View {
                                 .font(.title2)
                                 .fontDesign(.rounded)
                                 .fontWeight(.bold)
-                                .foregroundColor(.text)
-                                .frame(width: 254, height: 76)
-                                .background(Color("background"))
-                                .cornerRadius(30)
                             
                         })
+                        .buttonStyle(ButtonOnb())
                     }
                 }
             }
@@ -220,11 +214,9 @@ struct OnboardingScreen3: View {
                                 .fontDesign(.rounded)
                                 .fontWeight(.bold)
                                 .foregroundColor(.black)
-                                .frame(width: 254, height: 76)
-                                .background(.yellowPicker)
-                                .cornerRadius(30)
                             
                         })
+                        .buttonStyle(Buttonn())
                     }
                 }
             }
@@ -232,4 +224,6 @@ struct OnboardingScreen3: View {
   
     }
 }
+
+
 

@@ -37,6 +37,7 @@
 		AEFC12CF2CACC8EE00E00B9D /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFC12CD2CACC8EE00E00B9D /* SettingsViewModel.swift */; };
 		E92604D32CAC1B8A002F0C77 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92604D22CAC1B8A002F0C77 /* SearchView.swift */; };
 		FC646F732CB7121200EEAA15 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC646F722CB7121200EEAA15 /* OnboardingView.swift */; };
+		FC828F012CBEA7D200EEAE83 /* Button3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC828F002CBEA7D200EEAE83 /* Button3D.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +74,7 @@
 		AEFC12CD2CACC8EE00E00B9D /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		E92604D22CAC1B8A002F0C77 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		FC646F722CB7121200EEAA15 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		FC828F002CBEA7D200EEAE83 /* Button3D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button3D.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +149,7 @@
 				AE7F8BBE2CA6D68F00CD3835 /* ItemCard.swift */,
 				AE7F8BC62CA6EABB00CD3835 /* ProgressBar.swift */,
 				AE5B33E42CA88BCD0055D650 /* DecisionCard.swift */,
+				FC828F002CBEA7D200EEAE83 /* Button3D.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -327,6 +330,7 @@
 				AE3BFAB92CAC38A100DC1C67 /* DecisionView.swift in Sources */,
 				AE9E27AF2CB6CE8A006FB9E4 /* CustomFeelingPicker.swift in Sources */,
 				AE9E27B02CB6CE8A006FB9E4 /* FeelingItem.swift in Sources */,
+				FC828F012CBEA7D200EEAE83 /* Button3D.swift in Sources */,
 				AE3847A72CABF46200D4ABB5 /* ProModel.swift in Sources */,
 				AE28CDCF2CA2F3AE00267E39 /* ContentView.swift in Sources */,
 				AE9E27A82CB6A4E4006FB9E4 /* PriorityTag.swift in Sources */,
