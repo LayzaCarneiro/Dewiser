@@ -17,7 +17,7 @@ struct HaveDecisionsView: View {
 
     var body: some View {
         NavigationStack {
-            
+
             ZStack {
                 VStack {
                     Text("My Decisions")
@@ -29,9 +29,11 @@ struct HaveDecisionsView: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.top, 65)
                         .padding(.leading, 26)
-                    
+
                     List {
-                        ForEach(decisions.reversed()) { decision in
+                        ForEach(decisions.sorted(by: {
+                            priorityOrder(Priority(rawValue: $0.priority) ?? .medium) > priorityOrder(Priority(rawValue: $1.priority) ?? .medium)}))
+                        { decision in
                             HStack {
                                 Button {
                                     selectedDecision = decision
@@ -56,7 +58,7 @@ struct HaveDecisionsView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.leading, 10)
                     .padding(.bottom, 35)
-    
+
                     ButtonCreateDecision()
                         .frame(width: 300, height: 20)
                         .padding(.bottom, 30)
@@ -66,7 +68,7 @@ struct HaveDecisionsView: View {
                         .foregroundColor(Color.background)
                         .ignoresSafeArea(edges: .bottom)
                         .padding(.top, 33)
-                    
+
                 )
                 .navigationDestination(isPresented: Binding(
                     get: { selectedDecision != nil },
@@ -79,9 +81,20 @@ struct HaveDecisionsView: View {
             }
         }
     }
-    
+
     private func deleteDecision(decision: CardModel) {
         context.delete(decision)
+    }
+    
+    private func priorityOrder(_ priority: Priority) -> Int {
+        switch priority {
+        case .high:
+            return 2
+        case .medium:
+            return 1
+        case .low:
+            return 0
+        }
     }
 }
 
