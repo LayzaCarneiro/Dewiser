@@ -9,16 +9,16 @@ import SwiftUI
 
 struct EditView: View {
     @Environment(\.dismiss) var dismiss
-    
+
     @State var card: CardModel
-    
+
     @State private var selectedPriority: Priority = .medium
-    
+
     enum Priority: String, CaseIterable, Identifiable {
         case low, medium, high
         var id: Self { self }
     }
-    
+
     var body: some View {
         NavigationStack {
             ZStack {
@@ -45,7 +45,7 @@ struct EditView: View {
                                         .stroke(Color.fieldStroke, lineWidth: 2)
                                 )
                         }
-                        
+
                         VStack(alignment: .leading) {
                             Text("Description")
                                 .font(.body)
@@ -64,7 +64,7 @@ struct EditView: View {
                                     .stroke(Color.fieldStroke, lineWidth: 2)
                             )
                         }
-                        
+
                         HStack(spacing: 55) {
                             VStack(alignment: .leading) {
                                 Text("Deadline")
@@ -95,11 +95,11 @@ struct EditView: View {
                                     .fontWeight(.bold)
                                     .foregroundStyle(.red)
                             }
-                            
+
                             CustomPriorityPicker(selectedPriority: $card.priorityEnum)
-                            
+
                         }
-                        
+
                         VStack(alignment: .leading) {
                             HStack(spacing: 3) {
                                 Text("Feel")
@@ -109,7 +109,7 @@ struct EditView: View {
                                     .font(.body)
                                     .fontWeight(.bold)
                                     .foregroundStyle(.red)
-                                
+
                             }
                             CustomFeelingPicker(selectedFeeling: $card.feeling)
                         }
