@@ -42,14 +42,14 @@ struct HomeScreenView: View {
                                             Image(systemName: "magnifyingglass")
                                                 .resizable()
                                                 .frame(width: 28, height: 28)
-                                                .foregroundStyle(.black)
+                                                .foregroundStyle(.text)
                                                 .fontWeight(.bold)
                                         }
                                         NavigationLink(destination: SettingsView()) {
                                             Image(systemName: "gear")
                                                 .resizable()
                                                 .frame(width: 30, height: 30)
-                                                .foregroundStyle(.black)
+                                                .foregroundStyle(.text)
                                                 .fontWeight(.bold)
                                         }
                                     }
