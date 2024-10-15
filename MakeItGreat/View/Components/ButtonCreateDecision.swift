@@ -9,17 +9,14 @@ import SwiftUI
 import SwiftData
 
 struct ButtonCreateDecision: View {
+    @Environment(\.modelContext) var context
     @State private var isPresented: Bool = false
+    @State private var deleteOnForDecision: Bool = false
 
     @Query var decisions: [CardModel]
 
-    @State private var deleteOnForDecision: Bool = false
-
-    @Environment(\.modelContext) var context
-
     var body: some View {
         ZStack {
-            
             Rectangle()
                 .frame(width: 254, height: 76)
                 .cornerRadius(30)
@@ -33,7 +30,7 @@ struct ButtonCreateDecision: View {
                     .font(.title2)
                     .fontWeight(.black)
                     .fontDesign(.rounded)
-                    .foregroundColor(.black)
+                    .foregroundColor(.textCreateButton)
                     .frame(width: 254, height: 70)
                     .background(.yellowCustom)
                     .cornerRadius(30)
@@ -46,6 +43,7 @@ struct ButtonCreateDecision: View {
         }
     }
 }
+
 
 #Preview {
     ButtonCreateDecision()

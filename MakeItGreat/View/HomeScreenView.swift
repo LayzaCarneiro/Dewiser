@@ -31,23 +31,30 @@ struct HomeScreenView: View {
                             .foregroundColor(.textTitle)
                             .padding(.trailing, 100)
                             .padding(.top, 30)
+
                         NoDecisionsView()
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
                             .background(Color.clear)
                             .toolbar {
                                 ToolbarItem(placement: .navigationBarTrailing) {
-                                    HStack {
+                                    HStack(spacing: 15) {
                                         NavigationLink(destination: SearchView()) {
                                             Image(systemName: "magnifyingglass")
-                                                .foregroundStyle(Color(UIColor.label))
+                                                .resizable()
+                                                .frame(width: 28, height: 28)
+                                                .foregroundStyle(.black)
                                                 .fontWeight(.bold)
                                         }
                                         NavigationLink(destination: SettingsView()) {
                                             Image(systemName: "gear")
-                                                .foregroundStyle(Color(UIColor.label))
+                                                .resizable()
+                                                .frame(width: 30, height: 30)
+                                                .foregroundStyle(.black)
                                                 .fontWeight(.bold)
                                         }
                                     }
+                                    .frame(maxWidth: .infinity, alignment: .trailing)
+                                    .padding(.trailing, 8)
                                 }
                             }
                     } else {
@@ -55,18 +62,24 @@ struct HomeScreenView: View {
                             .background(Color.purpleBackground)
                             .toolbar {
                                 ToolbarItem(placement: .navigationBarTrailing) {
-                                    HStack {
+                                    HStack(spacing: 15) {
                                         NavigationLink(destination: SearchView()) {
                                             Image(systemName: "magnifyingglass")
+                                                .resizable()
+                                                .frame(width: 28, height: 28)
                                                 .foregroundStyle(.textInverse)
                                                 .fontWeight(.bold)
                                         }
                                         NavigationLink(destination: SettingsView()) {
                                             Image(systemName: "gear")
+                                                .resizable()
+                                                .frame(width: 30, height: 30)
                                                 .foregroundStyle(.textInverse)
                                                 .fontWeight(.bold)
                                         }
                                     }
+                                    .frame(maxWidth: .infinity, alignment: .trailing)
+                                    .padding(.trailing, 8)
                                 }
                             }
                     }

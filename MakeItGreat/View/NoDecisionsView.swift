@@ -17,17 +17,21 @@ struct NoDecisionsView: View {
                 .frame(maxHeight: .infinity, alignment: .bottom) 
                 .ignoresSafeArea()
 
-            VStack {
+            VStack(spacing: 25) {
                 ContentUnavailableView {
                     Spacer()
                     Label("""
                         You don't have any 
-                        decisions yet
+                        decision yet.
                         """, systemImage: "")
+                        .font(.title)
                         .fontDesign(.rounded)
-                        .fontWeight(.bold)
+                        .fontWidth(.compressed)
+                        .fontWeight(.black)
                         .foregroundColor(.white)
+                    
                 }
+                
                 ButtonCreateDecision()
                 .padding(.bottom, 6)
             }
