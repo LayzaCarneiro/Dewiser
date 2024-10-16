@@ -13,6 +13,7 @@ struct SettingsView: View {
     @State private var isNotificationOn: Bool = UserDefaults.standard.bool(forKey: "isNotificationOn")
     @State private var isAbleHaptics: Bool = UserDefaults.standard.bool(forKey: "isAbleHaptics")
     @EnvironmentObject var authManager: AuthenticationManager
+    
     var body: some View {
         NavigationStack {
             ZStack {
@@ -58,17 +59,25 @@ struct SettingsView: View {
                             UserDefaults.standard.set(newValue, forKey: "isAbleHaptics")
                         }
                     }
-                    
+
                     Section(header: Text("Segurança").foregroundColor(.accentColor)) {
                         Toggle(isOn: $authManager.isFaceIDEnabled) {
-                            Image(systemName: "info.circle.fill")
-                                .foregroundColor(.white)
-                                .font(.system(size: 15))
-                                .frame(height: 30)
+                            HStack {
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 6)
+                                        .fill(Color.icon)
+                                        .frame(width: 30, height: 30)
+                                    Image(systemName: "info.circle.fill")
+                                        .foregroundColor(.white)
+                                        .font(.system(size: 15))
+                                        .frame(height: 30)
+                                }
+                                Text("Face ID")
+                            }
                         }
                         .tint(.accentColor)
                     }
-                    
+
                     Section(header: Text("Development")) {
                         NavigationLink(destination: AboutView()) {
                             HStack {

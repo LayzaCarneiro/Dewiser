@@ -13,7 +13,8 @@ struct MakeItGreatApp: App {
     @StateObject private var authManager = AuthenticationManager()
     var body: some Scene {
         WindowGroup {
-            ContentView().environmentObject(authManager)
+            FaceIdView()
+                .environmentObject(authManager)
         }
         .modelContainer(for: [CardModel.self, ProModel.self, ConModel.self])
     }
