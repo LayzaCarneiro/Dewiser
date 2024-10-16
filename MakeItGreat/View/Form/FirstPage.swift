@@ -37,7 +37,7 @@ struct FirstPage: View {
                                 .background(Color.textInverse)
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 10)
-                                        .stroke((titleIsEmpty && formViewModel.cardModel.title.isEmpty) ? Color.red : Color.primary, lineWidth: 2)
+                                        .stroke((titleIsEmpty && formViewModel.cardModel.title.isEmpty) ? Color.red : Color.fieldStroke, lineWidth: 2)
                                 )
                                 .onTapGesture {
                                     titleIsEmpty = false
@@ -58,7 +58,7 @@ struct FirstPage: View {
                             .lineLimit(8, reservesSpace: true)
                             .overlay(
                                 RoundedRectangle(cornerRadius: 10)
-                                    .stroke(.primary, lineWidth: 2)
+                                    .stroke(.fieldStroke, lineWidth: 2)
                             )
                         }
 

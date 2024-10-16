@@ -49,10 +49,15 @@ struct ProConsView: View {
                                 .frame(width: 149, height: 84, alignment: .center)
                                 .background(Color.purpleBackground)
                                 .cornerRadius(10)
-                                .foregroundStyle(.white)
+                                .foregroundStyle(Color.textInverse)
                                 .fontWeight(.bold)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .stroke(Color.fieldStroke, lineWidth: 2)
+                                )
                             }
                             .padding(.vertical, 10)
+                            
 
                             ForEach($filteredPros, id: \.self) { $pro in
                                 HStack {
@@ -90,6 +95,10 @@ struct ProConsView: View {
                                 .cornerRadius(10)
                                 .foregroundStyle(.black)
                                 .fontWeight(.bold)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .stroke(Color.fieldStroke, lineWidth: 2)
+                                )
                             }
                             .padding(.vertical, 10)
 

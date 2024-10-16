@@ -32,7 +32,7 @@ struct CustomDatePicker: View {
         .cornerRadius(10)
         .overlay(
             RoundedRectangle(cornerRadius: 10)
-                .stroke(Color.fieldStroke, lineWidth: 2)
+                .stroke(.fieldStroke, lineWidth: 2)
         )
         .overlay {
             DatePicker(

@@ -46,12 +46,14 @@ struct HaveDecisionsView: View {
                                 } label: {
                                     Label("Delete", systemImage: "trash")
                                 }
-                                Button(role: .none) {
-                                    decision.priority = "done"
-                                } label: {
-                                    Label("Conclude", systemImage: "checkmark")
+                                if decision.priority != "done" {
+                                    Button(role: .none) {
+                                        decision.priority = "done"
+                                    } label: {
+                                        Label("Conclude", systemImage: "checkmark")
+                                    }
+                                    .tint(.green)
                                 }
-                                .tint(.green)
                             }
                             .listRowBackground(Color.clear)
                             .listRowSeparator(.hidden)

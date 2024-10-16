@@ -26,7 +26,7 @@ struct DecisionView: View {
                             .foregroundStyle(Color.background)
 
                         Spacer()
-                        
+
                         PriorityTag(priority: decision.priority)
                     }
                     .padding(.leading, 26)
