@@ -6,15 +6,23 @@
 //
 
 import SwiftUI
-import SwiftData
 
 @main
-struct MakeItGreatApp: App {
+struct MyApp: App {
+    @State private var isFormSheetActive = false // Controla a exibição do FormSheetView
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView() // A view principal do seu app
+                .onOpenURL { url in
+                    // Verifica o URL e ativa o FormSheetView quando o link "myapp://formsheet" for clicado
+                    if url.scheme == "myapp" && url.host == "formsheet" {
+                        isFormSheetActive = true
+                    }
+                }
+                .sheet(isPresented: $isFormSheetActive) {
+                    FormSheetView() // Apresenta a FormSheetView
+                }
         }
-        .modelContainer(for: [CardModel.self, ProModel.self, ConModel.self])
     }
 }

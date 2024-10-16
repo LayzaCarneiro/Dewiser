@@ -8,6 +8,7 @@
 import WidgetKit
 import SwiftUI
 
+
 struct Provider: AppIntentTimelineProvider {
     func placeholder(in context: Context) -> SimpleEntry {
         SimpleEntry(date: Date(), configuration: ConfigurationAppIntent())
@@ -38,17 +39,12 @@ struct SimpleEntry: TimelineEntry {
 
 struct DewiserWidgetEntryView: View {
     var entry: Provider.Entry
+    
     var body: some View {
-        ZStack {
-            Color.purple.opacity(0.5)
-            VStack {
-                Text("Make a fast decision")
-                    .font(.headline)
-                    .bold()
-                    .padding()
-                    .fontDesign(.rounded)
-            }
-        }
+        Image("teste")
+            .resizable()
+            .frame(width: 165, height: 165)
+            .widgetURL(URL(string: "myapp://formsheet")) // Define a URL que será chamada ao clicar no widget
     }
 }
 
