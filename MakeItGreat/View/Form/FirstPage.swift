@@ -11,13 +11,15 @@ struct FirstPage: View {
     @StateObject var formViewModel: FormViewModel
     @Binding var isPresented: Bool
     
+    @State private var titleIsEmpty: Bool = false
+
     var body: some View {
         NavigationStack {
-            ZStack{
+            ZStack {
                 Color.background.ignoresSafeArea()
+
                 ScrollView(.vertical, showsIndicators: false) {
                     VStack(spacing: 42) {
-                        
                         VStack(alignment: .leading) {
                             HStack(spacing: 3) {
                                 Text("Title")
@@ -27,6 +29,7 @@ struct FirstPage: View {
                                     .font(.body)
                                     .fontWeight(.bold)
                                     .foregroundStyle(.red)
+
                             }
                             TextField("What is your decision title?", text: $formViewModel.cardModel.title)
                                 .padding()
@@ -34,10 +37,13 @@ struct FirstPage: View {
                                 .background(Color.textInverse)
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 10)
-                                        .stroke(.primary, lineWidth: 2)
+                                        .stroke((titleIsEmpty && formViewModel.cardModel.title.isEmpty) ? Color.red : Color.primary, lineWidth: 2)
                                 )
+                                .onTapGesture {
+                                    titleIsEmpty = false
+                                }
                         }
-                        
+
                         VStack(alignment: .leading) {
                             Text("Description")
                                 .font(.body)
@@ -55,24 +61,24 @@ struct FirstPage: View {
                                     .stroke(.primary, lineWidth: 2)
                             )
                         }
-                        
+
                         HStack(spacing: 55) {
                             VStack(alignment: .leading) {
                                 Text("Deadline")
                                     .font(.body)
                                     .fontWeight(.bold)
-                                
+
                                 CustomDatePicker(selectedDate: Binding(
                                     get: {formViewModel.cardModel.deadline ?? Date()},
                                     set: { newValue in formViewModel.cardModel.deadline = newValue}
                                 ), isDateSelected: false)
                             }
-                            
+
                             VStack(alignment: .leading) {
                                 Text("Time")
                                     .font(.body)
                                     .fontWeight(.bold)
-                                
+ 
                                 CustomHourPicker(selectedHour: Binding(
                                     get: {formViewModel.cardModel.time ?? Date()},
                                     set: { newValue in formViewModel.cardModel.time = newValue}
@@ -80,7 +86,7 @@ struct FirstPage: View {
                             }
                         }
                         .padding(.trailing, 12)
-                        
+
                         VStack(alignment: .leading) {
                             HStack(spacing: 3) {
                                 Text("Priority")
@@ -91,9 +97,9 @@ struct FirstPage: View {
                                     .fontWeight(.bold)
                                     .foregroundStyle(.red)
                             }
-                            
+
                             CustomPriorityPicker(selectedPriority: $formViewModel.cardModel.priorityEnum)
-                            
+
                         }
                     }
                     .padding()
@@ -113,9 +119,18 @@ struct FirstPage: View {
                     }
                 }
                 ToolbarItem(placement: .topBarTrailing) {
-                    NavigationLink(destination: SecondPage(formViewModel: formViewModel, isPresented: $isPresented)) {
-                        Text("Next")
-                            .foregroundStyle(.cancelcolor)
+                    if !formViewModel.cardModel.title.isEmpty {
+                        NavigationLink(destination: SecondPage(formViewModel: formViewModel, isPresented: $isPresented)) {
+                            Text("Next")
+                                .foregroundStyle(.cancelcolor)
+                        }
+                    } else {
+                        Button {
+                            titleIsEmpty = true
+                        } label: {
+                            Text("Next")
+                                .foregroundStyle(.cancelcolor)
+                        }
                     }
                 }
             }

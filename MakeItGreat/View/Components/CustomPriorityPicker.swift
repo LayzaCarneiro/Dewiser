@@ -12,7 +12,7 @@ struct CustomPriorityPicker: View {
 
     var body: some View {
         Picker("Priority", selection: $selectedPriority) {
-            ForEach(Priority.allCases) { priority in
+            ForEach(Priority.allCases.filter {$0 != .done}) { priority in
                 Text(priority.rawValue.capitalized)
             }
         }
@@ -30,6 +30,7 @@ struct CustomPriorityPicker: View {
         case .low: return Color.bluePicker
         case .medium: return Color.yellowPicker
         case .high: return Color.redPicker
+        case .done: return Color.redPicker
         }
     }
 }

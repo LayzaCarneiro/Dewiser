@@ -32,8 +32,7 @@ struct HaveDecisionsView: View {
 
                     List {
                         ForEach(decisions.sorted(by: {
-                            priorityOrder(Priority(rawValue: $0.priority) ?? .medium) > priorityOrder(Priority(rawValue: $1.priority) ?? .medium)}))
-                        { decision in
+                            priorityOrder(Priority(rawValue: $0.priority) ?? .medium) > priorityOrder(Priority(rawValue: $1.priority) ?? .medium)})) { decision in
                             HStack {
                                 Button {
                                     selectedDecision = decision
@@ -47,6 +46,12 @@ struct HaveDecisionsView: View {
                                 } label: {
                                     Label("Delete", systemImage: "trash")
                                 }
+                                Button(role: .none) {
+                                    decision.priority = "done"
+                                } label: {
+                                    Label("Conclude", systemImage: "checkmark")
+                                }
+                                .tint(.green)
                             }
                             .listRowBackground(Color.clear)
                             .listRowSeparator(.hidden)
@@ -89,10 +94,12 @@ struct HaveDecisionsView: View {
     private func priorityOrder(_ priority: Priority) -> Int {
         switch priority {
         case .high:
-            return 2
+            return 3
         case .medium:
-            return 1
+            return 2
         case .low:
+            return 1
+        case .done:
             return 0
         }
     }

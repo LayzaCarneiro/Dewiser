@@ -86,17 +86,19 @@ struct DecisionView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
-                Button {
-                    sheet.toggle()
-                } label: {
-                    Text("Edit")
-                        .foregroundStyle(Color.background)
-                }
-                .sheet(isPresented: $sheet) {
-                    NavigationView {
-                        EditView(card: decision)
+                if decision.priority != "done" {
+                    Button {
+                        sheet.toggle()
+                    } label: {
+                        Text("Edit")
+                            .foregroundStyle(Color.background)
                     }
-                    .presentationDragIndicator(.visible)
+                    .sheet(isPresented: $sheet) {
+                        NavigationView {
+                            EditView(card: decision)
+                        }
+                        .presentationDragIndicator(.visible)
+                    }
                 }
             }
         }

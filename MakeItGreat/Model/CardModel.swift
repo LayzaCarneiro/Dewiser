@@ -40,6 +40,6 @@ class CardModel: Identifiable {
 }
 
 enum Priority: String, CaseIterable, Identifiable {
-    case low, medium, high
+    case low, medium, high, done
     var id: Self { self }
 }
