@@ -16,8 +16,9 @@ struct CustomPriorityPicker: View {
                 Text(priority.rawValue.capitalized)
             }
         }
-        .colorMultiply(colorForPriority(selectedPriority))
         .pickerStyle(.segmented)
+        .colorMultiply(colorForPriority(selectedPriority))
+        .background(.textInverse)
         .cornerRadius(10)
         .overlay(
             RoundedRectangle(cornerRadius: 8.91)
