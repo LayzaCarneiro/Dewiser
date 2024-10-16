@@ -10,10 +10,10 @@ import SwiftData
 
 @main
 struct MakeItGreatApp: App {
-
+    @StateObject private var authManager = AuthenticationManager()
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView().environmentObject(authManager)
         }
         .modelContainer(for: [CardModel.self, ProModel.self, ConModel.self])
     }

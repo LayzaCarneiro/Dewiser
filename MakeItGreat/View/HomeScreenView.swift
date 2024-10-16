@@ -16,6 +16,8 @@ struct HomeScreenView: View {
     @State private var deleteOnForDecision: Bool = false
 
     @Environment(\.modelContext) var context
+    
+    @EnvironmentObject var authManager: AuthenticationManager
 
     var body: some View {
         NavigationStack {
@@ -79,5 +81,6 @@ struct HomeScreenView: View {
 struct HomeScreenView_Previews: PreviewProvider {
     static var previews: some View {
         HomeScreenView()
+            .environmentObject(AuthenticationManager())
     }
 }
