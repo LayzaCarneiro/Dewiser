@@ -72,6 +72,10 @@ struct EditView: View {
                                     .fontWeight(.bold)
                                 
                                 CustomDatePicker(selectedDate: $card.deadline, isDateSelected: true)
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 10)
+                                            .stroke(Color.fieldStroke, lineWidth: 2)
+                                    )
                             }
                             
                             VStack(alignment: .leading) {
@@ -80,6 +84,10 @@ struct EditView: View {
                                     .fontWeight(.bold)
                                 
                                 CustomHourPicker(selectedHour: $card.time, isHourSelected: true)
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 10)
+                                            .stroke(Color.fieldStroke, lineWidth: 2)
+                                    )
                                 
                             }
                         }
@@ -97,6 +105,10 @@ struct EditView: View {
                             }
 
                             CustomPriorityPicker(selectedPriority: $card.priorityEnum)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .stroke(Color.fieldStroke, lineWidth: 2)
+                                )
 
                         }
 

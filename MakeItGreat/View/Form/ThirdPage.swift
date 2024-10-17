@@ -24,6 +24,14 @@ struct ThirdPage: View {
         }
         .navigationTitle("New Decision")
         .navigationBarTitleDisplayMode(.inline)
+        .navigationBarBackButtonHidden(false)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button {
+                } label: {
+                }
+            }
+        }
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button {

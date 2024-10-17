@@ -32,7 +32,7 @@ struct SecondPage: View {
                             Text($0)
                         }
                     }
-                    
+
                     Spacer()
                 }
                 .padding()
@@ -40,6 +40,14 @@ struct SecondPage: View {
         }
         .navigationTitle("New Decision")
         .navigationBarTitleDisplayMode(.inline)
+        .navigationBarBackButtonHidden(false)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button {
+                } label: {
+                }
+            }
+        }
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 NavigationLink(destination: ThirdPage(formViewModel: formViewModel, isPresented: $isPresented)) {

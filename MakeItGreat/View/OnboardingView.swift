@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct OnboardingView: View {
-    
+
     @AppStorage("currentOnboardingPage") var currentOnboardingPage = 1
-    
+
     var body: some View {
         if currentOnboardingPage > totalScreen {
             HomeScreenView()
