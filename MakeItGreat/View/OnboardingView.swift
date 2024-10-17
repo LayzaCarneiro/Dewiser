@@ -57,26 +57,25 @@ struct OnboardingScreen: View {
                     }
                     .padding(.trailing)
                     Spacer()
-                    Text("Register your\ndecisions!")
+                    Text("Register your decisions!")
                         .multilineTextAlignment(.center)
                         .font(.title)
                         .fontDesign(.rounded)
                         .fontWeight(.black)
                         .padding()
-                    Text("Now your decisions are in only \none place!")
-                        .font(.system(size: 15))
+                    Text("Now your decisions are in only one place!")
+                        .font(.system(size: 17))
                         .fontWeight(.semibold)
                         .multilineTextAlignment(.center)
                         .fontDesign(.rounded)
                     Spacer()
                     ZStack (alignment: .bottom){
                         Image("onboarding1")
-                            .resizable()
-                            .scaledToFill()
-                            .frame(maxWidth: .infinity)
-                            .frame(width: geometry.size.width, height: geometry.size.height * 0.6)
-                            .clipped()
-                            .padding(.bottom, -50)
+                               .resizable()
+                               .frame(width: geometry.size.width)
+                               .frame(height: geometry.size.height * 0.6)
+                               .clipped()
+                               .padding(.bottom, -80) 
                         Button(action: {
                             if currentOnboardingPage < totalScreen {
                                 currentOnboardingPage += 1
@@ -125,8 +124,8 @@ struct OnboardingScreen2: View {
                         .fontDesign(.rounded)
                         .fontWeight(.black)
                         .padding()
-                    Text("Receive a notification everytime\n your deadline is over!")
-                        .font(.system(size: 15))
+                    Text("Receive a notification everytime your deadline is over!")
+                        .font(.system(size: 17))
                         .fontWeight(.semibold)
                         .multilineTextAlignment(.center)
                         .fontDesign(.rounded)
@@ -134,11 +133,10 @@ struct OnboardingScreen2: View {
                     ZStack (alignment: .bottom){
                         Image("onboarding2")
                             .resizable()
-                            .scaledToFill()
-                            .frame(maxWidth: .infinity)
-                            .frame(width: geometry.size.width, height: geometry.size.height * 0.6)
+                            .frame(width: geometry.size.width)
+                            .frame(height: geometry.size.height * 0.6)
                             .clipped()
-                            .padding(.bottom, -50)
+                            .padding(.bottom, -80)
                         Button(action: {
                             if currentOnboardingPage < totalScreen {
                                 currentOnboardingPage += 1
@@ -184,14 +182,14 @@ struct OnboardingScreen3: View {
                     }
                     .padding(.trailing)
                     Spacer()
-                   Text("Table of Pros and\nCons!")
+                   Text("Table of Pros and Cons!")
                         .multilineTextAlignment(.center)
                         .font(.title)
                         .fontDesign(.rounded)
                         .fontWeight(.black)
                         .padding()
-                    Text("Solve your decision fast using our\npros and cons table!")
-                        .font(.system(size: 15))
+                    Text("Solve your decision fast using our pros and cons table!")
+                        .font(.system(size: 17))
                         .fontWeight(.semibold)
                         .multilineTextAlignment(.center)
                         .fontDesign(.rounded)
@@ -199,11 +197,10 @@ struct OnboardingScreen3: View {
                     ZStack (alignment: .bottom){
                         Image("onboarding3")
                             .resizable()
-                            .scaledToFill()
-                            .frame(maxWidth: .infinity)
-                            .frame(width: geometry.size.width, height: geometry.size.height * 0.6)
+                            .frame(width: geometry.size.width)
+                            .frame(height: geometry.size.height * 0.6)
                             .clipped()
-                            .padding(.bottom, -50)
+                            .padding(.bottom, -80) 
                         Button(action: {
                             if currentOnboardingPage <= totalScreen {
                                 currentOnboardingPage += 1
@@ -224,6 +221,7 @@ struct OnboardingScreen3: View {
   
     }
 }
+
 
 
 
