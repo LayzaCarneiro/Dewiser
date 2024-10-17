@@ -11,14 +11,14 @@ import SwiftData
 @main
 struct MakeItGreatApp: App {
     @StateObject private var authManager = AuthenticationManager()
-    
+
     var body: some Scene {
         WindowGroup {
             if authManager.isFaceIDEnabled {
                 FaceIdView()
                     .environmentObject(authManager)
             } else {
-                HomeScreenView()
+                ContentView()
                     .environmentObject(authManager)
             }
         }

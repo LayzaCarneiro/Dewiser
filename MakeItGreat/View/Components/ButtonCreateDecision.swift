@@ -22,7 +22,7 @@ struct ButtonCreateDecision: View {
                 .cornerRadius(30)
                 .foregroundStyle(.textCreateButton)
                 .padding(.top, 6)
-            
+
             Button {
                 isPresented.toggle()
             } label: {

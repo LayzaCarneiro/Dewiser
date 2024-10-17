@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct OnboardingView: View {
-    
+
     @AppStorage("currentOnboardingPage") var currentOnboardingPage = 1
-    
+
     var body: some View {
         if currentOnboardingPage > totalScreen {
             HomeScreenView()
@@ -131,7 +131,7 @@ struct OnboardingScreen2: View {
                         .multilineTextAlignment(.center)
                         .fontDesign(.rounded)
                     Spacer()
-                    ZStack (alignment: .bottom){
+                    ZStack (alignment: .bottom) {
                         Image("onboarding2")
                             .resizable()
                             .frame(width: geometry.size.width)
@@ -147,7 +147,6 @@ struct OnboardingScreen2: View {
                                 .font(.title2)
                                 .fontDesign(.rounded)
                                 .fontWeight(.bold)
-                            
                         })
                         .padding()
                         .buttonStyle(ButtonOnb())
@@ -170,6 +169,7 @@ struct OnboardingScreen3: View {
             ZStack {
                 Color(.background)
                     .ignoresSafeArea(.all)
+                
                 VStack {
                     HStack {
                         Spacer()
@@ -183,8 +183,10 @@ struct OnboardingScreen3: View {
                         })
                     }
                     .padding(.trailing)
+                   
                     Spacer()
-                   Text("Table of Pros and Cons!")
+                   
+                    Text("Table of Pros and Cons!")
                         .multilineTextAlignment(.center)
                         .font(.title)
                         .fontDesign(.rounded)
@@ -195,8 +197,10 @@ struct OnboardingScreen3: View {
                         .fontWeight(.semibold)
                         .multilineTextAlignment(.center)
                         .fontDesign(.rounded)
+                    
                     Spacer()
-                    ZStack (alignment: .bottom){
+                    
+                    ZStack (alignment: .bottom) {
                         Image("onboarding3")
                             .resizable()
                             .frame(width: geometry.size.width)
@@ -224,6 +228,3 @@ struct OnboardingScreen3: View {
   
     }
 }
-
-
-
