@@ -10,7 +10,6 @@ import SwiftUI
 struct PriorityTag: View {
 
     var priority: String = "medium"
-    
     var backgroundColor = ["low": Color.lowBackground, "medium": Color.mediumBackground, "high": Color.highBackground]
     var foregroundColor = ["low": Color.lowForeground, "medium": Color.mediumForeground, "high": Color.highForeground]
 
@@ -20,7 +19,6 @@ struct PriorityTag: View {
                 .frame(width: 52, height: 21)
                 .foregroundStyle(backgroundColor[priority] ?? .blue)
                 .cornerRadius(20)
-            
             Text("\(priority.capitalized)")
                 .font(.caption2)
                 .fontWeight(.medium)

@@ -10,85 +10,76 @@ import SwiftData
 
 struct HomeScreenView: View {
     @State private var isPresented: Bool = false
-
-    @Query var decisions: [CardModel]
-
     @State private var deleteOnForDecision: Bool = false
-
+    
     @Environment(\.modelContext) var context
-
+    @EnvironmentObject var authManager: AuthenticationManager
+    
+    @Query var decisions: [CardModel]
+    
     var body: some View {
         NavigationStack {
-            VStack {
-                if decisions.isEmpty {
-                    ContentUnavailableView {
-                        Label("No decisions", systemImage: "tray.fill")
+            ZStack {
+                Color.background.ignoresSafeArea()
+                VStack {
+                    if decisions.isEmpty {
+                        Text("My Decisions")
+                            .font(.largeTitle)
                             .fontDesign(.rounded)
-                    } description: {
-                        Text("You don't have any decisions yet")
-                            .fontDesign(.rounded)
-                    }
-                } else {
-                    Button {
-                        deleteOnForDecision.toggle()
-                    } label: {
-                        Text("Delete cards")
-                            .font(.title3)
-                            .fontWeight(.semibold)
-                    }
-                    ScrollView(.vertical, showsIndicators: false) {
-                        
-                        ForEach(decisions.reversed()) { decision in
-                            HStack {
-                                NavigationLink(destination: DecisionView(decision: decision)) {
-                                    DecisionCard(card: decision)
-                                }
-                                if deleteOnForDecision {
-                                    Button {
-                                        context.delete(decision)
-                                    } label: {
-                                        Image(systemName: "trash")
-                                            .padding()
+                            .fontWidth(.compressed)
+                            .fontWeight(.black)
+                            .foregroundColor(.textTitle)
+                            .padding(.trailing, 100)
+                            .padding(.top, 30)
+                        NoDecisionsView()
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                            .background(Color.clear)
+                            .toolbar {
+                                ToolbarItem(placement: .navigationBarTrailing) {
+                                    HStack {
+                                        NavigationLink(destination: SearchView()) {
+                                            Image(systemName: "magnifyingglass")
+                                                .foregroundStyle(Color(UIColor.label))
+                                                .fontWeight(.bold)
+                                        }
+                                        NavigationLink(destination: SettingsView()) {
+                                            Image(systemName: "gear")
+                                                .foregroundStyle(Color(UIColor.label))
+                                                .fontWeight(.bold)
+                                        }
                                     }
-                                    .buttonStyle(BorderlessButtonStyle())
                                 }
                             }
-                        }
-                    }
-                }
-                Button {
-                    isPresented.toggle()
-                } label: {
-                    Text("Create a decision")
-                        .font(.title2)
-                        .fontWeight(.semibold)
-                        .fontDesign(.rounded)
-                        .foregroundColor(.primary)
-                        .frame(width: 254, height: 76)
-                        .background(.secondary)
-                        .cornerRadius(30)
-                }
-                .fullScreenCover(isPresented: $isPresented) {
-                    NavigationView {
-                        FirstPage(formViewModel: FormViewModel(), isPresented: $isPresented)
+                    } else {
+                        HaveDecisionsView()
+                            .background(Color.purpleBackground)
+                            .toolbar {
+                                ToolbarItem(placement: .navigationBarTrailing) {
+                                    HStack {
+                                        NavigationLink(destination: SearchView()) {
+                                            Image(systemName: "magnifyingglass")
+                                                .foregroundStyle(.textInverse)
+                                                .fontWeight(.bold)
+                                        }
+                                        NavigationLink(destination: SettingsView()) {
+                                            Image(systemName: "gear")
+                                                .foregroundStyle(.textInverse)
+                                                .fontWeight(.bold)
+                                        }
+                                    }
+                                }
+                            }
                     }
                 }
             }
-            .padding()
-            .navigationTitle("My Decisions")
-            .fontDesign(.rounded)
-            .toolbar {
-                NavigationLink(destination: SearchView()) {
-                    Image(systemName: "magnifyingglass")
-                }
-                NavigationLink(destination: SettingsView()) {
-                    Image(systemName: "gear")
-                }
-            }
+            .navigationBarBackButtonHidden(true)
         }
     }
 }
 
-//#Preview {
-//    HomeScreenView()
-//}
+struct HomeScreenView_Previews: PreviewProvider {
+    static var previews: some View {
+        HomeScreenView()
+            .environmentObject(AuthenticationManager())
+    }
+}

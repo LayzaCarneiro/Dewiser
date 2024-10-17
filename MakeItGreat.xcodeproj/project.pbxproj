@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		12AB6C1C2CBFE5A10059E25F /* FaceIdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AB6C1B2CBFE5A10059E25F /* FaceIdView.swift */; };
+		12AB6C1E2CBFE6270059E25F /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AB6C1D2CBFE6270059E25F /* AuthenticationManager.swift */; };
 		AE28CDCD2CA2F3AE00267E39 /* MakeItGreatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE28CDCC2CA2F3AE00267E39 /* MakeItGreatApp.swift */; };
 		AE28CDCF2CA2F3AE00267E39 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE28CDCE2CA2F3AE00267E39 /* ContentView.swift */; };
 		AE28CDD12CA2F3AF00267E39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE28CDD02CA2F3AF00267E39 /* Assets.xcassets */; };
@@ -16,6 +18,8 @@
 		AE3BFAB92CAC38A100DC1C67 /* DecisionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3BFAB82CAC389D00DC1C67 /* DecisionView.swift */; };
 		AE5B33E52CA88BCD0055D650 /* DecisionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5B33E42CA88BCD0055D650 /* DecisionCard.swift */; };
 		AE5B33E72CA88CBF0055D650 /* HomeScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5B33E62CA88CBF0055D650 /* HomeScreenView.swift */; };
+		AE5CE2042CB94BC900BAAEBD /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5CE2032CB94BC900BAAEBD /* OnboardingView.swift */; };
+		AE5CE2162CB95A2400BAAEBD /* NoSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5CE2152CB95A2000BAAEBD /* NoSearchView.swift */; };
 		AE7F8BBD2CA6D5FF00CD3835 /* ProConsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7F8BBC2CA6D5FF00CD3835 /* ProConsView.swift */; };
 		AE7F8BBF2CA6D68F00CD3835 /* ItemCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7F8BBE2CA6D68F00CD3835 /* ItemCard.swift */; };
 		AE7F8BC12CA6DA8B00CD3835 /* CardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7F8BC02CA6DA8B00CD3835 /* CardModel.swift */; };
@@ -41,9 +45,37 @@
 		FCB75B7A2CBFF40E00584DDC /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB75B792CBFF40E00584DDC /* SplashScreenView.swift */; };
 		FCB75B7D2CBFF6CF00584DDC /* animation.json in Resources */ = {isa = PBXBuildFile; fileRef = FCB75B7C2CBFF6CF00584DDC /* animation.json */; };
 		FCB75B802CBFF88F00584DDC /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = FCB75B7F2CBFF88F00584DDC /* Lottie */; };
+		E9869F4E2CB70470005DC0E4 /* NoDecisionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9869F4D2CB70470005DC0E4 /* NoDecisionsView.swift */; };
+		E9869F502CB7048D005DC0E4 /* HaveDecisionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9869F4F2CB7048D005DC0E4 /* HaveDecisionsView.swift */; };
+		E9869F522CB70619005DC0E4 /* ButtonCreateDecision.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9869F512CB70619005DC0E4 /* ButtonCreateDecision.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		E92604F02CAEDCFB002F0C77 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AE28CDC12CA2F3AE00267E39 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E92604DB2CAEDCFA002F0C77;
+			remoteInfo = DewiserWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		E92604F72CAEDCFB002F0C77 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		12AB6C1B2CBFE5A10059E25F /* FaceIdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceIdView.swift; sourceTree = "<group>"; };
+		12AB6C1D2CBFE6270059E25F /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
 		AE28CDC92CA2F3AE00267E39 /* MakeItGreat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MakeItGreat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE28CDCC2CA2F3AE00267E39 /* MakeItGreatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeItGreatApp.swift; sourceTree = "<group>"; };
 		AE28CDCE2CA2F3AE00267E39 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -54,6 +86,8 @@
 		AE3BFAB82CAC389D00DC1C67 /* DecisionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecisionView.swift; sourceTree = "<group>"; };
 		AE5B33E42CA88BCD0055D650 /* DecisionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecisionCard.swift; sourceTree = "<group>"; };
 		AE5B33E62CA88CBF0055D650 /* HomeScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenView.swift; sourceTree = "<group>"; };
+		AE5CE2032CB94BC900BAAEBD /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		AE5CE2152CB95A2000BAAEBD /* NoSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoSearchView.swift; sourceTree = "<group>"; };
 		AE7B18792CB420830004C164 /* CustomFeelingPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFeelingPicker.swift; sourceTree = "<group>"; };
 		AE7B187B2CB420DC0004C164 /* FeelingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeelingItem.swift; sourceTree = "<group>"; };
 		AE7F8BBC2CA6D5FF00CD3835 /* ProConsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProConsView.swift; sourceTree = "<group>"; };
@@ -80,7 +114,24 @@
 		FC828F002CBEA7D200EEAE83 /* Button3D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button3D.swift; sourceTree = "<group>"; };
 		FCB75B792CBFF40E00584DDC /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 		FCB75B7C2CBFF6CF00584DDC /* animation.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = animation.json; sourceTree = "<group>"; };
+		E9869F4D2CB70470005DC0E4 /* NoDecisionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoDecisionsView.swift; sourceTree = "<group>"; };
+		E9869F4F2CB7048D005DC0E4 /* HaveDecisionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HaveDecisionsView.swift; sourceTree = "<group>"; };
+		E9869F512CB70619005DC0E4 /* ButtonCreateDecision.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCreateDecision.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		E92604F32CAEDCFB002F0C77 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = E92604DB2CAEDCFA002F0C77 /* DewiserWidgetExtension */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		E92604E22CAEDCFA002F0C77 /* DewiserWidget */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (E92604F32CAEDCFB002F0C77 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = DewiserWidget; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		AE28CDC62CA2F3AE00267E39 /* Frameworks */ = {
@@ -91,6 +142,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E92604D92CAEDCFA002F0C77 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -98,6 +156,8 @@
 			isa = PBXGroup;
 			children = (
 				AE28CDCB2CA2F3AE00267E39 /* MakeItGreat */,
+				E92604E22CAEDCFA002F0C77 /* DewiserWidget */,
+				E92604DD2CAEDCFA002F0C77 /* Frameworks */,
 				AE28CDCA2CA2F3AE00267E39 /* Products */,
 				AE9E27AB2CB6CDBF006FB9E4 /* Recovered References */,
 			);
@@ -157,6 +217,7 @@
 				AE7F8BC62CA6EABB00CD3835 /* ProgressBar.swift */,
 				AE5B33E42CA88BCD0055D650 /* DecisionCard.swift */,
 				FC828F002CBEA7D200EEAE83 /* Button3D.swift */,
+				E9869F512CB70619005DC0E4 /* ButtonCreateDecision.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -180,9 +241,13 @@
 				AE3BFAB82CAC389D00DC1C67 /* DecisionView.swift */,
 				AE7F8BBC2CA6D5FF00CD3835 /* ProConsView.swift */,
 				AE5B33E62CA88CBF0055D650 /* HomeScreenView.swift */,
+				E9869F4D2CB70470005DC0E4 /* NoDecisionsView.swift */,
+				AE5CE2032CB94BC900BAAEBD /* OnboardingView.swift */,
+				E9869F4F2CB7048D005DC0E4 /* HaveDecisionsView.swift */,
 				E92604D22CAC1B8A002F0C77 /* SearchView.swift */,
 				FC646F722CB7121200EEAA15 /* OnboardingView.swift */,
 				FCB75B792CBFF40E00584DDC /* SplashScreenView.swift */,
+				AE5CE2152CB95A2000BAAEBD /* NoSearchView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -210,8 +275,10 @@
 		AEFC12C92CACC8C900E00B9D /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				AEFC12C72CACC8C900E00B9D /* AboutView.swift */,
+				12AB6C1D2CBFE6270059E25F /* AuthenticationManager.swift */,
+				12AB6C1B2CBFE5A10059E25F /* FaceIdView.swift */,
 				AEFC12C82CACC8C900E00B9D /* SettingsView.swift */,
+				AEFC12C72CACC8C900E00B9D /* AboutView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -222,6 +289,11 @@
 				FCB75B7C2CBFF6CF00584DDC /* animation.json */,
 			);
 			path = Lottie;
+		E92604DD2CAEDCFA002F0C77 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -235,10 +307,12 @@
 				AE28CDC62CA2F3AE00267E39 /* Frameworks */,
 				AE28CDC72CA2F3AE00267E39 /* Resources */,
 				AE9E32BB2CA38FC9009235AC /* ShellScript */,
+				E92604F72CAEDCFB002F0C77 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				E92604F12CAEDCFB002F0C77 /* PBXTargetDependency */,
 			);
 			name = MakeItGreat;
 			packageProductDependencies = (
@@ -248,6 +322,27 @@
 			productReference = AE28CDC92CA2F3AE00267E39 /* MakeItGreat.app */;
 			productType = "com.apple.product-type.application";
 		};
+		E92604DB2CAEDCFA002F0C77 /* DewiserWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E92604F42CAEDCFB002F0C77 /* Build configuration list for PBXNativeTarget "DewiserWidgetExtension" */;
+			buildPhases = (
+				E92604D82CAEDCFA002F0C77 /* Sources */,
+				E92604D92CAEDCFA002F0C77 /* Frameworks */,
+				E92604DA2CAEDCFA002F0C77 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				E92604E22CAEDCFA002F0C77 /* DewiserWidget */,
+			);
+			name = DewiserWidgetExtension;
+			packageProductDependencies = (
+			);
+			productName = DewiserWidgetExtension;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -255,11 +350,14 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1530;
+				LastSwiftUpdateCheck = 1600;
 				LastUpgradeCheck = 1530;
 				TargetAttributes = {
 					AE28CDC82CA2F3AE00267E39 = {
 						CreatedOnToolsVersion = 15.3;
+					};
+					E92604DB2CAEDCFA002F0C77 = {
+						CreatedOnToolsVersion = 16.0;
 					};
 				};
 			};
@@ -280,6 +378,7 @@
 			projectRoot = "";
 			targets = (
 				AE28CDC82CA2F3AE00267E39 /* MakeItGreat */,
+				E92604DB2CAEDCFA002F0C77 /* DewiserWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -292,6 +391,13 @@
 				AE28CDD42CA2F3AF00267E39 /* Preview Assets.xcassets in Resources */,
 				FCB75B7D2CBFF6CF00584DDC /* animation.json in Resources */,
 				AE28CDD12CA2F3AF00267E39 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E92604DA2CAEDCFA002F0C77 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,8 +430,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FC646F732CB7121200EEAA15 /* OnboardingView.swift in Sources */,
 				AE7F8BBD2CA6D5FF00CD3835 /* ProConsView.swift in Sources */,
+				AE5CE2162CB95A2400BAAEBD /* NoSearchView.swift in Sources */,
+				12AB6C1C2CBFE5A10059E25F /* FaceIdView.swift in Sources */,
+				E9869F502CB7048D005DC0E4 /* HaveDecisionsView.swift in Sources */,
 				AE3847A92CABF4C400D4ABB5 /* ConModel.swift in Sources */,
 				FCB75B7A2CBFF40E00584DDC /* SplashScreenView.swift in Sources */,
 				AEE99BEA2CB0145500CC299A /* EditView.swift in Sources */,
@@ -333,16 +441,20 @@
 				AE9E32B02CA38485009235AC /* FirstPage.swift in Sources */,
 				AE9E32B32CA3854D009235AC /* SecondPage.swift in Sources */,
 				AE7F8BC12CA6DA8B00CD3835 /* CardModel.swift in Sources */,
+				E9869F4E2CB70470005DC0E4 /* NoDecisionsView.swift in Sources */,
 				AE7F8BC72CA6EABB00CD3835 /* ProgressBar.swift in Sources */,
 				AED2E7362CB25272005A89CD /* CustomHourPicker.swift in Sources */,
 				AE5B33E72CA88CBF0055D650 /* HomeScreenView.swift in Sources */,
 				AE5B33E52CA88BCD0055D650 /* DecisionCard.swift in Sources */,
+				AE5CE2042CB94BC900BAAEBD /* OnboardingView.swift in Sources */,
 				E92604D32CAC1B8A002F0C77 /* SearchView.swift in Sources */,
 				AE7F8BBF2CA6D68F00CD3835 /* ItemCard.swift in Sources */,
+				E9869F522CB70619005DC0E4 /* ButtonCreateDecision.swift in Sources */,
 				AEFC12CE2CACC8EE00E00B9D /* LinkAbout.swift in Sources */,
 				AEFC12CF2CACC8EE00E00B9D /* SettingsViewModel.swift in Sources */,
 				AE7F8BBF2CA6D68F00CD3835 /* ItemCard.swift in Sources */,
 				AE9E32B52CA3859D009235AC /* ThirdPage.swift in Sources */,
+				12AB6C1E2CBFE6270059E25F /* AuthenticationManager.swift in Sources */,
 				AE8D856D2CB357A50032AD17 /* CustomPriorityPicker.swift in Sources */,
 				AEFC12CA2CACC8C900E00B9D /* SettingsView.swift in Sources */,
 				AEFC12CB2CACC8C900E00B9D /* AboutView.swift in Sources */,
@@ -358,7 +470,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E92604D82CAEDCFA002F0C77 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E92604F12CAEDCFB002F0C77 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E92604DB2CAEDCFA002F0C77 /* DewiserWidgetExtension */;
+			targetProxy = E92604F02CAEDCFB002F0C77 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		AE28CDD52CA2F3AF00267E39 /* Debug */ = {
@@ -488,7 +615,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MakeItGreat/Preview Content\"";
-				DEVELOPMENT_TEAM = NR5649PBRF;
+				DEVELOPMENT_TEAM = ZFH4AF7HSL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = Dewiser;
@@ -519,7 +646,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MakeItGreat/Preview Content\"";
-				DEVELOPMENT_TEAM = NR5649PBRF;
+				DEVELOPMENT_TEAM = ZFH4AF7HSL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = Dewiser;
@@ -536,6 +663,64 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Academy.MakeItGreat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		E92604F52CAEDCFB002F0C77 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZFH4AF7HSL;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DewiserWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = DewiserWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Academy.MakeItGreat.DewiserWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E92604F62CAEDCFB002F0C77 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZFH4AF7HSL;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DewiserWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = DewiserWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Academy.MakeItGreat.DewiserWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -559,6 +744,15 @@
 			buildConfigurations = (
 				AE28CDD82CA2F3AF00267E39 /* Debug */,
 				AE28CDD92CA2F3AF00267E39 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E92604F42CAEDCFB002F0C77 /* Build configuration list for PBXNativeTarget "DewiserWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E92604F52CAEDCFB002F0C77 /* Debug */,
+				E92604F62CAEDCFB002F0C77 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
