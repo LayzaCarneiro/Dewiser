@@ -10,7 +10,7 @@ import SwiftUI
 struct FirstPage: View {
     @StateObject var formViewModel: FormViewModel
     @Binding var isPresented: Bool
-    
+
     @State private var titleIsEmpty: Bool = false
 
     var body: some View {
