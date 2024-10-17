@@ -12,7 +12,7 @@ struct OnboardingView: View {
     @AppStorage("currentOnboardingPage") var currentOnboardingPage = 1
 
     var body: some View {
-        if currentOnboardingPage > totalScreen {
+        if currentOnboardingPage < totalScreen {
             HomeScreenView()
         } else {
             if currentOnboardingPage == 1 {
@@ -71,11 +71,11 @@ struct OnboardingScreen: View {
                     Spacer()
                     ZStack(alignment: .bottom) {
                         Image("onboarding1")
-                               .resizable()
-                               .frame(width: geometry.size.width)
-                               .frame(height: geometry.size.height * 0.6)
-                               .clipped()
-                               .padding(.bottom, -80)
+                            .resizable()
+                            .frame(width: geometry.size.width)
+                            .frame(height: geometry.size.height * 0.6)
+                            .clipped()
+                            .padding(.bottom, -80)
 
                         Button(action: {
                             if currentOnboardingPage < totalScreen {
@@ -97,9 +97,9 @@ struct OnboardingScreen: View {
 }
 
 struct OnboardingScreen2: View {
-    
+
     @AppStorage("currentOnboardingPage") var currentOnboardingPage = 1
-    
+
     var body: some View {
         GeometryReader { geometry in
             ZStack {
@@ -111,7 +111,7 @@ struct OnboardingScreen2: View {
                         Button(action: {
                             currentOnboardingPage = totalScreen
                         }, label: {
-                        Text ("Skip")
+                            Text("Skip")
                                 .fontWeight(.bold)
                                 .padding()
                                 .foregroundStyle(.text)
@@ -119,7 +119,7 @@ struct OnboardingScreen2: View {
                     }
                     .padding(.trailing)
                     Spacer()
-                   Text("Remember your decision's deadline!")
+                    Text("Remember your decision's deadline!")
                         .multilineTextAlignment(.center)
                         .font(.title)
                         .fontDesign(.rounded)
@@ -131,7 +131,8 @@ struct OnboardingScreen2: View {
                         .multilineTextAlignment(.center)
                         .fontDesign(.rounded)
                     Spacer()
-                    ZStack (alignment: .bottom) {
+
+                    ZStack(alignment: .bottom) {
                         Image("onboarding2")
                             .resizable()
                             .frame(width: geometry.size.width)
@@ -154,36 +155,35 @@ struct OnboardingScreen2: View {
                 }
             }
         }
-    
     }
 }
 
 struct OnboardingScreen3: View {
-    
+
     @AppStorage("currentOnboardingPage") var currentOnboardingPage = 1
-    
+
     var body: some View {
         GeometryReader { geometry in
             ZStack {
                 Color(.background)
                     .ignoresSafeArea(.all)
-                
+
                 VStack {
                     HStack {
                         Spacer()
                         Button(action: {
                             currentOnboardingPage = totalScreen
                         }, label: {
-                        Text("Skip")
+                            Text("Skip")
                                 .fontWeight(.bold)
                                 .padding()
                                 .foregroundStyle(.text)
                         })
                     }
                     .padding(.trailing)
-                   
+
                     Spacer()
-                   
+
                     Text("Table of Pros and Cons!")
                         .multilineTextAlignment(.center)
                         .font(.title)
@@ -195,9 +195,9 @@ struct OnboardingScreen3: View {
                         .fontWeight(.semibold)
                         .multilineTextAlignment(.center)
                         .fontDesign(.rounded)
-                    
+
                     Spacer()
-                    
+
                     ZStack(alignment: .bottom) {
                         Image("onboarding3")
                             .resizable()
@@ -215,14 +215,12 @@ struct OnboardingScreen3: View {
                                 .fontDesign(.rounded)
                                 .fontWeight(.bold)
                                 .foregroundColor(.black)
-                            
                         })
                         .padding()
-                        .buttonStyle(CustomButton(colorButton: .yellowCustom, colorShadow: .text))
+                        .buttonStyle(CustomButton(colorButton: .yellowCustom))
                     }
                 }
             }
         }
-  
     }
 }
