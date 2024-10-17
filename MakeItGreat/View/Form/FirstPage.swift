@@ -34,7 +34,7 @@ struct FirstPage: View {
                             TextField("What is your decision title?", text: $formViewModel.cardModel.title)
                                 .padding()
                                 .frame(width: 361, height: 44)
-                                .background(Color.textInverse)
+                                .background(.cardBackground)
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 10)
                                         .stroke((titleIsEmpty && formViewModel.cardModel.title.isEmpty) ? Color.red : Color.fieldStroke, lineWidth: 2)
@@ -54,7 +54,7 @@ struct FirstPage: View {
                                         set: {formViewModel.cardModel.cardDescription = $0.isEmpty ? nil : $0}),
                                       axis: .vertical)
                             .padding()
-                            .background(Color.textInverse)
+                            .background(.cardBackground)
                             .lineLimit(8, reservesSpace: true)
                             .overlay(
                                 RoundedRectangle(cornerRadius: 10)

@@ -55,7 +55,7 @@ struct DecisionView: View {
                             .fontWeight(.medium)
                             .foregroundStyle(.white)
                             .padding(.trailing, 6)
-                        
+
                         Image(systemName: "clock")
                             .resizable()
                             .frame(width: 21, height: 21)

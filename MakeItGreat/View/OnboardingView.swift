@@ -35,9 +35,9 @@ struct OnboardingView: View {
 let totalScreen = 3
 
 struct OnboardingScreen: View {
-    
+
     @AppStorage("currentOnboardingPage") var currentOnboardingPage = 1
-    
+
     var body: some View {
         GeometryReader { geometry in
             ZStack {
@@ -49,7 +49,7 @@ struct OnboardingScreen: View {
                         Button(action: {
                             currentOnboardingPage = totalScreen
                         }, label: {
-                        Text ("Skip")
+                            Text("Skip")
                                 .fontWeight(.bold)
                                 .padding()
                                 .foregroundStyle(.text)
@@ -69,13 +69,14 @@ struct OnboardingScreen: View {
                         .multilineTextAlignment(.center)
                         .fontDesign(.rounded)
                     Spacer()
-                    ZStack (alignment: .bottom){
+                    ZStack(alignment: .bottom) {
                         Image("onboarding1")
                                .resizable()
                                .frame(width: geometry.size.width)
                                .frame(height: geometry.size.height * 0.6)
                                .clipped()
                                .padding(.bottom, -80)
+
                         Button(action: {
                             if currentOnboardingPage < totalScreen {
                                 currentOnboardingPage += 1
@@ -85,10 +86,9 @@ struct OnboardingScreen: View {
                                 .font(.title2)
                                 .fontDesign(.rounded)
                                 .fontWeight(.bold)
-                            
                         })
                         .padding()
-                        .buttonStyle(ButtonOnb())
+                        .buttonStyle(CustomButton(colorButton: .background, colorShadow: .text))
                     }
                 }
             }
@@ -149,7 +149,7 @@ struct OnboardingScreen2: View {
                                 .fontWeight(.bold)
                         })
                         .padding()
-                        .buttonStyle(ButtonOnb())
+                        .buttonStyle(CustomButton(colorButton: .background, colorShadow: .text))
                     }
                 }
             }
@@ -157,8 +157,6 @@ struct OnboardingScreen2: View {
     
     }
 }
-
-
 
 struct OnboardingScreen3: View {
     
@@ -176,7 +174,7 @@ struct OnboardingScreen3: View {
                         Button(action: {
                             currentOnboardingPage = totalScreen
                         }, label: {
-                        Text ("Skip")
+                        Text("Skip")
                                 .fontWeight(.bold)
                                 .padding()
                                 .foregroundStyle(.text)
@@ -200,7 +198,7 @@ struct OnboardingScreen3: View {
                     
                     Spacer()
                     
-                    ZStack (alignment: .bottom) {
+                    ZStack(alignment: .bottom) {
                         Image("onboarding3")
                             .resizable()
                             .frame(width: geometry.size.width)
@@ -220,7 +218,7 @@ struct OnboardingScreen3: View {
                             
                         })
                         .padding()
-                        .buttonStyle(Buttonn())
+                        .buttonStyle(CustomButton(colorButton: .yellowCustom, colorShadow: .text))
                     }
                 }
             }
