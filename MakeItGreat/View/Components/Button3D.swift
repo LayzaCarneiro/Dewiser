@@ -15,12 +15,12 @@ struct CustomButton: ButtonStyle {
         let feedbackGenerator = UIImpactFeedbackGenerator(style: .heavy)
 
         ZStack {
-            let offset: CGFloat = 5
+            let offset: CGFloat = 6
             RoundedRectangle(cornerRadius: 30)
                 .frame(width: 254, height: 76)
                 .foregroundStyle(colorShadow)
                 .offset(y: 6)
-            
+
             RoundedRectangle(cornerRadius: 30)
                 .frame(width: 254, height: 76)
                 .foregroundStyle(colorButton)

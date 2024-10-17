@@ -12,7 +12,7 @@ struct OnboardingView: View {
     @AppStorage("currentOnboardingPage") var currentOnboardingPage = 1
 
     var body: some View {
-        if currentOnboardingPage < totalScreen {
+        if currentOnboardingPage > totalScreen {
             HomeScreenView()
         } else {
             if currentOnboardingPage == 1 {
@@ -214,7 +214,7 @@ struct OnboardingScreen3: View {
                                 .font(.title2)
                                 .fontDesign(.rounded)
                                 .fontWeight(.bold)
-                                .foregroundColor(.black)
+                                .foregroundColor(.textCreateButton)
                         })
                         .padding()
                         .buttonStyle(CustomButton(colorButton: .yellowCustom))
