@@ -10,10 +10,17 @@ import SwiftData
 
 @main
 struct MakeItGreatApp: App {
-
+    @StateObject private var authManager = AuthenticationManager()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            if authManager.isFaceIDEnabled {
+                FaceIdView()
+                    .environmentObject(authManager)
+            } else {
+                HomeScreenView()
+                    .environmentObject(authManager)
+            }
         }
         .modelContainer(for: [CardModel.self, ProModel.self, ConModel.self])
     }
