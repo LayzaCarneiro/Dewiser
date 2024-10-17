@@ -10,13 +10,13 @@ import SwiftData
 
 struct HomeScreenView: View {
     @State private var isPresented: Bool = false
-
-    @Query var decisions: [CardModel]
-
     @State private var deleteOnForDecision: Bool = false
-
+    
     @Environment(\.modelContext) var context
-
+    @EnvironmentObject var authManager: AuthenticationManager
+    
+    @Query var decisions: [CardModel]
+    
     var body: some View {
         NavigationStack {
             ZStack {
@@ -85,6 +85,7 @@ struct HomeScreenView: View {
                     }
                 }
             }
+            .navigationBarBackButtonHidden(true)
         }
     }
 }
@@ -92,5 +93,6 @@ struct HomeScreenView: View {
 struct HomeScreenView_Previews: PreviewProvider {
     static var previews: some View {
         HomeScreenView()
+            .environmentObject(AuthenticationManager())
     }
 }
