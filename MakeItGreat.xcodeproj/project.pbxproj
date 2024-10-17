@@ -240,10 +240,10 @@
 		AE9E32A72CA358A1009235AC /* View */ = {
 			isa = PBXGroup;
 			children = (
-				AE3BBE7A2CC1507000D6582D /* SplashScreenView.swift */,
 				AEFC12C92CACC8C900E00B9D /* Settings */,
 				AE7F8BBB2CA6D5E500CD3835 /* Components */,
 				AE9E32B12CA3853B009235AC /* Form */,
+				AE3BBE7A2CC1507000D6582D /* SplashScreenView.swift */,
 				AEE99BE92CB0145300CC299A /* EditView.swift */,
 				AE3BFAB82CAC389D00DC1C67 /* DecisionView.swift */,
 				AE7F8BBC2CA6D5FF00CD3835 /* ProConsView.swift */,
