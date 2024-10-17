@@ -15,7 +15,6 @@ struct DecisionCard: View {
     @Query var allCons: [ConModel]
     @State private var filteredPros: [ProModel] = []
     @State private var filteredCons: [ConModel] = []
-    
     var images = ["Sad": "sadFace", "Angry": "angryFace", "Ok": "okFace", "Good": "goodFace", "Confident": "confidentFace"]
 
     var body: some View {

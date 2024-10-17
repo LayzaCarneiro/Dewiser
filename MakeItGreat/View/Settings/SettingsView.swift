@@ -17,85 +17,89 @@ struct SettingsView: View {
 
     var body: some View {
         NavigationStack {
-            List {
-                Section(header: Text("Notification")) {
-                    Toggle(isOn: $isNotificationOn) {
-                        HStack {
-                            ZStack {
-                                RoundedRectangle(cornerRadius: 6)
-                                    .fill(Color.accentColor)
-                                    .frame(width: 30, height: 30)
-                                Image(systemName: "bell.fill")
-                                    .foregroundColor(.white)
-                                    .font(.system(size: 15))
+            ZStack {
+                Color.background.ignoresSafeArea()
+                List {
+                    Section(header: Text("Notification")) {
+                        Toggle(isOn: $isNotificationOn) {
+                            HStack {
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 6)
+                                        .fill(Color.icon)
+                                        .frame(width: 30, height: 30)
+                                    Image(systemName: "bell.fill")
+                                        .foregroundColor(.white)
+                                        .font(.system(size: 15))
+                                }
+                                Text("Daily Reminder")
                             }
-                            Text("Daily Reminder")
                         }
-                    }
-                    .onChange(of: isNotificationOn) { newValue in
-                        UserDefaults.standard.set(newValue, forKey: "isNotificationOn")
-                        if newValue {
-                            requestNotificationPermission()
-                        } else {
-                            cancelNotifications()
-                        }
-                    }
-
-                    Toggle(isOn: $isAbleHaptics) {
-                        HStack {
-                            ZStack {
-                                RoundedRectangle(cornerRadius: 6)
-                                    .fill(Color.accentColor)
-                                    .frame(width: 30, height: 30)
-                                Image(systemName: "speaker.wave.2")
-                                    .foregroundColor(.white)
-                                    .font(.system(size: 15))
+                        .onChange(of: isNotificationOn) { newValue in
+                            UserDefaults.standard.set(newValue, forKey: "isNotificationOn")
+                            if newValue {
+                                requestNotificationPermission()
+                            } else {
+                                cancelNotifications()
                             }
-                            Text("Disable haptics")
+                        }
+                        
+                        Toggle(isOn: $isAbleHaptics) {
+                            HStack {
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 6)
+                                        .fill(Color.icon)
+                                        .frame(width: 30, height: 30)
+                                    Image(systemName: "speaker.wave.2")
+                                        .foregroundColor(.white)
+                                        .font(.system(size: 15))
+                                }
+                                Text("Disable haptics")
+                            }
+                        }
+                        .onChange(of: isAbleHaptics) { newValue in
+                            UserDefaults.standard.set(newValue, forKey: "isAbleHaptics")
                         }
                     }
-                    .onChange(of: isAbleHaptics) { newValue in
-                        UserDefaults.standard.set(newValue, forKey: "isAbleHaptics")
+                    Section(header: Text("Privacy")) {
+                        Toggle(isOn: $isLockAppOn) {
+                            HStack {
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 6)
+                                        .fill(Color.icon)
+                                        .frame(width: 30, height: 30)
+                                    Image(systemName: "lock")
+                                        .foregroundColor(.white)
+                                        .font(.system(size: 15))
+                                }
+                                Text("Face ID")
+                            }
+                        }
+                        .onChange(of: isLockAppOn) { newValue in
+                            UserDefaults.standard.set(newValue, forKey: "isLockAppOn")
+                            if newValue {
+                                authenticate()
+                            } else {
+                                isAuthenticated = false
+                            }
+                        }
+                    }
+                    Section(header: Text("Development")) {
+                        NavigationLink(destination: AboutView()) {
+                            HStack {
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 6)
+                                        .fill(Color.icon)
+                                        .frame(width: 30, height: 30)
+                                    Image(systemName: "info.circle.fill")
+                                        .foregroundColor(.white)
+                                        .font(.system(size: 15))
+                                }
+                                Text("More info")
+                            }
+                        }
                     }
                 }
-                Section(header: Text("Privacy")) {
-                    Toggle(isOn: $isLockAppOn) {
-                        HStack {
-                            ZStack {
-                                RoundedRectangle(cornerRadius: 6)
-                                    .fill(Color.accentColor)
-                                    .frame(width: 30, height: 30)
-                                Image(systemName: "lock")
-                                    .foregroundColor(.white)
-                                    .font(.system(size: 15))
-                            }
-                            Text("Face ID")
-                        }
-                    }
-                    .onChange(of: isLockAppOn) { newValue in
-                        UserDefaults.standard.set(newValue, forKey: "isLockAppOn")
-                        if newValue {
-                            authenticate()
-                        } else {
-                            isAuthenticated = false
-                        }
-                    }
-                }
-                Section(header: Text("Development")) {
-                    NavigationLink(destination: AboutView()) {
-                        HStack {
-                            ZStack {
-                                RoundedRectangle(cornerRadius: 6)
-                                    .fill(Color.accentColor)
-                                    .frame(width: 30, height: 30)
-                                Image(systemName: "info.circle.fill")
-                                    .foregroundColor(.white)
-                                    .font(.system(size: 15))
-                            }
-                            Text("More info")
-                        }
-                    }
-                }
+                .scrollContentBackground(.hidden)
             }
             .navigationBarTitle("Settings")
             .onAppear {

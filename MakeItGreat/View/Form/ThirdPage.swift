@@ -10,16 +10,17 @@ import SwiftUI
 struct ThirdPage: View {
     @ObservedObject var formViewModel: FormViewModel
     @Binding var isPresented: Bool
-    
+
     @Environment(\.modelContext) var context
     @Environment(\.dismiss) var dismiss
 
     var body: some View {
         NavigationStack {
-            VStack {
+            ZStack {
+                Color.background.ignoresSafeArea()
+
                 ProConsView(card: formViewModel.cardModel)
             }
-            
         }
         .navigationTitle("New Decision")
         .navigationBarTitleDisplayMode(.inline)
@@ -28,7 +29,7 @@ struct ThirdPage: View {
                 Button {
                     let newCard = formViewModel.cardModel
                     context.insert(newCard)
-                    
+
                     do {
                         try context.save()
                     } catch {
