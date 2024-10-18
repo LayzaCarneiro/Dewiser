@@ -25,7 +25,7 @@ struct HomeScreenView: View {
                     VStack {
                         if decisions.isEmpty {
                             Text("My Decisions")
-                                .font(.largeTitle)
+                                .font(.system(size: geometry.size.width * 0.08))
                                 .fontDesign(.rounded)
                                 .fontWidth(.compressed)
                                 .fontWeight(.black)

@@ -75,7 +75,7 @@ struct OnboardingScreen: View {
                                .frame(width: geometry.size.width)
                                .frame(height: geometry.size.height * 0.6)
                                .clipped()
-                               .padding(.bottom, -80)
+                               .padding(.bottom, -50)
                         Button(action: {
                             if currentOnboardingPage < totalScreen {
                                 currentOnboardingPage += 1
@@ -137,7 +137,7 @@ struct OnboardingScreen2: View {
                             .frame(width: geometry.size.width)
                             .frame(height: geometry.size.height * 0.6)
                             .clipped()
-                            .padding(.bottom, -80)
+                            .padding(.bottom, -50)
                         Button(action: {
                             if currentOnboardingPage < totalScreen {
                                 currentOnboardingPage += 1
@@ -202,7 +202,7 @@ struct OnboardingScreen3: View {
                             .frame(width: geometry.size.width)
                             .frame(height: geometry.size.height * 0.6)
                             .clipped()
-                            .padding(.bottom, -80)
+                            .padding(.bottom, -50)
                         Button(action: {
                             if currentOnboardingPage <= totalScreen {
                                 currentOnboardingPage += 1
