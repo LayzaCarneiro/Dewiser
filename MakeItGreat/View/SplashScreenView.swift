@@ -27,7 +27,7 @@ struct SplashScreenView: View {
                             .frame(maxWidth: .infinity, alignment: .center)
                         Spacer()
                         Text("Dewiser")
-                            .font(.system(size: min(geometry.size.width * 0.1, 45)))
+                            .font(.system(size: min(geometry.size.width * 0.1, 35)))
                             .fontDesign(.rounded)
                             .fontWeight(.black)
                             .foregroundStyle(Color.white)
