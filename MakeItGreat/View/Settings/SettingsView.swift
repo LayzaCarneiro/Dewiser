@@ -35,6 +35,7 @@ struct SettingsView: View {
                                 Text("Daily Reminder")
                             }
                         }
+                        .tint(.accentColor)
                         .onChange(of: isNotificationOn) { newValue in
                             UserDefaults.standard.set(newValue, forKey: "isNotificationOn")
                             if newValue {
@@ -57,6 +58,7 @@ struct SettingsView: View {
                                 Text("Disable haptics")
                             }
                         }
+                        .tint(.accentColor)
                         .onChange(of: isAbleHaptics) { newValue in
                             UserDefaults.standard.set(newValue, forKey: "isAbleHaptics")
                         }
