@@ -14,7 +14,7 @@ struct NoDecisionsView: View {
             Image("nodecisions")
                 .resizable()
                 .scaledToFit()
-                .frame(maxHeight: .infinity, alignment: .bottom) 
+            .frame(maxHeight: .infinity, alignment: .bottom)
                 .ignoresSafeArea()
 
             VStack(spacing: 25) {
@@ -31,7 +31,6 @@ struct NoDecisionsView: View {
                         .foregroundColor(.white)
 
                 }
-                
                 ButtonCreateDecision()
                     .padding(.bottom, 6)
 

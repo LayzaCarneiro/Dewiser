@@ -57,7 +57,6 @@ struct ProConsView: View {
                                 )
                             }
                             .padding(.vertical, 10)
-//
                             ForEach($filteredPros, id: \.self) { $pro in
                                 HStack {
                                     ItemCard(content: $pro.content, onDelete: {
@@ -129,7 +128,7 @@ struct ProConsView: View {
             filteredCons = allCons.filter { $0.cardID == card.id }
         }
     }
-    
+
     func hideKeyboard() {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }

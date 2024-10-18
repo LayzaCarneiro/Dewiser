@@ -11,13 +11,31 @@ import SwiftData
 struct HaveDecisionsView: View {
     @State private var isPresented: Bool = false
     @Query var decisions: [CardModel]
-    @State private var deleteOnForDecision: Bool = false
     @Environment(\.modelContext) var context
     @State private var selectedDecision: CardModel?
+    let generator = UIImpactFeedbackGenerator(style: .rigid)
+    
+    // Adiciona uma propriedade para verificar se os haptics estão habilitados
+    private var isHapticsEnabled: Bool {
+        UserDefaults.standard.bool(forKey: "isAbleHaptics")
+    }
+
+    // Enum para gerenciar os alertas
+    enum AlertType: Identifiable {
+        case delete, conclude
+        
+        var id: Int {
+            hashValue // A propriedade 'id' pode usar 'hashValue' ou qualquer outra lógica para identificar o caso
+        }
+    }
+
+    // Estados para os alertas
+    @State private var alertType: AlertType?
+    @State private var decisionToDelete: CardModel?
+    @State private var decisionToConclude: CardModel?
 
     var body: some View {
         NavigationStack {
-
             ZStack {
                 VStack {
                     Text("My Decisions")
@@ -32,7 +50,8 @@ struct HaveDecisionsView: View {
 
                     List {
                         ForEach(decisions.sorted(by: {
-                            priorityOrder(Priority(rawValue: $0.priority) ?? .medium) > priorityOrder(Priority(rawValue: $1.priority) ?? .medium)})) { decision in
+                            priorityOrder(Priority(rawValue: $0.priority) ?? .medium) > priorityOrder(Priority(rawValue: $1.priority) ?? .medium)
+                        })) { decision in
                             HStack {
                                 Button {
                                     selectedDecision = decision
@@ -42,13 +61,24 @@ struct HaveDecisionsView: View {
                             }
                             .swipeActions(allowsFullSwipe: true) {
                                 Button(role: .destructive) {
-                                    deleteDecision(decision: decision)
+                                    // Gera feedback tátil apenas se haptics estiver habilitado
+                                    if isHapticsEnabled {
+                                        generator.impactOccurred()
+                                    }
+                                    decisionToDelete = decision
+                                    alertType = .delete
                                 } label: {
                                     Label("Delete", systemImage: "trash")
                                 }
+                                .tint(.red)
+
                                 if decision.priority != "done" {
                                     Button(role: .none) {
-                                        decision.priority = "done"
+                                        if isHapticsEnabled {
+                                            generator.impactOccurred()
+                                        }
+                                        decisionToConclude = decision
+                                        alertType = .conclude
                                     } label: {
                                         Label("Conclude", systemImage: "checkmark")
                                     }
@@ -75,7 +105,6 @@ struct HaveDecisionsView: View {
                         .foregroundColor(Color.background)
                         .ignoresSafeArea(edges: .bottom)
                         .padding(.top, 33)
-
                 )
                 .navigationDestination(isPresented: Binding(
                     get: { selectedDecision != nil },
@@ -87,12 +116,39 @@ struct HaveDecisionsView: View {
                 }
             }
         }
+        .alert(item: $alertType) { type in
+            switch type {
+            case .delete:
+                return Alert(
+                    title: Text("Delete Decision"),
+                    message: Text("Are you sure you want to delete this decision? This action cannot be undone."),
+                    primaryButton: .destructive(Text("Delete")) {
+                        if let decision = decisionToDelete {
+                            deleteDecision(decision: decision)
+                        }
+                    },
+                    secondaryButton: .cancel()
+                )
+            case .conclude:
+                return Alert(
+                    title: Text("Congratulations!"),
+                    message: Text("Hope you made a wise decision! Are you sure of that?"),
+                    primaryButton: .default(Text("Conclude")) {
+                        if let decision = decisionToConclude {
+                            decision.priority = "done"
+                        }
+                    },
+                    secondaryButton: .cancel()
+                )
+            }
+        }
     }
 
     private func deleteDecision(decision: CardModel) {
         context.delete(decision)
+        try? context.save()
     }
-    
+
     private func priorityOrder(_ priority: Priority) -> Int {
         switch priority {
         case .high:
@@ -106,6 +162,7 @@ struct HaveDecisionsView: View {
         }
     }
 }
+
 
 #Preview {
     HaveDecisionsView()

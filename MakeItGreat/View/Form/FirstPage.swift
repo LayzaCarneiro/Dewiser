@@ -6,12 +6,18 @@
 //
 
 import SwiftUI
+import UIKit
 
 struct FirstPage: View {
     @StateObject var formViewModel: FormViewModel
     @Binding var isPresented: Bool
-
     @State private var titleIsEmpty: Bool = false
+    var generate = UIImpactFeedbackGenerator(style: .rigid)
+
+    // Adiciona uma propriedade para verificar se os haptics estão habilitados
+    private var isHapticsEnabled: Bool {
+        UserDefaults.standard.bool(forKey: "isAbleHaptics")
+    }
 
     var body: some View {
         NavigationStack {
@@ -127,6 +133,10 @@ struct FirstPage: View {
                     } else {
                         Button {
                             titleIsEmpty = true
+                            // Gera feedback tátil apenas se haptics estiver habilitado
+                            if isHapticsEnabled {
+                                generate.impactOccurred()
+                            }
                         } label: {
                             Text("Next")
                                 .foregroundStyle(.cancelcolor)
@@ -135,5 +145,12 @@ struct FirstPage: View {
                 }
             }
         }
+        .onTapGesture {
+           hideKeyboard()
+        }
+    }
+
+    func hideKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }
