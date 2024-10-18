@@ -4,26 +4,37 @@
 //
 //  Created by Layza Maria Rodrigues Carneiro on 27/09/24.
 //
-
 import SwiftUI
+import Combine
 import SwiftData
+import UIKit
 
 struct ItemCard: View {
     @Binding var content: String
     var onDelete: () -> Void
+    let textLimit = 25 // Limite de caracteres para o conteúdo
 
     var body: some View {
-        ZStack(alignment: .topTrailing) {  // ZStack para sobrepor o botão "X"
-            // Conteúdo do cartão
-            TextField("", text: $content)
+        ZStack(alignment: .topTrailing) {
+            if content.isEmpty {
+                Text("Adicione")
+                    .foregroundColor(.gray)
+                    .padding(15)
+                    .frame(width: 149, height: 84, alignment: .leading)
+            }
+            TextEditor(text: $content)
+                .onReceive(Just(content)) { _ in limitText(textLimit) } // Limita o texto à medida que o usuário digita
+                .padding(10)
                 .frame(width: 149, height: 84)
                 .background(Color.cardBackground)
                 .cornerRadius(10)
-                .background(
+                .overlay(
                     RoundedRectangle(cornerRadius: 10)
                         .stroke(Color.strokecard, lineWidth: 4)
-                        .frame(width: 149, height: 84)
                 )
+                .lineLimit(nil)
+                .opacity(content.isEmpty ? 0.25 : 1)
+
             Button(action: {
                 onDelete()
             }) {
@@ -33,5 +44,12 @@ struct ItemCard: View {
             }
         }
         .frame(width: 149, height: 84)
+    }
+
+    func limitText(_ upper: Int) {
+        if content.count > upper {
+            let index = content.index(content.startIndex, offsetBy: upper)
+            content = String(content[..<index])
+        }
     }
 }

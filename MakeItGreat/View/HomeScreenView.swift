@@ -10,13 +10,9 @@ import SwiftData
 
 struct HomeScreenView: View {
     @State private var isPresented: Bool = false
-
     @Query var decisions: [CardModel]
-
     @State private var deleteOnForDecision: Bool = false
-
     @Environment(\.modelContext) var context
-
     var body: some View {
         NavigationStack {
             ZStack {

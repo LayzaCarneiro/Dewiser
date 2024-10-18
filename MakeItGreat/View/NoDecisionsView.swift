@@ -30,6 +30,7 @@ struct NoDecisionsView: View {
                 }
                 ButtonCreateDecision()
                 .padding(.bottom, 30)
+                .background(Color.clear)
             }
         }
     }

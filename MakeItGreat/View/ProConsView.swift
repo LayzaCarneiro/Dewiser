@@ -21,6 +21,7 @@ struct ProConsView: View {
     @State var deleteOn: Bool = false
     @State private var deleteOnForDecision: Bool = false
     let generator = UIImpactFeedbackGenerator(style: .rigid)
+    @State private var isAbleHaptics: Bool = UserDefaults.standard.object(forKey: "isAbleHaptics") as? Bool ?? true
 
     var body: some View {
         ZStack {
@@ -37,9 +38,12 @@ struct ProConsView: View {
                             ProgressBar(progress: Double(filteredPros.count), total: Double(filteredPros.count + filteredCons.count), color: Color.purpleBackground)
 
                             Button {
-                                generator.impactOccurred()
-                                let newPro = ProModel(id: UUID(), content: "Pro", cardID: card.id)
+                                if isAbleHaptics {
+                                    generator.impactOccurred()
+                                }
+                                let newPro = ProModel(id: UUID(), content: "", cardID: card.id)
                                 context.insert(newPro)
+                                updateFilteredLists()
                             } label: {
                                 HStack {
                                     Image(systemName: "plus")
@@ -54,11 +58,18 @@ struct ProConsView: View {
                             }
                             .padding(.vertical, 10)
 
-                            ForEach($filteredPros, id: \.self) { $pro in
+                            ForEach(filteredPros, id: \.id) { pro in
                                 HStack {
-                                    ItemCard(content: $pro.content, onDelete: {
-                                           context.delete(pro)
-                                       })
+                                    ItemCard(content: Binding(
+                                        get: { pro.content },
+                                        set: { newValue in
+                                            pro.content = newValue
+                                            try? context.save()
+                                        }
+                                    ), onDelete: {
+                                        context.delete(pro)
+                                        updateFilteredLists()
+                                    })
                                     .padding(.bottom, 10)
                                 }
                             }
@@ -75,9 +86,12 @@ struct ProConsView: View {
                             ProgressBar(progress: Double(filteredCons.count), total: Double(filteredPros.count + filteredCons.count), color: Color.yellowCustom)
 
                             Button {
-                                generator.impactOccurred()
-                                let newCon = ConModel(id: UUID(), content: "Con", cardID: card.id)
+                                if isAbleHaptics {
+                                    generator.impactOccurred()
+                                }
+                                let newCon = ConModel(id: UUID(), content: "", cardID: card.id)
                                 context.insert(newCon)
+                                updateFilteredLists()
                             } label: {
                                 HStack {
                                     Image(systemName: "plus")
@@ -93,11 +107,18 @@ struct ProConsView: View {
                             }
                             .padding(.vertical, 10)
 
-                            ForEach($filteredCons, id: \.self) { $con in
+                            ForEach(filteredCons, id: \.id) { con in
                                 HStack {
-                                    ItemCard(content: $con.content, onDelete: {
-                                           context.delete(con)
-                                       })
+                                    ItemCard(content: Binding(
+                                        get: { con.content },
+                                        set: { newValue in
+                                            con.content = newValue
+                                            try? context.save()
+                                        }
+                                    ), onDelete: {
+                                        context.delete(con)
+                                        updateFilteredLists()
+                                    })
                                     .padding(.bottom, 10)
                                 }
                             }
@@ -108,18 +129,24 @@ struct ProConsView: View {
             }
         }
         .onAppear {
-            filteredPros = allPros.filter { $0.cardID == card.id }
-            filteredCons = allCons.filter { $0.cardID == card.id }
+            updateFilteredLists()
+            
+            isAbleHaptics = UserDefaults.standard.object(forKey: "isAbleHaptics") as? Bool ?? true
         }
-        .onChange(of: allPros) {
-            filteredPros = allPros.filter { $0.cardID == card.id }
+        .onChange(of: allPros) { _ in
+            updateFilteredLists()
         }
-        .onChange(of: allCons) {
-            filteredCons = allCons.filter { $0.cardID == card.id }
+        .onChange(of: allCons) { _ in
+            updateFilteredLists()
         }
     }
-}
 
+    // Função para atualizar as listas filtradas
+    func updateFilteredLists() {
+        filteredPros = allPros.filter { $0.cardID == card.id }
+        filteredCons = allCons.filter { $0.cardID == card.id }
+    }
+}
 struct ProConsView_Previews: PreviewProvider {
     static var previews: some View {
         let exampleCard = CardModel(id: UUID(), title: "Example Card")

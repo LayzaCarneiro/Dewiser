@@ -12,7 +12,7 @@ import UserNotifications
 struct SettingsView: View {
     @State private var isNotificationOn: Bool = UserDefaults.standard.bool(forKey: "isNotificationOn")
     @State private var isLockAppOn: Bool = UserDefaults.standard.bool(forKey: "isLockAppOn")
-    @State private var isAbleHaptics: Bool = UserDefaults.standard.bool(forKey: "isAbleHaptics")
+    @State private var isAbleHaptics: Bool = UserDefaults.standard.object(forKey: "isAbleHaptics") as? Bool ?? true
     @State private var isAuthenticated: Bool = UserDefaults.standard.bool(forKey: "isAuthenticated")
 
     var body: some View {
@@ -53,7 +53,7 @@ struct SettingsView: View {
                                         .foregroundColor(.white)
                                         .font(.system(size: 15))
                                 }
-                                Text("Disable haptics")
+                                Text("Able haptics")
                             }
                         }
                         .onChange(of: isAbleHaptics) { newValue in
@@ -104,8 +104,8 @@ struct SettingsView: View {
             .navigationBarTitle("Settings")
             .onAppear {
                 isNotificationOn = UserDefaults.standard.bool(forKey: "isNotificationOn")
-                isAbleHaptics = UserDefaults.standard.bool(forKey: "isAbleHaptics")
                 isLockAppOn = UserDefaults.standard.bool(forKey: "isLockAppOn")
+                isAbleHaptics = UserDefaults.standard.object(forKey: "isAbleHaptics") as? Bool ?? true
             }
         }
     }

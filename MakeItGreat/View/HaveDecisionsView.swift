@@ -54,6 +54,7 @@ struct HaveDecisionsView: View {
 //                .padding(.bottom, 60)
                 ButtonCreateDecision()
                     .padding(.bottom)
+                    .background(Color.clear)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(
