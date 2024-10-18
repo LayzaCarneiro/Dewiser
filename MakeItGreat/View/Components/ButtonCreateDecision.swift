@@ -17,12 +17,6 @@ struct ButtonCreateDecision: View {
 
     var body: some View {
         ZStack {
-            Rectangle()
-                .frame(width: 254, height: 76)
-                .cornerRadius(30)
-                .foregroundStyle(.textCreateButton)
-                .padding(.top, 6)
-            
             Button {
                 isPresented.toggle()
             } label: {
@@ -35,6 +29,7 @@ struct ButtonCreateDecision: View {
                     .background(.yellowCustom)
                     .cornerRadius(30)
             }
+            .buttonStyle(CustomButton(colorButton: .yellowCustom))
             .fullScreenCover(isPresented: $isPresented) {
                 NavigationView {
                     FirstPage(formViewModel: FormViewModel(), isPresented: $isPresented)
@@ -43,6 +38,7 @@ struct ButtonCreateDecision: View {
         }
     }
 }
+
 
 
 #Preview {

@@ -17,22 +17,16 @@ struct SecondPage: View {
         NavigationStack {
             ZStack {
                 Color.background.ignoresSafeArea()
-                
+                //
                 VStack {
                     Text("How are you feeling about this decision?")
                         .font(.largeTitle)
                         .fontDesign(.rounded)
                         .fontWeight(.bold)
                         .padding(.top, 50)
-                    //                TextField("Feeling", text: $formViewModel.cardModel.feeling)
-                    //                    .textFieldStyle(.roundedBorder)
-                    
-                    Picker("Ok", selection: $formViewModel.cardModel.feeling) {
-                        ForEach(feelings, id: \.self) {
-                            Text($0)
-                        }
-                    }
-
+                    //
+                    SliderFeeling(formViewModel: formViewModel)
+                    //
                     Spacer()
                 }
                 .padding()

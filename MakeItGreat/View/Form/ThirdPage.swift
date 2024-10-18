@@ -19,7 +19,9 @@ struct ThirdPage: View {
             ZStack {
                 Color.background.ignoresSafeArea()
 
-                ProConsView(card: formViewModel.cardModel)
+                VStack {
+                    ProConsView(card: formViewModel.cardModel)
+                }
             }
         }
         .navigationTitle("New Decision")

@@ -13,8 +13,7 @@ struct ItemCard: View {
     var onDelete: () -> Void
 
     var body: some View {
-        ZStack(alignment: .topTrailing) {  // ZStack para sobrepor o botão "X"
-            // Conteúdo do cartão
+        ZStack(alignment: .topTrailing) {
             TextField("", text: $content)
                 .frame(width: 149, height: 84)
                 .background(Color.cardBackground)
@@ -24,9 +23,9 @@ struct ItemCard: View {
                         .stroke(Color.strokecard, lineWidth: 4)
                         .frame(width: 149, height: 84)
                 )
-            Button(action: {
+            Button {
                 onDelete()
-            }) {
+            } label: {
                 Image(systemName: "xmark")
                     .foregroundColor(.strokecard)
                     .padding(6)

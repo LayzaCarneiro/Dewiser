@@ -20,7 +20,7 @@ struct DecisionCard: View {
     var body: some View {
         ZStack(alignment: .leading) {
             HStack(spacing: 8) {
-                Image(images[card.feeling] ?? "goodFace")
+                Image(images[card.feeling.capitalized] ?? "goodFace")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 90, height: 90)
