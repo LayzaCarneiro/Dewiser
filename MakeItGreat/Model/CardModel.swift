@@ -39,7 +39,10 @@ class CardModel: Identifiable {
     }
 }
 
-enum Priority: String, CaseIterable, Identifiable {
-    case low, medium, high, done
-    var id: Self { self }
+extension CardModel {
+    enum Priority: String, CaseIterable, Identifiable {
+        case low, medium, high, done
+        var id: Self { self }
+    }
+    
 }
