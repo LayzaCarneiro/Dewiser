@@ -10,13 +10,13 @@ import SwiftUI
 struct ProgressBar: View {
     var progress: Double = 0
     var total: Double = 100
-    var color: Color // Propriedade para a cor personalizada
+    var color: Color
 
     var body: some View {
         ProgressView(value: progress, total: total)
-            .progressViewStyle(BarProgressStyle(color: color)) // Usa a cor passada
+            .progressViewStyle(BarProgressStyle(color: color))
             .padding()
-            .animation(.easeInOut(duration: 0.5), value: progress) // Adiciona a animação
+            .animation(.easeInOut(duration: 0.5), value: progress) 
     }
 }
 
