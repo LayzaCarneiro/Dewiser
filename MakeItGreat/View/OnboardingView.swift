@@ -71,11 +71,11 @@ struct OnboardingScreen: View {
                     Spacer()
                     ZStack(alignment: .bottom) {
                         Image("onboarding1")
-                            .resizable()
-                            .frame(width: geometry.size.width)
-                            .frame(height: geometry.size.height * 0.6)
-                            .clipped()
-                            .padding(.bottom, -80)
+                               .resizable()
+                               .frame(width: geometry.size.width)
+                               .frame(height: geometry.size.height * 0.6)
+                               .clipped()
+                               .padding(.bottom, -50)
 
                         Button(action: {
                             if currentOnboardingPage < totalScreen {
@@ -138,7 +138,7 @@ struct OnboardingScreen2: View {
                             .frame(width: geometry.size.width)
                             .frame(height: geometry.size.height * 0.6)
                             .clipped()
-                            .padding(.bottom, -80)
+                            .padding(.bottom, -50)
                         Button(action: {
                             if currentOnboardingPage < totalScreen {
                                 currentOnboardingPage += 1
@@ -204,7 +204,7 @@ struct OnboardingScreen3: View {
                             .frame(width: geometry.size.width)
                             .frame(height: geometry.size.height * 0.6)
                             .clipped()
-                            .padding(.bottom, -80)
+                            .padding(.bottom, -50)
                         Button(action: {
                             if currentOnboardingPage <= totalScreen {
                                 currentOnboardingPage += 1
