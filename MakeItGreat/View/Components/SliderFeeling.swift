@@ -32,7 +32,7 @@ struct SliderFeeling: View {
         .onAppear {
             generator.prepare()
         }
-        .onChange(of: sliderValue) { value in
+        .onChange(of: sliderValue) { _, value in
             let roundedValue = Int(round(value))
             if roundedValue != previousValue {
                 generator.impactOccurred()

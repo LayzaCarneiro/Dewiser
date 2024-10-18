@@ -29,7 +29,7 @@ struct CustomButton: ButtonStyle {
             configuration.label
                 .offset(y: configuration.isPressed ? offset : 0)
         }
-        .onChange(of: configuration.isPressed) { isPressed in
+        .onChange(of: configuration.isPressed) { _, isPressed in
            if isPressed {
                feedbackGenerator.impactOccurred()
            }

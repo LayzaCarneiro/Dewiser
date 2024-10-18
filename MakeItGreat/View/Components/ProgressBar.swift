@@ -16,7 +16,7 @@ struct ProgressBar: View {
         ProgressView(value: progress, total: total)
             .progressViewStyle(BarProgressStyle(color: color))
             .padding()
-            .animation(.easeInOut(duration: 0.5), value: progress) 
+            .animation(.easeInOut(duration: 0.5), value: progress)
     }
 }
 

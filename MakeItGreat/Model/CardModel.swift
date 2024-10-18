@@ -27,7 +27,7 @@ class CardModel: Identifiable {
             priority = newValue.rawValue
         }
     }
-
+    // swiftlint:disable:next line_length
     init(id: UUID = UUID(), title: String = "", cardDescription: String? = nil, feeling: String = "", priorityEnum: Priority = .medium, deadline: Date? = nil, time: Date? = nil) {
         self.id = id
         self.title = title
@@ -44,5 +44,4 @@ extension CardModel {
         case low, medium, high, done
         var id: Self { self }
     }
-    
 }

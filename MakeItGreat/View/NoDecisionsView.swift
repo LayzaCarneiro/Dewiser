@@ -19,7 +19,7 @@ struct NoDecisionsView: View {
                 Spacer(minLength: 250)
                 GeometryReader { geometry in
                 ContentUnavailableView {
-                    
+                    //
                         Text("You don't have any decision yet.")
                             .font(.system(size: geometry.size.width * 0.05))
                             .font(.title)
@@ -30,9 +30,9 @@ struct NoDecisionsView: View {
                             .multilineTextAlignment(.center)
                             .padding(.horizontal, 30)
                     }
-                    
+                  //
                 }
-                
+                //
                 ButtonCreateDecision()
                 Spacer()
             }

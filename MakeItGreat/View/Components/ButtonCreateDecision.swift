@@ -39,8 +39,6 @@ struct ButtonCreateDecision: View {
     }
 }
 
-
-
 #Preview {
     ButtonCreateDecision()
 }

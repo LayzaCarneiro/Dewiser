@@ -15,7 +15,7 @@ struct SettingsView: View {
     @State private var showAlert = false
     @State private var alertMessage = ""
     @EnvironmentObject var authManager: AuthenticationManager
-    //
+
     var body: some View {
         NavigationStack {
             ZStack {
@@ -36,7 +36,7 @@ struct SettingsView: View {
                             }
                         }
                         .tint(.accentColor)
-                        .onChange(of: isNotificationOn) { newValue in
+                        .onChange(of: isNotificationOn) { _, newValue in
                             UserDefaults.standard.set(newValue, forKey: "isNotificationOn")
                             if newValue {
                                 requestNotificationPermission()
@@ -59,7 +59,7 @@ struct SettingsView: View {
                             }
                         }
                         .tint(.accentColor)
-                        .onChange(of: isAbleHaptics) { newValue in
+                        .onChange(of: isAbleHaptics) { _, newValue in
                             UserDefaults.standard.set(newValue, forKey: "isAbleHaptics")
                         }
                     }
@@ -90,6 +90,7 @@ struct SettingsView: View {
                         .tint(.accentColor)
                     }
                     .alert(isPresented: $showAlert) {
+                        // swiftlint:disable:next line_length
                         Alert(title: Text("Attention"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
                     }
 
@@ -121,7 +122,7 @@ struct SettingsView: View {
     }
 
     func requestNotificationPermission() {
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, _ in
             if granted {
                 scheduleRandomTimeReminder()
             } else {
@@ -156,11 +157,11 @@ struct SettingsView: View {
     func cancelNotifications() {
         UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["dailyRandomReminder"])
     }
-    
+
     func checkFaceIDAvailable() {
         let context = LAContext()
         var error: NSError?
-        
+
         if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
             if context.biometryType == .faceID {
                 authManager.isFaceIDEnabled = true

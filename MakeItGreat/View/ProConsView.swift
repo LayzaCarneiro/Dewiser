@@ -34,6 +34,7 @@ struct ProConsView: View {
                                 .fontWidth(.compressed)
                                 .fontWeight(.black)
 
+                            // swiftlint:disable:next line_length
                             ProgressBar(progress: Double(filteredPros.count), total: Double(filteredPros.count + filteredCons.count), color: Color.purpleBackground)
 
                             Button {
@@ -76,6 +77,7 @@ struct ProConsView: View {
                                 .fontWidth(.compressed)
                                 .fontWeight(.black)
 
+                            // swiftlint:disable:next line_length
                             ProgressBar(progress: Double(filteredCons.count), total: Double(filteredPros.count + filteredCons.count), color: Color.yellowCustom)
 
                             Button {
@@ -129,7 +131,7 @@ struct ProConsView: View {
             filteredCons = allCons.filter { $0.cardID == card.id }
         }
     }
-    
+
     func hideKeyboard() {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }

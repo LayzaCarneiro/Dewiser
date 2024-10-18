@@ -32,6 +32,7 @@ struct HaveDecisionsView: View {
 
                     List {
                         ForEach(decisions.sorted(by: {
+                            // swiftlint:disable:next line_length
                             priorityOrder(CardModel.Priority(rawValue: $0.priority) ?? .medium) > priorityOrder(CardModel.Priority(rawValue: $1.priority) ?? .medium)})) { decision in
                             HStack {
                                 Button {
@@ -92,7 +93,7 @@ struct HaveDecisionsView: View {
     private func deleteDecision(decision: CardModel) {
         context.delete(decision)
     }
-    
+
     private func priorityOrder(_ priority: CardModel.Priority) -> Int {
         switch priority {
         case .high:

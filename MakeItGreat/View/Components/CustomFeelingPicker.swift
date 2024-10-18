@@ -35,6 +35,7 @@ struct CustomFeelingPicker: View {
             Button {
                 selectedFeeling = "Confident"
             } label: {
+                // swiftlint:disable:next line_length
                 FeelingItem(feelTitle: "Confident", feelImage: "confidentFace", selected: "Confident" == selectedFeeling)
             }
         }

@@ -83,30 +83,29 @@ struct EditView: View {
                                     .font(.body)
                                     .fontWeight(.bold)
                                     .fontDesign(.rounded)
-                                
+
                                 CustomDatePicker(selectedDate: $deadline, isDateSelected: true)
                                     .overlay(
                                         RoundedRectangle(cornerRadius: 10)
                                             .stroke(Color.fieldStroke, lineWidth: 2)
                                     )
                             }
-                            
+
                             VStack(alignment: .leading) {
                                 Text("Time")
                                     .font(.body)
                                     .fontWeight(.bold)
                                     .fontDesign(.rounded)
-                                
+
                                 CustomHourPicker(selectedHour: $time, isHourSelected: true)
                                     .overlay(
                                         RoundedRectangle(cornerRadius: 10)
                                             .stroke(Color.fieldStroke, lineWidth: 2)
                                     )
-                                
                             }
                         }
                         .padding(.trailing, 12)
-                        
+
                         VStack(alignment: .leading) {
                             HStack(spacing: 3) {
                                 Text("Priority")
