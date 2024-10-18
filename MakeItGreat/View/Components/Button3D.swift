@@ -11,6 +11,8 @@ struct CustomButton: ButtonStyle {
     var colorButton: Color = .yellowCustom
     var colorShadow: Color = .textCreateButton
 
+    @State private var isAbleHaptics: Bool = UserDefaults.standard.object(forKey: "isAbleHaptics") as? Bool ?? true
+
     func makeBody(configuration: Configuration) -> some View {
         let feedbackGenerator = UIImpactFeedbackGenerator(style: .heavy)
 
@@ -29,8 +31,11 @@ struct CustomButton: ButtonStyle {
             configuration.label
                 .offset(y: configuration.isPressed ? offset : 0)
         }
+        .onAppear {
+            isAbleHaptics = UserDefaults.standard.object(forKey: "isAbleHaptics") as? Bool ?? true
+        }
         .onChange(of: configuration.isPressed) { _, isPressed in
-           if isPressed {
+            if isPressed && isAbleHaptics {
                feedbackGenerator.impactOccurred()
            }
        }

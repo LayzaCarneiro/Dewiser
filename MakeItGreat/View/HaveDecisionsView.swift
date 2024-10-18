@@ -70,6 +70,7 @@ struct HaveDecisionsView: View {
                     ButtonCreateDecision()
                         .frame(width: 300, height: 20)
                         .padding(.bottom, 30)
+                        .background(Color.clear)
                 }
                 .background(
                     RoundedRectangle(cornerRadius: 40)

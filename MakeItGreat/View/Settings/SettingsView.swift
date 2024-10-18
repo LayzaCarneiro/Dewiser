@@ -11,7 +11,7 @@ import UserNotifications
 
 struct SettingsView: View {
     @State private var isNotificationOn: Bool = UserDefaults.standard.bool(forKey: "isNotificationOn")
-    @State private var isAbleHaptics: Bool = UserDefaults.standard.bool(forKey: "isAbleHaptics")
+    @State private var isAbleHaptics: Bool = UserDefaults.standard.object(forKey: "isAbleHaptics") as? Bool ?? true
     @State private var showAlert = false
     @State private var alertMessage = ""
     @EnvironmentObject var authManager: AuthenticationManager
@@ -55,7 +55,7 @@ struct SettingsView: View {
                                         .foregroundColor(.white)
                                         .font(.system(size: 15))
                                 }
-                                Text("Disable haptics")
+                                Text("Enable haptics")
                             }
                         }
                         .tint(.accentColor)
@@ -64,7 +64,7 @@ struct SettingsView: View {
                         }
                     }
 
-                    Section(header: Text("Segurança").foregroundColor(.accentColor)) {
+                    Section(header: Text("Security").foregroundColor(.accentColor)) {
                         Toggle(isOn: Binding(
                             get: { authManager.isFaceIDEnabled },
                             set: { newValue in
@@ -116,7 +116,7 @@ struct SettingsView: View {
             .navigationBarTitleDisplayMode(.large)
             .onAppear {
                 isNotificationOn = UserDefaults.standard.bool(forKey: "isNotificationOn")
-                isAbleHaptics = UserDefaults.standard.bool(forKey: "isAbleHaptics")
+                isAbleHaptics = UserDefaults.standard.object(forKey: "isAbleHaptics") as? Bool ?? true
             }
         }
     }

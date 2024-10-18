@@ -34,6 +34,7 @@ struct NoDecisionsView: View {
                 }
                 //
                 ButtonCreateDecision()
+                .background(Color.clear)
                 Spacer()
             }
             .frame(maxWidth: .infinity)
