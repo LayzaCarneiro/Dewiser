@@ -11,6 +11,7 @@ struct DecisionView: View {
     var decision: CardModel
     @State var sheet: Bool = false
     @State var isHourSelected: Bool = false
+    @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
         NavigationStack {
@@ -54,7 +55,7 @@ struct DecisionView: View {
                             .fontWeight(.medium)
                             .foregroundStyle(.white)
                             .padding(.trailing, 6)
-                        
+
                         Image(systemName: "clock")
                             .resizable()
                             .frame(width: 21, height: 21)
@@ -83,8 +84,21 @@ struct DecisionView: View {
                 .padding(.top, 10)
             }
         }
+        .navigationBarBackButtonHidden(true)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button {
+                    presentationMode.wrappedValue.dismiss()
+                } label: {
+                    HStack {
+                        Image(systemName: "chevron.left")
+                            .fontWeight(.semibold)
+                        Text("Back")
+                    }
+                    .foregroundColor(Color.background)
+                }
+            }
             ToolbarItem(placement: .topBarTrailing) {
                 if decision.priority != "done" {
                     Button {

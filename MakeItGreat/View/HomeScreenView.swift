@@ -28,7 +28,7 @@ struct HomeScreenView: View {
                             .fontDesign(.rounded)
                             .fontWidth(.compressed)
                             .fontWeight(.black)
-                            .foregroundColor(.textTitle)
+                            .foregroundColor(.white)
                             .padding(.trailing, 100)
                             .padding(.top, 30)
 

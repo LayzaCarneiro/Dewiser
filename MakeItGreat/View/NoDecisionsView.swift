@@ -29,11 +29,12 @@ struct NoDecisionsView: View {
                         .fontWidth(.compressed)
                         .fontWeight(.black)
                         .foregroundColor(.white)
-                    
+
                 }
                 
                 ButtonCreateDecision()
-                .padding(.bottom, 6)
+                    .padding(.bottom, 6)
+
             }
         }
     }
