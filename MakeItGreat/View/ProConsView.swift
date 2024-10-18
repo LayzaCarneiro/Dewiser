@@ -42,7 +42,7 @@ struct ProConsView: View {
                                 if isAbleHaptics {
                                     generator.impactOccurred()
                                 }
-                                let newPro = ProModel(id: UUID(), content: "Pro", cardID: card.id)
+                                let newPro = ProModel(id: UUID(), content: "", cardID: card.id)
                                 context.insert(newPro)
                                 updateFilteredLists()
                             } label: {
@@ -95,7 +95,7 @@ struct ProConsView: View {
                                 if isAbleHaptics {
                                     generator.impactOccurred()
                                 }
-                                let newCon = ConModel(id: UUID(), content: "Con", cardID: card.id)
+                                let newCon = ConModel(id: UUID(), content: "", cardID: card.id)
                                 context.insert(newCon)
                                 updateFilteredLists()
                             } label: {
