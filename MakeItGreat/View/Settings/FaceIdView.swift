@@ -4,8 +4,6 @@
 //
 //  Created by Melissa Freire Guedes on 16/10/24.
 //
-
-
 import SwiftUI
 
 struct FaceIdView: View {
@@ -14,33 +12,36 @@ struct FaceIdView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                LinearGradient(stops: [
-                    .init(color: .background, location: 0.90),
-                    .init(color: .background, location: 1.02)
-                ], startPoint: .bottom, endPoint: .top)
-                .ignoresSafeArea()
-
+                Color.background.ignoresSafeArea()
+                //
                 VStack(alignment: .center) {
                     Image(systemName: "lock.fill")
                         .resizable()
                         .frame(width: 25, height: 36)
-                        .foregroundStyle(Color.background)
+                        .foregroundStyle(Color.purpleBackground)
+                    //
                     Text(authManager.statusMessage)
                         .bold()
-                        .foregroundStyle(Color.background)
+                        .foregroundStyle(Color.purpleBackground)
+                        .fontDesign(.rounded)
                         .padding()
-
+                        .lineLimit(1)
+                    //
                     ZStack {
                         RoundedRectangle(cornerRadius: 8)
-                            .fill(Color("black"))
+                            .fill(Color.purpleBackground)
                             .frame(width: 120, height: 30)
-                        Button("Desbloquear") {
+                        //
+                        Button("Unlock") {
                             if authManager.isFaceIDEnabled {
                                 authManager.authenticate()
                             } else {
-                                authManager.statusMessage = "A Biometria está desabilitada!"
+                                authManager.statusMessage = "Biometrics is not enabled."
                             }
                         }
+                        .fontWeight(.medium)
+                        .fontDesign(.rounded)
+                        .foregroundStyle(Color.white)
                     }
                 }
                 .navigationDestination(isPresented: $authManager.isUnlocked) {
@@ -50,7 +51,7 @@ struct FaceIdView: View {
         }
     }
 }
-
+//
 #Preview {
     FaceIdView()
         .environmentObject(AuthenticationManager())

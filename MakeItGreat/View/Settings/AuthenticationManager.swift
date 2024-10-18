@@ -5,7 +5,6 @@
 //  Created by Melissa Freire Guedes on 16/10/24.
 //
 
-
 import SwiftUI
 import LocalAuthentication
 
@@ -17,7 +16,7 @@ class AuthenticationManager: ObservableObject {
         }
     }
     @Published var isUnlocked: Bool = false
-    @Published var statusMessage: String = "Bloqueado"
+    @Published var statusMessage: String = "Blocked"
     //
     init() {
         self.isFaceIDEnabled = UserDefaults.standard.bool(forKey: "isFaceIDEnabled")
@@ -33,16 +32,16 @@ class AuthenticationManager: ObservableObject {
                                    localizedReason: "This is for security reasons") { success, _ in
                 DispatchQueue.main.async {
                     if success {
-                        self.statusMessage = "Desbloqueado"
+                        self.statusMessage = "Unlocked"
                         self.isUnlocked = true
                     } else {
-                        self.statusMessage = "Tente novamente!"
+                        self.statusMessage = "Try again!"
                     }
                 }
             }
         } else {
             DispatchQueue.main.async {
-                self.statusMessage = "O iPhone não tem sistema de biometria!"
+                self.statusMessage = "The iPhone doesn't have a biometrics system!"
             }
         }
     }
