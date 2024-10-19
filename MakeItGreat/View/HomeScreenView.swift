@@ -11,12 +11,9 @@ import SwiftData
 struct HomeScreenView: View {
     @State private var isPresented: Bool = false
     @State private var deleteOnForDecision: Bool = false
-    //
     @Environment(\.modelContext) var context
     @EnvironmentObject var authManager: AuthenticationManager
-    //
     @Query var decisions: [CardModel]
-    //
     var body: some View {
         NavigationStack {
             ZStack {

@@ -12,6 +12,27 @@ struct HaveDecisionsView: View {
     @State private var isPresented: Bool = false
     @State private var deleteOnForDecision: Bool = false
     @State private var selectedDecision: CardModel?
+  
+    @Query var decisions: [CardModel]
+    @Environment(\.modelContext) var context
+
+    let generator = UIImpactFeedbackGenerator(style: .rigid)
+    
+    private var isHapticsEnabled: Bool {
+        UserDefaults.standard.bool(forKey: "isAbleHaptics")
+    }
+
+    enum AlertType: Identifiable {
+        case delete, conclude
+        
+        var id: Int {
+            hashValue 
+        }
+    }
+
+    @State private var alertType: AlertType?
+    @State private var decisionToDelete: CardModel?
+    @State private var decisionToConclude: CardModel?
 
     @Environment(\.modelContext) var context
     @Query var decisions: [CardModel]
@@ -50,13 +71,24 @@ struct HaveDecisionsView: View {
                                 }
                             .swipeActions(allowsFullSwipe: true) {
                                 Button(role: .destructive) {
-                                    deleteDecision(decision: decision)
+                                    // Gera feedback tátil apenas se haptics estiver habilitado
+                                    if isHapticsEnabled {
+                                        generator.impactOccurred()
+                                    }
+                                    decisionToDelete = decision
+                                    alertType = .delete
                                 } label: {
                                     Label("Delete", systemImage: "trash")
                                 }
+                                .tint(.red)
+
                                 if decision.priority != "done" {
                                     Button(role: .none) {
-                                        decision.priority = "done"
+                                        if isHapticsEnabled {
+                                            generator.impactOccurred()
+                                        }
+                                        decisionToConclude = decision
+                                        alertType = .conclude
                                     } label: {
                                         Label("Conclude", systemImage: "checkmark")
                                     }
@@ -87,10 +119,37 @@ struct HaveDecisionsView: View {
                 )
             }
         }
+        .alert(item: $alertType) { type in
+            switch type {
+            case .delete:
+                return Alert(
+                    title: Text("Delete Decision"),
+                    message: Text("Are you sure you want to delete this decision? This action cannot be undone."),
+                    primaryButton: .destructive(Text("Delete")) {
+                        if let decision = decisionToDelete {
+                            deleteDecision(decision: decision)
+                        }
+                    },
+                    secondaryButton: .cancel()
+                )
+            case .conclude:
+                return Alert(
+                    title: Text("Congratulations!"),
+                    message: Text("Hope you made a wise decision! Are you sure of that?"),
+                    primaryButton: .default(Text("Conclude")) {
+                        if let decision = decisionToConclude {
+                            decision.priority = "done"
+                        }
+                    },
+                    secondaryButton: .cancel()
+                )
+            }
+        }
     }
 
     private func deleteDecision(decision: CardModel) {
         context.delete(decision)
+        try? context.save()
     }
 
     private func priorityOrder(_ priority: CardModel.Priority) -> Int {
@@ -106,6 +165,7 @@ struct HaveDecisionsView: View {
         }
     }
 }
+
 
 #Preview {
     HaveDecisionsView()

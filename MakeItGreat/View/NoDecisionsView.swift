@@ -13,6 +13,7 @@ struct NoDecisionsView: View {
             Color.clear
             Image("nodecisions")
                 .resizable()
+                .scaledToFit()
                 .frame(maxHeight: .infinity, alignment: .bottom)
                 .ignoresSafeArea()
             VStack(spacing: 25) {
@@ -32,7 +33,6 @@ struct NoDecisionsView: View {
                     }
                   //
                 }
-                //
                 ButtonCreateDecision()
                 .background(Color.clear)
                 Spacer()
