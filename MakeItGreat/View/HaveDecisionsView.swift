@@ -15,7 +15,7 @@ struct HaveDecisionsView: View {
     @State private var alertType: AlertType?
     @State private var decisionToDelete: CardModel?
     @State private var decisionToConclude: CardModel?
-  
+
     @Query var decisions: [CardModel]
     @Environment(\.modelContext) var context
 
@@ -55,7 +55,6 @@ struct HaveDecisionsView: View {
                                 }
                             .swipeActions(allowsFullSwipe: true) {
                                 Button(role: .destructive) {
-                                    // Gera feedback tátil apenas se haptics estiver habilitado
                                     if isHapticsEnabled {
                                         generator.impactOccurred()
                                     }
@@ -63,6 +62,7 @@ struct HaveDecisionsView: View {
                                     alertType = .delete
                                 } label: {
                                     Label("Delete", systemImage: "trash")
+                                        .fontDesign(.rounded)
                                 }
                                 .tint(.red)
 

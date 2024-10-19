@@ -112,6 +112,7 @@ struct SettingsView: View {
                 }
                 .scrollContentBackground(.hidden)
             }
+            .fontDesign(.rounded)
             .navigationBarTitle("Settings")
             .navigationBarTitleDisplayMode(.large)
             .onAppear {
