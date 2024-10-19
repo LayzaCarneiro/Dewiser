@@ -46,7 +46,7 @@ struct ItemCard: View {
         }
         .frame(width: 149, height: 84)
     }
-    
+
     func limitText(_ upper: Int) {
         if content.count > upper {
             let index = content.index(content.startIndex, offsetBy: upper)

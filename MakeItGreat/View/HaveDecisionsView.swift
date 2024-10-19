@@ -12,30 +12,14 @@ struct HaveDecisionsView: View {
     @State private var isPresented: Bool = false
     @State private var deleteOnForDecision: Bool = false
     @State private var selectedDecision: CardModel?
+    @State private var alertType: AlertType?
+    @State private var decisionToDelete: CardModel?
+    @State private var decisionToConclude: CardModel?
   
     @Query var decisions: [CardModel]
     @Environment(\.modelContext) var context
 
     let generator = UIImpactFeedbackGenerator(style: .rigid)
-    
-    private var isHapticsEnabled: Bool {
-        UserDefaults.standard.bool(forKey: "isAbleHaptics")
-    }
-
-    enum AlertType: Identifiable {
-        case delete, conclude
-        
-        var id: Int {
-            hashValue 
-        }
-    }
-
-    @State private var alertType: AlertType?
-    @State private var decisionToDelete: CardModel?
-    @State private var decisionToConclude: CardModel?
-
-    @Environment(\.modelContext) var context
-    @Query var decisions: [CardModel]
 
     var body: some View {
         NavigationStack {
@@ -164,8 +148,19 @@ struct HaveDecisionsView: View {
             return 0
         }
     }
-}
 
+    private var isHapticsEnabled: Bool {
+        UserDefaults.standard.bool(forKey: "isAbleHaptics")
+    }
+
+    enum AlertType: Identifiable {
+        case delete, conclude
+
+        var id: Int {
+            hashValue
+        }
+    }
+}
 
 #Preview {
     HaveDecisionsView()

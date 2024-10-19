@@ -19,7 +19,7 @@ struct CustomPriorityPicker: View {
                 generator.selectionChanged()
             }
         )) {
-            ForEach(Priority.allCases.filter { $0 != .done }) { priority in
+            ForEach(CardModel.Priority.allCases.filter { $0 != .done }) { priority in
                 Text(priority.rawValue.capitalized)
             }
         }
@@ -45,4 +45,3 @@ struct CustomPriorityPicker: View {
         }
     }
 }
-

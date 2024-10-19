@@ -5,19 +5,18 @@
 //  Created by Joao Roberto Fernandes Magalhaes on 18/10/24.
 //
 
-
 import SwiftUI
 
 struct CustomPriorityPicker: View {
     @Binding var selectedPriority: Priority
-    var generator = UISelectionFeedbackGenerator() // Inicializa o gerador de feedback de seleção
+    var generator = UISelectionFeedbackGenerator() 
 
     var body: some View {
         Picker("Priority", selection: Binding(
             get: { selectedPriority },
             set: { newValue in
                 selectedPriority = newValue
-                generator.selectionChanged() // Gera o feedback tátil de rolagem quando a prioridade é alterada
+                generator.selectionChanged()
             }
         )) {
             ForEach(Priority.allCases.filter { $0 != .done }) { priority in
@@ -33,7 +32,7 @@ struct CustomPriorityPicker: View {
                 .stroke(Color.fieldStroke, lineWidth: 2)
         )
         .onAppear {
-            generator.prepare() // Prepara o gerador tátil ao aparecer
+            generator.prepare()
         }
     }
 
