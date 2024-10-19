@@ -49,6 +49,7 @@ struct DecisionCard: View {
             .padding(.leading, 16)
             .padding(.vertical)
         }
+        .fontDesign(.rounded)
         .frame(width: 341, height: 124)
         .background(Color.cardBackground)
         .cornerRadius(15)

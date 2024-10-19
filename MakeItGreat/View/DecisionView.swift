@@ -83,6 +83,7 @@ struct DecisionView: View {
                 }
                 .padding(.top, 10)
             }
+            .fontDesign(.rounded)
         }
         .navigationBarBackButtonHidden(true)
         .navigationBarTitleDisplayMode(.inline)
