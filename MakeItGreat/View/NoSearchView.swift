@@ -4,7 +4,7 @@
 //
 //  Created by Melissa Freire Guedes on 10/10/24.
 //
-
+//
 import SwiftUI
 import  SwiftData
 
@@ -22,32 +22,33 @@ struct NoSearchView: View {
 
     var body: some View {
         NavigationStack {
-                ZStack(alignment: .bottom) {
-                    Color.background
-                        .ignoresSafeArea()
+            ZStack(alignment: .bottom) {
+                Color.background.ignoresSafeArea()
 
-                    Image("nodecisions")
-                        .resizable()
-                        .aspectRatio(contentMode: UIScreen.main.bounds.width >= 768 ? .fill : .fit)
-                        .frame(maxHeight: .infinity, alignment: .bottom)
-                        .ignoresSafeArea()
+                Image("nodecisions")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(maxHeight: .infinity, alignment: .bottom)
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .ignoresSafeArea()
 
-                    VStack {
-                        ContentUnavailableView {
-                            Spacer()
-                            Text("You don't have any decision yet.")
-                                .font(.title2)
-                                .fontDesign(.rounded)
-                                .fontWidth(.compressed)
-                                .fontWeight(.heavy)
-                                .foregroundColor(.white)
-                                .multilineTextAlignment(.center)
-                                .padding(.horizontal, 30)
-                                .padding(.bottom, 95)
-                        }
+                VStack {
+                    ContentUnavailableView {
+                        Spacer()
+                        Text("You don't have any decision yet.")
+                            .font(.title2)
+                            .fontDesign(.rounded)
+                            .fontWidth(.compressed)
+                            .fontWeight(.heavy)
+                            .foregroundColor(.white)
+                            .multilineTextAlignment(.center)
+                            .padding(.horizontal, 30)
+                            .padding(.bottom, 95)
                     }
+                }
             }
             .searchable(text: $searchTerm, placement: .navigationBarDrawer(displayMode: .always), prompt: "Search your decision cards")
+            .ignoresSafeArea(.keyboard, edges: .bottom)
             .onTapGesture {
                 hideKeyboard()
             }
@@ -59,8 +60,4 @@ struct NoSearchView: View {
     func hideKeyboard() {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
-}
-
-#Preview {
-    NoSearchView()
 }

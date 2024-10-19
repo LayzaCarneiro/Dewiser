@@ -21,7 +21,6 @@ struct SecondPage: View {
                 VStack {
                     Text("How are you feeling about this decision?")
                         .font(.largeTitle)
-                        .fontDesign(.rounded)
                         .fontWeight(.bold)
                         .padding(.top, 50)
                     //
@@ -30,6 +29,7 @@ struct SecondPage: View {
                     Spacer()
                 }
                 .padding()
+                .fontDesign(.rounded)
             }
         }
         .navigationTitle("New Decision")

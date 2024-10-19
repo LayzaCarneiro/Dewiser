@@ -14,6 +14,7 @@ struct HomeScreenView: View {
     @Environment(\.modelContext) var context
     @EnvironmentObject var authManager: AuthenticationManager
     @Query var decisions: [CardModel]
+
     var body: some View {
         NavigationStack {
             ZStack {

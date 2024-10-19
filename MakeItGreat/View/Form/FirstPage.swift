@@ -14,7 +14,6 @@ struct FirstPage: View {
     @State private var titleIsEmpty: Bool = false
     var generate = UIImpactFeedbackGenerator(style: .rigid)
 
-    // Adiciona uma propriedade para verificar se os haptics estão habilitados
     private var isHapticsEnabled: Bool {
         UserDefaults.standard.bool(forKey: "isAbleHaptics")
     }
@@ -109,6 +108,7 @@ struct FirstPage: View {
 
                         }
                     }
+                    .fontDesign(.rounded)
                     .padding()
                     .padding(.top, 15)
                     Spacer()
@@ -135,7 +135,6 @@ struct FirstPage: View {
                     } else {
                         Button {
                             titleIsEmpty = true
-                            // Gera feedback tátil apenas se haptics estiver habilitado
                             if isHapticsEnabled {
                                 generate.impactOccurred()
                             }

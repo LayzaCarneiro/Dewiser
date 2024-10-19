@@ -33,10 +33,11 @@ struct NoDecisionsView: View {
                     }
                 }
                 ButtonCreateDecision()
+
                 Spacer()
             }
             .frame(maxWidth: .infinity)
-            .multilineTextAlignment(.center)
+            .multilineTextAlignment(.leading)
         }
     }
 }
