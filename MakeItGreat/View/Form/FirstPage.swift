@@ -34,7 +34,6 @@ struct FirstPage: View {
                                     .font(.body)
                                     .fontWeight(.bold)
                                     .foregroundStyle(.red)
-
                             }
                             TextField("What is your decision title?", text: $formViewModel.cardModel.title)
                                 .padding()
@@ -47,6 +46,7 @@ struct FirstPage: View {
                                 )
                                 .onTapGesture {
                                     titleIsEmpty = false
+                                    hideKeyboard()
                                 }
                         }
 
@@ -66,6 +66,9 @@ struct FirstPage: View {
                                 RoundedRectangle(cornerRadius: 10)
                                     .stroke(.fieldStroke, lineWidth: 2)
                             )
+                        }
+                        .onTapGesture {
+                            hideKeyboard()
                         }
 
                         HStack(spacing: 55) {
@@ -105,7 +108,6 @@ struct FirstPage: View {
                             }
 
                             CustomPriorityPicker(selectedPriority: $formViewModel.cardModel.priorityEnum)
-
                         }
                     }
                     .fontDesign(.rounded)
@@ -145,9 +147,6 @@ struct FirstPage: View {
                     }
                 }
             }
-        }
-        .onTapGesture {
-           hideKeyboard()
         }
     }
 
