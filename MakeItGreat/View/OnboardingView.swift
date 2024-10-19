@@ -11,9 +11,25 @@ struct OnboardingView: View {
 
     @AppStorage("currentOnboardingPage") var currentOnboardingPage = 1
 
+    @StateObject private var authManager = AuthenticationManager()
+    @State private var isAuthenticated: Bool = false
+
+    init() {
+        _isAuthenticated = State(initialValue: !AuthenticationManager().isFaceIDEnabled)
+    }
+
     var body: some View {
         if currentOnboardingPage > totalScreen {
-            HomeScreenView()
+            if !isAuthenticated {
+                FaceIdView()
+                    .environmentObject(authManager)
+                    .onAppear {
+                        isAuthenticated = !authManager.isFaceIDEnabled
+                    }
+            } else {
+                HomeScreenView()
+                    .environmentObject(authManager)
+            }
         } else {
             if currentOnboardingPage == 1 {
                 OnboardingScreen()

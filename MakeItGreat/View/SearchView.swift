@@ -29,22 +29,30 @@ struct SearchView: View {
             } else {
                 ZStack {
                     Color.background.ignoresSafeArea()
-                    ScrollView(.vertical) {
-                        ForEach(filteredDecisions) { decision in
-                            Button {
-                                selectedDecision = decision
-                            } label: {
-                                DecisionCard(card: decision)
+                    VStack {
+                        List {
+                            ForEach(filteredDecisions) { decision in
+                                HStack {
+                                    Button {
+                                        selectedDecision = decision
+                                    } label: {
+                                        DecisionCard(card: decision)
+                                    }
+                                    .background(
+                                        NavigationLink(destination: DecisionView(decision: decision)) {
+                                            EmptyView()
+                                        }
+                                            .opacity(0.0)
+                                            .frame(width: 0, height: 0)
+                                    )
+                                }
                             }
+                            .listRowBackground(Color.clear)
+                            .listRowSeparator(.hidden)
                         }
-                    }
-                    .navigationDestination(isPresented: Binding(
-                        get: { selectedDecision != nil },
-                        set: { if !$0 { selectedDecision = nil } }
-                    )) {
-                        if let decision = selectedDecision {
-                            DecisionView(decision: decision)
-                        }
+                        .listStyle(PlainListStyle())
+                        .scrollContentBackground(.hidden)
+                        .background(Color.clear)
                     }
                 }
                 //
@@ -67,6 +75,7 @@ struct SearchView: View {
         .navigationBarTitleDisplayMode(.inline)
     }
 }
+
 #Preview {
     SearchView()
 }

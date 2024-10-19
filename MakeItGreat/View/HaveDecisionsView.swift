@@ -10,14 +10,14 @@ import SwiftData
 
 struct HaveDecisionsView: View {
     @State private var isPresented: Bool = false
-    @Query var decisions: [CardModel]
     @State private var deleteOnForDecision: Bool = false
-    @Environment(\.modelContext) var context
     @State private var selectedDecision: CardModel?
+
+    @Environment(\.modelContext) var context
+    @Query var decisions: [CardModel]
 
     var body: some View {
         NavigationStack {
-
             ZStack {
                 VStack {
                     Text("My Decisions")
@@ -34,13 +34,20 @@ struct HaveDecisionsView: View {
                         ForEach(decisions.sorted(by: {
                             // swiftlint:disable:next line_length
                             priorityOrder(CardModel.Priority(rawValue: $0.priority) ?? .medium) > priorityOrder(CardModel.Priority(rawValue: $1.priority) ?? .medium)})) { decision in
-                            HStack {
-                                Button {
-                                    selectedDecision = decision
-                                } label: {
-                                    DecisionCard(card: decision)
+                                HStack {
+                                    Button {
+                                        selectedDecision = decision
+                                    } label: {
+                                        DecisionCard(card: decision)
+                                    }
+                                    .background(
+                                        NavigationLink(destination: DecisionView(decision: decision)) {
+                                            EmptyView()
+                                       }
+                                        .opacity(0.0)
+                                        .frame(width: 0, height: 0)
+                                    )
                                 }
-                            }
                             .swipeActions(allowsFullSwipe: true) {
                                 Button(role: .destructive) {
                                     deleteDecision(decision: decision)
@@ -77,16 +84,7 @@ struct HaveDecisionsView: View {
                         .foregroundColor(Color.background)
                         .ignoresSafeArea(edges: .bottom)
                         .padding(.top, 33)
-
                 )
-                .navigationDestination(isPresented: Binding(
-                    get: { selectedDecision != nil },
-                    set: { if !$0 { selectedDecision = nil } }
-                )) {
-                    if let decision = selectedDecision {
-                        DecisionView(decision: decision)
-                    }
-                }
             }
         }
     }

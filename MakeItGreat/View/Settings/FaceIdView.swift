@@ -42,10 +42,10 @@ struct FaceIdView: View {
                         .fontWeight(.medium)
                         .fontDesign(.rounded)
                         .foregroundStyle(Color.white)
+                        .navigationDestination(isPresented: $authManager.isUnlocked) {
+                            HomeScreenView()
+                        }
                     }
-                }
-                .navigationDestination(isPresented: $authManager.isUnlocked) {
-                    HomeScreenView()
                 }
             }
         }
