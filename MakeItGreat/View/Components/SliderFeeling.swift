@@ -19,7 +19,7 @@ struct SliderFeeling: View {
     //
     var body: some View {
         VStack {
-            Text("Feeling: \(feeling[Int(sliderValue)] ?? "Unknown")")
+            Text("Feeling: \(feeling[Int(sliderValue)] ?? "Confident")")
                 .font(.title2)
                 .fontWeight(.bold)
             //
@@ -38,7 +38,7 @@ struct SliderFeeling: View {
                 generator.impactOccurred()
                 previousValue = roundedValue
             }
-            formViewModel.cardModel.feeling = feeling[Int(value)] ?? "ok"
+            formViewModel.cardModel.feeling = feeling[Int(value)] ?? "Confident"
         }
     }
 }

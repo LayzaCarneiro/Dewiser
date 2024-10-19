@@ -13,9 +13,9 @@ struct CustomFeelingPicker: View {
     var body: some View {
         HStack(spacing: 23) {
             Button {
-                selectedFeeling = "Sad"
+                selectedFeeling = "Insecure"
             } label: {
-                FeelingItem(feelTitle: "Sad", feelImage: "sadFace", selected: "Sad" == selectedFeeling)
+                FeelingItem(feelTitle: "Insecure", feelImage: "insecureFace", selected: "Insecure" == selectedFeeling)
             }
             Button {
                 selectedFeeling = "Angry"

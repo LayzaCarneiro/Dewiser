@@ -15,7 +15,7 @@ struct HaveDecisionsView: View {
     @State private var alertType: AlertType?
     @State private var decisionToDelete: CardModel?
     @State private var decisionToConclude: CardModel?
-  
+
     @Query var decisions: [CardModel]
     @Environment(\.modelContext) var context
 
