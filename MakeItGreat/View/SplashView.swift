@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SplashView: View {
-    
+
     @State private var images: [String] = ["splash1", "splash2", "splash3", "splash4", "splash5"]
     @State private var index: Int = 0
     @State private var timer: Timer?
@@ -18,12 +18,12 @@ struct SplashView: View {
             index = (index + 1) % images.count
         }
     }
-    
+
     private func stopTimer() {
         timer?.invalidate()
         timer = nil
     }
-    
+
     var body: some View {
         VStack {
             Image(images[index])

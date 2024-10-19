@@ -43,6 +43,7 @@ struct FirstPage: View {
                                 .background(.cardBackground)
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 10)
+                                    // swiftlint:disable:next line_length
                                         .stroke((titleIsEmpty && formViewModel.cardModel.title.isEmpty) ? Color.red : Color.fieldStroke, lineWidth: 2)
                                 )
                                 .onTapGesture {
@@ -84,7 +85,7 @@ struct FirstPage: View {
                                 Text("Time")
                                     .font(.body)
                                     .fontWeight(.bold)
- 
+
                                 CustomHourPicker(selectedHour: Binding(
                                     get: {formViewModel.cardModel.time ?? Date()},
                                     set: { newValue in formViewModel.cardModel.time = newValue}
@@ -126,6 +127,7 @@ struct FirstPage: View {
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     if !formViewModel.cardModel.title.isEmpty {
+                        // swiftlint:disable:next line_length
                         NavigationLink(destination: SecondPage(formViewModel: formViewModel, isPresented: $isPresented)) {
                             Text("Next")
                                 .foregroundStyle(.cancelcolor)

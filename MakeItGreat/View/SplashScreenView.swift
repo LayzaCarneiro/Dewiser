@@ -23,11 +23,12 @@ struct SplashScreenView: View {
                         Spacer(minLength: 200)
                         LottieView(animation: .named("animation"))
                             .playbackMode(.playing(.toProgress(1, loopMode: .playOnce)))
+                            // swiftlint:disable:next line_length
                             .frame(width: min(geometry.size.width * 0.8, 500), height: min(geometry.size.width * 0.8, 500))
                             .frame(maxWidth: .infinity, alignment: .center)
                         Spacer()
                         Text("Dewiser")
-                            .font(.system(size: min(geometry.size.width * 0.1, 45)))
+                            .font(.system(size: min(geometry.size.width * 0.1, 35)))
                             .fontDesign(.rounded)
                             .fontWeight(.black)
                             .foregroundStyle(Color.white)
@@ -35,8 +36,8 @@ struct SplashScreenView: View {
                     }
                     .padding()
                     .frame(maxWidth: .infinity)
-                    .onAppear() {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0){
+                    .onAppear {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                             self.ativado = true
                         }
                     }
@@ -45,7 +46,7 @@ struct SplashScreenView: View {
         }
     }
 }
-        
+
 #Preview {
     SplashScreenView()
 }

@@ -11,9 +11,25 @@ struct OnboardingView: View {
 
     @AppStorage("currentOnboardingPage") var currentOnboardingPage = 1
 
+    @StateObject private var authManager = AuthenticationManager()
+    @State private var isAuthenticated: Bool = false
+
+    init() {
+        _isAuthenticated = State(initialValue: !AuthenticationManager().isFaceIDEnabled)
+    }
+
     var body: some View {
         if currentOnboardingPage > totalScreen {
-            HomeScreenView()
+            if !isAuthenticated {
+                FaceIdView()
+                    .environmentObject(authManager)
+                    .onAppear {
+                        isAuthenticated = !authManager.isFaceIDEnabled
+                    }
+            } else {
+                HomeScreenView()
+                    .environmentObject(authManager)
+            }
         } else {
             if currentOnboardingPage == 1 {
                 OnboardingScreen()
@@ -71,11 +87,11 @@ struct OnboardingScreen: View {
                     Spacer()
                     ZStack(alignment: .bottom) {
                         Image("onboarding1")
-                            .resizable()
-                            .frame(width: geometry.size.width)
-                            .frame(height: geometry.size.height * 0.6)
-                            .clipped()
-                            .padding(.bottom, -80)
+                               .resizable()
+                               .frame(width: geometry.size.width)
+                               .frame(height: geometry.size.height * 0.6)
+                               .clipped()
+                               .padding(.bottom, -50)
 
                         Button(action: {
                             if currentOnboardingPage < totalScreen {
@@ -138,7 +154,7 @@ struct OnboardingScreen2: View {
                             .frame(width: geometry.size.width)
                             .frame(height: geometry.size.height * 0.6)
                             .clipped()
-                            .padding(.bottom, -80)
+                            .padding(.bottom, -50)
                         Button(action: {
                             if currentOnboardingPage < totalScreen {
                                 currentOnboardingPage += 1
@@ -204,7 +220,7 @@ struct OnboardingScreen3: View {
                             .frame(width: geometry.size.width)
                             .frame(height: geometry.size.height * 0.6)
                             .clipped()
-                            .padding(.bottom, -80)
+                            .padding(.bottom, -50)
                         Button(action: {
                             if currentOnboardingPage <= totalScreen {
                                 currentOnboardingPage += 1

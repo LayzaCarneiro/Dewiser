@@ -11,6 +11,7 @@ import  SwiftData
 struct NoSearchView: View {
     @State var searchTerm: String = ""
     @Query var decisions: [CardModel]
+
     var filteredDecisions: [CardModel] {
         if searchTerm.isEmpty {
             return decisions
@@ -21,20 +22,20 @@ struct NoSearchView: View {
     var body: some View {
         NavigationStack {
             ZStack(alignment: .bottom) {
-                Color.background // Preenche o fundo para garantir que a área ocupe toda a tela
+                Color.background
                     .ignoresSafeArea()
                 Image("nodecisions")
                     .resizable()
                     .scaledToFit()
-                    .frame(maxHeight: .infinity, alignment: .bottom) // Alinha a imagem no fundo
+                    .frame(maxHeight: .infinity, alignment: .bottom)
                     .ignoresSafeArea()
                 VStack {
                     ContentUnavailableView {
                         Spacer()
                         Label("""
-You don't have any 
-decisions yet
-""", systemImage: "")
+                            You don't have any 
+                            decisions yet
+                            """, systemImage: "")
                         .font(.system(size: 30, weight: .heavy))
                         .fontDesign(.rounded)
                         .foregroundColor(.white)
@@ -69,4 +70,3 @@ decisions yet
 #Preview {
     NoSearchView()
 }
-
