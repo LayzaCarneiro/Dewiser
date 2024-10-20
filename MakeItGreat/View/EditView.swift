@@ -92,7 +92,7 @@ struct EditView: View {
                             }
 
                             VStack(alignment: .leading) {
-                                Text("Time")
+                                Text("Deadline's Time")
                                     .font(.body)
                                     .fontWeight(.bold)
                                     .fontDesign(.rounded)

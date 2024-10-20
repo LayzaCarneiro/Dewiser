@@ -33,11 +33,14 @@ struct OnboardingView: View {
         } else {
             if currentOnboardingPage == 1 {
                 OnboardingScreen()
+                    .transition(AnyTransition.opacity.animation(.easeIn))
             } else {
                 if currentOnboardingPage == 2 {
                     OnboardingScreen2()
+                        .transition(AnyTransition.opacity.animation(.easeIn))
                 } else {
                     OnboardingScreen3()
+                        .transition(AnyTransition.opacity.animation(.easeIn))
                 }
             }
         }

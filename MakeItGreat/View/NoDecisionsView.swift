@@ -32,6 +32,8 @@ struct NoDecisionsView: View {
                             .padding(.horizontal, 30)
                     }
                 }
+                .disabled(true)
+                
                 ButtonCreateDecision()
 
                 Spacer()
