@@ -187,7 +187,6 @@
 		AE9E32A72CA358A1009235AC /* View */ = {
 			isa = PBXGroup;
 			children = (
-				E92604FA2CAEDE35002F0C77 /* Widget */,
 				AEFC12C92CACC8C900E00B9D /* Settings */,
 				AE7F8BBB2CA6D5E500CD3835 /* Components */,
 				AE9E32B12CA3853B009235AC /* FormSheet */,
@@ -236,13 +235,6 @@
 				E92604E02CAEDCFA002F0C77 /* SwiftUI.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		E92604FA2CAEDE35002F0C77 /* Widget */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Widget;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -550,6 +542,7 @@
 				DEVELOPMENT_TEAM = RDBBF5GZZ8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Dewiser;
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "Unlock the app";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -580,6 +573,7 @@
 				DEVELOPMENT_TEAM = RDBBF5GZZ8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Dewiser;
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "Unlock the app";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

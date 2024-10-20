@@ -39,12 +39,12 @@ struct SimpleEntry: TimelineEntry {
 
 struct DewiserWidgetEntryView: View {
     var entry: Provider.Entry
-    
+
     var body: some View {
-        Image("teste")
+        Image("widgetimage")
             .resizable()
             .frame(width: 165, height: 165)
-            .widgetURL(URL(string: "myapp://formsheet")) // Define a URL que será chamada ao clicar no widget
+            .widgetURL(URL(string: "myapp://formsheet"))
     }
 }
 

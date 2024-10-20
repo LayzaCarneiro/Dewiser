@@ -12,7 +12,7 @@ struct Provider: TimelineProvider {
     func placeholder(in context: Context) -> SimpleEntry {
         SimpleEntry(date: Date())
     }
-    
+
 struct WidgetEntryView: View {
     var entry: Provider.Entry
 

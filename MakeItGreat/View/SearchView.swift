@@ -4,8 +4,9 @@
 //
 //  Created by Joao Roberto Fernandes Magalhaes on 01/10/24.
 //
+
 import SwiftUI
-import  SwiftData
+import SwiftData
 
 struct SearchView: View {
     @State var searchTerm: String = ""
