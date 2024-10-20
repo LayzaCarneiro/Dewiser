@@ -13,24 +13,33 @@ struct NoDecisionsView: View {
             Color.clear
             Image("nodecisions")
                 .resizable()
-                .scaledToFit()
-                .frame(maxHeight: .infinity, alignment: .bottom) 
+                .aspectRatio(contentMode: UIScreen.main.bounds.width < 376 || UIScreen.main.bounds.width >= 768 ? .fill : .fit)
+                .frame(maxHeight: .infinity, alignment: .bottom)
                 .ignoresSafeArea()
 
-            VStack {
+            VStack(spacing: 25) {
+                Spacer(minLength: UIScreen.main.bounds.width < 376 ? 250 : 380)
+                GeometryReader { geometry in
                 ContentUnavailableView {
-                    Spacer()
-                    Label("""
-                        You don't have any 
-                        decisions yet
-                        """, systemImage: "")
-                        .fontDesign(.rounded)
-                        .fontWeight(.bold)
-                        .foregroundColor(.white)
+                        Text("You don't have any decision yet.")
+                            .font(.system(size: geometry.size.width * 0.06))
+                            .font(.title)
+                            .fontDesign(.rounded)
+                            .fontWidth(.compressed)
+                            .fontWeight(.heavy)
+                            .foregroundColor(.white)
+                            .multilineTextAlignment(.center)
+                            .padding(.horizontal, 30)
+                    }
                 }
+                .disabled(true)
+                
                 ButtonCreateDecision()
-                .padding(.bottom, 30)
+
+                Spacer()
             }
+            .frame(maxWidth: .infinity)
+            .multilineTextAlignment(.leading)
         }
     }
 }

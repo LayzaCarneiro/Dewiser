@@ -19,11 +19,21 @@ struct ThirdPage: View {
             ZStack {
                 Color.background.ignoresSafeArea()
 
-                ProConsView(card: formViewModel.cardModel)
+                VStack {
+                    ProConsView(card: formViewModel.cardModel)
+                }
             }
         }
         .navigationTitle("New Decision")
         .navigationBarTitleDisplayMode(.inline)
+        .navigationBarBackButtonHidden(false)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button {
+                } label: {
+                }
+            }
+        }
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button {

@@ -8,20 +8,39 @@
 import SwiftUI
 
 struct OnboardingView: View {
-    
+
     @AppStorage("currentOnboardingPage") var currentOnboardingPage = 1
-    
+
+    @StateObject private var authManager = AuthenticationManager()
+    @State private var isAuthenticated: Bool = false
+
+    init() {
+        _isAuthenticated = State(initialValue: !AuthenticationManager().isFaceIDEnabled)
+    }
+
     var body: some View {
         if currentOnboardingPage > totalScreen {
-            HomeScreenView()
+            if !isAuthenticated {
+                FaceIdView()
+                    .environmentObject(authManager)
+                    .onAppear {
+                        isAuthenticated = !authManager.isFaceIDEnabled
+                    }
+            } else {
+                HomeScreenView()
+                    .environmentObject(authManager)
+            }
         } else {
             if currentOnboardingPage == 1 {
                 OnboardingScreen()
+                    .transition(AnyTransition.opacity.animation(.easeIn))
             } else {
                 if currentOnboardingPage == 2 {
                     OnboardingScreen2()
+                        .transition(AnyTransition.opacity.animation(.easeIn))
                 } else {
                     OnboardingScreen3()
+                        .transition(AnyTransition.opacity.animation(.easeIn))
                 }
             }
         }
@@ -35,9 +54,9 @@ struct OnboardingView: View {
 let totalScreen = 3
 
 struct OnboardingScreen: View {
-    
+
     @AppStorage("currentOnboardingPage") var currentOnboardingPage = 1
-    
+
     var body: some View {
         GeometryReader { geometry in
             ZStack {
@@ -49,7 +68,7 @@ struct OnboardingScreen: View {
                         Button(action: {
                             currentOnboardingPage = totalScreen
                         }, label: {
-                        Text ("Skip")
+                            Text("Skip")
                                 .fontWeight(.bold)
                                 .padding()
                                 .foregroundStyle(.text)
@@ -57,26 +76,26 @@ struct OnboardingScreen: View {
                     }
                     .padding(.trailing)
                     Spacer()
-                    Text("Register your\ndecisions!")
+                    Text("Register your decisions!")
                         .multilineTextAlignment(.center)
                         .font(.title)
                         .fontDesign(.rounded)
                         .fontWeight(.black)
                         .padding()
-                    Text("Now your decisions are in only \none place!")
-                        .font(.system(size: 15))
+                    Text("Now your decisions are in only one place!")
+                        .font(.system(size: 17))
                         .fontWeight(.semibold)
                         .multilineTextAlignment(.center)
                         .fontDesign(.rounded)
                     Spacer()
-                    ZStack (alignment: .bottom){
+                    ZStack(alignment: .bottom) {
                         Image("onboarding1")
-                            .resizable()
-                            .scaledToFill()
-                            .frame(maxWidth: .infinity)
-                            .frame(width: geometry.size.width, height: geometry.size.height * 0.6)
-                            .clipped()
-                            .padding(.bottom, -50)
+                               .resizable()
+                               .frame(width: geometry.size.width)
+                               .frame(height: geometry.size.height * 0.6)
+                               .clipped()
+                               .padding(.bottom, -50)
+
                         Button(action: {
                             if currentOnboardingPage < totalScreen {
                                 currentOnboardingPage += 1
@@ -86,12 +105,9 @@ struct OnboardingScreen: View {
                                 .font(.title2)
                                 .fontDesign(.rounded)
                                 .fontWeight(.bold)
-                                .foregroundColor(.text)
-                                .frame(width: 254, height: 76)
-                                .background(Color("background"))
-                                .cornerRadius(30)
-                            
                         })
+                        .padding()
+                        .buttonStyle(CustomButton(colorButton: .background, colorShadow: .text))
                     }
                 }
             }
@@ -100,9 +116,9 @@ struct OnboardingScreen: View {
 }
 
 struct OnboardingScreen2: View {
-    
+
     @AppStorage("currentOnboardingPage") var currentOnboardingPage = 1
-    
+
     var body: some View {
         GeometryReader { geometry in
             ZStack {
@@ -114,7 +130,7 @@ struct OnboardingScreen2: View {
                         Button(action: {
                             currentOnboardingPage = totalScreen
                         }, label: {
-                        Text ("Skip")
+                            Text("Skip")
                                 .fontWeight(.bold)
                                 .padding()
                                 .foregroundStyle(.text)
@@ -122,24 +138,24 @@ struct OnboardingScreen2: View {
                     }
                     .padding(.trailing)
                     Spacer()
-                   Text("Remember your decision's deadline!")
+                    Text("Remember your decision's deadline!")
                         .multilineTextAlignment(.center)
                         .font(.title)
                         .fontDesign(.rounded)
                         .fontWeight(.black)
                         .padding()
-                    Text("Receive a notification everytime\n your deadline is over!")
-                        .font(.system(size: 15))
+                    Text("Receive a notification everytime your deadline is over!")
+                        .font(.system(size: 17))
                         .fontWeight(.semibold)
                         .multilineTextAlignment(.center)
                         .fontDesign(.rounded)
                     Spacer()
-                    ZStack (alignment: .bottom){
+
+                    ZStack(alignment: .bottom) {
                         Image("onboarding2")
                             .resizable()
-                            .scaledToFill()
-                            .frame(maxWidth: .infinity)
-                            .frame(width: geometry.size.width, height: geometry.size.height * 0.6)
+                            .frame(width: geometry.size.width)
+                            .frame(height: geometry.size.height * 0.6)
                             .clipped()
                             .padding(.bottom, -50)
                         Button(action: {
@@ -151,63 +167,61 @@ struct OnboardingScreen2: View {
                                 .font(.title2)
                                 .fontDesign(.rounded)
                                 .fontWeight(.bold)
-                                .foregroundColor(.text)
-                                .frame(width: 254, height: 76)
-                                .background(Color("background"))
-                                .cornerRadius(30)
-                            
                         })
+                        .padding()
+                        .buttonStyle(CustomButton(colorButton: .background, colorShadow: .text))
                     }
                 }
             }
         }
-    
     }
 }
 
-
-
 struct OnboardingScreen3: View {
-    
+
     @AppStorage("currentOnboardingPage") var currentOnboardingPage = 1
-    
+
     var body: some View {
         GeometryReader { geometry in
             ZStack {
                 Color(.background)
                     .ignoresSafeArea(.all)
+
                 VStack {
                     HStack {
                         Spacer()
                         Button(action: {
                             currentOnboardingPage = totalScreen
                         }, label: {
-                        Text ("Skip")
+                            Text("Skip")
                                 .fontWeight(.bold)
                                 .padding()
                                 .foregroundStyle(.text)
                         })
                     }
                     .padding(.trailing)
+
                     Spacer()
-                   Text("Table of Pros and\nCons!")
+
+                    Text("Table of Pros and Cons!")
                         .multilineTextAlignment(.center)
                         .font(.title)
                         .fontDesign(.rounded)
                         .fontWeight(.black)
                         .padding()
-                    Text("Solve your decision fast using our\npros and cons table!")
-                        .font(.system(size: 15))
+                    Text("Solve your decision fast using our pros and cons table!")
+                        .font(.system(size: 17))
                         .fontWeight(.semibold)
                         .multilineTextAlignment(.center)
                         .fontDesign(.rounded)
+
                     Spacer()
-                    ZStack (alignment: .bottom){
+
+                    ZStack(alignment: .bottom) {
                         Image("onboarding3")
                             .resizable()
-                            .scaledToFill()
-                            .frame(maxWidth: .infinity)
-                            .frame(width: geometry.size.width, height: geometry.size.height * 0.6)
+                            .frame(width: geometry.size.width)
+                            .frame(height: geometry.size.height * 0.6)
                             .clipped()
                             .padding(.bottom, -50)
                         Button(action: {
@@ -219,17 +233,13 @@ struct OnboardingScreen3: View {
                                 .font(.title2)
                                 .fontDesign(.rounded)
                                 .fontWeight(.bold)
-                                .foregroundColor(.black)
-                                .frame(width: 254, height: 76)
-                                .background(.yellowPicker)
-                                .cornerRadius(30)
-                            
+                                .foregroundColor(.textCreateButton)
                         })
+                        .padding()
+                        .buttonStyle(CustomButton(colorButton: .yellowCustom))
                     }
                 }
             }
         }
-  
     }
 }
-

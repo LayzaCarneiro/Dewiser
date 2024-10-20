@@ -7,12 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		12AB6C1C2CBFE5A10059E25F /* FaceIdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AB6C1B2CBFE5A10059E25F /* FaceIdView.swift */; };
+		12AB6C1E2CBFE6270059E25F /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AB6C1D2CBFE6270059E25F /* AuthenticationManager.swift */; };
 		AE28CDCD2CA2F3AE00267E39 /* MakeItGreatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE28CDCC2CA2F3AE00267E39 /* MakeItGreatApp.swift */; };
 		AE28CDCF2CA2F3AE00267E39 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE28CDCE2CA2F3AE00267E39 /* ContentView.swift */; };
 		AE28CDD12CA2F3AF00267E39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE28CDD02CA2F3AF00267E39 /* Assets.xcassets */; };
 		AE28CDD42CA2F3AF00267E39 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE28CDD32CA2F3AF00267E39 /* Preview Assets.xcassets */; };
 		AE3847A72CABF46200D4ABB5 /* ProModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3847A62CABF45E00D4ABB5 /* ProModel.swift */; };
 		AE3847A92CABF4C400D4ABB5 /* ConModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3847A82CABF4C200D4ABB5 /* ConModel.swift */; };
+		AE3BBE7B2CC1507B00D6582D /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3BBE7A2CC1507000D6582D /* SplashScreenView.swift */; };
+		AE3BBE7F2CC1519A00D6582D /* animation.json in Resources */ = {isa = PBXBuildFile; fileRef = AE3BBE7E2CC1519500D6582D /* animation.json */; };
+		AE3BBE842CC1521800D6582D /* Button3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3BBE832CC1521600D6582D /* Button3D.swift */; };
+		AE3BBE872CC1542100D6582D /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = AE3BBE862CC1542100D6582D /* Lottie */; };
 		AE3BFAB92CAC38A100DC1C67 /* DecisionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3BFAB82CAC389D00DC1C67 /* DecisionView.swift */; };
 		AE5B33E52CA88BCD0055D650 /* DecisionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5B33E42CA88BCD0055D650 /* DecisionCard.swift */; };
 		AE5B33E72CA88CBF0055D650 /* HomeScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5B33E62CA88CBF0055D650 /* HomeScreenView.swift */; };
@@ -30,6 +36,7 @@
 		AE9E32B02CA38485009235AC /* FirstPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9E32AF2CA38485009235AC /* FirstPage.swift */; };
 		AE9E32B32CA3854D009235AC /* SecondPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9E32B22CA3854D009235AC /* SecondPage.swift */; };
 		AE9E32B52CA3859D009235AC /* ThirdPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9E32B42CA3859D009235AC /* ThirdPage.swift */; };
+		AEB06BCB2CC287CF00CAAE0A /* SliderFeeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB06BCA2CC287CB00CAAE0A /* SliderFeeling.swift */; };
 		AED2E7342CB24F82005A89CD /* CustomDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED2E7332CB24F7B005A89CD /* CustomDatePicker.swift */; };
 		AED2E7362CB25272005A89CD /* CustomHourPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED2E7352CB2526D005A89CD /* CustomHourPicker.swift */; };
 		AEE99BEA2CB0145500CC299A /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE99BE92CB0145300CC299A /* EditView.swift */; };
@@ -67,6 +74,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		12AB6C1B2CBFE5A10059E25F /* FaceIdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceIdView.swift; sourceTree = "<group>"; };
+		12AB6C1D2CBFE6270059E25F /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
 		AE28CDC92CA2F3AE00267E39 /* MakeItGreat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MakeItGreat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE28CDCC2CA2F3AE00267E39 /* MakeItGreatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeItGreatApp.swift; sourceTree = "<group>"; };
 		AE28CDCE2CA2F3AE00267E39 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -74,6 +83,9 @@
 		AE28CDD32CA2F3AF00267E39 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		AE3847A62CABF45E00D4ABB5 /* ProModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProModel.swift; sourceTree = "<group>"; };
 		AE3847A82CABF4C200D4ABB5 /* ConModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConModel.swift; sourceTree = "<group>"; };
+		AE3BBE7A2CC1507000D6582D /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
+		AE3BBE7E2CC1519500D6582D /* animation.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = animation.json; sourceTree = "<group>"; };
+		AE3BBE832CC1521600D6582D /* Button3D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button3D.swift; sourceTree = "<group>"; };
 		AE3BFAB82CAC389D00DC1C67 /* DecisionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecisionView.swift; sourceTree = "<group>"; };
 		AE5B33E42CA88BCD0055D650 /* DecisionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecisionCard.swift; sourceTree = "<group>"; };
 		AE5B33E62CA88CBF0055D650 /* HomeScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenView.swift; sourceTree = "<group>"; };
@@ -93,6 +105,7 @@
 		AE9E32AF2CA38485009235AC /* FirstPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstPage.swift; sourceTree = "<group>"; };
 		AE9E32B22CA3854D009235AC /* SecondPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondPage.swift; sourceTree = "<group>"; };
 		AE9E32B42CA3859D009235AC /* ThirdPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdPage.swift; sourceTree = "<group>"; };
+		AEB06BCA2CC287CB00CAAE0A /* SliderFeeling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderFeeling.swift; sourceTree = "<group>"; };
 		AED2E7332CB24F7B005A89CD /* CustomDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDatePicker.swift; sourceTree = "<group>"; };
 		AED2E7352CB2526D005A89CD /* CustomHourPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHourPicker.swift; sourceTree = "<group>"; };
 		AEE99BE92CB0145300CC299A /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
@@ -125,6 +138,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE3BBE872CC1542100D6582D /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -160,6 +174,7 @@
 		AE28CDCB2CA2F3AE00267E39 /* MakeItGreat */ = {
 			isa = PBXGroup;
 			children = (
+				AE3BBE7D2CC1518800D6582D /* Lottie */,
 				AE7F8BB52CA6D53800CD3835 /* Model */,
 				AE9E32AC2CA383D5009235AC /* ViewModel */,
 				AE9E32A72CA358A1009235AC /* View */,
@@ -179,6 +194,14 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		AE3BBE7D2CC1518800D6582D /* Lottie */ = {
+			isa = PBXGroup;
+			children = (
+				AE3BBE7E2CC1519500D6582D /* animation.json */,
+			);
+			path = Lottie;
+			sourceTree = "<group>";
+		};
 		AE7F8BB52CA6D53800CD3835 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -192,6 +215,8 @@
 		AE7F8BBB2CA6D5E500CD3835 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				AEB06BCA2CC287CB00CAAE0A /* SliderFeeling.swift */,
+				AE3BBE832CC1521600D6582D /* Button3D.swift */,
 				AE9E27A72CB6A4DA006FB9E4 /* PriorityTag.swift */,
 				AE9E27AD2CB6CE8A006FB9E4 /* CustomFeelingPicker.swift */,
 				AE9E27AE2CB6CE8A006FB9E4 /* FeelingItem.swift */,
@@ -221,6 +246,7 @@
 				AEFC12C92CACC8C900E00B9D /* Settings */,
 				AE7F8BBB2CA6D5E500CD3835 /* Components */,
 				AE9E32B12CA3853B009235AC /* Form */,
+				AE3BBE7A2CC1507000D6582D /* SplashScreenView.swift */,
 				AEE99BE92CB0145300CC299A /* EditView.swift */,
 				AE3BFAB82CAC389D00DC1C67 /* DecisionView.swift */,
 				AE7F8BBC2CA6D5FF00CD3835 /* ProConsView.swift */,
@@ -257,8 +283,10 @@
 		AEFC12C92CACC8C900E00B9D /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				AEFC12C72CACC8C900E00B9D /* AboutView.swift */,
+				12AB6C1D2CBFE6270059E25F /* AuthenticationManager.swift */,
+				12AB6C1B2CBFE5A10059E25F /* FaceIdView.swift */,
 				AEFC12C82CACC8C900E00B9D /* SettingsView.swift */,
+				AEFC12C72CACC8C900E00B9D /* AboutView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -290,6 +318,7 @@
 			);
 			name = MakeItGreat;
 			packageProductDependencies = (
+				AE3BBE862CC1542100D6582D /* Lottie */,
 			);
 			productName = MakeItGreat;
 			productReference = AE28CDC92CA2F3AE00267E39 /* MakeItGreat.app */;
@@ -344,6 +373,7 @@
 			);
 			mainGroup = AE28CDC02CA2F3AE00267E39;
 			packageReferences = (
+				AE3BBE852CC153CC00D6582D /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = AE28CDCA2CA2F3AE00267E39 /* Products */;
 			projectDirPath = "";
@@ -361,6 +391,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE28CDD42CA2F3AF00267E39 /* Preview Assets.xcassets in Resources */,
+				AE3BBE7F2CC1519A00D6582D /* animation.json in Resources */,
 				AE28CDD12CA2F3AF00267E39 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -403,6 +434,7 @@
 			files = (
 				AE7F8BBD2CA6D5FF00CD3835 /* ProConsView.swift in Sources */,
 				AE5CE2162CB95A2400BAAEBD /* NoSearchView.swift in Sources */,
+				12AB6C1C2CBFE5A10059E25F /* FaceIdView.swift in Sources */,
 				E9869F502CB7048D005DC0E4 /* HaveDecisionsView.swift in Sources */,
 				AE3847A92CABF4C400D4ABB5 /* ConModel.swift in Sources */,
 				AEE99BEA2CB0145500CC299A /* EditView.swift in Sources */,
@@ -411,6 +443,7 @@
 				AE9E32B32CA3854D009235AC /* SecondPage.swift in Sources */,
 				AE7F8BC12CA6DA8B00CD3835 /* CardModel.swift in Sources */,
 				E9869F4E2CB70470005DC0E4 /* NoDecisionsView.swift in Sources */,
+				AEB06BCB2CC287CF00CAAE0A /* SliderFeeling.swift in Sources */,
 				AE7F8BC72CA6EABB00CD3835 /* ProgressBar.swift in Sources */,
 				AED2E7362CB25272005A89CD /* CustomHourPicker.swift in Sources */,
 				AE5B33E72CA88CBF0055D650 /* HomeScreenView.swift in Sources */,
@@ -418,12 +451,15 @@
 				AE5CE2042CB94BC900BAAEBD /* OnboardingView.swift in Sources */,
 				E92604D32CAC1B8A002F0C77 /* SearchView.swift in Sources */,
 				AE7F8BBF2CA6D68F00CD3835 /* ItemCard.swift in Sources */,
+				AE3BBE7B2CC1507B00D6582D /* SplashScreenView.swift in Sources */,
 				E9869F522CB70619005DC0E4 /* ButtonCreateDecision.swift in Sources */,
 				AEFC12CE2CACC8EE00E00B9D /* LinkAbout.swift in Sources */,
 				AEFC12CF2CACC8EE00E00B9D /* SettingsViewModel.swift in Sources */,
 				AE7F8BBF2CA6D68F00CD3835 /* ItemCard.swift in Sources */,
 				AE9E32B52CA3859D009235AC /* ThirdPage.swift in Sources */,
+				12AB6C1E2CBFE6270059E25F /* AuthenticationManager.swift in Sources */,
 				AE8D856D2CB357A50032AD17 /* CustomPriorityPicker.swift in Sources */,
+				AE3BBE842CC1521800D6582D /* Button3D.swift in Sources */,
 				AEFC12CA2CACC8C900E00B9D /* SettingsView.swift in Sources */,
 				AEFC12CB2CACC8C900E00B9D /* AboutView.swift in Sources */,
 				AED2E7342CB24F82005A89CD /* CustomDatePicker.swift in Sources */,
@@ -586,12 +622,12 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = Dewiser;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "Unlock the app";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -617,12 +653,12 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = Dewiser;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "Unlock the app";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -725,6 +761,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		AE3BBE852CC153CC00D6582D /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.4.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AE3BBE862CC1542100D6582D /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AE3BBE852CC153CC00D6582D /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = AE28CDC12CA2F3AE00267E39 /* Project object */;
 }

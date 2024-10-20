@@ -66,7 +66,7 @@ extension DewiserWidgetAttributes.ContentState {
     fileprivate static var smiley: DewiserWidgetAttributes.ContentState {
         DewiserWidgetAttributes.ContentState(emoji: "😀")
      }
-     
+
      fileprivate static var starEyes: DewiserWidgetAttributes.ContentState {
          DewiserWidgetAttributes.ContentState(emoji: "🤩")
      }

@@ -10,63 +10,156 @@ import SwiftData
 
 struct HaveDecisionsView: View {
     @State private var isPresented: Bool = false
-    @Query var decisions: [CardModel]
     @State private var deleteOnForDecision: Bool = false
+    @State private var selectedDecision: CardModel?
+    @State private var alertType: AlertType?
+    @State private var decisionToDelete: CardModel?
+    @State private var decisionToConclude: CardModel?
+
+    @Query var decisions: [CardModel]
     @Environment(\.modelContext) var context
-    
+
+    @State private var isAbleHaptics: Bool = UserDefaults.standard.object(forKey: "isAbleHaptics") as? Bool ?? true
+    let generator = UIImpactFeedbackGenerator(style: .rigid)
+
     var body: some View {
-        ZStack(alignment: .bottom) {
-            
-            Color.clear.ignoresSafeArea()
-            
-            VStack {
-                Text("My Decisions")
-                    .font(.largeTitle)
-                    .fontWeight(.black)
-                    .fontWidth(.compressed)
-                    .fontDesign(.rounded)
-                    .padding(.top, 100)
-                    .padding(.trailing, 100)
-                    .foregroundStyle(.textcolormd)
-                
-                List {
-                    ForEach(decisions.reversed()) { decision in
-                        HStack {
-                            NavigationLink(destination: DecisionView(decision: decision)) {
-                                DecisionCard(card: decision)
-                            }
+        NavigationStack {
+            ZStack {
+                VStack {
+                    Text("My Decisions")
+                        .font(.largeTitle)
+                        .fontWeight(.black)
+                        .fontWidth(.compressed)
+                        .fontDesign(.rounded)
+                        .foregroundStyle(.textTitle)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.top, 65)
+                        .padding(.leading, 26)
+
+                    List {
+                        ForEach(decisions.sorted(by: {
+                            // swiftlint:disable:next line_length
+                            priorityOrder(CardModel.Priority(rawValue: $0.priority) ?? .medium) > priorityOrder(CardModel.Priority(rawValue: $1.priority) ?? .medium)})) { decision in
+                                HStack {
+                                    Button {
+                                        selectedDecision = decision
+                                    } label: {
+                                        DecisionCard(card: decision)
+                                    }
+                                    .background(
+                                        NavigationLink(destination: DecisionView(decision: decision)) {
+                                            EmptyView()
+                                       }
+                                        .opacity(0.0)
+                                        .frame(width: 0, height: 0)
+                                    )
+                                    .swipeActions(allowsFullSwipe: true) {
+                                        Button(role: .destructive) {
+                                            if isAbleHaptics {
+                                                generator.impactOccurred()
+                                            }
+                                            decisionToDelete = decision
+                                            alertType = .delete
+                                        } label: {
+                                            Label("Delete", systemImage: "trash")
+                                                .fontDesign(.rounded)
+                                        }
+                                        .tint(.red)
+
+                                        if decision.priority != "done" {
+                                            Button(role: .none) {
+                                                if isAbleHaptics {
+                                                    generator.impactOccurred()
+                                                }
+                                                decisionToConclude = decision
+                                                alertType = .conclude
+                                            } label: {
+                                                Label("Conclude", systemImage: "checkmark")
+                                            }
+                                            .tint(.green)
+                                        }
+                                    }
+                                }
+                            .listRowBackground(Color.clear)
+                            .listRowSeparator(.hidden)
                         }
-                        .swipeActions(allowsFullSwipe: true) {
-                            Button(role: .destructive) {
-                                deleteDecision(decision: decision)
-                            } label: {
-                                Label("Delete", systemImage: "trash")
-                            }
-                        }
-                        .listRowBackground(Color.clear)
-                        .listRowSeparator(.hidden)
                     }
+                    .listStyle(PlainListStyle())
+                    .scrollContentBackground(.hidden)
+                    .background(Color.clear)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.leading, 10)
+                    .padding(.bottom, 35)
+
+                    ButtonCreateDecision()
+                        .frame(width: 300, height: 20)
+                        .padding(.bottom, 30)
+                        .background(Color.clear)
                 }
-                .listStyle(PlainListStyle())
-                .scrollContentBackground(.hidden)
-                .background(Color.clear)
-//                .padding(.horizontal)
-//                .padding(.bottom, 60)
-                ButtonCreateDecision()
-                    .padding(.bottom)
+                .background(
+                    RoundedRectangle(cornerRadius: 40)
+                        .foregroundColor(Color.background)
+                        .ignoresSafeArea(edges: .bottom)
+                        .padding(.top, 33)
+                )
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(
-                RoundedRectangle(cornerRadius: 40)
-                    .foregroundColor(Color.background)
-                    .ignoresSafeArea(edges: .bottom)
-                    .padding(.top, 60)
-            )
+        }
+        .alert(item: $alertType) { type in
+            switch type {
+            case .delete:
+                return Alert(
+                    title: Text("Delete Decision"),
+                    message: Text("Are you sure you want to delete this decision? This action cannot be undone."),
+                    primaryButton: .destructive(Text("Delete")) {
+                        if let decision = decisionToDelete {
+                            deleteDecision(decision: decision)
+                        }
+                    },
+                    secondaryButton: .cancel()
+                )
+            case .conclude:
+                return Alert(
+                    title: Text("Congratulations!"),
+                    message: Text("Hope you made a wise decision! Are you sure of that?"),
+                    primaryButton: .default(Text("Conclude")) {
+                        if let decision = decisionToConclude {
+                            decision.priority = "done"
+                        }
+                    },
+                    secondaryButton: .cancel()
+                )
+            }
         }
     }
-    
+
     private func deleteDecision(decision: CardModel) {
         context.delete(decision)
+        try? context.save()
+    }
+
+    private func priorityOrder(_ priority: CardModel.Priority) -> Int {
+        switch priority {
+        case .high:
+            return 3
+        case .medium:
+            return 2
+        case .low:
+            return 1
+        case .done:
+            return 0
+        }
+    }
+
+    private var isHapticsEnabled: Bool {
+        UserDefaults.standard.bool(forKey: "isAbleHaptics")
+    }
+
+    enum AlertType: Identifiable {
+        case delete, conclude
+
+        var id: Int {
+            hashValue
+        }
     }
 }
 

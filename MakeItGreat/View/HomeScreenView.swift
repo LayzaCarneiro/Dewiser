@@ -10,68 +10,84 @@ import SwiftData
 
 struct HomeScreenView: View {
     @State private var isPresented: Bool = false
-
-    @Query var decisions: [CardModel]
-
     @State private var deleteOnForDecision: Bool = false
-
     @Environment(\.modelContext) var context
+    @EnvironmentObject var authManager: AuthenticationManager
+    @Query var decisions: [CardModel]
 
     var body: some View {
         NavigationStack {
             ZStack {
                 Color.background.ignoresSafeArea()
-                VStack {
-                    if decisions.isEmpty {
-                        Text("My Decisions")
-                            .font(.largeTitle)
-                            .fontDesign(.rounded)
-                            .fontWidth(.compressed)
-                            .fontWeight(.black)
-                            .foregroundColor(.textTitle)
-                            .padding(.trailing, 100)
-                            .padding(.top, 30)
-                        NoDecisionsView()
-                            .frame(maxWidth: .infinity, maxHeight: .infinity)
-                            .background(Color.clear)
-                            .toolbar {
-                                ToolbarItem(placement: .navigationBarTrailing) {
-                                    HStack {
-                                        NavigationLink(destination: SearchView()) {
-                                            Image(systemName: "magnifyingglass")
-                                                .foregroundStyle(Color(UIColor.label))
-                                                .fontWeight(.bold)
+                GeometryReader { geometry in
+                    VStack {
+                        if decisions.isEmpty {
+                            Text("My Decisions")
+                                .font(.system(size: geometry.size.width * 0.08))
+                                .fontDesign(.rounded)
+                                .fontWidth(.compressed)
+                                .fontWeight(.black)
+                                .foregroundColor(.textTitle)
+                                .padding(.top, geometry.size.height * 0.05)
+                                .padding(.leading, geometry.size.width * -0.4)
+
+                            NoDecisionsView()
+                                .transition(AnyTransition.opacity.animation(.smooth))
+                                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                                .background(Color.clear)
+                                .toolbar {
+                                    ToolbarItem(placement: .navigationBarTrailing) {
+                                        HStack(spacing: 15) {
+                                            NavigationLink(destination: SearchView()) {
+                                                Image(systemName: "magnifyingglass")
+                                                    .resizable()
+                                                    .aspectRatio(contentMode: .fit)
+                                                    .frame(width: 28, height: 28)
+                                                    .foregroundStyle(.text)
+                                                    .fontWeight(.bold)
+                                            }
+                                            NavigationLink(destination: SettingsView()) {
+                                                Image(systemName: "gear")
+                                                    .resizable()
+                                                    .frame(width: 30, height: 30)
+                                                    .foregroundStyle(.text)
+                                                    .fontWeight(.bold)
+                                            }
                                         }
-                                        NavigationLink(destination: SettingsView()) {
-                                            Image(systemName: "gear")
-                                                .foregroundStyle(Color(UIColor.label))
-                                                .fontWeight(.bold)
-                                        }
+                                        .frame(maxWidth: .infinity, alignment: .trailing)
+                                        .padding(.trailing, 8)
                                     }
                                 }
-                            }
-                    } else {
-                        HaveDecisionsView()
-                            .background(Color.purpleBackground)
-                            .toolbar {
-                                ToolbarItem(placement: .navigationBarTrailing) {
-                                    HStack {
-                                        NavigationLink(destination: SearchView()) {
-                                            Image(systemName: "magnifyingglass")
-                                                .foregroundStyle(.textInverse)
-                                                .fontWeight(.bold)
+                        } else {
+                            HaveDecisionsView()
+                                .background(Color.purpleBackground)
+                                .toolbar {
+                                    ToolbarItem(placement: .navigationBarTrailing) {
+                                        HStack(spacing: 15) {
+                                            NavigationLink(destination: SearchView()) {
+                                                Image(systemName: "magnifyingglass")
+                                                    .resizable()
+                                                    .frame(width: 28, height: 28)
+                                                    .foregroundStyle(.textInverse)
+                                                    .fontWeight(.bold)
+                                            }
+                                            NavigationLink(destination: SettingsView()) {
+                                                Image(systemName: "gear")
+                                                    .resizable()
+                                                    .frame(width: 30, height: 30)
+                                                    .foregroundStyle(.textInverse)
+                                                    .fontWeight(.bold)
+                                            }
                                         }
-                                        NavigationLink(destination: SettingsView()) {
-                                            Image(systemName: "gear")
-                                                .foregroundStyle(.textInverse)
-                                                .fontWeight(.bold)
-                                        }
+                                        .frame(maxWidth: .infinity, alignment: .trailing)
+                                        .padding(.trailing, 8)
                                     }
                                 }
-                            }
+                        }
                     }
                 }
             }
+            .navigationBarBackButtonHidden(true)
         }
     }
 }
@@ -79,5 +95,6 @@ struct HomeScreenView: View {
 struct HomeScreenView_Previews: PreviewProvider {
     static var previews: some View {
         HomeScreenView()
+            .environmentObject(AuthenticationManager())
     }
 }

@@ -11,35 +11,49 @@ struct SecondPage: View {
     @ObservedObject var formViewModel: FormViewModel
     @Binding var isPresented: Bool
     @Environment(\.dismiss) var dismiss
-    var feelings = ["Insecure", "Angry", "Ok", "Good", "Confident"]
+    // swiftlint:disable:next line_length
+    var imageBall: [String: String] = ["Insecure": "insecureBall", "Ok": "okBall", "Good": "goodBall", "Angry": "angryBall", "Confident": "confidentBall"]
+
+    @State private var circleScale: CGFloat = 1.0
 
     var body: some View {
         NavigationStack {
             ZStack {
                 Color.background.ignoresSafeArea()
-                
+                //
+                Image(imageBall[formViewModel.cardModel.feeling] ?? "confidentFace")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 500, height: 500)
+                    .offset(y: 300)
+                //
                 VStack {
                     Text("How are you feeling about this decision?")
                         .font(.largeTitle)
-                        .fontDesign(.rounded)
                         .fontWeight(.bold)
+                        .frame(width: 375, alignment: .top)
                         .padding(.top, 50)
-                    //                TextField("Feeling", text: $formViewModel.cardModel.feeling)
-                    //                    .textFieldStyle(.roundedBorder)
-                    
-                    Picker("Ok", selection: $formViewModel.cardModel.feeling) {
-                        ForEach(feelings, id: \.self) {
-                            Text($0)
-                        }
-                    }
-                    
+                    //
+                    SliderFeeling(formViewModel: formViewModel)
+                        .frame(width: 300, height: 430)
+                        .padding()
+                    //
                     Spacer()
                 }
                 .padding()
+                .fontDesign(.rounded)
             }
         }
         .navigationTitle("New Decision")
         .navigationBarTitleDisplayMode(.inline)
+        .navigationBarBackButtonHidden(false)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button {
+                } label: {
+                }
+            }
+        }
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 NavigationLink(destination: ThirdPage(formViewModel: formViewModel, isPresented: $isPresented)) {
@@ -47,5 +61,13 @@ struct SecondPage: View {
                 }
             }
         }
+    }
+}
+struct
+SecondPage_Previews: PreviewProvider {
+    static var previews: some View {
+        let formViewModel = FormViewModel()
+        @State var isPresented = true
+        SecondPage(formViewModel: formViewModel, isPresented: $isPresented)
     }
 }
