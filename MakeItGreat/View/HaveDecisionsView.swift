@@ -30,7 +30,7 @@ struct HaveDecisionsView: View {
                         .fontWeight(.black)
                         .fontWidth(.compressed)
                         .fontDesign(.rounded)
-                        .foregroundStyle(.white)
+                        .foregroundStyle(.textTitle)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.top, 65)
                         .padding(.leading, 26)
