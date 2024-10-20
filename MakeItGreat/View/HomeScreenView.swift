@@ -32,6 +32,7 @@ struct HomeScreenView: View {
                                 .padding(.leading, geometry.size.width * -0.4)
 
                             NoDecisionsView()
+                                .transition(AnyTransition.opacity.animation(.smooth))
                                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                                 .background(Color.clear)
                                 .toolbar {

@@ -13,6 +13,7 @@ struct SplashScreenView: View {
     var body: some View {
         if ativado {
             OnboardingView()
+                .transition(AnyTransition.opacity.animation(.smooth))
         } else {
             ZStack {
                 Color.splashscreencolor
