@@ -20,7 +20,7 @@ struct ButtonCreateDecision: View {
             Button {
                 isPresented.toggle()
             } label: {
-                Text("Create a decision")
+                Text("Add a decision")
                     .font(.title2)
                     .fontWeight(.black)
                     .fontDesign(.rounded)

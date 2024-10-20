@@ -17,7 +17,7 @@ struct ItemCard: View {
     var body: some View {
         ZStack(alignment: .topTrailing) {
             if content.isEmpty {
-               Text("Adicione")
+               Text("Add reason")
                    .foregroundColor(.gray)
                    .padding(15)
                    .frame(width: 149, height: 84, alignment: .leading)

@@ -19,6 +19,7 @@ struct HaveDecisionsView: View {
     @Query var decisions: [CardModel]
     @Environment(\.modelContext) var context
 
+    @State private var isAbleHaptics: Bool = UserDefaults.standard.object(forKey: "isAbleHaptics") as? Bool ?? true
     let generator = UIImpactFeedbackGenerator(style: .rigid)
 
     var body: some View {
@@ -52,33 +53,33 @@ struct HaveDecisionsView: View {
                                         .opacity(0.0)
                                         .frame(width: 0, height: 0)
                                     )
-                                }
-                            .swipeActions(allowsFullSwipe: true) {
-                                Button(role: .destructive) {
-                                    if isHapticsEnabled {
-                                        generator.impactOccurred()
-                                    }
-                                    decisionToDelete = decision
-                                    alertType = .delete
-                                } label: {
-                                    Label("Delete", systemImage: "trash")
-                                        .fontDesign(.rounded)
-                                }
-                                .tint(.red)
-
-                                if decision.priority != "done" {
-                                    Button(role: .none) {
-                                        if isHapticsEnabled {
-                                            generator.impactOccurred()
+                                    .swipeActions(allowsFullSwipe: true) {
+                                        Button(role: .destructive) {
+                                            if isAbleHaptics {
+                                                generator.impactOccurred()
+                                            }
+                                            decisionToDelete = decision
+                                            alertType = .delete
+                                        } label: {
+                                            Label("Delete", systemImage: "trash")
+                                                .fontDesign(.rounded)
                                         }
-                                        decisionToConclude = decision
-                                        alertType = .conclude
-                                    } label: {
-                                        Label("Conclude", systemImage: "checkmark")
+                                        .tint(.red)
+
+                                        if decision.priority != "done" {
+                                            Button(role: .none) {
+                                                if isAbleHaptics {
+                                                    generator.impactOccurred()
+                                                }
+                                                decisionToConclude = decision
+                                                alertType = .conclude
+                                            } label: {
+                                                Label("Conclude", systemImage: "checkmark")
+                                            }
+                                            .tint(.green)
+                                        }
                                     }
-                                    .tint(.green)
                                 }
-                            }
                             .listRowBackground(Color.clear)
                             .listRowSeparator(.hidden)
                         }

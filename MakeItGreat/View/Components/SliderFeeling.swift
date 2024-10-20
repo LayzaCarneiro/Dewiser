@@ -12,6 +12,7 @@ struct SliderFeeling: View {
     @ObservedObject var formViewModel: FormViewModel
     @State var sliderValue: Double = 5
     @State var previousValue: Int = 5
+    @State private var isAbleHaptics: Bool = UserDefaults.standard.object(forKey: "isAbleHaptics") as? Bool ?? true
     let generator = UIImpactFeedbackGenerator(style: .rigid)
 
     let feeling: [Int: String] = [1: "Insecure", 2: "Angry", 3: "Ok", 4: "Good", 5: "Confident"]
@@ -39,7 +40,9 @@ struct SliderFeeling: View {
             formViewModel.cardModel.feeling = feeling[Int(value)] ?? "Confident"
         }
         .onChange(of: formViewModel.cardModel.feeling) { _, _ in
-            generator.impactOccurred()
+            if isAbleHaptics {
+                generator.impactOccurred()
+            }
         }
     }
 }
