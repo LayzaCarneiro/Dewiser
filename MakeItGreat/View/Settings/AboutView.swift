@@ -17,12 +17,11 @@ struct AboutView: View {
                         Button(action: openLinkedInHM) {
                             HStack {
                                 ZStack {
-                                    RoundedRectangle(cornerRadius: 6)
-                                        .fill(Color.icon)
+                                    Image("hadassamiranda")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .clipShape(RoundedRectangle(cornerRadius: 6))
                                         .frame(width: 30, height: 30)
-                                    Image(systemName: "person.fill")
-                                        .foregroundColor(.white)
-                                        .font(.system(size: 15))
                                 }
                                 Text("Hadassa Miranda")
                             }
@@ -33,9 +32,11 @@ struct AboutView: View {
                                     RoundedRectangle(cornerRadius: 6)
                                         .fill(Color.icon)
                                         .frame(width: 30, height: 30)
-                                    Image(systemName: "person.fill")
-                                        .foregroundColor(.white)
-                                        .font(.system(size: 15))
+                                    Image("joaoroberto")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .clipShape(RoundedRectangle(cornerRadius: 6))
+                                        .frame(width: 30, height: 30)
                                 }
                                 Text("João Roberto")
                             }
@@ -46,9 +47,11 @@ struct AboutView: View {
                                     RoundedRectangle(cornerRadius: 6)
                                         .fill(Color.icon)
                                         .frame(width: 30, height: 30)
-                                    Image(systemName: "person.fill")
-                                        .foregroundColor(.white)
-                                        .font(.system(size: 15))
+                                    Image( "layzacarneiro")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .clipShape(RoundedRectangle(cornerRadius: 6))
+                                        .frame(width: 30, height: 30)
                                 }
                                 Text("Layza Carneiro")
                             }
@@ -59,16 +62,18 @@ struct AboutView: View {
                                     RoundedRectangle(cornerRadius: 6)
                                         .fill(Color.icon)
                                         .frame(width: 30, height: 30)
-                                    Image(systemName: "person.fill")
-                                        .foregroundColor(.white)
-                                        .font(.system(size: 15))
+                                    Image("melissaguedes")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .clipShape(RoundedRectangle(cornerRadius: 6))
+                                        .frame(width: 30, height: 30)
                                 }
                                 Text("Melissa Guedes")
                             }
                         }
                     }
                     Section(header: Text("App")) {
-                        NavigationLink(destination: SettingsView()) {
+                        Button(action: openSite) {
                             HStack {
                                 ZStack {
                                     RoundedRectangle(cornerRadius: 6)
@@ -83,7 +88,7 @@ struct AboutView: View {
                         }
                     }
                     Section(header: Text("More Info")) {
-                        NavigationLink(destination: SettingsView()) {
+                        Button(action: openSite) {
                             HStack {
                                 ZStack {
                                     RoundedRectangle(cornerRadius: 6)

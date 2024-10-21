@@ -28,3 +28,8 @@ func openLinkedInMG() {
         UIApplication.shared.open(url)
     }
 }
+func openSite() {
+    if let url = URL(string: "https://readymag.website/u40122661/5058024/") {
+        UIApplication.shared.open(url)
+    }
+}
