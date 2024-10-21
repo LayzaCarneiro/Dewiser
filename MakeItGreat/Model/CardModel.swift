@@ -27,8 +27,8 @@ class CardModel: Identifiable {
             priority = newValue.rawValue
         }
     }
-
-    init(id: UUID = UUID(), title: String = "", cardDescription: String? = nil, feeling: String = "", priorityEnum: Priority = .medium, deadline: Date? = nil, time: Date? = nil) {
+    // swiftlint:disable:next line_length
+    init(id: UUID = UUID(), title: String = "", cardDescription: String? = nil, feeling: String = "Confident", priorityEnum: Priority = .medium, deadline: Date? = nil, time: Date? = nil) {
         self.id = id
         self.title = title
         self.cardDescription = cardDescription
@@ -39,7 +39,9 @@ class CardModel: Identifiable {
     }
 }
 
-enum Priority: String, CaseIterable, Identifiable {
-    case low, medium, high, done
-    var id: Self { self }
+extension CardModel {
+    enum Priority: String, CaseIterable, Identifiable {
+        case low, medium, high, done
+        var id: Self { self }
+    }
 }

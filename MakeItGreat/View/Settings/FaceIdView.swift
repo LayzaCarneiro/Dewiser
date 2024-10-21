@@ -23,7 +23,6 @@ struct FaceIdView: View {
                     Text(authManager.statusMessage)
                         .bold()
                         .foregroundStyle(Color.purpleBackground)
-                        .fontDesign(.rounded)
                         .padding()
                         .lineLimit(1)
                     //
@@ -40,13 +39,13 @@ struct FaceIdView: View {
                             }
                         }
                         .fontWeight(.medium)
-                        .fontDesign(.rounded)
                         .foregroundStyle(Color.white)
+                        .navigationDestination(isPresented: $authManager.isUnlocked) {
+                            HomeScreenView()
+                        }
                     }
                 }
-                .navigationDestination(isPresented: $authManager.isUnlocked) {
-                    HomeScreenView()
-                }
+                .fontDesign(.rounded)
             }
         }
     }

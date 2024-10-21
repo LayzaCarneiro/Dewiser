@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import UIKit
 
 struct FirstPage: View {
     @StateObject var formViewModel: FormViewModel
@@ -15,6 +14,7 @@ struct FirstPage: View {
     @FocusState private var isTitleFocused: Bool
     @FocusState private var isDescriptionFocused: Bool
     var generate = UIImpactFeedbackGenerator(style: .rigid)
+  
     private var isHapticsEnabled: Bool {
         UserDefaults.standard.bool(forKey: "isAbleHaptics")
     }
@@ -35,14 +35,14 @@ struct FirstPage: View {
                                     .font(.body)
                                     .fontWeight(.bold)
                                     .foregroundStyle(.red)
-
                             }
-                            TextField("What is your decision title?", text: $formViewModel.cardModel.title)
+                            TextField("What's your decision title?", text: $formViewModel.cardModel.title)
                                 .padding()
                                 .frame(width: 361, height: 44)
                                 .background(.cardBackground)
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 10)
+                                    // swiftlint:disable:next line_length
                                         .stroke((titleIsEmpty && formViewModel.cardModel.title.isEmpty) ? Color.red : Color.fieldStroke, lineWidth: 2)
                                 )
                                 .focused($isTitleFocused)
@@ -51,6 +51,7 @@ struct FirstPage: View {
                                 }
                                 .onTapGesture {
                                     titleIsEmpty = false
+                                    hideKeyboard()
                                 }
                         }
 
@@ -72,6 +73,9 @@ struct FirstPage: View {
                             )
                             .focused($isDescriptionFocused)
                         }
+                        .onTapGesture {
+                            hideKeyboard()
+                        }
 
                         HStack(spacing: 55) {
                             VStack(alignment: .leading) {
@@ -86,10 +90,10 @@ struct FirstPage: View {
                             }
 
                             VStack(alignment: .leading) {
-                                Text("Time")
+                                Text("Deadline's Time")
                                     .font(.body)
                                     .fontWeight(.bold)
- 
+
                                 CustomHourPicker(selectedHour: Binding(
                                     get: {formViewModel.cardModel.time ?? Date()},
                                     set: { newValue in formViewModel.cardModel.time = newValue}
@@ -110,9 +114,9 @@ struct FirstPage: View {
                             }
 
                             CustomPriorityPicker(selectedPriority: $formViewModel.cardModel.priorityEnum)
-
                         }
                     }
+                    .fontDesign(.rounded)
                     .padding()
                     .padding(.top, 15)
                     Spacer()
@@ -131,6 +135,7 @@ struct FirstPage: View {
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     if !formViewModel.cardModel.title.isEmpty {
+                        // swiftlint:disable:next line_length
                         NavigationLink(destination: SecondPage(formViewModel: formViewModel, isPresented: $isPresented)) {
                             Text("Next")
                                 .foregroundStyle(.cancelcolor)
@@ -138,7 +143,6 @@ struct FirstPage: View {
                     } else {
                         Button {
                             titleIsEmpty = true
-                            // Gera feedback tátil apenas se haptics estiver habilitado
                             if isHapticsEnabled {
                                 generate.impactOccurred()
                             }
@@ -149,9 +153,6 @@ struct FirstPage: View {
                     }
                 }
             }
-        }
-        .onTapGesture {
-           hideKeyboard()
         }
     }
 

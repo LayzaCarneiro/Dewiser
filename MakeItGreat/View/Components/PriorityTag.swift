@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct PriorityTag: View {
-
     var priority: String = "medium"
-    var backgroundColor = ["low": Color.lowBackground, "medium": Color.mediumBackground, "high": Color.highBackground,  "done": Color.doneBackground]
+    // swiftlint:disable:next line_length
+    var backgroundColor = ["low": Color.lowBackground, "medium": Color.mediumBackground, "high": Color.highBackground, "done": Color.doneBackground]
+    // swiftlint:disable:next line_length
     var foregroundColor = ["low": Color.lowForeground, "medium": Color.mediumForeground, "high": Color.highForeground, "done": Color.doneForeground]
 
     var body: some View {

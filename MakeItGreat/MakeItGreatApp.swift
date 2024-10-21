@@ -10,17 +10,23 @@ import SwiftData
 
 @main
 struct MakeItGreatApp: App {
-    @StateObject private var authManager = AuthenticationManager()
+    @State private var isFormSheetActive = false
+    @State var isPresented: Bool = false
 
     var body: some Scene {
         WindowGroup {
-            if authManager.isFaceIDEnabled {
-                FaceIdView()
-                    .environmentObject(authManager)
-            } else {
-                ContentView()
-                    .environmentObject(authManager)
-            }
+            ContentView()
+                .onOpenURL { url in
+                    if url.scheme == "myapp" && url.host == "formsheet" {
+                        isFormSheetActive = true
+                        isPresented = true
+                    }
+                }
+                .fullScreenCover(isPresented: $isPresented) {
+                    NavigationView {
+                        FirstPage(formViewModel: FormViewModel(), isPresented: $isPresented)
+                    }
+                }
         }
         .modelContainer(for: [CardModel.self, ProModel.self, ConModel.self])
     }

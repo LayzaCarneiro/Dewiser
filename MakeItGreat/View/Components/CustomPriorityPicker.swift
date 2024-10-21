@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CustomPriorityPicker: View {
-    @Binding var selectedPriority: Priority
+    @Binding var selectedPriority: CardModel.Priority
     var generator = UISelectionFeedbackGenerator()
 
     var body: some View {
@@ -19,7 +19,7 @@ struct CustomPriorityPicker: View {
                 generator.selectionChanged()
             }
         )) {
-            ForEach(Priority.allCases.filter { $0 != .done }) { priority in
+            ForEach(CardModel.Priority.allCases.filter { $0 != .done }) { priority in
                 Text(priority.rawValue.capitalized)
             }
         }
@@ -36,7 +36,7 @@ struct CustomPriorityPicker: View {
         }
     }
 
-    func colorForPriority(_ priority: Priority) -> Color {
+    func colorForPriority(_ priority: CardModel.Priority) -> Color {
         switch priority {
         case .low: return Color.bluePicker
         case .medium: return Color.yellowPicker
@@ -45,4 +45,3 @@ struct CustomPriorityPicker: View {
         }
     }
 }
-

@@ -4,13 +4,14 @@
 //
 //  Created by Melissa Freire Guedes on 10/10/24.
 //
-
+//
 import SwiftUI
 import  SwiftData
 
 struct NoSearchView: View {
     @State var searchTerm: String = ""
     @Query var decisions: [CardModel]
+
     var filteredDecisions: [CardModel] {
         if searchTerm.isEmpty {
             return decisions
@@ -18,55 +19,45 @@ struct NoSearchView: View {
             return decisions.filter { $0.title.localizedCaseInsensitiveContains(searchTerm) }
         }
     }
+
     var body: some View {
         NavigationStack {
             ZStack(alignment: .bottom) {
-                Color.background // Preenche o fundo para garantir que a área ocupe toda a tela
-                    .ignoresSafeArea()
+                Color.background.ignoresSafeArea()
+
                 Image("nodecisions")
                     .resizable()
                     .scaledToFit()
-                    .frame(maxHeight: .infinity, alignment: .bottom) // Alinha a imagem no fundo
+                    .frame(maxHeight: .infinity, alignment: .bottom)
+                    .frame(maxWidth: .infinity, alignment: .center)
                     .ignoresSafeArea()
+
                 VStack {
                     ContentUnavailableView {
                         Spacer()
-                        Label("""
-You don't have any 
-decisions yet
-""", systemImage: "")
-                        .font(.system(size: 30, weight: .heavy))
-                        .fontDesign(.rounded)
-                        .foregroundColor(.white)
-                        .padding(.bottom, 95)
+                        Text("You don't have any decision yet.")
+                            .font(.title2)
+                            .fontDesign(.rounded)
+                            .fontWidth(.compressed)
+                            .fontWeight(.heavy)
+                            .foregroundColor(.white)
+                            .multilineTextAlignment(.center)
+                            .padding(.horizontal, 30)
+                            .padding(.bottom, 95)
                     }
                 }
             }
-            .searchable(text: $searchTerm, placement: .navigationBarDrawer(
-                displayMode: .always),
-                        prompt: "Search your decision cards"
-                    )
-            var filterDecisions: [CardModel] {
-                if searchTerm.isEmpty {
-                    return decisions
-                }
-                return decisions.filter {
-                    $0.title.localizedCaseInsensitiveContains(searchTerm) ||
-                    (($0.cardDescription?.localizedCaseInsensitiveContains(searchTerm)) != nil)
-                }
+            .searchable(text: $searchTerm, placement: .navigationBarDrawer(displayMode: .always), prompt: "Search your decision cards")
+            .ignoresSafeArea(.keyboard, edges: .bottom)
+            .onTapGesture {
+                hideKeyboard()
             }
         }
         .navigationTitle("Search")
         .navigationBarTitleDisplayMode(.inline)
-        .onTapGesture {
-           hideKeyboard()
-        }
     }
+
     func hideKeyboard() {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }
-#Preview {
-    NoSearchView()
-}
-

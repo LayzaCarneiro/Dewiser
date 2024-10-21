@@ -15,12 +15,13 @@ struct DecisionCard: View {
     @Query var allCons: [ConModel]
     @State private var filteredPros: [ProModel] = []
     @State private var filteredCons: [ConModel] = []
-    var images = ["Sad": "sadFace", "Angry": "angryFace", "Ok": "okFace", "Good": "goodFace", "Confident": "confidentFace"]
+    // swiftlint:disable:next line_length
+    var images = ["Insecure": "insecureFace", "Angry": "angryFace", "Ok": "okFace", "Good": "goodFace", "Confident": "confidentFace"]
 
     var body: some View {
         ZStack(alignment: .leading) {
             HStack(spacing: 8) {
-                Image(images[card.feeling.capitalized] ?? "goodFace")
+                Image(images[card.feeling.capitalized] ?? "confidentFace")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 90, height: 90)
@@ -48,6 +49,7 @@ struct DecisionCard: View {
             .padding(.leading, 16)
             .padding(.vertical)
         }
+        .fontDesign(.rounded)
         .frame(width: 341, height: 124)
         .background(Color.cardBackground)
         .cornerRadius(15)

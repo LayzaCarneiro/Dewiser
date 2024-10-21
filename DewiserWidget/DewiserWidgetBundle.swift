@@ -12,7 +12,5 @@ import SwiftUI
 struct DewiserWidgetBundle: WidgetBundle {
     var body: some Widget {
         DewiserWidget()
-        DewiserWidgetControl()
-        DewiserWidgetLiveActivity()
     }
 }

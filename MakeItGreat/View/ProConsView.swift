@@ -7,7 +7,6 @@
 
 import SwiftUI
 import SwiftData
-import UIKit
 
 struct ProConsView: View {
     var card: CardModel
@@ -21,6 +20,7 @@ struct ProConsView: View {
     @State var deleteOn: Bool = false
     @State private var deleteOnForDecision: Bool = false
     let generator = UIImpactFeedbackGenerator(style: .rigid)
+    @State private var isAbleHaptics: Bool = UserDefaults.standard.object(forKey: "isAbleHaptics") as? Bool ?? true
 
     var body: some View {
         ZStack {
@@ -34,11 +34,14 @@ struct ProConsView: View {
                                 .fontWidth(.compressed)
                                 .fontWeight(.black)
 
+                            // swiftlint:disable:next line_length
                             ProgressBar(progress: Double(filteredPros.count), total: Double(filteredPros.count + filteredCons.count), color: Color.purpleBackground)
 
                             Button {
-                                generator.impactOccurred()
-                                let newPro = ProModel(id: UUID(), content: "Pro", cardID: card.id)
+                                if isAbleHaptics {
+                                    generator.impactOccurred()
+                                }
+                                let newPro = ProModel(id: UUID(), content: "", cardID: card.id)
                                 context.insert(newPro)
                             } label: {
                                 HStack {
@@ -57,11 +60,12 @@ struct ProConsView: View {
                                 )
                             }
                             .padding(.vertical, 10)
-                            ForEach($filteredPros, id: \.self) { $pro in
+//
+                            ForEach($filteredPros, id: \.id) { $pro in
                                 HStack {
                                     ItemCard(content: $pro.content, onDelete: {
-                                           context.delete(pro)
-                                       })
+                                       context.delete(pro)
+                                   })
                                     .padding(.bottom, 10)
                                 }
                             }
@@ -75,11 +79,14 @@ struct ProConsView: View {
                                 .fontWidth(.compressed)
                                 .fontWeight(.black)
 
+                            // swiftlint:disable:next line_length
                             ProgressBar(progress: Double(filteredCons.count), total: Double(filteredPros.count + filteredCons.count), color: Color.yellowCustom)
 
                             Button {
-                                generator.impactOccurred()
-                                let newCon = ConModel(id: UUID(), content: "Con", cardID: card.id)
+                                if isAbleHaptics {
+                                    generator.impactOccurred()
+                                }
+                                let newCon = ConModel(id: UUID(), content: "", cardID: card.id)
                                 context.insert(newCon)
                             } label: {
                                 HStack {
@@ -100,11 +107,11 @@ struct ProConsView: View {
                             }
                             .padding(.vertical, 10)
 
-                            ForEach($filteredCons, id: \.self) { $con in
+                            ForEach($filteredCons, id: \.id) { $con in
                                 HStack {
                                     ItemCard(content: $con.content, onDelete: {
-                                           context.delete(con)
-                                       })
+                                       context.delete(con)
+                                   })
                                     .padding(.bottom, 10)
                                 }
                             }
@@ -120,13 +127,19 @@ struct ProConsView: View {
         .onAppear {
             filteredPros = allPros.filter { $0.cardID == card.id }
             filteredCons = allCons.filter { $0.cardID == card.id }
+            isAbleHaptics = UserDefaults.standard.object(forKey: "isAbleHaptics") as? Bool ?? true
         }
-        .onChange(of: allPros) {
+        .onChange(of: allPros) { _, _ in
             filteredPros = allPros.filter { $0.cardID == card.id }
         }
-        .onChange(of: allCons) {
+        .onChange(of: allCons) { _, _ in
             filteredCons = allCons.filter { $0.cardID == card.id }
         }
+    }
+
+    func updateFilteredLists() {
+        filteredPros = allPros.filter { $0.cardID == card.id }
+        filteredCons = allCons.filter { $0.cardID == card.id }
     }
 
     func hideKeyboard() {

@@ -10,29 +10,17 @@ import SwiftData
 
 struct HaveDecisionsView: View {
     @State private var isPresented: Bool = false
-    @Query var decisions: [CardModel]
-    @Environment(\.modelContext) var context
+    @State private var deleteOnForDecision: Bool = false
     @State private var selectedDecision: CardModel?
-    let generator = UIImpactFeedbackGenerator(style: .rigid)
-    
-    // Adiciona uma propriedade para verificar se os haptics estão habilitados
-    private var isHapticsEnabled: Bool {
-        UserDefaults.standard.bool(forKey: "isAbleHaptics")
-    }
-
-    // Enum para gerenciar os alertas
-    enum AlertType: Identifiable {
-        case delete, conclude
-        
-        var id: Int {
-            hashValue // A propriedade 'id' pode usar 'hashValue' ou qualquer outra lógica para identificar o caso
-        }
-    }
-
-    // Estados para os alertas
     @State private var alertType: AlertType?
     @State private var decisionToDelete: CardModel?
     @State private var decisionToConclude: CardModel?
+
+    @Query var decisions: [CardModel]
+    @Environment(\.modelContext) var context
+
+    @State private var isAbleHaptics: Bool = UserDefaults.standard.object(forKey: "isAbleHaptics") as? Bool ?? true
+    let generator = UIImpactFeedbackGenerator(style: .rigid)
 
     var body: some View {
         NavigationStack {
@@ -43,52 +31,60 @@ struct HaveDecisionsView: View {
                         .fontWeight(.black)
                         .fontWidth(.compressed)
                         .fontDesign(.rounded)
-                        .foregroundStyle(.white)
+                        .foregroundStyle(.textTitle)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.top, 65)
                         .padding(.leading, 26)
 
                     List {
                         ForEach(decisions.sorted(by: {
-                            priorityOrder(Priority(rawValue: $0.priority) ?? .medium) > priorityOrder(Priority(rawValue: $1.priority) ?? .medium)
-                        })) { decision in
-                            HStack {
-                                Button {
-                                    selectedDecision = decision
-                                } label: {
-                                    DecisionCard(card: decision)
-                                }
-                            }
-                            .swipeActions(allowsFullSwipe: true) {
-                                Button(role: .destructive) {
-                                    // Gera feedback tátil apenas se haptics estiver habilitado
-                                    if isHapticsEnabled {
-                                        generator.impactOccurred()
-                                    }
-                                    decisionToDelete = decision
-                                    alertType = .delete
-                                } label: {
-                                    Label("Delete", systemImage: "trash")
-                                }
-                                .tint(.red)
-
-                                if decision.priority != "done" {
-                                    Button(role: .none) {
-                                        if isHapticsEnabled {
-                                            generator.impactOccurred()
-                                        }
-                                        decisionToConclude = decision
-                                        alertType = .conclude
+                            // swiftlint:disable:next line_length
+                            priorityOrder(CardModel.Priority(rawValue: $0.priority) ?? .medium) > priorityOrder(CardModel.Priority(rawValue: $1.priority) ?? .medium)})) { decision in
+                                HStack {
+                                    Button {
+                                        selectedDecision = decision
                                     } label: {
-                                        Label("Conclude", systemImage: "checkmark")
+                                        DecisionCard(card: decision)
                                     }
-                                    .tint(.green)
+                                    .background(
+                                        NavigationLink(destination: DecisionView(decision: decision)) {
+                                            EmptyView()
+                                       }
+                                        .opacity(0.0)
+                                        .frame(width: 0, height: 0)
+                                    )
+                                    .swipeActions(allowsFullSwipe: true) {
+                                        Button(role: .destructive) {
+                                            if isAbleHaptics {
+                                                generator.impactOccurred()
+                                            }
+                                            decisionToDelete = decision
+                                            alertType = .delete
+                                        } label: {
+                                            Label("Delete", systemImage: "trash")
+                                                .fontDesign(.rounded)
+                                        }
+                                        .tint(.red)
+
+                                        if decision.priority != "done" {
+                                            Button(role: .none) {
+                                                if isAbleHaptics {
+                                                    generator.impactOccurred()
+                                                }
+                                                decisionToConclude = decision
+                                                alertType = .conclude
+                                            } label: {
+                                                Label("Conclude", systemImage: "checkmark")
+                                            }
+                                            .tint(.green)
+                                        }
+                                    }
                                 }
-                            }
                             .listRowBackground(Color.clear)
                             .listRowSeparator(.hidden)
                         }
                     }
+                    .scrollIndicators(.hidden)
                     .listStyle(PlainListStyle())
                     .scrollContentBackground(.hidden)
                     .background(Color.clear)
@@ -99,6 +95,7 @@ struct HaveDecisionsView: View {
                     ButtonCreateDecision()
                         .frame(width: 300, height: 20)
                         .padding(.bottom, 30)
+                        .background(Color.clear)
                 }
                 .background(
                     RoundedRectangle(cornerRadius: 40)
@@ -106,14 +103,6 @@ struct HaveDecisionsView: View {
                         .ignoresSafeArea(edges: .bottom)
                         .padding(.top, 33)
                 )
-                .navigationDestination(isPresented: Binding(
-                    get: { selectedDecision != nil },
-                    set: { if !$0 { selectedDecision = nil } }
-                )) {
-                    if let decision = selectedDecision {
-                        DecisionView(decision: decision)
-                    }
-                }
             }
         }
         .alert(item: $alertType) { type in
@@ -149,7 +138,7 @@ struct HaveDecisionsView: View {
         try? context.save()
     }
 
-    private func priorityOrder(_ priority: Priority) -> Int {
+    private func priorityOrder(_ priority: CardModel.Priority) -> Int {
         switch priority {
         case .high:
             return 3
@@ -161,8 +150,19 @@ struct HaveDecisionsView: View {
             return 0
         }
     }
-}
 
+    private var isHapticsEnabled: Bool {
+        UserDefaults.standard.bool(forKey: "isAbleHaptics")
+    }
+
+    enum AlertType: Identifiable {
+        case delete, conclude
+
+        var id: Int {
+            hashValue
+        }
+    }
+}
 
 #Preview {
     HaveDecisionsView()
