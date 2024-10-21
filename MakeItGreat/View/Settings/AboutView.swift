@@ -103,6 +103,7 @@ struct AboutView: View {
                         }
                     }
                 }
+                .scrollDisabled(true)
                 .scrollContentBackground(.hidden)
                 .navigationBarTitle("About")
             }

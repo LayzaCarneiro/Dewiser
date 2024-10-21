@@ -109,6 +109,7 @@ struct SettingsView: View {
                         }
                     }
                 }
+                .scrollDisabled(true)
                 .scrollContentBackground(.hidden)
             }
             .navigationBarTitle("Settings")
