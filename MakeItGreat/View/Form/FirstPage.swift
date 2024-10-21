@@ -12,9 +12,9 @@ struct FirstPage: View {
     @StateObject var formViewModel: FormViewModel
     @Binding var isPresented: Bool
     @State private var titleIsEmpty: Bool = false
+    @FocusState private var isTitleFocused: Bool
+    @FocusState private var isDescriptionFocused: Bool
     var generate = UIImpactFeedbackGenerator(style: .rigid)
-
-    // Adiciona uma propriedade para verificar se os haptics estão habilitados
     private var isHapticsEnabled: Bool {
         UserDefaults.standard.bool(forKey: "isAbleHaptics")
     }
@@ -45,6 +45,10 @@ struct FirstPage: View {
                                     RoundedRectangle(cornerRadius: 10)
                                         .stroke((titleIsEmpty && formViewModel.cardModel.title.isEmpty) ? Color.red : Color.fieldStroke, lineWidth: 2)
                                 )
+                                .focused($isTitleFocused)
+                                .onSubmit {
+                                    isDescriptionFocused = true
+                                }
                                 .onTapGesture {
                                     titleIsEmpty = false
                                 }
@@ -66,6 +70,7 @@ struct FirstPage: View {
                                 RoundedRectangle(cornerRadius: 10)
                                     .stroke(.fieldStroke, lineWidth: 2)
                             )
+                            .focused($isDescriptionFocused)
                         }
 
                         HStack(spacing: 55) {
