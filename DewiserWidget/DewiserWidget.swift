@@ -38,17 +38,12 @@ struct SimpleEntry: TimelineEntry {
 
 struct DewiserWidgetEntryView: View {
     var entry: Provider.Entry
+
     var body: some View {
-        ZStack {
-            Color.purple.opacity(0.5)
-            VStack {
-                Text("Make a fast decision")
-                    .font(.headline)
-                    .bold()
-                    .padding()
-                    .fontDesign(.rounded)
-            }
-        }
+        Image("widgetimage")
+            .resizable()
+            .frame(width: 165, height: 165)
+            .widgetURL(URL(string: "myapp://formsheet"))
     }
 }
 

@@ -110,6 +110,7 @@ struct SettingsView: View {
                         }
                     }
                 }
+                .scrollDisabled(true)
                 .scrollContentBackground(.hidden)
             }
             .fontDesign(.rounded)

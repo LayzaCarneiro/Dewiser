@@ -6,14 +6,15 @@
 //
 
 import SwiftUI
-import UIKit
 
 struct FirstPage: View {
     @StateObject var formViewModel: FormViewModel
     @Binding var isPresented: Bool
     @State private var titleIsEmpty: Bool = false
+    @FocusState private var isTitleFocused: Bool
+    @FocusState private var isDescriptionFocused: Bool
     var generate = UIImpactFeedbackGenerator(style: .rigid)
-
+  
     private var isHapticsEnabled: Bool {
         UserDefaults.standard.bool(forKey: "isAbleHaptics")
     }
@@ -35,7 +36,7 @@ struct FirstPage: View {
                                     .fontWeight(.bold)
                                     .foregroundStyle(.red)
                             }
-                            TextField("What is your decision title?", text: $formViewModel.cardModel.title)
+                            TextField("What's your decision title?", text: $formViewModel.cardModel.title)
                                 .padding()
                                 .frame(width: 361, height: 44)
                                 .background(.cardBackground)
@@ -44,6 +45,10 @@ struct FirstPage: View {
                                     // swiftlint:disable:next line_length
                                         .stroke((titleIsEmpty && formViewModel.cardModel.title.isEmpty) ? Color.red : Color.fieldStroke, lineWidth: 2)
                                 )
+                                .focused($isTitleFocused)
+                                .onSubmit {
+                                    isDescriptionFocused = true
+                                }
                                 .onTapGesture {
                                     titleIsEmpty = false
                                     hideKeyboard()
@@ -66,6 +71,7 @@ struct FirstPage: View {
                                 RoundedRectangle(cornerRadius: 10)
                                     .stroke(.fieldStroke, lineWidth: 2)
                             )
+                            .focused($isDescriptionFocused)
                         }
                         .onTapGesture {
                             hideKeyboard()
