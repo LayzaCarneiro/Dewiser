@@ -50,6 +50,7 @@ struct SearchView: View {
                             .listRowBackground(Color.clear)
                             .listRowSeparator(.hidden)
                         }
+                        .scrollIndicators(.hidden)
                         .listStyle(PlainListStyle())
                         .scrollContentBackground(.hidden)
                         .background(Color.clear)
@@ -77,6 +78,7 @@ struct SearchView: View {
            hideKeyboard()
         }
     }
+
     func hideKeyboard() {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }

@@ -19,6 +19,7 @@ struct ItemCard: View {
             if content.isEmpty {
                Text("Add reason")
                    .foregroundColor(.gray)
+                   .padding(.bottom, 20)
                    .padding(15)
                    .frame(width: 149, height: 84, alignment: .leading)
            }

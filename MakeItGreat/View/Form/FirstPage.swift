@@ -34,7 +34,7 @@ struct FirstPage: View {
                                     .fontWeight(.bold)
                                     .foregroundStyle(.red)
                             }
-                            TextField("What is your decision title?", text: $formViewModel.cardModel.title)
+                            TextField("What's your decision title?", text: $formViewModel.cardModel.title)
                                 .padding()
                                 .frame(width: 361, height: 44)
                                 .background(.cardBackground)

@@ -43,7 +43,6 @@ struct ProConsView: View {
                                 }
                                 let newPro = ProModel(id: UUID(), content: "", cardID: card.id)
                                 context.insert(newPro)
-                                updateFilteredLists()
                             } label: {
                                 HStack {
                                     Image(systemName: "plus")
@@ -64,16 +63,9 @@ struct ProConsView: View {
 //
                             ForEach($filteredPros, id: \.id) { $pro in
                                 HStack {
-                                    ItemCard(content: Binding(
-                                           get: { pro.content },
-                                           set: { newValue in
-                                               pro.content = newValue
-                                               try? context.save()
-                                           }
-                                       ), onDelete: {
-                                           context.delete(pro)
-                                           updateFilteredLists()
-                                       })
+                                    ItemCard(content: $pro.content, onDelete: {
+                                       context.delete(pro)
+                                   })
                                     .padding(.bottom, 10)
                                 }
                             }
@@ -96,7 +88,6 @@ struct ProConsView: View {
                                 }
                                 let newCon = ConModel(id: UUID(), content: "", cardID: card.id)
                                 context.insert(newCon)
-                                updateFilteredLists()
                             } label: {
                                 HStack {
                                     Image(systemName: "plus")
@@ -118,16 +109,9 @@ struct ProConsView: View {
 
                             ForEach($filteredCons, id: \.id) { $con in
                                 HStack {
-                                    ItemCard(content: Binding(
-                                        get: { con.content },
-                                        set: { newValue in
-                                            con.content = newValue
-                                            try? context.save()
-                                        }
-                                    ), onDelete: {
-                                        context.delete(con)
-                                        updateFilteredLists()
-                                    })
+                                    ItemCard(content: $con.content, onDelete: {
+                                       context.delete(con)
+                                   })
                                     .padding(.bottom, 10)
                                 }
                             }
@@ -144,13 +128,12 @@ struct ProConsView: View {
             filteredPros = allPros.filter { $0.cardID == card.id }
             filteredCons = allCons.filter { $0.cardID == card.id }
             isAbleHaptics = UserDefaults.standard.object(forKey: "isAbleHaptics") as? Bool ?? true
-            updateFilteredLists()
         }
         .onChange(of: allPros) { _, _ in
-            updateFilteredLists()
+            filteredPros = allPros.filter { $0.cardID == card.id }
         }
         .onChange(of: allCons) { _, _ in
-            updateFilteredLists()
+            filteredCons = allCons.filter { $0.cardID == card.id }
         }
     }
 

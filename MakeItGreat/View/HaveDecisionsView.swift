@@ -84,6 +84,7 @@ struct HaveDecisionsView: View {
                             .listRowSeparator(.hidden)
                         }
                     }
+                    .scrollIndicators(.hidden)
                     .listStyle(PlainListStyle())
                     .scrollContentBackground(.hidden)
                     .background(Color.clear)

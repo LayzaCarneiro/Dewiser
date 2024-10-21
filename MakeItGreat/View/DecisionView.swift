@@ -84,6 +84,9 @@ struct DecisionView: View {
                 .padding(.top, 10)
             }
             .fontDesign(.rounded)
+            .onTapGesture {
+               hideKeyboard()
+            }
         }
         .navigationBarBackButtonHidden(true)
         .navigationBarTitleDisplayMode(.inline)
@@ -117,5 +120,9 @@ struct DecisionView: View {
                 }
             }
         }
+    }
+
+    func hideKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }
