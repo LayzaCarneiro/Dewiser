@@ -20,7 +20,10 @@ struct HaveDecisionsView: View {
     @Environment(\.modelContext) var context
 
     @State private var isAbleHaptics: Bool = UserDefaults.standard.object(forKey: "isAbleHaptics") as? Bool ?? true
-    let generator = UIImpactFeedbackGenerator(style: .rigid)
+    let generator = UIImpactFeedbackGenerator(style: .rigid) // Feedback háptico
+
+    @State private var isPulsing: Bool = false // Estado para a animação de pulsar
+    @State private var navigateToDetail: Bool = false // Estado para controlar a navegação
 
     var body: some View {
         NavigationStack {
@@ -38,18 +41,38 @@ struct HaveDecisionsView: View {
 
                     List {
                         ForEach(decisions.sorted(by: {
-                            // swiftlint:disable:next line_length
                             priorityOrder(CardModel.Priority(rawValue: $0.priority) ?? .medium) > priorityOrder(CardModel.Priority(rawValue: $1.priority) ?? .medium)})) { decision in
                                 HStack {
                                     Button {
                                         selectedDecision = decision
+                                        
+                                        if isAbleHaptics { // Gera o feedback háptico ao clicar
+                                            generator.impactOccurred()
+                                        }
+
+                                        // Inicia a animação de pulsar
+                                        withAnimation(.easeInOut(duration: 0.15)) {
+                                            isPulsing = true
+                                        }
+                                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                                            withAnimation(.easeInOut(duration: 0.15)) {
+                                                isPulsing = false
+                                                navigateToDetail = true
+                                            }
+                                        }
                                     } label: {
                                         DecisionCard(card: decision)
+                                            .shadow(color: .black.opacity(0.08), radius: 8, x: -5, y: -5)
+                                            .scaleEffect(isPulsing && selectedDecision == decision ? 1.2 : 1.0) // Efeito de pulso
+                                            .animation(.easeInOut(duration: 0.15), value: isPulsing)
                                     }
                                     .background(
-                                        NavigationLink(destination: DecisionView(decision: decision)) {
+                                        NavigationLink(
+                                            destination: DecisionView(decision: decision),
+                                            isActive: $navigateToDetail // Controla a navegação com o estado
+                                        ) {
                                             EmptyView()
-                                       }
+                                        }
                                         .opacity(0.0)
                                         .frame(width: 0, height: 0)
                                     )
@@ -58,8 +81,10 @@ struct HaveDecisionsView: View {
                                             if isAbleHaptics {
                                                 generator.impactOccurred()
                                             }
-                                            decisionToDelete = decision
-                                            alertType = .delete
+                                            withAnimation {
+                                                decisionToDelete = decision
+                                                alertType = .delete
+                                            }
                                         } label: {
                                             Label("Delete", systemImage: "trash")
                                                 .fontDesign(.rounded)
@@ -71,8 +96,10 @@ struct HaveDecisionsView: View {
                                                 if isAbleHaptics {
                                                     generator.impactOccurred()
                                                 }
-                                                decisionToConclude = decision
-                                                alertType = .conclude
+                                                withAnimation {
+                                                    decisionToConclude = decision
+                                                    alertType = .conclude
+                                                }
                                             } label: {
                                                 Label("Conclude", systemImage: "checkmark")
                                             }
@@ -80,9 +107,9 @@ struct HaveDecisionsView: View {
                                         }
                                     }
                                 }
-                            .listRowBackground(Color.clear)
-                            .listRowSeparator(.hidden)
-                        }
+                                .listRowBackground(Color.clear)
+                                .listRowSeparator(.hidden)
+                            }
                     }
                     .scrollIndicators(.hidden)
                     .listStyle(PlainListStyle())
@@ -113,7 +140,9 @@ struct HaveDecisionsView: View {
                     message: Text("Are you sure you want to delete this decision? This action cannot be undone."),
                     primaryButton: .destructive(Text("Delete")) {
                         if let decision = decisionToDelete {
-                            deleteDecision(decision: decision)
+                            withAnimation {
+                                deleteDecision(decision: decision)
+                            }
                         }
                     },
                     secondaryButton: .cancel()
@@ -124,7 +153,9 @@ struct HaveDecisionsView: View {
                     message: Text("Hope you made a wise decision! Are you sure of that?"),
                     primaryButton: .default(Text("Conclude")) {
                         if let decision = decisionToConclude {
-                            decision.priority = "done"
+                            withAnimation {
+                                decision.priority = "done"
+                            }
                         }
                     },
                     secondaryButton: .cancel()
