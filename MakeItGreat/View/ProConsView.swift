@@ -61,10 +61,12 @@ struct ProConsView: View {
                             }
                             .padding(.vertical, 10)
 //
-                            ForEach($filteredPros, id: \.id) { $pro in
+                            ForEach(filteredPros) { pro in
+                                @Bindable var pro = pro
                                 HStack {
                                     ItemCard(content: $pro.content, onDelete: {
                                        context.delete(pro)
+                                        try? context.save()
                                    })
                                     .padding(.bottom, 10)
                                 }
@@ -107,10 +109,12 @@ struct ProConsView: View {
                             }
                             .padding(.vertical, 10)
 
-                            ForEach($filteredCons, id: \.id) { $con in
+                            ForEach(filteredCons) { con in
+                                @Bindable var con = con
                                 HStack {
                                     ItemCard(content: $con.content, onDelete: {
                                        context.delete(con)
+                                        try? context.save()
                                    })
                                     .padding(.bottom, 10)
                                 }
@@ -135,11 +139,6 @@ struct ProConsView: View {
         .onChange(of: allCons) { _, _ in
             filteredCons = allCons.filter { $0.cardID == card.id }
         }
-    }
-
-    func updateFilteredLists() {
-        filteredPros = allPros.filter { $0.cardID == card.id }
-        filteredCons = allCons.filter { $0.cardID == card.id }
     }
 
     func hideKeyboard() {

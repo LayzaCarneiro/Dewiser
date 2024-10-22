@@ -91,12 +91,13 @@ struct HaveDecisionsView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.leading, 10)
                     .padding(.bottom, 35)
-
+                    
                     ButtonCreateDecision()
-                        .frame(width: 300, height: 20)
-                        .padding(.bottom, 30)
-                        .background(Color.clear)
+                        .frame(width: 50, height: 50)
+                        .padding(.bottom,10)
+//                        .background(Color.clear)
                 }
+
                 .background(
                     RoundedRectangle(cornerRadius: 40)
                         .foregroundColor(Color.background)

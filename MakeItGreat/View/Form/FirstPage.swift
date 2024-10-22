@@ -14,7 +14,7 @@ struct FirstPage: View {
     @FocusState private var isTitleFocused: Bool
     @FocusState private var isDescriptionFocused: Bool
     var generate = UIImpactFeedbackGenerator(style: .rigid)
-  
+
     private var isHapticsEnabled: Bool {
         UserDefaults.standard.bool(forKey: "isAbleHaptics")
     }
