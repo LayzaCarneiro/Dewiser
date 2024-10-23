@@ -51,7 +51,7 @@ struct SearchView: View {
                             .listRowSeparator(.hidden)
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.leading, 12)
+                        .padding(.horizontal, 12)
                         .scrollIndicators(.hidden)
                         .listStyle(PlainListStyle())
                         .scrollContentBackground(.hidden)
