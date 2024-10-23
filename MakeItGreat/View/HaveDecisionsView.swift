@@ -13,14 +13,10 @@ struct HaveDecisionsView: View {
     @State private var deleteOnForDecision: Bool = false
     @State private var selectedDecision: CardModel?
     @State private var alertType: AlertType?
-    @State private var decisionToDelete: CardModel?
     @State private var decisionToConclude: CardModel?
 
     @Query var decisions: [CardModel]
     @Environment(\.modelContext) var context
-
-    @State private var isAbleHaptics: Bool = UserDefaults.standard.object(forKey: "isAbleHaptics") as? Bool ?? true
-    let generator = UIImpactFeedbackGenerator(style: .rigid)
 
     var body: some View {
         NavigationStack {
@@ -36,41 +32,30 @@ struct HaveDecisionsView: View {
                         .padding(.top, 65)
                         .padding(.leading, 26)
 
-                    List {
+                    ScrollView(.vertical, showsIndicators: false) {
                         ForEach(decisions.sorted(by: {
-                            // swiftlint:disable:next line_length
-                            priorityOrder(CardModel.Priority(rawValue: $0.priority) ?? .medium) > priorityOrder(CardModel.Priority(rawValue: $1.priority) ?? .medium)})) { decision in
-                                HStack {
-                                    Button {
-                                        selectedDecision = decision
-                                    } label: {
-                                        DecisionCard(card: decision)
-                                    }
-                                    .background(
-                                        NavigationLink(destination: DecisionView(decision: decision)) {
-                                            EmptyView()
-                                       }
-                                        .opacity(0.0)
-                                        .frame(width: 0, height: 0)
-                                    )
-                                    .swipeActions(allowsFullSwipe: true) {
-                                        Button(role: .destructive) {
-                                            if isAbleHaptics {
-                                                generator.impactOccurred()
-                                            }
-                                            decisionToDelete = decision
-                                            alertType = .delete
-                                        } label: {
-                                            Label("Delete", systemImage: "trash")
-                                                .fontDesign(.rounded)
-                                        }
-                                        .tint(.red)
+                            priorityOrder(CardModel.Priority(rawValue: $0.priority) ?? .medium) > priorityOrder(CardModel.Priority(rawValue: $1.priority) ?? .medium)
+                        })) { decision in
+                            GeometryReader { geometry in
+                                let minY = geometry.frame(in: .named("SCROLLVIEW")).minY
 
-                                        if decision.priority != "done" {
-                                            Button(role: .none) {
-                                                if isAbleHaptics {
-                                                    generator.impactOccurred()
-                                                }
+                                NavigationLink(destination: DecisionView(decision: decision)) {
+                                    DecisionCard(card: decision)
+                                        .rotation3DEffect(
+                                            .init(degrees: convertOffsetToRotation(geometry.frame(in: .named("SCROLLVIEW")))),
+                                            axis: (x: 1, y: 0, z: 0),
+                                            anchor: .center,
+                                            anchorZ: 1,
+                                            perspective: 1
+                                        )
+                                        .swipeActions {
+                                            Button(role: .destructive) {
+                                                selectedDecision = decision
+                                                alertType = .delete
+                                            } label: {
+                                                Label("Delete", systemImage: "trash")
+                                            }
+                                            Button {
                                                 decisionToConclude = decision
                                                 alertType = .conclude
                                             } label: {
@@ -78,19 +63,16 @@ struct HaveDecisionsView: View {
                                             }
                                             .tint(.green)
                                         }
-                                    }
+                                        .enableScrollViewSwipeAction()
                                 }
-                            .listRowBackground(Color.clear)
-                            .listRowSeparator(.hidden)
+                                .buttonStyle(PlainButtonStyle())
+                                .frame(height: 130)
+                                .padding(.bottom, 10)
+                            }
+                            .frame(height: 130)
                         }
                     }
-                    .scrollIndicators(.hidden)
-                    .listStyle(PlainListStyle())
-                    .scrollContentBackground(.hidden)
-                    .background(Color.clear)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.leading, 10)
-                    .padding(.bottom, 35)
+                    .coordinateSpace(name: "SCROLLVIEW")
 
                     ButtonCreateDecision()
                         .frame(width: 300, height: 20)
@@ -112,7 +94,7 @@ struct HaveDecisionsView: View {
                     title: Text("Delete Decision"),
                     message: Text("Are you sure you want to delete this decision? This action cannot be undone."),
                     primaryButton: .destructive(Text("Delete")) {
-                        if let decision = decisionToDelete {
+                        if let decision = selectedDecision {
                             deleteDecision(decision: decision)
                         }
                     },
@@ -124,7 +106,7 @@ struct HaveDecisionsView: View {
                     message: Text("Hope you made a wise decision! Are you sure of that?"),
                     primaryButton: .default(Text("Conclude")) {
                         if let decision = decisionToConclude {
-                            decision.priority = "done"
+                            concludeDecision(decision: decision)
                         }
                     },
                     secondaryButton: .cancel()
@@ -138,6 +120,19 @@ struct HaveDecisionsView: View {
         try? context.save()
     }
 
+    private func concludeDecision(decision: CardModel) {
+        decision.priority = "done"
+        try? context.save()
+    }
+
+    private func convertOffsetToRotation(_ rect: CGRect) -> CGFloat {
+        let cardHeight = rect.height
+        let minY = rect.minY - 20
+        let progress = minY < 0 ? (minY / cardHeight) : 0
+        let constrainedProgress = min(-progress, 1.0)
+        return constrainedProgress * 90.0
+    }
+
     private func priorityOrder(_ priority: CardModel.Priority) -> Int {
         switch priority {
         case .high:
@@ -149,10 +144,6 @@ struct HaveDecisionsView: View {
         case .done:
             return 0
         }
-    }
-
-    private var isHapticsEnabled: Bool {
-        UserDefaults.standard.bool(forKey: "isAbleHaptics")
     }
 
     enum AlertType: Identifiable {
