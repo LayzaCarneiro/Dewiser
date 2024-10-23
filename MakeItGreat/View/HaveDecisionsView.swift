@@ -75,8 +75,8 @@ struct HaveDecisionsView: View {
                     .coordinateSpace(name: "SCROLLVIEW")
 
                     ButtonCreateDecision()
-                        .frame(width: 300, height: 20)
-                        .padding(.bottom, 30)
+                        .frame(width: 300, height: 70)
+                        .padding(.top, 8)
                         .background(Color.clear)
                 }
                 .background(
