@@ -73,7 +73,7 @@ struct AboutView: View {
                         }
                     }
                     Section(header: Text("App")) {
-                        Button(action: openSite) {
+                        Button(action: openApp) {
                             HStack {
                                 ZStack {
                                     RoundedRectangle(cornerRadius: 6)

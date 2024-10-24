@@ -33,3 +33,8 @@ func openSite() {
         UIApplication.shared.open(url)
     }
 }
+func openApp() {
+    if let url = URL(string: "https://apps.apple.com/br/app/dewiser/id6736943767") {
+        UIApplication.shared.open(url)
+    }
+}

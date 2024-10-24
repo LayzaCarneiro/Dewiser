@@ -20,25 +20,16 @@ struct SecondPage: View {
         NavigationStack {
             ZStack {
                 Color.background.ignoresSafeArea()
-                //
-                Image(imageBall[formViewModel.cardModel.feeling] ?? "confidentFace")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 500, height: 500)
-                    .offset(y: 300)
-                //
+
                 VStack {
                     Text("How are you feeling about this decision?")
                         .font(.largeTitle)
                         .fontWeight(.bold)
                         .frame(width: 375, alignment: .top)
                         .padding(.top, 50)
+                        .foregroundStyle(Color.text)
                     //
-                    SliderFeeling(formViewModel: formViewModel)
-                        .frame(width: 300, height: 430)
-                        .padding()
-                    //
-                    Spacer()
+                    WheelPicker(selectedFeeling: $formViewModel.cardModel.feeling)
                 }
                 .padding()
                 .fontDesign(.rounded)

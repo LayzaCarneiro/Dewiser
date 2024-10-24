@@ -40,6 +40,8 @@
 		AED2E7342CB24F82005A89CD /* CustomDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED2E7332CB24F7B005A89CD /* CustomDatePicker.swift */; };
 		AED2E7362CB25272005A89CD /* CustomHourPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED2E7352CB2526D005A89CD /* CustomHourPicker.swift */; };
 		AEE99BEA2CB0145500CC299A /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE99BE92CB0145300CC299A /* EditView.swift */; };
+		AEEA2B492CCA54470071D7EA /* WheelPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEEA2B482CCA54420071D7EA /* WheelPicker.swift */; };
+		AEEA2B4C2CCA554A0071D7EA /* modifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEEA2B4B2CCA55480071D7EA /* modifier.swift */; };
 		AEFC12CA2CACC8C900E00B9D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFC12C82CACC8C900E00B9D /* SettingsView.swift */; };
 		AEFC12CB2CACC8C900E00B9D /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFC12C72CACC8C900E00B9D /* AboutView.swift */; };
 		AEFC12CE2CACC8EE00E00B9D /* LinkAbout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFC12CC2CACC8EE00E00B9D /* LinkAbout.swift */; };
@@ -112,6 +114,8 @@
 		AED2E7332CB24F7B005A89CD /* CustomDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDatePicker.swift; sourceTree = "<group>"; };
 		AED2E7352CB2526D005A89CD /* CustomHourPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHourPicker.swift; sourceTree = "<group>"; };
 		AEE99BE92CB0145300CC299A /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
+		AEEA2B482CCA54420071D7EA /* WheelPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelPicker.swift; sourceTree = "<group>"; };
+		AEEA2B4B2CCA55480071D7EA /* modifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = modifier.swift; sourceTree = "<group>"; };
 		AEFC12C72CACC8C900E00B9D /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		AEFC12C82CACC8C900E00B9D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		AEFC12CC2CACC8EE00E00B9D /* LinkAbout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkAbout.swift; sourceTree = "<group>"; };
@@ -251,6 +255,8 @@
 		AE9E32A72CA358A1009235AC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				AEEA2B4A2CCA55420071D7EA /* ScrollView */,
+				AEEA2B482CCA54420071D7EA /* WheelPicker.swift */,
 				AEFC12C92CACC8C900E00B9D /* Settings */,
 				AE7F8BBB2CA6D5E500CD3835 /* Components */,
 				AE9E32B12CA3853B009235AC /* Form */,
@@ -285,6 +291,14 @@
 				AE9E32B42CA3859D009235AC /* ThirdPage.swift */,
 			);
 			path = Form;
+			sourceTree = "<group>";
+		};
+		AEEA2B4A2CCA55420071D7EA /* ScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				AEEA2B4B2CCA55480071D7EA /* modifier.swift */,
+			);
+			path = ScrollView;
 			sourceTree = "<group>";
 		};
 		AEFC12C92CACC8C900E00B9D /* Settings */ = {
@@ -464,6 +478,7 @@
 				AE3BBE7B2CC1507B00D6582D /* SplashScreenView.swift in Sources */,
 				E9869F522CB70619005DC0E4 /* ButtonCreateDecision.swift in Sources */,
 				AEFC12CE2CACC8EE00E00B9D /* LinkAbout.swift in Sources */,
+				AEEA2B4C2CCA554A0071D7EA /* modifier.swift in Sources */,
 				AE7F8BBF2CA6D68F00CD3835 /* ItemCard.swift in Sources */,
 				AE9E32B52CA3859D009235AC /* ThirdPage.swift in Sources */,
 				12AB6C1E2CBFE6270059E25F /* AuthenticationManager.swift in Sources */,
@@ -475,6 +490,7 @@
 				AE3BFAB92CAC38A100DC1C67 /* DecisionView.swift in Sources */,
 				AE9E27AF2CB6CE8A006FB9E4 /* CustomFeelingPicker.swift in Sources */,
 				AE9E27B02CB6CE8A006FB9E4 /* FeelingItem.swift in Sources */,
+				AEEA2B492CCA54470071D7EA /* WheelPicker.swift in Sources */,
 				AE3847A72CABF46200D4ABB5 /* ProModel.swift in Sources */,
 				AE28CDCF2CA2F3AE00267E39 /* ContentView.swift in Sources */,
 				AE9E27A82CB6A4E4006FB9E4 /* PriorityTag.swift in Sources */,
@@ -627,7 +643,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MakeItGreat/Preview Content\"";
-				DEVELOPMENT_TEAM = NR5649PBRF;
+				DEVELOPMENT_TEAM = ZFH4AF7HSL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = Dewiser;
@@ -660,7 +676,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MakeItGreat/Preview Content\"";
-				DEVELOPMENT_TEAM = NR5649PBRF;
+				DEVELOPMENT_TEAM = ZFH4AF7HSL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = Dewiser;
@@ -692,7 +708,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = NR5649PBRF;
+				DEVELOPMENT_TEAM = ZFH4AF7HSL;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DewiserWidget/Info.plist;
@@ -721,7 +737,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = NR5649PBRF;
+				DEVELOPMENT_TEAM = ZFH4AF7HSL;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DewiserWidget/Info.plist;
