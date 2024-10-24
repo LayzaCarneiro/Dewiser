@@ -11,14 +11,11 @@ struct NoDecisionsView: View {
     var body: some View {
         ZStack(alignment: .bottom) {
             Color.clear
-            
-            ButtonCreateDecision()
-
-//            Image("nodecisions")
-//                .resizable()
-//                .aspectRatio(contentMode: UIScreen.main.bounds.width < 376 || UIScreen.main.bounds.width >= 768 ? .fill : .fit)
-//                .frame(maxHeight: .infinity, alignment: .bottom)
-//                .ignoresSafeArea()
+            Image("nodecisions")
+                .resizable()
+                .aspectRatio(contentMode: UIScreen.main.bounds.width < 376 || UIScreen.main.bounds.width >= 768 ? .fill : .fit)
+                .frame(maxHeight: .infinity, alignment: .bottom)
+                .ignoresSafeArea()
 
             VStack(spacing: 25) {
                 Spacer(minLength: UIScreen.main.bounds.width < 376 ? 250 : 380)
@@ -37,6 +34,7 @@ struct NoDecisionsView: View {
                 }
                 .disabled(true)
                 
+                ButtonCreateDecision()
 
                 Spacer()
             }
