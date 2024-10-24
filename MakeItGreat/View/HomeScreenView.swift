@@ -30,7 +30,7 @@ struct HomeScreenView: View {
                                 .foregroundColor(.textTitle)
                                 .padding(.top, geometry.size.height * 0.05)
                                 .padding(.leading, geometry.size.width * -0.4)
-
+                            Spacer(minLength: 20)
                             NoDecisionsView()
                                 .transition(AnyTransition.opacity.animation(.smooth))
                                 .frame(maxWidth: .infinity, maxHeight: .infinity)

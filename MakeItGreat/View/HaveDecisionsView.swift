@@ -127,10 +127,11 @@ struct HaveDecisionsView: View {
                     .coordinateSpace(name: "SCROLLVIEW")
 
                     ButtonCreateDecision()
-                        .frame(width: 300, height: 20)
-                        .padding(.bottom, 30)
-                        .background(Color.clear)
+                        .frame(width: 50, height: 50)
+                        .padding(.bottom,10)
+//                        .background(Color.clear)
                 }
+
                 .background(
                     RoundedRectangle(cornerRadius: 40)
                         .foregroundColor(Color.background)
