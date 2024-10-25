@@ -24,6 +24,7 @@ struct ThirdPage: View {
                 }
             }
         }
+        .accentColor(.accent)
         .navigationTitle("New Decision")
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(false)

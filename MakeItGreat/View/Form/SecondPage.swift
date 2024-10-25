@@ -35,6 +35,7 @@ struct SecondPage: View {
                 .fontDesign(.rounded)
             }
         }
+        .accentColor(.accent)
         .navigationTitle("New Decision")
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(false)
@@ -48,7 +49,7 @@ struct SecondPage: View {
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 NavigationLink(destination: ThirdPage(formViewModel: formViewModel, isPresented: $isPresented)) {
-                    Text("Next")
+                    Text("Next").accentColor(.accent)
                 }
             }
         }

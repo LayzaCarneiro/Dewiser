@@ -55,7 +55,13 @@ struct AppearenceView: View {
                     }
                 }
                 .onChange(of: activeAppIcon) { icon in
-                    UIApplication.shared.setAlternateIconName(activeAppIcon)
+                    UIApplication.shared.setAlternateIconName(activeAppIcon) { error in
+                        if let error = error {
+                            print("Error setting alternate icon: \(error)")
+                        } else {
+                            print("Icon set to: \(icon)")
+                        }
+                    }
                 }
             }
             .scrollDisabled(true)
@@ -86,7 +92,11 @@ struct IconPicker: View {
                         ForEach(customIcons, id: \.self) { icon in
                             Button {
                                 activeAppIcon = icon
-                                UIApplication.shared.setAlternateIconName(icon)
+                                if icon == "AppIcon" {
+                                    UIApplication.shared.setAlternateIconName(nil)
+                                } else {
+                                    UIApplication.shared.setAlternateIconName(icon)
+                                }
                             } label: {
                                 VStack {
                                     Image(icon)

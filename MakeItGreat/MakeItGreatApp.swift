@@ -23,6 +23,7 @@ struct MakeItGreatApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .accentColor(.accent)
                 .environmentObject(appSettings)
                 .preferredColorScheme(appSettings.isDarkModeOn ? .dark : .light)
                 .onOpenURL { url in
@@ -34,6 +35,7 @@ struct MakeItGreatApp: App {
                 .fullScreenCover(isPresented: $isPresented) {
                     NavigationView {
                         FirstPage(formViewModel: FormViewModel(), isPresented: $isPresented)
+                            .accentColor(.accent)
                     }
                 }
         }

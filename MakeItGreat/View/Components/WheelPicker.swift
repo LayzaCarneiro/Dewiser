@@ -14,6 +14,8 @@ struct WheelPicker: View {
 
     @State var imageIndexx = [0: 3, 1: 2, 2: 1, 3: 0, 4: 4]
     let circleRadius: CGFloat = 160
+    
+    @State private var isAbleHaptics: Bool = UserDefaults.standard.object(forKey: "isAbleHaptics") as? Bool ?? true
     var generate = UIImpactFeedbackGenerator(style: .rigid)
 
     @State private var rotation: Angle = .zero
@@ -22,6 +24,7 @@ struct WheelPicker: View {
     @State private var showShadow: Bool = false
     @State private var shadowRadius: CGFloat = 5
     @State private var previousDragPosition: CGFloat = 0
+    @State private var hasMoved = false
 
     var body: some View {
         VStack {
@@ -51,6 +54,8 @@ struct WheelPicker: View {
             .gesture(
                 DragGesture(minimumDistance: 5)
                     .updating($gestureRotation) { (value, gestureState, _) in
+                        hasMoved = true
+                        //
                         let width = UIScreen.main.bounds.width
                         let sensitivityFactor: CGFloat = 1.0
                         let dragAmount = value.translation.width / (width * sensitivityFactor)
@@ -69,7 +74,9 @@ struct WheelPicker: View {
                         let newIndex = Int((anticipatedRotation + (degreesPerSegment / 2)) / degreesPerSegment) % totalSegments
 
                         if imageIndex != newIndex {
-                            generate.impactOccurred(intensity: 0.8)
+                            if isAbleHaptics {
+                                generate.impactOccurred(intensity: 0.8)
+                            }
                             imageIndex = newIndex
                             selectedFeeling = images[newIndex]
                         }
@@ -105,7 +112,9 @@ struct WheelPicker: View {
                         let newIndex = Int((anticipatedRotation + (degreesPerSegment / 2)) / degreesPerSegment) % totalSegments
 
                         if imageIndex != newIndex {
-                            generate.impactOccurred(intensity: 0.8)
+                            if isAbleHaptics {
+                                generate.impactOccurred(intensity: 0.8)
+                            }
                         }
 
                         imageIndex = newIndex
@@ -116,7 +125,9 @@ struct WheelPicker: View {
         }
         .offset(y: 140)
         .onAppear {
-            selectedFeeling = "Good"
+            if !hasMoved {
+                selectedFeeling = "Good"  
+            }
         }
     }
 }
