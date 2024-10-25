@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import UIKit
 
 struct HaveDecisionsView: View {
     @State private var isPresented: Bool = false
@@ -127,9 +128,8 @@ struct HaveDecisionsView: View {
                     .coordinateSpace(name: "SCROLLVIEW")
 
                     ButtonCreateDecision()
-                        .frame(width: 50, height: 50)
-                        .padding(.bottom,10)
-//                        .background(Color.clear)
+                        .frame(width: 300, height: 70)
+                        .padding(.top, 8)
                 }
 
                 .background(

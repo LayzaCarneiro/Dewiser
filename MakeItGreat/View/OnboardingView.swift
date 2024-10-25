@@ -64,6 +64,16 @@ struct OnboardingScreen: View {
                     .edgesIgnoringSafeArea(.all)
                 VStack {
                     HStack {
+                        if currentOnboardingPage > 1 {
+                            Button(action: {
+                                currentOnboardingPage -= 1
+                            }, label: {
+                                Text("Back")
+                                    .fontWeight(.bold)
+                                    .padding()
+                                    .foregroundStyle(.text)
+                            })
+                        }
                         Spacer()
                         Button(action: {
                             currentOnboardingPage = totalScreen
@@ -74,7 +84,7 @@ struct OnboardingScreen: View {
                                 .foregroundStyle(.text)
                         })
                     }
-                    .padding(.trailing)
+                    .padding(.horizontal)
                     Spacer()
                     Text("Register your decisions!")
                         .multilineTextAlignment(.center)
@@ -126,6 +136,16 @@ struct OnboardingScreen2: View {
                     .ignoresSafeArea(.all)
                 VStack {
                     HStack {
+                        if currentOnboardingPage > 1 {
+                            Button(action: {
+                                currentOnboardingPage -= 1
+                            }, label: {
+                                Text("Back")
+                                    .fontWeight(.bold)
+                                    .padding()
+                                    .foregroundStyle(.text)
+                            })
+                        }
                         Spacer()
                         Button(action: {
                             currentOnboardingPage = totalScreen
@@ -136,19 +156,21 @@ struct OnboardingScreen2: View {
                                 .foregroundStyle(.text)
                         })
                     }
-                    .padding(.trailing)
+                    .padding(.horizontal)
                     Spacer()
                     Text("Remember your decision's deadline!")
                         .multilineTextAlignment(.center)
                         .font(.title)
                         .fontDesign(.rounded)
                         .fontWeight(.black)
+                        .padding(.horizontal, 5)
                         .padding()
                     Text("Receive a notification everytime your deadline is over!")
                         .font(.system(size: 17))
                         .fontWeight(.semibold)
                         .multilineTextAlignment(.center)
                         .fontDesign(.rounded)
+                        .padding(.horizontal, 5)
                     Spacer()
 
                     ZStack(alignment: .bottom) {
@@ -189,17 +211,19 @@ struct OnboardingScreen3: View {
 
                 VStack {
                     HStack {
+                        if currentOnboardingPage > 1 {
+                            Button(action: {
+                                currentOnboardingPage -= 1
+                            }, label: {
+                                Text("Back")
+                                    .fontWeight(.bold)
+                                    .padding()
+                                    .foregroundStyle(.text)
+                            })
+                        }
                         Spacer()
-                        Button(action: {
-                            currentOnboardingPage = totalScreen
-                        }, label: {
-                            Text("Skip")
-                                .fontWeight(.bold)
-                                .padding()
-                                .foregroundStyle(.text)
-                        })
                     }
-                    .padding(.trailing)
+                    .padding(.horizontal)
 
                     Spacer()
 
@@ -208,12 +232,14 @@ struct OnboardingScreen3: View {
                         .font(.title)
                         .fontDesign(.rounded)
                         .fontWeight(.black)
+                        .padding(.horizontal, 5)
                         .padding()
                     Text("Solve your decision fast using our pros and cons table!")
                         .font(.system(size: 17))
                         .fontWeight(.semibold)
                         .multilineTextAlignment(.center)
                         .fontDesign(.rounded)
+                        .padding(.horizontal, 5)
 
                     Spacer()
 

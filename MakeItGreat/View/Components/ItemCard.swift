@@ -11,6 +11,8 @@ import Combine
 
 struct ItemCard: View {
     @Binding var content: String
+    @State private var showAlert = false
+
     let textLimit = 25
     var onDelete: () -> Void
 
@@ -38,11 +40,21 @@ struct ItemCard: View {
                 .opacity(content.isEmpty ? 0.25 : 1)
 
             Button {
-                onDelete()
+                showAlert = true
             } label: {
                 Image(systemName: "xmark")
                     .foregroundColor(.strokecard)
                     .padding(6)
+            }
+            .alert(isPresented: $showAlert) {
+                Alert(
+                    title: Text("Confirm Deletion"),
+                    message: Text("Are you sure you want to delete this item?"),
+                    primaryButton: .destructive(Text("Delete")) {
+                        onDelete()
+                    },
+                    secondaryButton: .cancel()
+                )
             }
         }
         .frame(width: 149, height: 84)
