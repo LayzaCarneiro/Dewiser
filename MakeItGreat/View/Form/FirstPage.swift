@@ -154,6 +154,7 @@ struct FirstPage: View {
                 }
             }
         }
+        .accentColor(.accent)
     }
 
     func hideKeyboard() {

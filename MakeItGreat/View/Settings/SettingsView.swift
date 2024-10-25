@@ -21,7 +21,7 @@ struct SettingsView: View {
             ZStack {
                 Color.background.ignoresSafeArea()
                 List {
-                    Section(header: Text("Notification").foregroundColor(.accentColor)) {
+                    Section(header: Text("Preferences").foregroundColor(.accentColor)) {
                         Toggle(isOn: $isNotificationOn) {
                             HStack {
                                 ZStack {
@@ -35,7 +35,7 @@ struct SettingsView: View {
                                 Text("Daily Reminder")
                             }
                         }
-                        .tint(.accentColor)
+                        .tint(.icon)
                         .onChange(of: isNotificationOn) { _, newValue in
                             UserDefaults.standard.set(newValue, forKey: "isNotificationOn")
                             if newValue {
@@ -58,9 +58,23 @@ struct SettingsView: View {
                                 Text("Enable haptics")
                             }
                         }
-                        .tint(.accentColor)
+                        .tint(.icon)
                         .onChange(of: isAbleHaptics) { _, newValue in
                             UserDefaults.standard.set(newValue, forKey: "isAbleHaptics")
+                        }
+                        //
+                        NavigationLink(destination: AppearenceView()) {
+                            HStack {
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 6)
+                                        .fill(Color.icon)
+                                        .frame(width: 30, height: 30)
+                                    Image(systemName: "paintbrush")
+                                        .foregroundColor(.white)
+                                        .font(.system(size: 15))
+                                }
+                                Text("Appearence")
+                            }
                         }
                     }
 
@@ -70,6 +84,7 @@ struct SettingsView: View {
                             set: { newValue in
                                 if newValue {
                                     checkFaceIDAvailable()
+                                    authManager.authenticate()
                                 } else {
                                     authManager.isFaceIDEnabled = false
                                 }
@@ -84,10 +99,10 @@ struct SettingsView: View {
                                         .font(.system(size: 15))
                                         .frame(height: 30)
                                 }
-                                Text("Face ID")
+                                Text("Enable Face ID")
                             }
                         }
-                        .tint(.accentColor)
+                        .tint(.icon)
                     }
                     .alert(isPresented: $showAlert) {
                         // swiftlint:disable:next line_length
