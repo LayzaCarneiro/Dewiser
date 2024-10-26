@@ -38,7 +38,9 @@ struct FirstPage: View {
                             }
                             TextField("What's your decision title?", text: $formViewModel.cardModel.title)
                                 .padding()
-                                .frame(width: 361, height: 44)
+                                .frame(maxWidth: .infinity, alignment: .trailing)
+                                .padding(.trailing, 16)
+                                .frame(height: 44)
                                 .background(.cardBackground)
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 10)
@@ -100,7 +102,7 @@ struct FirstPage: View {
                                 ), isHourSelected: false)
                             }
                         }
-                        .padding(.trailing, 12)
+                        .frame(maxWidth: .infinity, alignment: .leading)
 
                         VStack(alignment: .leading) {
                             HStack(spacing: 3) {

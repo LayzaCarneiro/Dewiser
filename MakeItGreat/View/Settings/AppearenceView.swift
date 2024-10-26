@@ -54,7 +54,7 @@ struct AppearenceView: View {
                         }
                     }
                 }
-                .onChange(of: activeAppIcon) { icon in
+                .onChange(of: activeAppIcon) { _, icon in
                     UIApplication.shared.setAlternateIconName(activeAppIcon) { error in
                         if let error = error {
                             print("Error setting alternate icon: \(error)")

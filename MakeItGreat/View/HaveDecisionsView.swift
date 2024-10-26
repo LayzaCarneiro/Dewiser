@@ -47,7 +47,6 @@ struct HaveDecisionsView: View {
                             priorityOrder(CardModel.Priority(rawValue: $0.priority) ?? .medium) > priorityOrder(CardModel.Priority(rawValue: $1.priority) ?? .medium)
                         })) { decision in
                             GeometryReader { geometry in
-                                
                                 ZStack {
                                     DecisionCard(card: decision)
                                         .offset(y: tappedDecision == decision ? cardOffset : 0)
