@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import UIKit
 
 struct HaveDecisionsView: View {
     @State private var isPresented: Bool = false
@@ -14,9 +15,18 @@ struct HaveDecisionsView: View {
     @State private var selectedDecision: CardModel?
     @State private var alertType: AlertType?
     @State private var decisionToConclude: CardModel?
-
     @Query var decisions: [CardModel]
     @Environment(\.modelContext) var context
+
+    @State private var isAbleHaptics: Bool = UserDefaults.standard.object(forKey: "isAbleHaptics") as? Bool ?? true
+    let generator = UIImpactFeedbackGenerator(style: .rigid)
+
+    @State private var pulsingStates: [CardModel: Bool] = [:]
+    @State private var navigateToDetail: CardModel?
+    @State private var isPulsing: Bool = false
+
+    @State private var tappedDecision: CardModel?
+    @State private var cardOffset: CGFloat = 0
 
     var body: some View {
         NavigationStack {
@@ -37,24 +47,28 @@ struct HaveDecisionsView: View {
                             priorityOrder(CardModel.Priority(rawValue: $0.priority) ?? .medium) > priorityOrder(CardModel.Priority(rawValue: $1.priority) ?? .medium)
                         })) { decision in
                             GeometryReader { geometry in
-                                let minY = geometry.frame(in: .named("SCROLLVIEW")).minY
-
-                                NavigationLink(destination: DecisionView(decision: decision)) {
+                                
+                                ZStack {
                                     DecisionCard(card: decision)
+                                        .offset(y: tappedDecision == decision ? cardOffset : 0)
+                                        .scaleEffect(isPulsing ? 1.05 : 1.0)
+                                        .animation(.easeInOut(duration: 1.0), value: pulsingStates[decision])
                                         .rotation3DEffect(
                                             .init(degrees: convertOffsetToRotation(geometry.frame(in: .named("SCROLLVIEW")))),
                                             axis: (x: 1, y: 0, z: 0),
                                             anchor: .center,
                                             anchorZ: 1,
-                                            perspective: 1
+                                            perspective: 0.8
                                         )
                                         .swipeActions {
-                                            Button(role: .destructive) {
-                                                selectedDecision = decision
-                                                alertType = .delete
+                                            Button {
+                                                    selectedDecision = decision
+                                                    alertType = .delete
+                                                //
                                             } label: {
                                                 Label("Delete", systemImage: "trash")
                                             }
+                                            .tint(.red)
                                             Button {
                                                 decisionToConclude = decision
                                                 alertType = .conclude
@@ -64,10 +78,49 @@ struct HaveDecisionsView: View {
                                             .tint(.green)
                                         }
                                         .enableScrollViewSwipeAction()
+                                        .onTapGesture {
+                                            if isAbleHaptics {
+                                                generator.impactOccurred()
+                                            }
+                                            pulsingStates[decision] = true
+                                            tappedDecision = decision
+                                            cardOffset = -10
+                                            //
+                                            withAnimation(.easeInOut(duration: 0.4)) {
+                                                cardOffset = 0
+                                            }
+                                            //
+                                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                                                pulsingStates[decision] = false
+                                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                                                    navigateToDetail = decision
+                                                }
+                                            }
+                                        }
+
+                                    if pulsingStates[decision] == true {
+                                        DecisionCard(card: decision)
+                                            .scaleEffect(1.05)
+                                            .animation(.easeInOut(duration: 0.2), value: pulsingStates[decision])
+                                            .onTapGesture {
+                                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                                                    navigateToDetail = decision
+                                                }
+                                            }
+                                            .zIndex(1)
+                                    }
                                 }
-                                .buttonStyle(PlainButtonStyle())
+                                .shadow(color: .text.opacity(0.1), radius: 8, x: 3, y: -3)
                                 .frame(height: 130)
                                 .padding(.bottom, 10)
+
+                                NavigationLink(destination: DecisionView(decision: decision), isActive: Binding<Bool>(
+                                    get: { navigateToDetail == decision },
+                                    set: { if !$0 { navigateToDetail = nil } }
+                                )) {
+                                    EmptyView()
+                                }
+                                .hidden()
                             }
                             .frame(height: 130)
                         }
@@ -77,8 +130,8 @@ struct HaveDecisionsView: View {
                     ButtonCreateDecision()
                         .frame(width: 300, height: 70)
                         .padding(.top, 8)
-                        .background(Color.clear)
                 }
+
                 .background(
                     RoundedRectangle(cornerRadius: 40)
                         .foregroundColor(Color.background)
@@ -95,7 +148,10 @@ struct HaveDecisionsView: View {
                     message: Text("Are you sure you want to delete this decision? This action cannot be undone."),
                     primaryButton: .destructive(Text("Delete")) {
                         if let decision = selectedDecision {
-                            deleteDecision(decision: decision)
+                            withAnimation {
+                                context.delete(decision)
+                                try? context.save()
+                            }
                         }
                     },
                     secondaryButton: .cancel()
@@ -106,7 +162,7 @@ struct HaveDecisionsView: View {
                     message: Text("Hope you made a wise decision! Are you sure of that?"),
                     primaryButton: .default(Text("Conclude")) {
                         if let decision = decisionToConclude {
-                            concludeDecision(decision: decision)
+                            decision.priority = "done"
                         }
                     },
                     secondaryButton: .cancel()
@@ -114,23 +170,15 @@ struct HaveDecisionsView: View {
             }
         }
     }
-
-    private func deleteDecision(decision: CardModel) {
-        context.delete(decision)
-        try? context.save()
-    }
-
-    private func concludeDecision(decision: CardModel) {
-        decision.priority = "done"
-        try? context.save()
-    }
-
+    //
     private func convertOffsetToRotation(_ rect: CGRect) -> CGFloat {
         let cardHeight = rect.height
-        let minY = rect.minY - 20
+        let minY = rect.minY
         let progress = minY < 0 ? (minY / cardHeight) : 0
         let constrainedProgress = min(-progress, 1.0)
-        return constrainedProgress * 90.0
+        let rotationDegrees = constrainedProgress * 90.0
+        //
+        return rotationDegrees
     }
 
     private func priorityOrder(_ priority: CardModel.Priority) -> Int {
