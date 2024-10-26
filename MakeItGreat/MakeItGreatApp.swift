@@ -13,9 +13,19 @@ struct MakeItGreatApp: App {
     @State private var isFormSheetActive = false
     @State var isPresented: Bool = false
 
+    @StateObject private var appSettings: AppSettings
+
+    init() {
+        let initialColorScheme: ColorScheme = UIScreen.main.traitCollection.userInterfaceStyle == .dark ? .dark : .light
+        _appSettings = StateObject(wrappedValue: AppSettings(colorScheme: initialColorScheme))
+    }
+
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .accentColor(.accent)
+                .environmentObject(appSettings)
+                .preferredColorScheme(appSettings.isDarkModeOn ? .dark : .light)
                 .onOpenURL { url in
                     if url.scheme == "myapp" && url.host == "formsheet" {
                         isFormSheetActive = true
@@ -25,6 +35,7 @@ struct MakeItGreatApp: App {
                 .fullScreenCover(isPresented: $isPresented) {
                     NavigationView {
                         FirstPage(formViewModel: FormViewModel(), isPresented: $isPresented)
+                            .accentColor(.accent)
                     }
                 }
         }

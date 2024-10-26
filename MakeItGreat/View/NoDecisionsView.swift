@@ -18,7 +18,7 @@ struct NoDecisionsView: View {
                 .ignoresSafeArea()
 
             VStack(spacing: 25) {
-                Spacer(minLength: UIScreen.main.bounds.width < 376 ? 250 : 380)
+                Spacer(minLength: UIScreen.main.bounds.width < 376 ? 150 : 250)
                 GeometryReader { geometry in
                 ContentUnavailableView {
                         Text("You don't have any decision yet.")
@@ -30,13 +30,18 @@ struct NoDecisionsView: View {
                             .foregroundColor(.white)
                             .multilineTextAlignment(.center)
                             .padding(.horizontal, 30)
+                            .disabled(true)
                     }
+                    HStack {
+                        Spacer()
+                        ButtonCreateDecision()
+    //                        .padding(.leading, geometry.size.height * 0.2)
+                            .padding(.top, geometry.size.width * 0.7)
+                        Spacer()
+                    }
+                    
                 }
-                .disabled(true)
                 
-                ButtonCreateDecision()
-
-                Spacer()
             }
             .frame(maxWidth: .infinity)
             .multilineTextAlignment(.leading)

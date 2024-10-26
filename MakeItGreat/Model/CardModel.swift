@@ -28,7 +28,7 @@ class CardModel: Identifiable {
         }
     }
     // swiftlint:disable:next line_length
-    init(id: UUID = UUID(), title: String = "", cardDescription: String? = nil, feeling: String = "Confident", priorityEnum: Priority = .medium, deadline: Date? = nil, time: Date? = nil) {
+    init(id: UUID = UUID(), title: String = "", cardDescription: String? = nil, feeling: String = "Good", priorityEnum: Priority = .medium, deadline: Date? = nil, time: Date? = nil) {
         self.id = id
         self.title = title
         self.cardDescription = cardDescription

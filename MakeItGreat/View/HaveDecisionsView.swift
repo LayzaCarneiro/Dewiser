@@ -1,26 +1,32 @@
-//
-//  HaveDecisionsView.swift
-//  MakeItGreat
-//
-//  Created by Joao Roberto Fernandes Magalhaes on 09/10/24.
-//
+////
+////  HaveDecisionsView.swift
+////  MakeItGreat
+////
+////  Created by Joao Roberto Fernandes Magalhaes on 09/10/24.
+////
 
 import SwiftUI
 import SwiftData
+import UIKit
 
 struct HaveDecisionsView: View {
     @State private var isPresented: Bool = false
     @State private var deleteOnForDecision: Bool = false
     @State private var selectedDecision: CardModel?
     @State private var alertType: AlertType?
-    @State private var decisionToDelete: CardModel?
     @State private var decisionToConclude: CardModel?
-
     @Query var decisions: [CardModel]
     @Environment(\.modelContext) var context
 
     @State private var isAbleHaptics: Bool = UserDefaults.standard.object(forKey: "isAbleHaptics") as? Bool ?? true
     let generator = UIImpactFeedbackGenerator(style: .rigid)
+
+    @State private var pulsingStates: [CardModel: Bool] = [:]
+    @State private var navigateToDetail: CardModel?
+    @State private var isPulsing: Bool = false
+
+    @State private var tappedDecision: CardModel?
+    @State private var cardOffset: CGFloat = 0
 
     var body: some View {
         NavigationStack {
@@ -36,41 +42,34 @@ struct HaveDecisionsView: View {
                         .padding(.top, 65)
                         .padding(.leading, 26)
 
-                    List {
+                    ScrollView(.vertical, showsIndicators: false) {
                         ForEach(decisions.sorted(by: {
-                            // swiftlint:disable:next line_length
-                            priorityOrder(CardModel.Priority(rawValue: $0.priority) ?? .medium) > priorityOrder(CardModel.Priority(rawValue: $1.priority) ?? .medium)})) { decision in
-                                HStack {
-                                    Button {
-                                        selectedDecision = decision
-                                    } label: {
-                                        DecisionCard(card: decision)
-                                    }
-                                    .background(
-                                        NavigationLink(destination: DecisionView(decision: decision)) {
-                                            EmptyView()
-                                       }
-                                        .opacity(0.0)
-                                        .frame(width: 0, height: 0)
-                                    )
-                                    .swipeActions(allowsFullSwipe: true) {
-                                        Button(role: .destructive) {
-                                            if isAbleHaptics {
-                                                generator.impactOccurred()
+                            priorityOrder(CardModel.Priority(rawValue: $0.priority) ?? .medium) > priorityOrder(CardModel.Priority(rawValue: $1.priority) ?? .medium)
+                        })) { decision in
+                            GeometryReader { geometry in
+                                
+                                ZStack {
+                                    DecisionCard(card: decision)
+                                        .offset(y: tappedDecision == decision ? cardOffset : 0)
+                                        .scaleEffect(isPulsing ? 1.05 : 1.0)
+                                        .animation(.easeInOut(duration: 1.0), value: pulsingStates[decision])
+                                        .rotation3DEffect(
+                                            .init(degrees: convertOffsetToRotation(geometry.frame(in: .named("SCROLLVIEW")))),
+                                            axis: (x: 1, y: 0, z: 0),
+                                            anchor: .center,
+                                            anchorZ: 1,
+                                            perspective: 0.8
+                                        )
+                                        .swipeActions {
+                                            Button {
+                                                    selectedDecision = decision
+                                                    alertType = .delete
+                                                //
+                                            } label: {
+                                                Label("Delete", systemImage: "trash")
                                             }
-                                            decisionToDelete = decision
-                                            alertType = .delete
-                                        } label: {
-                                            Label("Delete", systemImage: "trash")
-                                                .fontDesign(.rounded)
-                                        }
-                                        .tint(.red)
-
-                                        if decision.priority != "done" {
-                                            Button(role: .none) {
-                                                if isAbleHaptics {
-                                                    generator.impactOccurred()
-                                                }
+                                            .tint(.red)
+                                            Button {
                                                 decisionToConclude = decision
                                                 alertType = .conclude
                                             } label: {
@@ -78,25 +77,61 @@ struct HaveDecisionsView: View {
                                             }
                                             .tint(.green)
                                         }
+                                        .enableScrollViewSwipeAction()
+                                        .onTapGesture {
+                                            if isAbleHaptics {
+                                                generator.impactOccurred()
+                                            }
+                                            pulsingStates[decision] = true
+                                            tappedDecision = decision
+                                            cardOffset = -10
+                                            //
+                                            withAnimation(.easeInOut(duration: 0.4)) {
+                                                cardOffset = 0
+                                            }
+                                            //
+                                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                                                pulsingStates[decision] = false
+                                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                                                    navigateToDetail = decision
+                                                }
+                                            }
+                                        }
+
+                                    if pulsingStates[decision] == true {
+                                        DecisionCard(card: decision)
+                                            .scaleEffect(1.05)
+                                            .animation(.easeInOut(duration: 0.2), value: pulsingStates[decision])
+                                            .onTapGesture {
+                                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                                                    navigateToDetail = decision
+                                                }
+                                            }
+                                            .zIndex(1)
                                     }
                                 }
-                            .listRowBackground(Color.clear)
-                            .listRowSeparator(.hidden)
+                                .shadow(color: .text.opacity(0.1), radius: 8, x: 3, y: -3)
+                                .frame(height: 130)
+                                .padding(.bottom, 10)
+
+                                NavigationLink(destination: DecisionView(decision: decision), isActive: Binding<Bool>(
+                                    get: { navigateToDetail == decision },
+                                    set: { if !$0 { navigateToDetail = nil } }
+                                )) {
+                                    EmptyView()
+                                }
+                                .hidden()
+                            }
+                            .frame(height: 130)
                         }
                     }
-                    .scrollIndicators(.hidden)
-                    .listStyle(PlainListStyle())
-                    .scrollContentBackground(.hidden)
-                    .background(Color.clear)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.leading, 10)
-                    .padding(.bottom, 35)
+                    .coordinateSpace(name: "SCROLLVIEW")
 
                     ButtonCreateDecision()
-                        .frame(width: 300, height: 20)
-                        .padding(.bottom, 30)
-                        .background(Color.clear)
+                        .frame(width: 300, height: 70)
+                        .padding(.top, 8)
                 }
+
                 .background(
                     RoundedRectangle(cornerRadius: 40)
                         .foregroundColor(Color.background)
@@ -112,8 +147,11 @@ struct HaveDecisionsView: View {
                     title: Text("Delete Decision"),
                     message: Text("Are you sure you want to delete this decision? This action cannot be undone."),
                     primaryButton: .destructive(Text("Delete")) {
-                        if let decision = decisionToDelete {
-                            deleteDecision(decision: decision)
+                        if let decision = selectedDecision {
+                            withAnimation {
+                                context.delete(decision)
+                                try? context.save()
+                            }
                         }
                     },
                     secondaryButton: .cancel()
@@ -132,10 +170,15 @@ struct HaveDecisionsView: View {
             }
         }
     }
-
-    private func deleteDecision(decision: CardModel) {
-        context.delete(decision)
-        try? context.save()
+    //
+    private func convertOffsetToRotation(_ rect: CGRect) -> CGFloat {
+        let cardHeight = rect.height
+        let minY = rect.minY
+        let progress = minY < 0 ? (minY / cardHeight) : 0
+        let constrainedProgress = min(-progress, 1.0)
+        let rotationDegrees = constrainedProgress * 90.0
+        //
+        return rotationDegrees
     }
 
     private func priorityOrder(_ priority: CardModel.Priority) -> Int {
@@ -149,10 +192,6 @@ struct HaveDecisionsView: View {
         case .done:
             return 0
         }
-    }
-
-    private var isHapticsEnabled: Bool {
-        UserDefaults.standard.bool(forKey: "isAbleHaptics")
     }
 
     enum AlertType: Identifiable {

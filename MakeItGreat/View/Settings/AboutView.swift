@@ -13,7 +13,7 @@ struct AboutView: View {
             ZStack {
                 Color.background.ignoresSafeArea()
                 List {
-                    Section(header: Text("Developers")) {
+                    Section(header: Text("Developers").foregroundColor(.accentColor)) {
                         Button(action: openLinkedInHM) {
                             HStack {
                                 ZStack {
@@ -72,8 +72,8 @@ struct AboutView: View {
                             }
                         }
                     }
-                    Section(header: Text("App")) {
-                        Button(action: openSite) {
+                    Section(header: Text("App").foregroundColor(.accentColor)) {
+                        Button(action: openApp) {
                             HStack {
                                 ZStack {
                                     RoundedRectangle(cornerRadius: 6)
@@ -87,7 +87,7 @@ struct AboutView: View {
                             }
                         }
                     }
-                    Section(header: Text("More Info")) {
+                    Section(header: Text("More Info").foregroundColor(.accentColor)) {
                         Button(action: openSite) {
                             HStack {
                                 ZStack {
