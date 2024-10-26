@@ -39,9 +39,7 @@ struct NoDecisionsView: View {
                             .padding(.top, geometry.size.width * 0.7)
                         Spacer()
                     }
-                    
                 }
-                
             }
             .frame(maxWidth: .infinity)
             .multilineTextAlignment(.leading)

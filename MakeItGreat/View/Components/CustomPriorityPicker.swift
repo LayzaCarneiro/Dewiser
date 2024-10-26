@@ -31,9 +31,7 @@ struct CustomPriorityPicker: View {
             RoundedRectangle(cornerRadius: 8.91)
                 .stroke(Color.fieldStroke, lineWidth: 2)
         )
-        .onAppear {
-            generator.prepare() 
-        }
+        .onAppear { generator.prepare() }
     }
 
     func colorForPriority(_ priority: CardModel.Priority) -> Color {

@@ -25,7 +25,7 @@ extension View {
 
 struct ScrollViewSwipeActionModifier: ViewModifier {
     @State private var size: CGSize = .init(width: 1, height: 1)
-    
+    //
     func body(content: Content) -> some View {
         List {
             LazyVStack {

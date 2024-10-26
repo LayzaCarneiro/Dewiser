@@ -14,7 +14,6 @@ struct ItemCard: View {
 
     let textLimit = 25
     var onDelete: () -> Void
-    @State private var showAlert = false
 
     var body: some View {
         ZStack(alignment: .topTrailing) {

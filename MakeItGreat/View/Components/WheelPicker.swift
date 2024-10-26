@@ -14,7 +14,7 @@ struct WheelPicker: View {
 
     @State var imageIndexx = [0: 3, 1: 2, 2: 1, 3: 0, 4: 4]
     let circleRadius: CGFloat = 160
-    
+
     @State private var isAbleHaptics: Bool = UserDefaults.standard.object(forKey: "isAbleHaptics") as? Bool ?? true
     var generate = UIImpactFeedbackGenerator(style: .rigid)
 
@@ -125,9 +125,7 @@ struct WheelPicker: View {
         }
         .offset(y: 140)
         .onAppear {
-            if !hasMoved {
-                selectedFeeling = "Good"  
-            }
+            if !hasMoved { selectedFeeling = "Good" }
         }
     }
 }
