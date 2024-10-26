@@ -4,7 +4,6 @@
 //
 //  Created by Layza Maria Rodrigues Carneiro on 27/09/24.
 //
-
 import SwiftUI
 import SwiftData
 import Combine
@@ -15,16 +14,17 @@ struct ItemCard: View {
 
     let textLimit = 25
     var onDelete: () -> Void
+    @State private var showAlert = false
 
     var body: some View {
         ZStack(alignment: .topTrailing) {
             if content.isEmpty {
-               Text("Add reason")
-                   .foregroundColor(.gray)
-                   .padding(.bottom, 20)
-                   .padding(15)
-                   .frame(width: 149, height: 84, alignment: .leading)
-           }
+                Text("Add reason")
+                    .foregroundColor(.gray)
+                    .padding(.bottom, 20)
+                    .padding(15)
+                    .frame(width: 149, height: 84, alignment: .leading)
+            }
 
             TextEditor(text: $content)
                 .onReceive(Just(content)) { _ in limitText(textLimit) }
