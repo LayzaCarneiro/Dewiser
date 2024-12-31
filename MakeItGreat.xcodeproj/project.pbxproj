@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		12AB6C1C2CBFE5A10059E25F /* FaceIdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AB6C1B2CBFE5A10059E25F /* FaceIdView.swift */; };
 		12AB6C1E2CBFE6270059E25F /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AB6C1D2CBFE6270059E25F /* AuthenticationManager.swift */; };
+		AE1A461A2D238F1200C696DF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = AE1A46192D238F1200C696DF /* Localizable.strings */; };
 		AE28CDCD2CA2F3AE00267E39 /* MakeItGreatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE28CDCC2CA2F3AE00267E39 /* MakeItGreatApp.swift */; };
 		AE28CDCF2CA2F3AE00267E39 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE28CDCE2CA2F3AE00267E39 /* ContentView.swift */; };
 		AE28CDD12CA2F3AF00267E39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE28CDD02CA2F3AF00267E39 /* Assets.xcassets */; };
@@ -39,7 +40,6 @@
 		AEA2AC092CCB17CB00FBAF77 /* AppearenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA2AC082CCB17C600FBAF77 /* AppearenceView.swift */; };
 		AED2E7342CB24F82005A89CD /* CustomDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED2E7332CB24F7B005A89CD /* CustomDatePicker.swift */; };
 		AED2E7362CB25272005A89CD /* CustomHourPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED2E7352CB2526D005A89CD /* CustomHourPicker.swift */; };
-		AED637302CC8771A0077809A /* modifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED6372F2CC877110077809A /* modifier.swift */; };
 		AEE99BEA2CB0145500CC299A /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE99BE92CB0145300CC299A /* EditView.swift */; };
 		AEEA2B492CCA54470071D7EA /* WheelPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEEA2B482CCA54420071D7EA /* WheelPicker.swift */; };
 		AEEA2B4C2CCA554A0071D7EA /* modifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEEA2B4B2CCA55480071D7EA /* modifier.swift */; };
@@ -82,6 +82,7 @@
 /* Begin PBXFileReference section */
 		12AB6C1B2CBFE5A10059E25F /* FaceIdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceIdView.swift; sourceTree = "<group>"; };
 		12AB6C1D2CBFE6270059E25F /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
+		AE1A46182D238F1200C696DF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		AE28CDC92CA2F3AE00267E39 /* MakeItGreat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MakeItGreat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE28CDCC2CA2F3AE00267E39 /* MakeItGreatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeItGreatApp.swift; sourceTree = "<group>"; };
 		AE28CDCE2CA2F3AE00267E39 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -114,7 +115,6 @@
 		AEA2AC082CCB17C600FBAF77 /* AppearenceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearenceView.swift; sourceTree = "<group>"; };
 		AED2E7332CB24F7B005A89CD /* CustomDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDatePicker.swift; sourceTree = "<group>"; };
 		AED2E7352CB2526D005A89CD /* CustomHourPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHourPicker.swift; sourceTree = "<group>"; };
-		AED6372F2CC877110077809A /* modifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = modifier.swift; sourceTree = "<group>"; };
 		AEE99BE92CB0145300CC299A /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
 		AEEA2B482CCA54420071D7EA /* WheelPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelPicker.swift; sourceTree = "<group>"; };
 		AEEA2B4B2CCA55480071D7EA /* modifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = modifier.swift; sourceTree = "<group>"; };
@@ -165,6 +165,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AE1A46132D238ECA00C696DF /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				AE1A46192D238F1200C696DF /* Localizable.strings */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		AE28CDC02CA2F3AE00267E39 = {
 			isa = PBXGroup;
 			children = (
@@ -188,6 +196,7 @@
 		AE28CDCB2CA2F3AE00267E39 /* MakeItGreat */ = {
 			isa = PBXGroup;
 			children = (
+				AE1A46132D238ECA00C696DF /* Utils */,
 				AE3BBE7D2CC1518800D6582D /* Lottie */,
 				AE7F8BB52CA6D53800CD3835 /* Model */,
 				AE9E32AC2CA383D5009235AC /* ViewModel */,
@@ -417,6 +426,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE28CDD42CA2F3AF00267E39 /* Preview Assets.xcassets in Resources */,
+				AE1A461A2D238F1200C696DF /* Localizable.strings in Resources */,
 				AE3BBE7F2CC1519A00D6582D /* animation.json in Resources */,
 				AE28CDD12CA2F3AF00267E39 /* Assets.xcassets in Resources */,
 			);
@@ -516,6 +526,17 @@
 			targetProxy = AEFC6A1E2CC5DFCE0081D99B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		AE1A46192D238F1200C696DF /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AE1A46182D238F1200C696DF /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		AE28CDD52CA2F3AF00267E39 /* Debug */ = {
